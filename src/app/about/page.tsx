@@ -51,10 +51,10 @@ export default function AboutPage() {
 
             <div className="space-y-6 text-warm-gray text-lg leading-relaxed">
               <p>
-                I&apos;m a developer focused on automation, system design, and clean digital solutions.
+                I&apos;m a developer focused on automation, system design, and clean digital solutions. Originally from Australia, now based in Tokyo, Japan.
               </p>
               <p>
-                I help businesses move faster with precise, efficient systems built around real workflows. My approach is simple: understand the problem deeply, then build the minimum required to solve it elegantly.
+                I help businesses move faster with precise, efficient systems built around real workflows. Working fully remote, I&apos;ve collaborated with clients across Australia — previously flying interstate for on-site projects, now delivering solutions from anywhere.
               </p>
               <p>
                 I design systems that reduce noise and increase clarity. Whether it&apos;s automating repetitive tasks, building custom dashboards, or creating web applications — the goal is always the same: make things work better with less friction.

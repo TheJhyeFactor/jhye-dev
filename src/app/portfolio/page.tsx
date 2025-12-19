@@ -57,13 +57,14 @@ export default function PortfolioPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              title={project.title}
-              description={project.description}
-              image={project.image}
-              tags={project.tags}
-            />
+            <div key={project.title}>
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                tags={project.tags}
+              />
+            </div>
           ))}
         </div>
 

@@ -58,7 +58,8 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-snow-white font-medium mb-1">Location</p>
-                <p className="text-warm-gray">Australia</p>
+                <p className="text-warm-gray">Tokyo, Japan</p>
+                <p className="text-warm-gray/60 text-sm mt-1">Australian • Fully Remote</p>
               </div>
             </div>
           </div>

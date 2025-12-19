@@ -11,8 +11,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ title, description, image, tags, href }: ProjectCardProps) {
-  const content = (
-    <>
+  return (
+    <div className="group bg-urban-gray rounded-tokyo overflow-hidden transition-all duration-500 hover:bg-urban-gray/80 hover:shadow-glow-red hover:-translate-y-2 border border-transparent hover:border-tokyo-red/20 relative">
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={image}
@@ -26,14 +26,6 @@ export default function ProjectCard({ title, description, image, tags, href }: P
         {/* Shine effect on hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-shine" />
-        </div>
-
-        {/* View overlay on hover */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-primary-black/60 backdrop-blur-sm">
-          <span className="text-snow-white font-semibold flex items-center gap-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-            View Project
-            <ArrowUpRight className="w-5 h-5" />
-          </span>
         </div>
       </div>
       <div className="p-6">
@@ -53,22 +45,6 @@ export default function ProjectCard({ title, description, image, tags, href }: P
           ))}
         </div>
       </div>
-    </>
-  )
-
-  const className = "group block bg-urban-gray rounded-tokyo overflow-hidden transition-all duration-500 hover:bg-urban-gray/80 hover:shadow-glow-red hover:-translate-y-2 border border-transparent hover:border-tokyo-red/20 relative"
-
-  if (href) {
-    return (
-      <Link href={href} className={className}>
-        {content}
-      </Link>
-    )
-  }
-
-  return (
-    <div className={className}>
-      {content}
     </div>
   )
 }
