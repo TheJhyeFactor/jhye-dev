@@ -29,6 +29,7 @@ export default function AboutPage() {
                   alt="Jhye O'Meley"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: 'center 30%' }}
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/0 to-cyber-purple/0 group-hover:from-tokyo-red/10 group-hover:to-cyber-purple/10 transition-all duration-500" />
