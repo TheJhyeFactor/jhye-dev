@@ -17,11 +17,11 @@ export default function Button({
   onClick,
   className = '',
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center px-7 py-3.5 text-sm font-medium rounded-tokyo transition-all duration-150'
+  const baseStyles = 'inline-flex items-center justify-center px-7 py-3.5 text-sm font-medium rounded-tokyo transition-all duration-300 relative overflow-hidden group'
 
   const variants = {
-    primary: 'bg-tokyo-red text-snow-white hover:bg-tokyo-red/90',
-    secondary: 'border border-warm-gray text-warm-gray hover:border-snow-white hover:text-snow-white',
+    primary: 'bg-gradient-accent text-snow-white hover:shadow-glow-red border border-tokyo-red/30 hover:border-tokyo-red/60',
+    secondary: 'border border-warm-gray/50 text-warm-gray hover:border-electric-blue hover:text-snow-white hover:shadow-glow-blue bg-urban-gray/20 hover:bg-urban-gray/40',
   }
 
   const styles = `${baseStyles} ${variants[variant]} ${className}`

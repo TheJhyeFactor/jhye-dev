@@ -34,10 +34,13 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center pt-20">
-        <div className="max-w-6xl mx-auto px-6 py-20">
+      <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div className="absolute inset-0 grid-background opacity-30" />
+        <div className="absolute top-20 right-0 w-96 h-96 bg-tokyo-red/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-0 w-96 h-96 bg-cyber-purple/10 rounded-full blur-3xl" />
+        <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
           <div className="max-w-3xl">
-            <p className="text-tokyo-red text-sm font-medium tracking-widest mb-6 animate-fade-in">
+            <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-6 animate-fade-in">
               AUTOMATION • DEVELOPMENT • OPTIMISATION
             </p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-4 animate-fade-in stagger-1">

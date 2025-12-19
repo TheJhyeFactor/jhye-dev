@@ -8,28 +8,34 @@ export const metadata: Metadata = {
 
 const projects = [
   {
-    title: 'TransportationMe',
-    description: 'A comprehensive transportation management platform streamlining logistics operations with real-time tracking and automated dispatch systems.',
+    title: 'PC Choices',
+    description: 'Full-featured e-commerce platform for custom PC builds and component retail. Complete shopping experience with product configurator, cart management, and checkout flow.',
+    image: '/images/projects/pc-choices.svg',
+    tags: ['E-Commerce', 'Web Development', 'React'],
+  },
+  {
+    title: 'TJ Pizza Hut',
+    description: 'Online ordering system for restaurant with real-time menu management, order tracking, and integrated payment processing. Streamlined customer experience from browse to delivery.',
+    image: '/images/projects/tj-pizza.svg',
+    tags: ['Web App', 'Ordering System', 'Payment Integration'],
+  },
+  {
+    title: 'AEO Services Portal',
+    description: 'Comprehensive employee portal and project management dashboard. Centralized workspace for team collaboration, task tracking, and resource management.',
+    image: '/images/projects/aeo-portal.svg',
+    tags: ['Dashboard', 'Project Management', 'Portal'],
+  },
+  {
+    title: 'TransportationME',
+    description: 'Transportation management platform with route optimization, fleet tracking, and logistics coordination. Built for efficiency and real-time operations.',
     image: '/images/projects/transportation-me.svg',
-    tags: ['Web App', 'Automation', 'Dashboard'],
+    tags: ['Web Platform', 'Logistics', 'Real-Time'],
   },
   {
-    title: 'AEO Dashboard',
-    description: 'Executive dashboard providing real-time visibility into key operational metrics. Clean data visualization for faster decision-making.',
-    image: '/images/projects/aeo-dashboard.svg',
-    tags: ['Dashboard', 'Data Viz', 'Apps Script'],
-  },
-  {
-    title: 'ECBC Video Platform',
-    description: 'Custom video management and delivery system with streamlined content workflows and intuitive admin interface.',
-    image: '/images/projects/ecbc-video.svg',
-    tags: ['Web Development', 'CMS', 'Video'],
-  },
-  {
-    title: 'NDIS Automation Suite',
-    description: 'Workflow automation for NDIS service providers. Reduced manual data entry and improved compliance tracking across operations.',
-    image: '/images/projects/ndis-automation.svg',
-    tags: ['Automation', 'Apps Script', 'Integration'],
+    title: 'NDIS Admin System',
+    description: 'Admin management system for AEO Services NDIS operations. Automated workflows, compliance tracking, and participant management tools for streamlined disability service delivery.',
+    image: '/images/projects/ndis-admin.svg',
+    tags: ['Admin System', 'Automation', 'Compliance'],
   },
 ]
 
