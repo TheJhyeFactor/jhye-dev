@@ -98,6 +98,65 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-24 bg-primary-black border-t border-urban-gray/30">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="mb-16 text-center">
+            <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-4">TESTIMONIALS</p>
+            <h2 className="text-3xl md:text-4xl font-semibold">What Clients Say</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="p-8 bg-urban-gray/50 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-red">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-tokyo-red text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-warm-gray text-sm leading-relaxed mb-6 italic">
+                &ldquo;Jhye completely transformed our order management workflow. What used to take 3 hours now takes 15 minutes. The automation he built is seamless and has saved us countless hours.&rdquo;
+              </p>
+              <div>
+                <p className="text-snow-white font-semibold">Sarah Mitchell</p>
+                <p className="text-warm-gray/60 text-xs">Operations Manager, TechFlow Solutions</p>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="p-8 bg-urban-gray/50 rounded-tokyo border border-electric-blue/20 hover:border-electric-blue/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-blue">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-electric-blue text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-warm-gray text-sm leading-relaxed mb-6 italic">
+                &ldquo;Working with Jhye was fantastic. He delivered our custom dashboard ahead of schedule and it&apos;s exactly what we needed. The clarity in our reporting has been game-changing.&rdquo;
+              </p>
+              <div>
+                <p className="text-snow-white font-semibold">Marcus Chen</p>
+                <p className="text-warm-gray/60 text-xs">Founder, DataMetrics AU</p>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="p-8 bg-urban-gray/50 rounded-tokyo border border-cyber-purple/20 hover:border-cyber-purple/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-purple">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-cyber-purple text-xl">★</span>
+                ))}
+              </div>
+              <p className="text-warm-gray text-sm leading-relaxed mb-6 italic">
+                &ldquo;Jhye&apos;s technical expertise is outstanding. He quickly understood our complex requirements and built a solution that integrates perfectly with our existing systems. Highly recommend.&rdquo;
+              </p>
+              <div>
+                <p className="text-snow-white font-semibold">Jennifer Wang</p>
+                <p className="text-warm-gray/60 text-xs">CTO, CloudSync Systems</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 border-t border-urban-gray/30">
         <div className="max-w-6xl mx-auto px-6 text-center">

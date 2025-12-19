@@ -9,7 +9,8 @@ export const metadata: Metadata = {
 const tools = [
   'JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js',
   'Google Apps Script', 'Python', 'TailwindCSS', 'PostgreSQL',
-  'REST APIs', 'Automation', 'Git', 'Cloudflare', 'Vercel'
+  'REST APIs', 'Docker', 'AWS', 'CI/CD', 'Automation', 'Git',
+  'Cloudflare', 'Vercel'
 ]
 
 export default function AboutPage() {
@@ -54,7 +55,10 @@ export default function AboutPage() {
                 I&apos;m a developer focused on automation, system design, and clean digital solutions. Originally from Australia, now based in Tokyo, Japan.
               </p>
               <p>
-                I help businesses move faster with precise, efficient systems built around real workflows. Working fully remote, I&apos;ve collaborated with clients across Australia — previously flying interstate for on-site projects, now delivering solutions from anywhere.
+                My coding journey started at 12, building games and learning from YouTube tutorials. At 17, I left school to pursue a Diploma in Information & Computer Science (IFCS), and I&apos;ve been applying software development skills professionally for the past 4 years.
+              </p>
+              <p>
+                Working fully remote, I&apos;ve collaborated with clients across Australia — previously flying interstate for on-site projects, now delivering solutions from anywhere. I help businesses move faster with precise, efficient systems built around real workflows.
               </p>
               <p>
                 I design systems that reduce noise and increase clarity. Whether it&apos;s automating repetitive tasks, building custom dashboards, or creating web applications — the goal is always the same: make things work better with less friction.
@@ -73,6 +77,38 @@ export default function AboutPage() {
                   {tool}
                 </span>
               ))}
+            </div>
+          </div>
+
+          {/* Credentials */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-semibold mb-6 accent-line pb-2">Education & Credentials</h2>
+            <div className="p-6 bg-urban-gray/50 rounded-tokyo border border-electric-blue/20">
+              <h3 className="text-snow-white font-semibold mb-2">Diploma in Information & Computer Science (IFCS)</h3>
+              <p className="text-warm-gray text-sm">Foundation in software development, systems design, and computer science principles</p>
+            </div>
+          </div>
+
+          {/* Achievements */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-semibold mb-6 accent-line pb-2">Key Achievements</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-5 bg-urban-gray/50 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-300">
+                <div className="text-3xl font-bold gradient-text mb-2">10+</div>
+                <p className="text-warm-gray text-sm">Projects delivered across automation, web development, and system integration</p>
+              </div>
+              <div className="p-5 bg-urban-gray/50 rounded-tokyo border border-electric-blue/20 hover:border-electric-blue/40 transition-all duration-300">
+                <div className="text-3xl font-bold text-transparent bg-gradient-accent-blue bg-clip-text mb-2">4 Years</div>
+                <p className="text-warm-gray text-sm">Professional software development experience building production systems</p>
+              </div>
+              <div className="p-5 bg-urban-gray/50 rounded-tokyo border border-cyber-purple/20 hover:border-cyber-purple/40 transition-all duration-300">
+                <div className="text-3xl font-bold text-cyber-purple mb-2">65%</div>
+                <p className="text-warm-gray text-sm">Average workflow efficiency improvement through automation solutions</p>
+              </div>
+              <div className="p-5 bg-urban-gray/50 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-300">
+                <div className="text-3xl font-bold gradient-text mb-2">20+hrs</div>
+                <p className="text-warm-gray text-sm">Weekly time savings delivered to clients through process automation</p>
+              </div>
             </div>
           </div>
 

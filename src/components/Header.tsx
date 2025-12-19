@@ -34,9 +34,16 @@ export default function Header() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <Link href="/" className="text-xl font-semibold tracking-wide hover:text-tokyo-red transition-colors duration-150">
-          jhye<span className="text-tokyo-red">.</span>dev
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/" className="text-xl font-semibold tracking-wide hover:text-tokyo-red transition-colors duration-150">
+            jhye<span className="text-tokyo-red">.</span>dev
+          </Link>
+          <span className="hidden sm:flex items-center gap-2 px-3 py-1 bg-gradient-accent rounded-full text-xs font-medium text-snow-white animate-pulse">
+            <span className="w-2 h-2 bg-snow-white rounded-full animate-ping absolute" />
+            <span className="w-2 h-2 bg-snow-white rounded-full relative" />
+            Available for Work
+          </span>
+        </div>
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center gap-10">
