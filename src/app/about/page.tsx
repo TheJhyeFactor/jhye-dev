@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import SakuraPetals from '@/components/SakuraPetals'
+import JapaneseDivider from '@/components/JapaneseDivider'
 
 export const metadata: Metadata = {
   title: 'About | Jhye O\'Meley',
@@ -15,16 +17,19 @@ const tools = [
 
 export default function AboutPage() {
   return (
-    <section className="min-h-screen pt-32 pb-24 relative overflow-hidden">
-      <div className="absolute inset-0 grid-background opacity-20" />
-      <div className="absolute top-40 -right-20 w-96 h-96 bg-electric-blue/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-40 -left-20 w-96 h-96 bg-cyber-purple/10 rounded-full blur-3xl" />
+    <>
+      <SakuraPetals />
+      <section className="min-h-screen pt-32 pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 wave-pattern opacity-30" />
+        <div className="absolute inset-0 grid-background opacity-10" />
+        <div className="absolute top-40 -right-20 w-96 h-96 bg-electric-blue/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 -left-20 w-96 h-96 bg-cyber-purple/10 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-20">
-          <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-6 animate-fade-in">
-            ABOUT ME
+          <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-6 animate-fade-in font-noto">
+            私について
           </p>
           <h1 className="text-5xl md:text-6xl font-bold mb-4 animate-fade-in stagger-1">
             Jhye O&apos;Meley
@@ -76,7 +81,10 @@ export default function AboutPage() {
           <div className="lg:col-span-3 space-y-8">
             {/* Journey Timeline */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold mb-8 accent-line pb-3">My Journey</h2>
+              <JapaneseDivider character="旅" />
+              <h2 className="text-3xl font-bold mb-8 mt-8 text-center">
+                My Journey <span className="font-noto text-tokyo-red">| 私の旅</span>
+              </h2>
 
               <div className="space-y-6">
                 {/* Age 12 */}
@@ -128,7 +136,10 @@ export default function AboutPage() {
 
         {/* Tech Stack Section */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold mb-8 text-center accent-line pb-3 inline-block">Technology Stack</h2>
+          <JapaneseDivider character="技" />
+          <h2 className="text-3xl font-bold mb-8 mt-16 text-center">
+            Technology Stack <span className="font-noto text-electric-blue">| 技術</span>
+          </h2>
           <div className="flex flex-wrap justify-center gap-3 mt-12">
             {tools.map((tool, index) => (
               <span
@@ -144,7 +155,10 @@ export default function AboutPage() {
 
         {/* Key Metrics Grid */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold mb-8 text-center accent-line pb-3 inline-block">Impact & Results</h2>
+          <JapaneseDivider character="実" />
+          <h2 className="text-3xl font-bold mb-8 mt-16 text-center">
+            Impact & Results <span className="font-noto text-cyber-purple">| 実績</span>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             <div className="p-8 bg-gradient-to-br from-urban-gray to-urban-gray/50 rounded-tokyo border-2 border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-red text-center group">
               <div className="text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">10+</div>
@@ -176,17 +190,25 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto">
           <div className="p-12 bg-gradient-to-br from-urban-gray via-urban-gray/80 to-urban-gray/50 rounded-tokyo border-2 border-tokyo-red/30 shadow-glow-red relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/5 to-cyber-purple/5" />
+            <div className="absolute inset-0 wave-pattern opacity-20" />
+            <div className="absolute top-4 right-4">
+              <span className="hanko text-xs">完</span>
+            </div>
             <div className="relative z-10 text-center">
               <p className="text-3xl md:text-4xl font-bold gradient-text mb-4">
                 &ldquo;Minimal code. Maximum clarity.&rdquo;
               </p>
-              <p className="text-warm-gray">
+              <p className="text-warm-gray mb-4">
                 The guiding principle behind every project I build.
+              </p>
+              <p className="text-tokyo-red font-noto text-lg italic">
+                簡素美 — Beauty in simplicity
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
+    </>
   )
 }

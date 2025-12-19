@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import Button from '@/components/Button'
 import { Send, CheckCircle, Clock, DollarSign, Briefcase } from 'lucide-react'
+import SakuraPetals from '@/components/SakuraPetals'
 
 export default function ContactPage() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle')
@@ -36,21 +37,27 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="min-h-screen pt-32 pb-24 relative overflow-hidden">
-      <div className="absolute inset-0 grid-background opacity-20" />
-      <div className="absolute top-40 -right-20 w-96 h-96 bg-electric-blue/10 rounded-full blur-3xl" />
+    <>
+      <SakuraPetals />
+      <section className="min-h-screen pt-32 pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 wave-pattern opacity-30" />
+        <div className="absolute inset-0 grid-background opacity-10" />
+        <div className="absolute top-40 -right-20 w-96 h-96 bg-electric-blue/10 rounded-full blur-3xl" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div>
-            <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-6">
-              CONTACT
-            </p>
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-6 font-noto">
+                連絡 | CONTACT
+              </p>
             <h1 className="text-4xl md:text-5xl font-semibold mb-6">
               Let&apos;s Build Something
             </h1>
-            <p className="text-warm-gray text-lg leading-relaxed mb-12">
+            <p className="text-warm-gray text-lg leading-relaxed mb-4">
               Have a project in mind? Let&apos;s discuss how I can help streamline your systems and build something efficient together.
+            </p>
+            <p className="text-tokyo-red font-noto text-sm italic mb-12">
+              一緒に素晴らしいものを作りましょう
             </p>
 
             <div className="space-y-8 mb-12">
@@ -290,5 +297,6 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
+    </>
   )
 }

@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import ProjectCard from '@/components/ProjectCard'
 import Button from '@/components/Button'
+import SakuraPetals from '@/components/SakuraPetals'
+import JapaneseDivider from '@/components/JapaneseDivider'
 
 export const metadata: Metadata = {
   title: 'Portfolio | Jhye O\'Meley',
@@ -60,22 +62,28 @@ const projects = [
 
 export default function PortfolioPage() {
   return (
-    <section className="min-h-screen pt-32 pb-24 relative overflow-hidden">
-      <div className="absolute inset-0 grid-background opacity-20" />
-      <div className="absolute top-40 right-0 w-96 h-96 bg-tokyo-red/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-40 left-0 w-96 h-96 bg-electric-blue/10 rounded-full blur-3xl" />
+    <>
+      <SakuraPetals />
+      <section className="min-h-screen pt-32 pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 wave-pattern opacity-30" />
+        <div className="absolute inset-0 grid-background opacity-10" />
+        <div className="absolute top-40 right-0 w-96 h-96 bg-tokyo-red/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 left-0 w-96 h-96 bg-electric-blue/10 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-20">
-          <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-6 animate-fade-in">
-            PORTFOLIO
+          <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-6 animate-fade-in font-noto">
+            作品集 | PORTFOLIO
           </p>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in stagger-1">
             Selected Work
           </h1>
           <p className="text-warm-gray text-xl leading-relaxed max-w-3xl mx-auto mb-12 animate-fade-in stagger-2">
             A collection of projects showcasing automation, web development, media production, and system integration solutions that drive real business impact.
+          </p>
+          <p className="text-tokyo-red font-noto text-sm animate-fade-in stagger-3">
+            一つ一つの作品に心を込めて
           </p>
 
           {/* Stats Row */}
@@ -115,7 +123,8 @@ export default function PortfolioPage() {
 
         {/* Projects Grid */}
         <div className="mb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <JapaneseDivider character="作" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
             {projects.map((project, index) => (
               <div
                 key={project.title}
@@ -141,12 +150,19 @@ export default function PortfolioPage() {
         <div className="max-w-4xl mx-auto">
           <div className="p-12 bg-gradient-to-br from-urban-gray via-urban-gray/80 to-urban-gray/50 rounded-tokyo border-2 border-tokyo-red/30 shadow-glow-red relative overflow-hidden text-center">
             <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/5 to-cyber-purple/5" />
+            <div className="absolute inset-0 wave-pattern opacity-20" />
+            <div className="absolute top-4 right-4">
+              <span className="hanko text-xs">繋</span>
+            </div>
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Have a project in mind?
               </h2>
-              <p className="text-warm-gray text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-warm-gray text-lg mb-4 max-w-2xl mx-auto">
                 Let&apos;s discuss how I can help streamline your systems and build something efficient together.
+              </p>
+              <p className="text-tokyo-red font-noto text-sm mb-8">
+                一緒に最高の作品を作りましょう
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button href="/contact/">Start a Project</Button>
@@ -157,5 +173,6 @@ export default function PortfolioPage() {
         </div>
       </div>
     </section>
+    </>
   )
 }

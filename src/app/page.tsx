@@ -2,6 +2,8 @@ import { Zap, Code, BarChart3, Settings, MessageSquare } from 'lucide-react'
 import ServiceCard from '@/components/ServiceCard'
 import Button from '@/components/Button'
 import TypingText from '@/components/TypingText'
+import SakuraPetals from '@/components/SakuraPetals'
+import JapaneseDivider from '@/components/JapaneseDivider'
 
 const services = [
   {
@@ -34,25 +36,12 @@ const services = [
 export default function Home() {
   return (
     <>
+      <SakuraPetals />
+
       {/* Hero Section */}
       <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-        <div className="absolute inset-0 grid-background opacity-30" />
-
-        {/* Animated particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-tokyo-red/30 rounded-full animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${15 + Math.random() * 10}s`,
-              }}
-            />
-          ))}
-        </div>
+        <div className="absolute inset-0 wave-pattern opacity-40" />
+        <div className="absolute inset-0 grid-background opacity-20" />
 
         <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
           <div className="max-w-3xl">
@@ -78,11 +67,86 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Tokyo Life Section */}
+      <section className="py-24 bg-primary-black border-t border-urban-gray/30 relative overflow-hidden">
+        <div className="absolute inset-0 wave-pattern opacity-20" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <JapaneseDivider character="東" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
+            <div>
+              <p className="text-tokyo-red text-sm font-medium tracking-widest mb-4 font-noto">東京</p>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-6">Based in Tokyo</h2>
+              <p className="text-warm-gray text-lg leading-relaxed mb-6">
+                Working remotely from the heart of Japan, blending precision engineering with the minimalist philosophy of Tokyo design. Every project carries the spirit of <span className="text-tokyo-red font-noto">改善</span> (kaizen) — continuous improvement.
+              </p>
+              <div className="flex flex-wrap gap-4 mb-6">
+                <div className="px-4 py-2 bg-urban-gray/50 rounded-tokyo border border-tokyo-red/20">
+                  <p className="text-xs text-warm-gray mb-1">Local Time</p>
+                  <p className="text-snow-white font-semibold">JST (UTC+9)</p>
+                </div>
+                <div className="px-4 py-2 bg-urban-gray/50 rounded-tokyo border border-electric-blue/20">
+                  <p className="text-xs text-warm-gray mb-1">Work Style</p>
+                  <p className="text-snow-white font-semibold">Fully Remote</p>
+                </div>
+              </div>
+              <p className="text-warm-gray italic">
+                &ldquo;<span className="font-noto">完璧</span> Perfect execution, every time.&rdquo;
+              </p>
+            </div>
+
+            <div className="relative">
+              <div className="p-8 bg-gradient-to-br from-urban-gray via-urban-gray/80 to-urban-gray/50 rounded-tokyo border-2 border-tokyo-red/30 shadow-glow-red relative overflow-hidden">
+                <div className="absolute top-4 right-4">
+                  <span className="hanko text-sm">ジェイ</span>
+                </div>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-snow-white font-semibold mb-2 flex items-center gap-2">
+                      <span className="text-2xl font-noto">🏯</span>
+                      Japanese Philosophy
+                    </h3>
+                    <p className="text-warm-gray text-sm">
+                      Embracing <span className="text-electric-blue font-noto">侘寂</span> (wabi-sabi) — finding beauty in simplicity and impermanence
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-snow-white font-semibold mb-2 flex items-center gap-2">
+                      <span className="text-2xl font-noto">⛩️</span>
+                      Cultural Fusion
+                    </h3>
+                    <p className="text-warm-gray text-sm">
+                      Australian roots meet Japanese precision in every line of code
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-snow-white font-semibold mb-2 flex items-center gap-2">
+                      <span className="text-2xl font-noto">🌸</span>
+                      Seasonal Mindset
+                    </h3>
+                    <p className="text-warm-gray text-sm">
+                      Adapting and evolving with each project, like the changing seasons
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Vertical Japanese text decoration */}
+              <div className="absolute -right-8 top-1/2 -translate-y-1/2 vertical-text text-tokyo-red/20 text-6xl font-bold pointer-events-none hidden lg:block">
+                東京
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section className="py-24 bg-primary-black">
+      <section className="py-24 bg-primary-black border-t border-urban-gray/30">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="mb-16">
-            <p className="text-tokyo-red text-sm font-medium tracking-widest mb-4">SERVICES</p>
+          <JapaneseDivider character="業" />
+
+          <div className="mb-16 mt-16 text-center">
+            <p className="text-tokyo-red text-sm font-medium tracking-widest mb-4 font-noto">サービス</p>
             <h2 className="text-3xl md:text-4xl font-semibold">What I Do</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -99,10 +163,13 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-primary-black border-t border-urban-gray/30">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="mb-16 text-center">
-            <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-4">TESTIMONIALS</p>
+      <section className="py-24 bg-primary-black border-t border-urban-gray/30 relative overflow-hidden">
+        <div className="absolute inset-0 wave-pattern opacity-10" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <JapaneseDivider character="声" />
+
+          <div className="mb-16 mt-16 text-center">
+            <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-4 font-noto">お客様の声</p>
             <h2 className="text-3xl md:text-4xl font-semibold">What Clients Say</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
