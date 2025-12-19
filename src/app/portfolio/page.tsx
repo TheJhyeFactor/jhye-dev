@@ -22,7 +22,7 @@ const projects = [
     image: '/images/projects/tj-pizza.svg',
     tags: ['Web App', 'Ordering System', 'Payment Integration'],
     category: 'Web Development',
-    year: '2023',
+    year: '2021',
   },
   {
     title: 'AEO Services Portal',
@@ -30,7 +30,7 @@ const projects = [
     image: '/images/projects/aeo-portal.svg',
     tags: ['Dashboard', 'Project Management', 'Portal'],
     category: 'Dashboard',
-    year: '2024',
+    year: '2024-2025',
   },
   {
     title: 'TransportationME',
@@ -38,7 +38,7 @@ const projects = [
     image: '/images/projects/transportation-me.png',
     tags: ['Web Platform', 'Logistics', 'Real-Time'],
     category: 'Web Development',
-    year: '2022',
+    year: '2025',
   },
   {
     title: 'NDIS Admin System',
@@ -54,7 +54,7 @@ const projects = [
     image: '/images/projects/ecbc-video.svg',
     tags: ['Video Production', 'Editing', 'Directing'],
     category: 'Media Production',
-    year: '2023',
+    year: '2025',
   },
 ]
 
@@ -91,7 +91,7 @@ export default function PortfolioPage() {
             </div>
             <div className="w-px h-12 bg-urban-gray/50" />
             <div className="text-center">
-              <div className="text-4xl font-bold text-cyber-purple mb-1">4</div>
+              <div className="text-4xl font-bold text-cyber-purple mb-1">5</div>
               <div className="text-warm-gray text-sm">Years</div>
             </div>
           </div>
