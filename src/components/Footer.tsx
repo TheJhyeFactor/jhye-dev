@@ -63,7 +63,7 @@ export default function Footer() {
             <h3 className="text-snow-white font-semibold mb-4 accent-line pb-2">Connect</h3>
             <div className="flex gap-4 mb-6">
               <a
-                href="https://github.com/YOUR_USERNAME"
+                href="https://github.com/TheJhyeFactor"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-urban-gray/50 rounded-lg hover:bg-urban-gray transition-all duration-300 hover:shadow-glow-blue hover:-translate-y-1 group"
@@ -72,7 +72,7 @@ export default function Footer() {
                 <Github className="w-5 h-5 text-warm-gray group-hover:text-electric-blue transition-colors duration-300" />
               </a>
               <a
-                href="https://linkedin.com/in/YOUR_USERNAME"
+                href="https://www.linkedin.com/in/jhye-o-meley-529960213/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-urban-gray/50 rounded-lg hover:bg-urban-gray transition-all duration-300 hover:shadow-glow-blue hover:-translate-y-1 group"
