@@ -48,6 +48,14 @@ const projects = [
     category: 'Automation',
     year: '2024',
   },
+  {
+    title: 'ECBC Promotion Video',
+    description: 'Full-service promotional video production from concept to delivery. Complete creative direction including scripting, directing, recording, editing, and mastering for professional brand storytelling.',
+    image: '/images/projects/ecbc-video.svg',
+    tags: ['Video Production', 'Editing', 'Directing'],
+    category: 'Media Production',
+    year: '2023',
+  },
 ]
 
 export default function PortfolioPage() {
@@ -67,7 +75,7 @@ export default function PortfolioPage() {
             Selected Work
           </h1>
           <p className="text-warm-gray text-xl leading-relaxed max-w-3xl mx-auto mb-12 animate-fade-in stagger-2">
-            A collection of projects showcasing automation, web development, and system integration solutions that drive real business impact.
+            A collection of projects showcasing automation, web development, media production, and system integration solutions that drive real business impact.
           </p>
 
           {/* Stats Row */}
@@ -78,7 +86,7 @@ export default function PortfolioPage() {
             </div>
             <div className="w-px h-12 bg-urban-gray/50" />
             <div className="text-center">
-              <div className="text-4xl font-bold text-transparent bg-gradient-accent-blue bg-clip-text mb-1">3</div>
+              <div className="text-4xl font-bold text-transparent bg-gradient-accent-blue bg-clip-text mb-1">4</div>
               <div className="text-warm-gray text-sm">Categories</div>
             </div>
             <div className="w-px h-12 bg-urban-gray/50" />
@@ -98,6 +106,9 @@ export default function PortfolioPage() {
             </span>
             <span className="px-5 py-2 bg-cyber-purple/10 border border-cyber-purple/30 rounded-full text-sm text-cyber-purple font-medium">
               Dashboards
+            </span>
+            <span className="px-5 py-2 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full text-sm text-neon-cyan font-medium">
+              Media Production
             </span>
           </div>
         </div>
