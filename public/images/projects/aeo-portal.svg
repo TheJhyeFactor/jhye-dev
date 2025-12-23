@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <linearGradient id="bgGradAEO" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F172A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E293B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bgGradAEO)"/>
+
+  <g opacity="0.05">
+    <rect x="0" y="0" width="800" height="600" fill="none" stroke="#60A5FA" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="600" stroke="#60A5FA" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="600" stroke="#60A5FA" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="600" stroke="#60A5FA" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(50, 50)">
+    <rect x="0" y="0" width="700" height="500" rx="12" fill="#1E293B" stroke="#8B5CF6" stroke-width="3" opacity="0.9"/>
+
+    <rect x="0" y="0" width="700" height="60" rx="12" fill="url(#purpleGrad)"/>
+    <text x="30" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">
+      AEO Services Portal
+    </text>
+    <circle cx="640" cy="30" r="8" fill="#10B981"/>
+    <circle cx="665" cy="30" r="8" fill="#F59E0B"/>
+
+    <g transform="translate(30, 90)">
+      <rect x="0" y="0" width="200" height="140" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="2"/>
+      <rect x="10" y="10" width="180" height="30" rx="4" fill="url(#blueGrad)"/>
+      <text x="100" y="30" font-family="Arial, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">
+        Active Projects
+      </text>
+      <text x="100" y="70" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#3B82F6" text-anchor="middle">
+        24
+      </text>
+      <rect x="10" y="100" width="80" height="8" rx="4" fill="#3B82F6" opacity="0.3"/>
+      <rect x="10" y="100" width="55" height="8" rx="4" fill="#3B82F6"/>
+    </g>
+
+    <g transform="translate(260, 90)">
+      <rect x="0" y="0" width="200" height="140" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="2"/>
+      <rect x="10" y="10" width="180" height="30" rx="4" fill="#10B981"/>
+      <text x="100" y="30" font-family="Arial, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">
+        Team Members
+      </text>
+      <text x="100" y="70" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#10B981" text-anchor="middle">
+        48
+      </text>
+      <rect x="10" y="100" width="80" height="8" rx="4" fill="#10B981" opacity="0.3"/>
+      <rect x="10" y="100" width="65" height="8" rx="4" fill="#10B981"/>
+    </g>
+
+    <g transform="translate(490, 90)">
+      <rect x="0" y="0" width="180" height="140" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="2"/>
+      <rect x="10" y="10" width="160" height="30" rx="4" fill="#F59E0B"/>
+      <text x="90" y="30" font-family="Arial, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">
+        Completion
+      </text>
+      <text x="90" y="70" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#F59E0B" text-anchor="middle">
+        87%
+      </text>
+      <rect x="10" y="100" width="80" height="8" rx="4" fill="#F59E0B" opacity="0.3"/>
+      <rect x="10" y="100" width="70" height="8" rx="4" fill="#F59E0B"/>
+    </g>
+
+    <g transform="translate(30, 260)">
+      <rect x="0" y="0" width="640" height="200" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="2"/>
+      <text x="20" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#E2E8F0">
+        Recent Activity
+      </text>
+
+      <g transform="translate(20, 50)">
+        <circle cx="8" cy="8" r="6" fill="#3B82F6"/>
+        <rect x="25" y="0" width="200" height="8" rx="4" fill="#334155"/>
+        <rect x="25" y="0" width="160" height="8" rx="4" fill="#3B82F6" opacity="0.6"/>
+      </g>
+
+      <g transform="translate(20, 85)">
+        <circle cx="8" cy="8" r="6" fill="#10B981"/>
+        <rect x="25" y="0" width="200" height="8" rx="4" fill="#334155"/>
+        <rect x="25" y="0" width="140" height="8" rx="4" fill="#10B981" opacity="0.6"/>
+      </g>
+
+      <g transform="translate(20, 120)">
+        <circle cx="8" cy="8" r="6" fill="#F59E0B"/>
+        <rect x="25" y="0" width="200" height="8" rx="4" fill="#334155"/>
+        <rect x="25" y="0" width="180" height="8" rx="4" fill="#F59E0B" opacity="0.6"/>
+      </g>
+
+      <g transform="translate(20, 155)">
+        <circle cx="8" cy="8" r="6" fill="#8B5CF6"/>
+        <rect x="25" y="0" width="200" height="8" rx="4" fill="#334155"/>
+        <rect x="25" y="0" width="120" height="8" rx="4" fill="#8B5CF6" opacity="0.6"/>
+      </g>
+
+      <g transform="translate(350, 50)">
+        <path d="M 0 120 Q 50 80, 100 90 T 200 70 T 250 85" stroke="#3B82F6" stroke-width="3" fill="none"/>
+        <path d="M 0 120 Q 50 80, 100 90 T 200 70 T 250 85 L 250 140 L 0 140 Z" fill="#3B82F6" opacity="0.2"/>
+      </g>
+    </g>
+  </g>
+
+  <text x="400" y="580" font-family="Arial, sans-serif" font-size="16" fill="#94A3B8" text-anchor="middle" opacity="0.7">
+    Employee Portal & Project Management
+  </text>
+</svg>
