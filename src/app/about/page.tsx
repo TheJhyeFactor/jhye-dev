@@ -98,7 +98,7 @@ export default function AboutPage() {
               {/* Quick Stats Below Image */}
               <div className="mt-6 grid grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-urban-gray/50 rounded-tokyo border border-tokyo-red/20">
-                  <div className="text-2xl font-bold gradient-text">13</div>
+                  <div className="text-2xl font-bold gradient-text">14</div>
                   <div className="text-xs text-warm-gray mt-1">Projects</div>
                 </div>
                 <div className="text-center p-4 bg-urban-gray/50 rounded-tokyo border border-electric-blue/20">
@@ -246,7 +246,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             <div className="p-8 bg-gradient-to-br from-urban-gray to-urban-gray/50 rounded-tokyo border-2 border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-red text-center group">
-              <div className="text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">13</div>
+              <div className="text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">14</div>
               <div className="text-snow-white font-semibold mb-2">Projects Delivered</div>
               <p className="text-warm-gray text-xs">Automation, web apps, and integrations</p>
             </div>

@@ -133,6 +133,16 @@ const projects = [
     year: 2025,
     href: 'https://thejhyefactor.github.io/social-dashboard/',
   },
+  {
+    title: 'VideoFlow',
+    description: 'Browser-based video editor with text overlays, audio controls, color adjustments, and effects. Drag and drop your video, add some filters, tweak brightness/contrast, throw on some text. Export in different formats and quality levels.',
+    image: '/images/projects/videoflow.jpeg',
+    tags: ['JavaScript', 'Video Editing', 'Web App', 'Media'],
+    category: 'Web Development',
+    type: 'Personal',
+    year: 2025,
+    href: 'https://thejhyefactor.github.io/video-editor/',
+  },
 ]
 
 const categories = ['All', 'Web Development', 'AI/ML', 'Automation', 'Dashboard', 'Media Production']

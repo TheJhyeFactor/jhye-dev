@@ -97,7 +97,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-urban-gray/30 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-red">
-              <div className="text-5xl font-bold gradient-text mb-2">13</div>
+              <div className="text-5xl font-bold gradient-text mb-2">14</div>
               <div className="text-warm-gray text-sm">Projects Delivered</div>
             </div>
             <div className="text-center p-6 bg-urban-gray/30 rounded-tokyo border border-electric-blue/20 hover:border-electric-blue/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue">
