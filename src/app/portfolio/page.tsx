@@ -102,6 +102,24 @@ const projects = [
     year: 2025,
     href: 'https://thejhyefactor.github.io/object-detection/',
   },
+  {
+    title: 'Browser OS',
+    description: 'Complete operating system running in the browser with window management, virtual file system, and built-in apps. Features draggable/resizable windows, working terminal with real commands, file manager, text editor, and calculator. All data persists in localStorage.',
+    image: '/images/projects/webos.jpeg',
+    tags: ['React', 'Web Development', 'Window Management', 'Virtual File System'],
+    category: 'Web Development',
+    year: 2025,
+    href: 'https://thejhyefactor.github.io/browser-os/',
+  },
+  {
+    title: 'Social Dashboard',
+    description: 'Interactive social media dashboard with post creation, likes, comments, and bookmarks. Features dark/light theme toggle, localStorage persistence, trending topics, and who-to-follow suggestions. Complete social feed experience with @TheJhyeFactor branding.',
+    image: '/images/projects/social-dashboard.svg',
+    tags: ['JavaScript', 'Social Media', 'Dashboard', 'localStorage'],
+    category: 'Web Development',
+    year: 2025,
+    href: 'https://thejhyefactor.github.io/social-dashboard/',
+  },
 ]
 
 const categories = ['All', 'Web Development', 'AI/ML', 'Automation', 'Dashboard', 'Media Production']
