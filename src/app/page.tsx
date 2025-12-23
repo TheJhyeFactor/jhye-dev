@@ -37,21 +37,21 @@ const services = [
 const featuredProjects = [
   {
     title: 'TransportationME',
-    description: 'Transportation management platform with route optimization, fleet tracking, and logistics coordination. Built for efficiency and real-time operations.',
+    description: 'Logistics platform for a transportation company. Route planning, fleet tracking, real-time updates - all the stuff they need to run their operations efficiently.',
     image: '/images/projects/transportation-me.png',
     tags: ['WordPress', 'Dashboard', 'Automation', 'Logistics'],
     href: 'https://transportationme.au/',
   },
   {
     title: 'Real-Time Object Detection',
-    description: 'AI-powered real-time object detection using TensorFlow.js and COCO-SSD model. Features live webcam feed, confidence thresholds, multiple visualization modes, dark cyberpunk-themed UI with glassmorphism effects, and detailed detection statistics.',
+    description: 'Webcam-based object detection using TensorFlow.js. Point your camera at stuff and it identifies what it sees in real-time. Went with a cyberpunk theme because why not.',
     image: '/images/projects/Realtimeobj.jpeg',
     tags: ['AI/ML', 'TensorFlow.js', 'Computer Vision', 'WebGL'],
     href: 'https://thejhyefactor.github.io/object-detection/',
   },
   {
     title: 'CareerLift',
-    description: 'Free professional resume builder with ATS-friendly templates, cover letter generator, and interview prep resources. Built to help underserved communities including career changers, re-entering workforce, and first-time job seekers with 100% client-side privacy.',
+    description: 'Free resume builder I made for people getting back into the workforce or switching careers. ATS-friendly templates, cover letters, interview tips. Everything runs client-side so your data stays private.',
     image: '/images/projects/CareeLift.jpeg',
     tags: ['React', 'Resume Builder', 'PDF Export', 'Career Tools'],
     href: 'https://thejhyefactor.github.io/careerlift/',

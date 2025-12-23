@@ -9,7 +9,7 @@ import JapaneseDivider from '@/components/JapaneseDivider'
 const projects = [
   {
     title: 'PC Choices',
-    description: 'Full-featured e-commerce platform for custom PC builds and component retail. Complete shopping experience with product configurator, cart management, and checkout flow.',
+    description: 'E-commerce site for a PC parts retailer. Built the whole thing - product pages, custom PC configurator, shopping cart, checkout. They wanted something fast and easy for customers to build their own systems.',
     image: '/images/projects/pc-choice.png',
     tags: ['E-Commerce', 'Web Development', 'React'],
     category: 'Web Development',
@@ -19,7 +19,7 @@ const projects = [
   },
   {
     title: 'TJ Pizza Hut',
-    description: 'Online ordering system for restaurant with real-time menu management, order tracking, and integrated payment processing. Streamlined customer experience from browse to delivery.',
+    description: 'Online ordering system for a local pizza place. Customers can browse the menu, customize their order, pay online, and track delivery. Pretty straightforward but gets the job done.',
     image: '/images/projects/tj-pizza.svg',
     tags: ['Web App', 'Ordering System', 'Payment Integration'],
     category: 'Web Development',
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     title: 'AEO Services Portal',
-    description: 'Comprehensive employee portal and project management dashboard. Centralized workspace for team collaboration, task tracking, and resource management.',
+    description: 'Internal portal for AEO Services employees. Handles project tracking, team communication, and resource management. Basically made their day-to-day operations way smoother.',
     image: '/images/projects/aeo-portal.svg',
     tags: ['Dashboard', 'Project Management', 'Automation'],
     category: 'Dashboard',
@@ -37,7 +37,7 @@ const projects = [
   },
   {
     title: 'TransportationME',
-    description: 'Transportation management platform with route optimization, fleet tracking, and logistics coordination. Built for efficiency and real-time operations.',
+    description: 'Logistics platform for a transportation company. Route planning, fleet tracking, real-time updates - all the stuff they need to run their operations efficiently.',
     image: '/images/projects/transportation-me.png',
     tags: ['WordPress', 'Dashboard', 'Automation', 'Logistics'],
     category: 'Dashboard',
@@ -47,7 +47,7 @@ const projects = [
   },
   {
     title: 'NDIS Admin System',
-    description: 'Admin management system for AEO Services NDIS operations. Automated workflows, compliance tracking, and participant management tools for streamlined disability service delivery.',
+    description: 'Admin system for managing NDIS services at AEO. Automated a ton of their paperwork, compliance tracking, and participant management. Saves them hours every week.',
     image: '/images/projects/ndis-admin.svg',
     tags: ['Admin System', 'Automation', 'Dashboard', 'Compliance'],
     category: 'Automation',
@@ -56,7 +56,7 @@ const projects = [
   },
   {
     title: 'ECBC Promotion Video',
-    description: 'Full-service promotional video production from concept to delivery. Complete creative direction including scripting, directing, recording, editing, and mastering for professional brand storytelling.',
+    description: 'Made a promotional video for ECBC from scratch. Did everything - scripting, directing, recording, editing, the whole production. Turned out pretty clean.',
     image: '/images/projects/ecbc-video.svg',
     tags: ['Video Production', 'Editing', 'Directing'],
     category: 'Media Production',
@@ -65,7 +65,7 @@ const projects = [
   },
   {
     title: 'CareerLift',
-    description: 'Free professional resume builder with ATS-friendly templates, cover letter generator, and interview prep resources. Built to help underserved communities including career changers, re-entering workforce, and first-time job seekers with 100% client-side privacy.',
+    description: 'Free resume builder I made for people getting back into the workforce or switching careers. ATS-friendly templates, cover letters, interview tips. Everything runs client-side so your data stays private.',
     image: '/images/projects/CareeLift.jpeg',
     tags: ['React', 'Resume Builder', 'PDF Export', 'Career Tools'],
     category: 'Web Development',
@@ -75,7 +75,7 @@ const projects = [
   },
   {
     title: 'Stock Price Visualizer',
-    description: 'Interactive stock market visualization tool with real-time data integration. Compare multiple stocks with historical price charts, track key metrics, and analyze market trends with responsive React interface.',
+    description: 'Built this to track stock prices with actual market data. You can compare different stocks, see historical charts, check trends. Just a side project to play around with data visualization.',
     image: '/images/projects/Stock_price_visulisor.png',
     tags: ['React', 'Data Visualization', 'API Integration'],
     category: 'Web Development',
@@ -85,7 +85,7 @@ const projects = [
   },
   {
     title: 'Particle Physics Playground',
-    description: 'Interactive particle physics simulation with real-time gravity wells and collision detection. Click and drag to create particles, add gravity wells, and experiment with physics parameters like friction, spawn rate, and particle size.',
+    description: 'Physics sim where you can click to spawn particles and mess with gravity. Kind of satisfying to just play around with - adjust friction, spawn rates, add gravity wells and watch what happens.',
     image: '/images/projects/particle-physics.svg',
     tags: ['JavaScript', 'Canvas API', 'Physics Simulation'],
     category: 'Web Development',
@@ -95,7 +95,7 @@ const projects = [
   },
   {
     title: 'Pomodoro Timer',
-    description: 'Productivity timer with task management and analytics dashboard. Features customizable 25/5/15 minute intervals, auto-start breaks, sound notifications, session tracking with localStorage persistence, and visual analytics showing focus time and streaks.',
+    description: 'Productivity timer with the classic 25/5/15 intervals. Tracks your sessions, shows analytics on how much you actually focused, saves everything locally. Helps me stay on task.',
     image: '/images/projects/Pomodro.jpeg',
     tags: ['JavaScript', 'Productivity', 'Analytics', 'localStorage'],
     category: 'Web Development',
@@ -105,7 +105,7 @@ const projects = [
   },
   {
     title: 'Real-Time Object Detection',
-    description: 'AI-powered real-time object detection using TensorFlow.js and COCO-SSD model. Features live webcam feed, confidence thresholds, multiple visualization modes, dark cyberpunk-themed UI with glassmorphism effects, and detailed detection statistics.',
+    description: 'Webcam-based object detection using TensorFlow.js. Point your camera at stuff and it identifies what it sees in real-time. Went with a cyberpunk theme because why not.',
     image: '/images/projects/Realtimeobj.jpeg',
     tags: ['AI/ML', 'TensorFlow.js', 'Computer Vision', 'WebGL'],
     category: 'AI/ML',
@@ -115,7 +115,7 @@ const projects = [
   },
   {
     title: 'Browser OS',
-    description: 'Complete operating system running in the browser with window management, virtual file system, and built-in apps. Features draggable/resizable windows, working terminal with real commands, file manager, text editor, and calculator. All data persists in localStorage.',
+    description: 'Fully functional operating system that runs in your browser. Draggable windows, working terminal, file system, calculator - the whole desktop experience. Everything saves to localStorage so it persists between sessions.',
     image: '/images/projects/webos.jpeg',
     tags: ['React', 'Web Development', 'Window Management', 'Virtual File System'],
     category: 'Web Development',
@@ -125,7 +125,7 @@ const projects = [
   },
   {
     title: 'Social Dashboard',
-    description: 'Interactive social media dashboard with post creation, likes, comments, and bookmarks. Features dark/light theme toggle, localStorage persistence, trending topics, and who-to-follow suggestions. Complete social feed experience with @TheJhyeFactor branding.',
+    description: 'Social media dashboard where you can post, like, comment, save stuff. Has dark/light themes and everything saves locally. Just a fun project to build out a full social feed.',
     image: '/images/projects/social-dashboard.svg',
     tags: ['JavaScript', 'Social Media', 'Dashboard', 'localStorage'],
     category: 'Web Development',
