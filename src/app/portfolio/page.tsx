@@ -58,6 +58,15 @@ const projects = [
     year: 2025,
   },
   {
+    title: 'CareerLift',
+    description: 'Free professional resume builder with ATS-friendly templates, cover letter generator, and interview prep resources. Built to help underserved communities including career changers, re-entering workforce, and first-time job seekers with 100% client-side privacy.',
+    image: '/images/projects/careerlift.svg',
+    tags: ['React', 'Resume Builder', 'PDF Export', 'Career Tools'],
+    category: 'Web Development',
+    year: 2024,
+    href: 'https://thejhyefactor.github.io/careerlift/',
+  },
+  {
     title: 'Stock Price Visualizer',
     description: 'Interactive stock market visualization tool with real-time data integration. Compare multiple stocks with historical price charts, track key metrics, and analyze market trends with responsive React interface.',
     image: '/images/projects/Stock_price_visulisor.png',
