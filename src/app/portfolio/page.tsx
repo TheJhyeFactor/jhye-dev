@@ -13,6 +13,7 @@ const projects = [
     image: '/images/projects/pc-choice.png',
     tags: ['E-Commerce', 'Web Development', 'React'],
     category: 'Web Development',
+    type: 'Client',
     year: 2023,
     href: 'https://pc-choice.com.au/',
   },
@@ -22,6 +23,7 @@ const projects = [
     image: '/images/projects/tj-pizza.svg',
     tags: ['Web App', 'Ordering System', 'Payment Integration'],
     category: 'Web Development',
+    type: 'Client',
     year: 2021,
   },
   {
@@ -30,6 +32,7 @@ const projects = [
     image: '/images/projects/aeo-portal.svg',
     tags: ['Dashboard', 'Project Management', 'Automation'],
     category: 'Dashboard',
+    type: 'Client',
     year: 2024,
   },
   {
@@ -38,6 +41,7 @@ const projects = [
     image: '/images/projects/transportation-me.png',
     tags: ['WordPress', 'Dashboard', 'Automation', 'Logistics'],
     category: 'Dashboard',
+    type: 'Client',
     year: 2025,
     href: 'https://transportationme.au/',
   },
@@ -47,6 +51,7 @@ const projects = [
     image: '/images/projects/ndis-admin.svg',
     tags: ['Admin System', 'Automation', 'Dashboard', 'Compliance'],
     category: 'Automation',
+    type: 'Client',
     year: 2024,
   },
   {
@@ -55,6 +60,7 @@ const projects = [
     image: '/images/projects/ecbc-video.svg',
     tags: ['Video Production', 'Editing', 'Directing'],
     category: 'Media Production',
+    type: 'Client',
     year: 2025,
   },
   {
@@ -63,6 +69,7 @@ const projects = [
     image: '/images/projects/CareeLift.jpeg',
     tags: ['React', 'Resume Builder', 'PDF Export', 'Career Tools'],
     category: 'Web Development',
+    type: 'Personal',
     year: 2024,
     href: 'https://thejhyefactor.github.io/careerlift/',
   },
@@ -72,6 +79,7 @@ const projects = [
     image: '/images/projects/Stock_price_visulisor.png',
     tags: ['React', 'Data Visualization', 'API Integration'],
     category: 'Web Development',
+    type: 'Personal',
     year: 2023,
     href: 'https://thejhyefactor.github.io/stock-price-visualizer/',
   },
@@ -81,6 +89,7 @@ const projects = [
     image: '/images/projects/particle-physics.svg',
     tags: ['JavaScript', 'Canvas API', 'Physics Simulation'],
     category: 'Web Development',
+    type: 'Personal',
     year: 2021,
     href: 'https://thejhyefactor.github.io/particle-physics-playground/',
   },
@@ -90,6 +99,7 @@ const projects = [
     image: '/images/projects/Pomodro.jpeg',
     tags: ['JavaScript', 'Productivity', 'Analytics', 'localStorage'],
     category: 'Web Development',
+    type: 'Personal',
     year: 2021,
     href: 'https://thejhyefactor.github.io/pomodoro-timer/',
   },
@@ -99,6 +109,7 @@ const projects = [
     image: '/images/projects/Realtimeobj.jpeg',
     tags: ['AI/ML', 'TensorFlow.js', 'Computer Vision', 'WebGL'],
     category: 'AI/ML',
+    type: 'Personal',
     year: 2025,
     href: 'https://thejhyefactor.github.io/object-detection/',
   },
@@ -108,6 +119,7 @@ const projects = [
     image: '/images/projects/webos.jpeg',
     tags: ['React', 'Web Development', 'Window Management', 'Virtual File System'],
     category: 'Web Development',
+    type: 'Personal',
     year: 2025,
     href: 'https://thejhyefactor.github.io/browser-os/',
   },
@@ -117,6 +129,7 @@ const projects = [
     image: '/images/projects/social-dashboard.svg',
     tags: ['JavaScript', 'Social Media', 'Dashboard', 'localStorage'],
     category: 'Web Development',
+    type: 'Personal',
     year: 2025,
     href: 'https://thejhyefactor.github.io/social-dashboard/',
   },
@@ -124,10 +137,12 @@ const projects = [
 
 const categories = ['All', 'Web Development', 'AI/ML', 'Automation', 'Dashboard', 'Media Production']
 const years = ['All', 2025, 2024, 2023, 2021]
+const projectTypes = ['All', 'Client', 'Personal']
 
 export default function PortfolioPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedYear, setSelectedYear] = useState<string | number>('All')
+  const [selectedType, setSelectedType] = useState('All')
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 4
 
@@ -135,18 +150,20 @@ export default function PortfolioPage() {
     return projects.filter(project => {
       const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory
       const matchesYear = selectedYear === 'All' || project.year === selectedYear
-      return matchesCategory && matchesYear
+      const matchesType = selectedType === 'All' || project.type === selectedType
+      return matchesCategory && matchesYear && matchesType
     }).sort((a, b) => b.year - a.year)
-  }, [selectedCategory, selectedYear])
+  }, [selectedCategory, selectedYear, selectedType])
 
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const currentProjects = filteredProjects.slice(startIndex, endIndex)
 
-  const handleFilterChange = (category: string, year: string | number) => {
+  const handleFilterChange = (category: string, year: string | number, type: string) => {
     setSelectedCategory(category)
     setSelectedYear(year)
+    setSelectedType(type)
     setCurrentPage(1)
   }
 
@@ -214,6 +231,28 @@ export default function PortfolioPage() {
           <div className="mt-16 mb-12">
             <div className="bg-urban-gray/30 backdrop-blur-sm rounded-tokyo border border-urban-gray/50 p-6">
               <div className="mb-6">
+                <h3 className="text-sm font-medium text-warm-gray mb-3">Filter by Type</h3>
+                <div className="flex flex-wrap gap-3">
+                  {projectTypes.map((type) => {
+                    const isActive = selectedType === type
+                    return (
+                      <button
+                        key={type}
+                        onClick={() => handleFilterChange(selectedCategory, selectedYear, type)}
+                        className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                          isActive
+                            ? 'bg-electric-blue text-deep-black shadow-lg scale-105'
+                            : 'bg-electric-blue/10 border border-electric-blue/30 text-electric-blue hover:bg-electric-blue/20'
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              <div className="mb-6">
                 <h3 className="text-sm font-medium text-warm-gray mb-3">Filter by Category</h3>
                 <div className="flex flex-wrap gap-3">
                   {categories.map((category) => {
@@ -222,7 +261,7 @@ export default function PortfolioPage() {
                     return (
                       <button
                         key={category}
-                        onClick={() => handleFilterChange(category, selectedYear)}
+                        onClick={() => handleFilterChange(category, selectedYear, selectedType)}
                         className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                           isActive
                             ? `bg-${color} text-deep-black shadow-lg scale-105`
@@ -244,7 +283,7 @@ export default function PortfolioPage() {
                     return (
                       <button
                         key={year}
-                        onClick={() => handleFilterChange(selectedCategory, year)}
+                        onClick={() => handleFilterChange(selectedCategory, year, selectedType)}
                         className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                           isActive
                             ? 'bg-gradient-accent text-deep-black shadow-lg scale-105'
@@ -296,6 +335,7 @@ export default function PortfolioPage() {
                   onClick={() => {
                     setSelectedCategory('All')
                     setSelectedYear('All')
+                    setSelectedType('All')
                     setCurrentPage(1)
                   }}
                   className="mt-6 px-6 py-3 bg-tokyo-red text-white rounded-tokyo hover:bg-tokyo-red/80 transition-colors"

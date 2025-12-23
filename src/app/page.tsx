@@ -36,11 +36,11 @@ const services = [
 
 const featuredProjects = [
   {
-    title: 'PC Choices',
-    description: 'Full-featured e-commerce platform for custom PC builds and component retail. Complete shopping experience with product configurator, cart management, and checkout flow.',
-    image: '/images/projects/pc-choice.png',
-    tags: ['E-Commerce', 'Web Development', 'React'],
-    href: 'https://pc-choice.com.au/',
+    title: 'TransportationME',
+    description: 'Transportation management platform with route optimization, fleet tracking, and logistics coordination. Built for efficiency and real-time operations.',
+    image: '/images/projects/transportation-me.png',
+    tags: ['WordPress', 'Dashboard', 'Automation', 'Logistics'],
+    href: 'https://transportationme.au/',
   },
   {
     title: 'Real-Time Object Detection',
