@@ -14,6 +14,7 @@ const projects = [
     tags: ['E-Commerce', 'Web Development', 'React'],
     category: 'Web Development',
     year: 2023,
+    href: 'https://pc-choice.com.au/',
   },
   {
     title: 'TJ Pizza Hut',
@@ -27,7 +28,7 @@ const projects = [
     title: 'AEO Services Portal',
     description: 'Comprehensive employee portal and project management dashboard. Centralized workspace for team collaboration, task tracking, and resource management.',
     image: '/images/projects/aeo-portal.svg',
-    tags: ['Dashboard', 'Project Management', 'Portal'],
+    tags: ['Dashboard', 'Project Management', 'Automation'],
     category: 'Dashboard',
     year: 2024,
   },
@@ -35,15 +36,16 @@ const projects = [
     title: 'TransportationME',
     description: 'Transportation management platform with route optimization, fleet tracking, and logistics coordination. Built for efficiency and real-time operations.',
     image: '/images/projects/transportation-me.png',
-    tags: ['Web Platform', 'Logistics', 'Real-Time'],
-    category: 'Web Development',
+    tags: ['WordPress', 'Dashboard', 'Automation', 'Logistics'],
+    category: 'Dashboard',
     year: 2025,
+    href: 'https://transportationme.au/',
   },
   {
     title: 'NDIS Admin System',
     description: 'Admin management system for AEO Services NDIS operations. Automated workflows, compliance tracking, and participant management tools for streamlined disability service delivery.',
     image: '/images/projects/ndis-admin.svg',
-    tags: ['Admin System', 'Automation', 'Compliance'],
+    tags: ['Admin System', 'Automation', 'Dashboard', 'Compliance'],
     category: 'Automation',
     year: 2024,
   },
@@ -62,6 +64,16 @@ const projects = [
     tags: ['React', 'Data Visualization', 'API Integration'],
     category: 'Web Development',
     year: 2023,
+    href: 'https://thejhyefactor.github.io/stock-price-visualizer/',
+  },
+  {
+    title: 'Particle Physics Playground',
+    description: 'Interactive particle physics simulation with real-time gravity wells and collision detection. Click and drag to create particles, add gravity wells, and experiment with physics parameters like friction, spawn rate, and particle size.',
+    image: '/images/projects/particle-physics.svg',
+    tags: ['JavaScript', 'Canvas API', 'Physics Simulation'],
+    category: 'Web Development',
+    year: 2021,
+    href: 'https://thejhyefactor.github.io/particle-physics-playground/',
   },
 ]
 
@@ -221,6 +233,7 @@ export default function PortfolioPage() {
                       description={project.description}
                       image={project.image}
                       tags={project.tags}
+                      href={project.href}
                     />
                     <div className="mt-4 flex items-center justify-between px-2">
                       <span className="text-warm-gray/60 text-xs">{project.year}</span>

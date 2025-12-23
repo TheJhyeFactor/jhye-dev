@@ -11,8 +11,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ title, description, image, tags, href }: ProjectCardProps) {
-  return (
-    <div className="group bg-urban-gray rounded-tokyo overflow-hidden transition-all duration-500 hover:bg-urban-gray/80 hover:shadow-glow-red hover:-translate-y-2 border border-transparent hover:border-tokyo-red/20 relative">
+  const CardContent = (
+    <>
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={image}
@@ -23,7 +23,14 @@ export default function ProjectCard({ title, description, image, tags, href }: P
         <div className="absolute inset-0 bg-gradient-to-t from-urban-gray via-urban-gray/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/0 to-cyber-purple/0 group-hover:from-tokyo-red/10 group-hover:to-cyber-purple/10 transition-all duration-500" />
 
-        {/* Shine effect on hover */}
+        {href && (
+          <div className="absolute top-4 right-4 z-10">
+            <div className="bg-tokyo-red/80 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
+              <ArrowUpRight className="w-5 h-5 text-white" />
+            </div>
+          </div>
+        )}
+
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-shine" />
         </div>
@@ -45,6 +52,25 @@ export default function ProjectCard({ title, description, image, tags, href }: P
           ))}
         </div>
       </div>
+    </>
+  )
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group bg-urban-gray rounded-tokyo overflow-hidden transition-all duration-500 hover:bg-urban-gray/80 hover:shadow-glow-red hover:-translate-y-2 border border-transparent hover:border-tokyo-red/20 relative block cursor-pointer"
+      >
+        {CardContent}
+      </a>
+    )
+  }
+
+  return (
+    <div className="group bg-urban-gray rounded-tokyo overflow-hidden transition-all duration-500 hover:bg-urban-gray/80 hover:shadow-glow-red hover:-translate-y-2 border border-transparent hover:border-tokyo-red/20 relative">
+      {CardContent}
     </div>
   )
 }
