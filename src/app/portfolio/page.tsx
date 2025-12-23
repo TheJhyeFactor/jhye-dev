@@ -58,6 +58,14 @@ const projects = [
     category: 'Media Production',
     year: '2025',
   },
+  {
+    title: 'Stock Price Visualizer',
+    description: 'Interactive stock market visualization tool with real-time data integration. Compare multiple stocks with historical price charts, track key metrics, and analyze market trends with responsive React interface.',
+    image: '/images/projects/Stock_price_visulisor.png',
+    tags: ['React', 'Data Visualization', 'API Integration'],
+    category: 'Web Development',
+    year: '2023',
+  },
 ]
 
 export default function PortfolioPage() {
