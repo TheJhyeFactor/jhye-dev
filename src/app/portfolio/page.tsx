@@ -60,7 +60,7 @@ const projects = [
   {
     title: 'CareerLift',
     description: 'Free professional resume builder with ATS-friendly templates, cover letter generator, and interview prep resources. Built to help underserved communities including career changers, re-entering workforce, and first-time job seekers with 100% client-side privacy.',
-    image: '/images/projects/careerlift.svg',
+    image: '/images/projects/CareeLift.jpeg',
     tags: ['React', 'Resume Builder', 'PDF Export', 'Career Tools'],
     category: 'Web Development',
     year: 2024,
@@ -87,7 +87,7 @@ const projects = [
   {
     title: 'Pomodoro Timer',
     description: 'Productivity timer with task management and analytics dashboard. Features customizable 25/5/15 minute intervals, auto-start breaks, sound notifications, session tracking with localStorage persistence, and visual analytics showing focus time and streaks.',
-    image: '/images/projects/pomodoro-timer.svg',
+    image: '/images/projects/Pomodro.jpeg',
     tags: ['JavaScript', 'Productivity', 'Analytics', 'localStorage'],
     category: 'Web Development',
     year: 2021,
