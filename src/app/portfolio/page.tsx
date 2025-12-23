@@ -93,6 +93,15 @@ const projects = [
     year: 2021,
     href: 'https://thejhyefactor.github.io/pomodoro-timer/',
   },
+  {
+    title: 'Real-Time Object Detection',
+    description: 'AI-powered real-time object detection using TensorFlow.js and COCO-SSD model. Features live webcam feed, confidence thresholds, multiple visualization modes, dark cyberpunk-themed UI with glassmorphism effects, and detailed detection statistics.',
+    image: '/images/projects/Realtimeobj.jpeg',
+    tags: ['AI/ML', 'TensorFlow.js', 'Computer Vision', 'WebGL'],
+    category: 'Web Development',
+    year: 2024,
+    href: 'https://thejhyefactor.github.io/object-detection/',
+  },
 ]
 
 const categories = ['All', 'Web Development', 'Automation', 'Dashboard', 'Media Production']
