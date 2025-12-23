@@ -98,13 +98,13 @@ const projects = [
     description: 'AI-powered real-time object detection using TensorFlow.js and COCO-SSD model. Features live webcam feed, confidence thresholds, multiple visualization modes, dark cyberpunk-themed UI with glassmorphism effects, and detailed detection statistics.',
     image: '/images/projects/Realtimeobj.jpeg',
     tags: ['AI/ML', 'TensorFlow.js', 'Computer Vision', 'WebGL'],
-    category: 'Web Development',
-    year: 2024,
+    category: 'AI/ML',
+    year: 2025,
     href: 'https://thejhyefactor.github.io/object-detection/',
   },
 ]
 
-const categories = ['All', 'Web Development', 'Automation', 'Dashboard', 'Media Production']
+const categories = ['All', 'Web Development', 'AI/ML', 'Automation', 'Dashboard', 'Media Production']
 const years = ['All', 2025, 2024, 2023, 2021]
 
 export default function PortfolioPage() {
@@ -136,12 +136,14 @@ export default function PortfolioPage() {
     switch (category) {
       case 'Web Development':
         return 'tokyo-red'
+      case 'AI/ML':
+        return 'neon-cyan'
       case 'Automation':
         return 'electric-blue'
       case 'Dashboard':
         return 'cyber-purple'
       case 'Media Production':
-        return 'neon-cyan'
+        return 'warm-gray'
       default:
         return 'warm-gray'
     }
@@ -178,7 +180,7 @@ export default function PortfolioPage() {
               </div>
               <div className="w-px h-12 bg-urban-gray/50" />
               <div className="text-center">
-                <div className="text-4xl font-bold text-transparent bg-gradient-accent-blue bg-clip-text mb-1">4</div>
+                <div className="text-4xl font-bold text-transparent bg-gradient-accent-blue bg-clip-text mb-1">5</div>
                 <div className="text-warm-gray text-sm">Categories</div>
               </div>
               <div className="w-px h-12 bg-urban-gray/50" />

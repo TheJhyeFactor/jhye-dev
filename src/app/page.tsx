@@ -1,5 +1,6 @@
 import { Zap, Code, BarChart3, Settings, MessageSquare } from 'lucide-react'
 import ServiceCard from '@/components/ServiceCard'
+import ProjectCard from '@/components/ProjectCard'
 import Button from '@/components/Button'
 import TypingText from '@/components/TypingText'
 import SakuraPetals from '@/components/SakuraPetals'
@@ -33,6 +34,30 @@ const services = [
   },
 ]
 
+const featuredProjects = [
+  {
+    title: 'PC Choices',
+    description: 'Full-featured e-commerce platform for custom PC builds and component retail. Complete shopping experience with product configurator, cart management, and checkout flow.',
+    image: '/images/projects/pc-choice.png',
+    tags: ['E-Commerce', 'Web Development', 'React'],
+    href: 'https://pc-choice.com.au/',
+  },
+  {
+    title: 'Real-Time Object Detection',
+    description: 'AI-powered real-time object detection using TensorFlow.js and COCO-SSD model. Features live webcam feed, confidence thresholds, multiple visualization modes, dark cyberpunk-themed UI with glassmorphism effects, and detailed detection statistics.',
+    image: '/images/projects/Realtimeobj.jpeg',
+    tags: ['AI/ML', 'TensorFlow.js', 'Computer Vision', 'WebGL'],
+    href: 'https://thejhyefactor.github.io/object-detection/',
+  },
+  {
+    title: 'CareerLift',
+    description: 'Free professional resume builder with ATS-friendly templates, cover letter generator, and interview prep resources. Built to help underserved communities including career changers, re-entering workforce, and first-time job seekers with 100% client-side privacy.',
+    image: '/images/projects/CareeLift.jpeg',
+    tags: ['React', 'Resume Builder', 'PDF Export', 'Career Tools'],
+    href: 'https://thejhyefactor.github.io/careerlift/',
+  },
+]
+
 export default function Home() {
   return (
     <>
@@ -62,6 +87,26 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 animate-fade-in stagger-4">
               <Button href="/portfolio/">View Work</Button>
               <Button href="/contact/" variant="secondary">Contact Me</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Impact Stats */}
+      <section className="py-16 bg-primary-black border-t border-urban-gray/30">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6 bg-urban-gray/30 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-red">
+              <div className="text-5xl font-bold gradient-text mb-2">11</div>
+              <div className="text-warm-gray text-sm">Projects Delivered</div>
+            </div>
+            <div className="text-center p-6 bg-urban-gray/30 rounded-tokyo border border-electric-blue/20 hover:border-electric-blue/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue">
+              <div className="text-5xl font-bold text-transparent bg-gradient-accent-blue bg-clip-text mb-2">65%</div>
+              <div className="text-warm-gray text-sm">Avg. Efficiency Gain</div>
+            </div>
+            <div className="text-center p-6 bg-urban-gray/30 rounded-tokyo border border-cyber-purple/20 hover:border-cyber-purple/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-purple">
+              <div className="text-5xl font-bold text-cyber-purple mb-2">4yrs</div>
+              <div className="text-warm-gray text-sm">Professional Experience</div>
             </div>
           </div>
         </div>
@@ -136,6 +181,44 @@ export default function Home() {
                 東京
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section className="py-24 bg-primary-black border-t border-urban-gray/30 relative overflow-hidden">
+        <div className="absolute inset-0 grid-background opacity-5" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <JapaneseDivider character="作" />
+
+          <div className="mb-16 mt-16 text-center">
+            <p className="text-transparent bg-gradient-accent bg-clip-text text-sm font-medium tracking-widest mb-4 font-noto">特集プロジェクト</p>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">Featured Work</h2>
+            <p className="text-warm-gray max-w-2xl mx-auto">
+              A selection of recent projects showcasing automation, AI/ML, and web development solutions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            {featuredProjects.map((project, index) => (
+              <div
+                key={project.title}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  image={project.image}
+                  tags={project.tags}
+                  href={project.href}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button href="/portfolio/">View All Projects</Button>
           </div>
         </div>
       </section>

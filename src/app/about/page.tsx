@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import SakuraPetals from '@/components/SakuraPetals'
 import JapaneseDivider from '@/components/JapaneseDivider'
 
@@ -8,12 +9,20 @@ export const metadata: Metadata = {
   description: 'Developer focused on automation, system design, and clean digital solutions.',
 }
 
-const tools = [
-  'JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js',
-  'Google Apps Script', 'Python', 'TailwindCSS', 'PostgreSQL',
-  'REST APIs', 'Docker', 'AWS', 'CI/CD', 'Automation', 'Git',
-  'Cloudflare', 'Vercel'
-]
+const techStack = {
+  'Frontend': [
+    'React', 'Next.js', 'TypeScript', 'JavaScript', 'TailwindCSS'
+  ],
+  'Backend & Database': [
+    'Node.js', 'Python', 'PostgreSQL', 'REST APIs'
+  ],
+  'DevOps & Cloud': [
+    'Docker', 'AWS', 'Vercel', 'Cloudflare', 'CI/CD', 'Git'
+  ],
+  'Automation & AI': [
+    'Google Apps Script', 'TensorFlow.js', 'Automation Workflows'
+  ]
+}
 
 export default function AboutPage() {
   return (
@@ -37,9 +46,36 @@ export default function AboutPage() {
           <p className="text-warm-gray font-noto text-xl mb-2 animate-fade-in stagger-2">
             ジェイ・オメリー
           </p>
-          <p className="text-warm-gray text-lg animate-fade-in stagger-3">
+          <p className="text-warm-gray text-lg mb-6 animate-fade-in stagger-3">
             22 • Developer • Tokyo, Japan 🇯🇵
           </p>
+          <div className="flex justify-center gap-4 animate-fade-in stagger-4">
+            <a
+              href="https://github.com/thejhyefactor"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-urban-gray/50 rounded-tokyo border border-warm-gray/20 hover:border-tokyo-red/50 hover:bg-urban-gray/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-red group"
+              aria-label="GitHub Profile"
+            >
+              <Github className="w-5 h-5 text-warm-gray group-hover:text-snow-white transition-colors" />
+            </a>
+            <a
+              href="https://linkedin.com/in/jhye-omeley"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-urban-gray/50 rounded-tokyo border border-warm-gray/20 hover:border-electric-blue/50 hover:bg-urban-gray/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue group"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin className="w-5 h-5 text-warm-gray group-hover:text-snow-white transition-colors" />
+            </a>
+            <a
+              href="/contact"
+              className="p-3 bg-urban-gray/50 rounded-tokyo border border-warm-gray/20 hover:border-cyber-purple/50 hover:bg-urban-gray/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-purple group"
+              aria-label="Contact Me"
+            >
+              <Mail className="w-5 h-5 text-warm-gray group-hover:text-snow-white transition-colors" />
+            </a>
+          </div>
         </div>
 
         {/* Profile & Story Section */}
@@ -134,21 +170,70 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* Currently Section */}
+        <div className="mb-20">
+          <div className="max-w-4xl mx-auto">
+            <div className="p-8 bg-gradient-to-br from-urban-gray via-urban-gray/80 to-urban-gray/50 rounded-tokyo border-2 border-electric-blue/30 shadow-glow-blue relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-cyber-purple/5" />
+              <div className="absolute inset-0 grid-background opacity-10" />
+              <div className="absolute top-4 right-4">
+                <span className="hanko text-xs">今</span>
+              </div>
+              <div className="relative z-10">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <span className="text-electric-blue">Currently</span>
+                  <span className="font-noto text-warm-gray text-lg">| 現在</span>
+                </h2>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-tokyo-red mt-2 animate-pulse" />
+                    <div>
+                      <p className="text-snow-white font-semibold mb-1">Exploring AI/ML with TensorFlow.js</p>
+                      <p className="text-warm-gray text-sm">Building real-time computer vision applications and experimenting with neural networks in the browser.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-electric-blue mt-2 animate-pulse" />
+                    <div>
+                      <p className="text-snow-white font-semibold mb-1">Deepening Cloud Architecture Knowledge</p>
+                      <p className="text-warm-gray text-sm">Advancing AWS skills for scalable serverless applications and infrastructure automation.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-cyber-purple mt-2 animate-pulse" />
+                    <div>
+                      <p className="text-snow-white font-semibold mb-1">Building Community Tools</p>
+                      <p className="text-warm-gray text-sm">Creating free, accessible web applications like CareerLift to help underserved communities.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Tech Stack Section */}
         <div className="mb-20">
           <JapaneseDivider character="技" />
           <h2 className="text-3xl font-bold mb-8 mt-16 text-center">
             Technology Stack <span className="font-noto text-electric-blue">| 技術</span>
           </h2>
-          <div className="flex flex-wrap justify-center gap-3 mt-12">
-            {tools.map((tool, index) => (
-              <span
-                key={tool}
-                className="px-5 py-3 text-sm font-medium text-warm-gray bg-urban-gray/50 border border-warm-gray/20 rounded-tokyo hover:border-tokyo-red/50 hover:text-snow-white hover:shadow-glow-red hover:-translate-y-1 transition-all duration-300 cursor-default"
-                style={{ animationDelay: `${index * 30}ms` }}
-              >
-                {tool}
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            {Object.entries(techStack).map(([category, tools], categoryIndex) => (
+              <div key={category} className="p-6 bg-urban-gray/30 rounded-tokyo border border-warm-gray/20 hover:border-tokyo-red/30 transition-all duration-300">
+                <h3 className="text-xl font-semibold text-snow-white mb-4">{category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {tools.map((tool, toolIndex) => (
+                    <span
+                      key={tool}
+                      className="px-4 py-2 text-sm font-medium text-warm-gray bg-urban-gray/50 border border-warm-gray/20 rounded-tokyo hover:border-tokyo-red/50 hover:text-snow-white hover:shadow-glow-red hover:-translate-y-1 transition-all duration-300 cursor-default"
+                      style={{ animationDelay: `${(categoryIndex * 5 + toolIndex) * 30}ms` }}
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
