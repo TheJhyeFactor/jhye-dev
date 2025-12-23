@@ -75,6 +75,15 @@ const projects = [
     year: 2021,
     href: 'https://thejhyefactor.github.io/particle-physics-playground/',
   },
+  {
+    title: 'Pomodoro Timer',
+    description: 'Productivity timer with task management and analytics dashboard. Features customizable 25/5/15 minute intervals, auto-start breaks, sound notifications, session tracking with localStorage persistence, and visual analytics showing focus time and streaks.',
+    image: '/images/projects/pomodoro-timer.svg',
+    tags: ['JavaScript', 'Productivity', 'Analytics', 'localStorage'],
+    category: 'Web Development',
+    year: 2021,
+    href: 'https://thejhyefactor.github.io/pomodoro-timer/',
+  },
 ]
 
 const categories = ['All', 'Web Development', 'Automation', 'Dashboard', 'Media Production']
