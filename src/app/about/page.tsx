@@ -283,8 +283,137 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Tech Stack Section */}
+      {/* Beyond the Code Section - Personal Interests */}
       <section className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 wave-pattern opacity-5" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <JapaneseDivider character="心" />
+          <div className="text-center mb-16 mt-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-snow-white to-warm-gray bg-clip-text text-transparent">
+                Beyond the Code
+              </span>
+              <span className="font-noto text-tokyo-red block mt-2">| 心</span>
+            </h2>
+            <p className="text-warm-gray text-xl max-w-3xl mx-auto leading-relaxed">
+              There&apos;s more to me than just writing code. Here&apos;s what makes me tick.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {/* Living in Tokyo */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/20 to-transparent rounded-tokyo blur-xl group-hover:blur-2xl transition-all duration-500" />
+              <div className="relative p-10 bg-urban-gray/30 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-red h-full">
+                <h3 className="text-2xl font-bold text-snow-white mb-4 flex items-center gap-3">
+                  <span className="text-4xl">🇯🇵</span>
+                  Life in Tokyo
+                </h3>
+                <p className="text-warm-gray leading-relaxed mb-4">
+                  Australian living in Tokyo. The city&apos;s blend of tradition and futurism inspires my work. From peaceful temples to neon-lit streets, Tokyo&apos;s duality reminds me that the best solutions balance simplicity with innovation.
+                </p>
+                <p className="text-warm-gray leading-relaxed">
+                  Working remotely from one of the world&apos;s most efficient cities has taught me the value of precision and thoughtful design.
+                </p>
+              </div>
+            </div>
+
+            {/* How I Work */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/20 to-transparent rounded-tokyo blur-xl group-hover:blur-2xl transition-all duration-500" />
+              <div className="relative p-10 bg-urban-gray/30 rounded-tokyo border border-electric-blue/20 hover:border-electric-blue/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-blue h-full">
+                <h3 className="text-2xl font-bold text-snow-white mb-4 flex items-center gap-3">
+                  <span className="text-4xl">💡</span>
+                  How I Work
+                </h3>
+                <p className="text-warm-gray leading-relaxed mb-4">
+                  I&apos;m obsessed with automation and efficiency. If something takes more than 5 clicks, I&apos;ll build a tool to do it in one. My brain naturally sees repetitive tasks as puzzles waiting to be solved.
+                </p>
+                <p className="text-warm-gray leading-relaxed">
+                  I believe in writing code that&apos;s so clean and simple that future developers thank you instead of curse you.
+                </p>
+              </div>
+            </div>
+
+            {/* What Drives Me */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyber-purple/20 to-transparent rounded-tokyo blur-xl group-hover:blur-2xl transition-all duration-500" />
+              <div className="relative p-10 bg-urban-gray/30 rounded-tokyo border border-cyber-purple/20 hover:border-cyber-purple/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-purple h-full">
+                <h3 className="text-2xl font-bold text-snow-white mb-4 flex items-center gap-3">
+                  <span className="text-4xl">🎯</span>
+                  What Drives Me
+                </h3>
+                <p className="text-warm-gray leading-relaxed mb-4">
+                  I&apos;m passionate about accessibility. Technology should empower everyone, not just those who can afford expensive solutions. That&apos;s why I build free tools like CareerLift and Background Remover.
+                </p>
+                <p className="text-warm-gray leading-relaxed">
+                  Every project is a chance to give someone back hours of their life they&apos;d otherwise spend on manual work.
+                </p>
+              </div>
+            </div>
+
+            {/* Learning & Growth */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/20 via-electric-blue/20 to-transparent rounded-tokyo blur-xl group-hover:blur-2xl transition-all duration-500" />
+              <div className="relative p-10 bg-urban-gray/30 rounded-tokyo border border-warm-gray/20 hover:border-tokyo-red/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-red h-full">
+                <h3 className="text-2xl font-bold text-snow-white mb-4 flex items-center gap-3">
+                  <span className="text-4xl">📚</span>
+                  Always Learning
+                </h3>
+                <p className="text-warm-gray leading-relaxed mb-4">
+                  I&apos;m currently deep-diving into AI/ML with TensorFlow.js and cloud architecture with AWS. The browser-based ML space fascinates me - the idea that powerful AI can run completely client-side opens up incredible possibilities.
+                </p>
+                <p className="text-warm-gray leading-relaxed">
+                  When I&apos;m not coding, I&apos;m usually watching tech talks, reading docs, or experimenting with new frameworks.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Fun Facts */}
+          <div className="group relative max-w-4xl mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 via-cyber-purple/10 to-tokyo-red/10 rounded-tokyo blur-2xl group-hover:blur-3xl transition-all duration-700" />
+            <div className="relative p-12 bg-gradient-to-br from-urban-gray to-urban-gray/50 rounded-tokyo border-2 border-electric-blue/30 hover:border-electric-blue/50 transition-all duration-500">
+              <h3 className="text-3xl font-bold text-snow-white mb-8 text-center">
+                Quick Facts <span className="font-noto text-electric-blue">| 豆知識</span>
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">🎮</span>
+                  <div>
+                    <p className="text-snow-white font-semibold mb-1">Started with Games</p>
+                    <p className="text-warm-gray text-sm">My coding journey began at 12 building games. Gaming taught me problem-solving and systems thinking.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">🌏</span>
+                  <div>
+                    <p className="text-snow-white font-semibold mb-1">Remote Before It Was Cool</p>
+                    <p className="text-warm-gray text-sm">Fully remote since 2020. Tokyo to Sydney collaboration is my normal.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">⚡</span>
+                  <div>
+                    <p className="text-snow-white font-semibold mb-1">Automation Obsessed</p>
+                    <p className="text-warm-gray text-sm">If I do something twice, I automate it. Life&apos;s too short for repetitive tasks.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">🎨</span>
+                  <div>
+                    <p className="text-snow-white font-semibold mb-1">Design Matters</p>
+                    <p className="text-warm-gray text-sm">I care as much about how something looks as how it works. Good UX is non-negotiable.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="py-32 bg-urban-gray/5 relative overflow-hidden">
         <div className="absolute inset-0 wave-pattern opacity-5" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <JapaneseDivider character="技" />
