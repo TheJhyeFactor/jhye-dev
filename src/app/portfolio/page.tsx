@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import ProjectCard from '@/components/ProjectCard'
 import Button from '@/components/Button'
 import SakuraPetals from '@/components/SakuraPetals'
-import { Sparkles, Package, Briefcase, Code, ArrowRight, Rocket } from 'lucide-react'
-import Image from 'next/image'
+import { Sparkles, Package, Briefcase, Code, ArrowRight, Rocket, ChevronDown } from 'lucide-react'
 
 // Client Projects - Real work for real businesses
 const clientProjects = [
@@ -16,6 +15,7 @@ const clientProjects = [
     tags: ['WordPress', 'Dashboard', 'Automation', 'Logistics'],
     year: 2025,
     href: 'https://transportationme.au/',
+    featured: true,
   },
   {
     title: 'PC Choices',
@@ -24,6 +24,7 @@ const clientProjects = [
     tags: ['E-Commerce', 'Web Development', 'React'],
     year: 2023,
     href: 'https://pc-choice.com.au/',
+    featured: true,
   },
   {
     title: 'AEO Services Portal',
@@ -55,8 +56,8 @@ const clientProjects = [
   },
 ]
 
-// Personal Projects - Experiments and side builds
-const personalProjects = [
+// Hobby Projects - Experiments and side builds
+const hobbyProjects = [
   {
     title: 'CareerLift',
     description: 'Free resume builder I made for people getting back into the workforce or switching careers. ATS-friendly templates, cover letters, interview tips. Everything runs client-side so your data stays private.',
@@ -149,56 +150,91 @@ const personalProjects = [
 
 export default function PortfolioPage() {
   const [scrollY, setScrollY] = useState(0)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+
+      // Update active section based on scroll position
+      const sections = ['hero', 'client', 'hobby', 'products']
+      const scrollPosition = window.scrollY + window.innerHeight / 2
+
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
+    }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Combine all projects
-  const allProjects = [
-    ...clientProjects.map(p => ({ ...p, category: 'Client Work' })),
-    ...personalProjects.map(p => ({ ...p, category: 'Projects' }))
-  ]
-
-  // Filter projects
-  const filteredProjects = allProjects.filter(project => {
-    const matchesSearch = searchQuery === '' ||
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-
-    const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory
-
-    return matchesSearch && matchesCategory
-  })
-
-  const categories = ['All', 'Client Work', 'Projects']
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <>
       <SakuraPetals />
 
-      {/* Hero Section - Apple Style */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Floating Navigation */}
+      <div className="fixed top-32 right-8 z-50 hidden lg:block">
+        <div className="flex flex-col gap-3">
+          {[
+            { id: 'client', label: 'Client Work', icon: Briefcase },
+            { id: 'hobby', label: 'Hobby Projects', icon: Code },
+            { id: 'products', label: 'Products', icon: Package },
+          ].map((section) => {
+            const Icon = section.icon
+            const isActive = activeSection === section.id
+            return (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className={`group flex items-center gap-3 transition-all duration-300 ${
+                  isActive ? 'opacity-100' : 'opacity-40 hover:opacity-70'
+                }`}
+              >
+                <span className={`text-xs font-medium text-snow-white whitespace-nowrap transition-all duration-300 ${
+                  isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}>
+                  {section.label}
+                </span>
+                <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  isActive ? 'bg-tokyo-red w-8' : 'bg-warm-gray/50'
+                }`} />
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary-black via-urban-gray/20 to-primary-black" />
         <div className="absolute inset-0 wave-pattern opacity-5" />
 
         <div className="max-w-7xl mx-auto px-6 py-32 relative z-10 text-center">
           <div
-            className="mb-8"
             style={{
               transform: `translateY(${scrollY * 0.1}px)`,
               opacity: 1 - scrollY / 800
             }}
           >
-            <p className="text-warm-gray/60 text-sm font-medium tracking-widest mb-4 uppercase font-noto">
+            <p className="text-warm-gray/60 text-sm font-medium tracking-widest mb-6 uppercase font-noto animate-fade-in">
               Portfolio
             </p>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-none mb-8">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-none mb-8 animate-fade-in stagger-1">
               <span className="block bg-gradient-to-r from-snow-white via-snow-white to-tokyo-red bg-clip-text text-transparent">
                 Work that
               </span>
@@ -206,209 +242,221 @@ export default function PortfolioPage() {
                 speaks.
               </span>
             </h1>
-            <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-12">
-              {allProjects.length} projects spanning client work, personal builds, and experimental tools.
+            <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-16 animate-fade-in stagger-2">
+              {clientProjects.length + hobbyProjects.length} projects spanning client work, hobby builds, and upcoming products.
             </p>
 
-            {/* Search Bar - Apple Style */}
-            <div className="max-w-2xl mx-auto mb-8">
-              <div className="relative group">
-                <input
-                  type="text"
-                  placeholder="Search projects, technologies, or tags..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-8 py-5 bg-urban-gray/40 backdrop-blur-xl border border-warm-gray/20 rounded-2xl text-snow-white placeholder-warm-gray/50 focus:outline-none focus:border-tokyo-red/50 focus:bg-urban-gray/60 transition-all duration-300 text-lg"
-                />
-                <div className="absolute left-6 top-1/2 -translate-y-1/2 text-warm-gray/50">
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="8" cy="8" r="6" />
-                    <path d="M12.5 12.5l4.5 4.5" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            {/* Category Filters - Apple Style Pills */}
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {categories.map((category) => {
-                const isActive = selectedCategory === category
-                const count = category === 'All'
-                  ? allProjects.length
-                  : allProjects.filter(p => p.category === category).length
-
+            {/* Quick Navigation */}
+            <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in stagger-3">
+              {[
+                { id: 'client', label: 'Client Work', count: clientProjects.length, icon: Briefcase, color: 'electric-blue' },
+                { id: 'hobby', label: 'Hobby Projects', count: hobbyProjects.length, icon: Code, color: 'cyber-purple' },
+                { id: 'products', label: 'Products', count: 1, icon: Package, color: 'tokyo-red' },
+              ].map((section) => {
+                const Icon = section.icon
                 return (
                   <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                      isActive
-                        ? 'bg-snow-white text-primary-black shadow-lg scale-105'
-                        : 'bg-urban-gray/40 backdrop-blur-xl border border-warm-gray/20 text-warm-gray hover:bg-urban-gray/60 hover:border-warm-gray/40'
-                    }`}
+                    key={section.id}
+                    onClick={() => scrollToSection(section.id)}
+                    className="group px-8 py-5 bg-urban-gray/40 backdrop-blur-xl border border-warm-gray/20 rounded-2xl hover:bg-urban-gray/60 hover:border-warm-gray/40 transition-all duration-300 hover:scale-105"
                   >
-                    {category}
-                    <span className={`ml-2 text-xs ${isActive ? 'opacity-60' : 'opacity-40'}`}>
-                      {count}
-                    </span>
+                    <div className="flex items-center gap-3 mb-2">
+                      <Icon className={`w-5 h-5 text-${section.color}`} />
+                      <span className="text-snow-white font-medium">{section.label}</span>
+                    </div>
+                    <p className="text-warm-gray/60 text-sm">{section.count} {section.count === 1 ? 'project' : 'projects'}</p>
                   </button>
                 )
               })}
             </div>
+          </div>
 
-            {/* Results count */}
-            <p className="text-warm-gray/60 text-sm">
-              {searchQuery || selectedCategory !== 'All'
-                ? `Showing ${filteredProjects.length} of ${allProjects.length} projects`
-                : `${allProjects.length} projects`}
+          <button
+            onClick={() => scrollToSection('client')}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group"
+          >
+            <ChevronDown className="w-8 h-8 text-warm-gray/50 group-hover:text-tokyo-red transition-colors" />
+          </button>
+        </div>
+      </section>
+
+      {/* Client Projects Section */}
+      <section id="client" className="min-h-screen py-32 relative overflow-hidden bg-urban-gray/5">
+        <div className="absolute inset-0 grid-background opacity-5" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+          {/* Section Header */}
+          <div className="mb-20 text-center">
+            <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 bg-electric-blue/10 border border-electric-blue/20 rounded-full">
+              <Briefcase className="w-5 h-5 text-electric-blue" />
+              <span className="text-electric-blue font-medium text-sm">Professional Work</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6">
+              Client Projects
+            </h2>
+            <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+              Real solutions for real businesses. From e-commerce to logistics, helping companies streamline operations and grow.
             </p>
           </div>
 
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-warm-gray/30 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-2 bg-tokyo-red rounded-full animate-pulse" />
-            </div>
+          {/* Featured Projects - Larger Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            {clientProjects.filter(p => p.featured).map((project, index) => (
+              <div
+                key={project.title}
+                className="group animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative mb-4">
+                  <div className="absolute -top-3 -right-3 z-10 px-4 py-2 bg-gradient-accent rounded-full">
+                    <span className="text-xs font-bold text-primary-black">Featured</span>
+                  </div>
+                </div>
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  image={project.image}
+                  tags={project.tags}
+                  href={project.href}
+                />
+                <div className="mt-4 flex items-center gap-2 text-warm-gray/60 text-sm">
+                  <span>{project.year}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Other Client Projects */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {clientProjects.filter(p => !p.featured).map((project, index) => (
+              <div
+                key={project.title}
+                className="group animate-fade-in"
+                style={{ animationDelay: `${(index + 2) * 100}ms` }}
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  image={project.image}
+                  tags={project.tags}
+                  href={project.href}
+                />
+                <div className="mt-4 text-warm-gray/60 text-sm">
+                  {project.year}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Projects Showcase - Unified Filterable Grid */}
-      <section className="py-32 relative overflow-hidden">
+      {/* Hobby Projects Section */}
+      <section id="hobby" className="min-h-screen py-32 relative overflow-hidden">
         <div className="absolute inset-0 wave-pattern opacity-10" />
-        <div className="absolute inset-0 grid-background opacity-5" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-          {/* Projects Grid */}
-          {filteredProjects.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {filteredProjects.map((project, index) => (
-                <div
-                  key={project.title}
-                  className="group animate-fade-in"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {/* Category Badge */}
-                  <div className="flex items-center gap-2 mb-3">
-                    {project.category === 'Client Work' ? (
-                      <>
-                        <Briefcase className="w-4 h-4 text-electric-blue" />
-                        <span className="text-electric-blue text-xs font-medium">Client Work</span>
-                      </>
-                    ) : (
-                      <>
-                        <Code className="w-4 h-4 text-cyber-purple" />
-                        <span className="text-cyber-purple text-xs font-medium">Personal Project</span>
-                      </>
-                    )}
-                    <span className="text-warm-gray/40 text-xs">• {project.year}</span>
-                  </div>
-
-                  <ProjectCard
-                    title={project.title}
-                    description={project.description}
-                    image={project.image}
-                    tags={project.tags}
-                    href={project.href}
-                  />
-                </div>
-              ))}
+          {/* Section Header */}
+          <div className="mb-20 text-center">
+            <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 bg-cyber-purple/10 border border-cyber-purple/20 rounded-full">
+              <Code className="w-5 h-5 text-cyber-purple" />
+              <span className="text-cyber-purple font-medium text-sm">Side Builds</span>
             </div>
-          ) : (
-            /* Empty State - Apple Style */
-            <div className="text-center py-32">
-              <div className="mb-8 flex justify-center">
-                <div className="w-24 h-24 rounded-full bg-urban-gray/40 backdrop-blur-xl border border-warm-gray/20 flex items-center justify-center">
-                  <svg width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-warm-gray/40">
-                    <circle cx="24" cy="24" r="10" />
-                    <path d="M24 20v8m0 4h.01" strokeLinecap="round" />
-                  </svg>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6">
+              Hobby Projects
+            </h2>
+            <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+              Experimental builds and free tools. From AI demos to productivity apps, exploring new tech and building useful things.
+            </p>
+          </div>
+
+          {/* Projects Grid - 3 Column */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {hobbyProjects.map((project, index) => (
+              <div
+                key={project.title}
+                className="group animate-fade-in"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  image={project.image}
+                  tags={project.tags}
+                  href={project.href}
+                />
+                <div className="mt-4 flex items-center justify-between text-xs text-warm-gray/60">
+                  <span>{project.year}</span>
+                  {project.href && (
+                    <span className="text-cyber-purple">Try it out →</span>
+                  )}
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-snow-white mb-4">No projects found</h3>
-              <p className="text-warm-gray mb-8 max-w-md mx-auto">
-                Try adjusting your search or filters to find what you&apos;re looking for.
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery('')
-                  setSelectedCategory('All')
-                }}
-                className="px-6 py-3 bg-snow-white text-primary-black font-medium rounded-full hover:scale-105 transition-transform duration-300"
-              >
-                Clear filters
-              </button>
-            </div>
-          )}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Products Section - Coming Soon */}
-      <section className="py-32 relative overflow-hidden bg-urban-gray/5">
+      {/* Products Section */}
+      <section id="products" className="min-h-screen py-32 relative overflow-hidden bg-urban-gray/5">
         <div className="absolute inset-0 grid-background opacity-5" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
+
           {/* Section Header */}
-          <div className="mb-20">
-            <div className="flex items-center gap-4 mb-6">
-              <Package className="w-8 h-8 text-tokyo-red" />
-              <h2 className="text-5xl md:text-6xl font-bold">
-                Products
-              </h2>
+          <div className="mb-20 text-center">
+            <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 bg-tokyo-red/10 border border-tokyo-red/20 rounded-full">
+              <Package className="w-5 h-5 text-tokyo-red" />
+              <span className="text-tokyo-red font-medium text-sm">Coming Soon</span>
             </div>
-            <p className="text-warm-gray text-xl max-w-3xl leading-relaxed">
+            <h2 className="text-5xl md:text-7xl font-bold mb-6">
+              Products
+            </h2>
+            <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
               Building something new. Stay tuned for product launches that turn ideas into reality.
             </p>
           </div>
 
           {/* Coming Soon Card - Apple Style */}
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/20 to-electric-blue/20 rounded-tokyo blur-3xl group-hover:blur-[100px] transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/20 to-electric-blue/20 rounded-3xl blur-3xl group-hover:blur-[100px] transition-all duration-700" />
 
-              <div className="relative bg-gradient-to-br from-urban-gray via-urban-gray/90 to-urban-gray/80 rounded-tokyo border border-tokyo-red/30 overflow-hidden">
+              <div className="relative bg-gradient-to-br from-urban-gray via-urban-gray/90 to-urban-gray/80 rounded-3xl border border-tokyo-red/30 overflow-hidden">
                 {/* Animated gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/5 via-cyber-purple/5 to-electric-blue/5 animate-gradient" />
 
                 {/* Content */}
-                <div className="relative p-16 md:p-24 text-center">
-                  <div className="mb-8 flex justify-center">
+                <div className="relative p-16 md:p-32 text-center">
+                  <div className="mb-12 flex justify-center">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-accent rounded-full blur-xl animate-pulse" />
-                      <Rocket className="relative w-20 h-20 text-transparent bg-gradient-accent bg-clip-text" style={{ stroke: 'url(#gradient)' }} />
-                      <svg width="0" height="0">
-                        <defs>
-                          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#FF2D55" />
-                            <stop offset="100%" stopColor="#9D4EDD" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                      <div className="absolute inset-0 bg-gradient-accent rounded-full blur-2xl animate-pulse" />
+                      <div className="relative w-32 h-32 rounded-full bg-gradient-accent flex items-center justify-center">
+                        <Rocket className="w-16 h-16 text-primary-black" />
+                      </div>
                     </div>
                   </div>
 
-                  <h3 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-accent bg-clip-text text-transparent">
+                  <h3 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-accent bg-clip-text text-transparent">
                     Something big is coming
                   </h3>
 
-                  <p className="text-warm-gray text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8">
+                  <p className="text-warm-gray text-lg md:text-2xl leading-relaxed max-w-2xl mx-auto mb-12">
                     Currently building a product that will change how you work. Can&apos;t say much yet, but it&apos;s going to be worth the wait.
                   </p>
 
-                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary-black/50 border border-tokyo-red/30 rounded-full">
-                    <Sparkles className="w-4 h-4 text-tokyo-red animate-pulse" />
-                    <span className="text-warm-gray text-sm font-medium">In Development</span>
+                  <div className="inline-flex items-center gap-3 px-8 py-4 bg-primary-black/50 border border-tokyo-red/30 rounded-full backdrop-blur-xl">
+                    <Sparkles className="w-5 h-5 text-tokyo-red animate-pulse" />
+                    <span className="text-snow-white font-medium">In Development</span>
                   </div>
 
-                  {/* Decorative elements */}
-                  <div className="mt-12 flex justify-center gap-3">
-                    {[...Array(5)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="w-2 h-2 rounded-full bg-tokyo-red/30"
-                        style={{
-                          animation: `pulse 2s infinite ${i * 0.2}s`
-                        }}
-                      />
-                    ))}
+                  {/* Progress indicator */}
+                  <div className="mt-16 max-w-md mx-auto">
+                    <div className="flex justify-between text-xs text-warm-gray/60 mb-3">
+                      <span>Progress</span>
+                      <span>Coming 2025</span>
+                    </div>
+                    <div className="h-2 bg-urban-gray/50 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-accent rounded-full" style={{ width: '45%' }} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -417,23 +465,22 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* CTA Section - Apple Style */}
+      {/* CTA Section */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary-black via-urban-gray/20 to-primary-black" />
         <div className="absolute inset-0 wave-pattern opacity-20" />
 
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
           <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            Ready to create
-            <br />
+            Ready to create<br />
             <span className="bg-gradient-accent bg-clip-text text-transparent">something amazing?</span>
           </h2>
 
           <p className="text-warm-gray text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-            Whether it&apos;s a complex automation, custom dashboard, or full web application — let&apos;s build it together.
+            From automation systems to full web applications — let&apos;s build it together.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-6 mb-16">
             <Button href="/contact/" className="text-lg px-10 py-5">
               Start a Project
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -443,7 +490,7 @@ export default function PortfolioPage() {
             </Button>
           </div>
 
-          <p className="text-tokyo-red font-noto text-lg mt-12 opacity-60">
+          <p className="text-tokyo-red font-noto text-lg opacity-60">
             一緒に素晴らしいものを作りましょう
           </p>
         </div>
