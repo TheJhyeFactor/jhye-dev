@@ -1,17 +1,31 @@
 'use client'
 
+import { useMemo } from 'react'
+
 export default function SakuraPetals() {
+  // Memoize petal configurations so they don't change on re-render
+  const petals = useMemo(() =>
+    [...Array(15)].map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `-${Math.random() * 20}px`,
+      animationDelay: `${Math.random() * 10}s`,
+      animationDuration: `${15 + Math.random() * 15}s`,
+    })),
+    [] // Empty dependency array means this only runs once on mount
+  )
+
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {[...Array(15)].map((_, i) => (
+      {petals.map((petal) => (
         <div
-          key={i}
+          key={petal.id}
           className="absolute animate-sakura"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `-${Math.random() * 20}px`,
-            animationDelay: `${Math.random() * 10}s`,
-            animationDuration: `${15 + Math.random() * 15}s`,
+            left: petal.left,
+            top: petal.top,
+            animationDelay: petal.animationDelay,
+            animationDuration: petal.animationDuration,
           }}
         >
           <svg
