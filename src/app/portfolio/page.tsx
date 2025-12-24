@@ -153,6 +153,16 @@ const projects = [
     year: 2025,
     href: 'https://thejhyefactor.github.io/invoice-generator/',
   },
+  {
+    title: 'PDF Tools',
+    description: 'Swiss army knife for PDFs. Merge multiple PDFs, split them into separate files, compress to reduce size, convert images to PDF. All processing happens in your browser - no uploads, completely private.',
+    image: '/images/projects/pdf.png',
+    tags: ['JavaScript', 'PDF Processing', 'Web App', 'Privacy'],
+    category: 'Web Development',
+    type: 'Personal',
+    year: 2025,
+    href: 'https://thejhyefactor.github.io/pdf-tools/',
+  },
 ]
 
 const categories = ['All', 'Web Development', 'AI/ML', 'Automation', 'Dashboard', 'Media Production']

@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import { Metadata } from 'next'
 import Button from '@/components/Button'
-import { Send, CheckCircle, Clock, DollarSign, Briefcase } from 'lucide-react'
+import { Send, CheckCircle, Clock, DollarSign, Briefcase, MessageSquare, Code, Rocket } from 'lucide-react'
 import SakuraPetals from '@/components/SakuraPetals'
+import JapaneseDivider from '@/components/JapaneseDivider'
 
 export default function ContactPage() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle')
@@ -293,6 +294,90 @@ export default function ContactPage() {
                 </p>
               </form>
             )}
+          </div>
+        </div>
+
+        {/* Work Process Section */}
+        <div className="mt-20">
+          <JapaneseDivider character="流" />
+          <h2 className="text-3xl md:text-4xl font-semibold mb-12 mt-16 text-center">
+            How It Works <span className="font-noto text-tokyo-red">| 流れ</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-urban-gray/30 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-red text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-accent rounded-full flex items-center justify-center">
+                <MessageSquare className="w-8 h-8 text-deep-black" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-snow-white">1. Initial Discussion</h3>
+              <p className="text-warm-gray text-sm">
+                We&apos;ll hop on a call to discuss your project, requirements, and goals. I&apos;ll ask questions to understand what you need.
+              </p>
+            </div>
+
+            <div className="p-8 bg-urban-gray/30 rounded-tokyo border border-electric-blue/20 hover:border-electric-blue/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-blue text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-accent-blue rounded-full flex items-center justify-center">
+                <Code className="w-8 h-8 text-deep-black" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-snow-white">2. Build & Iterate</h3>
+              <p className="text-warm-gray text-sm">
+                I&apos;ll build your solution with regular check-ins. You&apos;ll see progress updates and can request changes along the way.
+              </p>
+            </div>
+
+            <div className="p-8 bg-urban-gray/30 rounded-tokyo border border-cyber-purple/20 hover:border-cyber-purple/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-purple text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-cyber-purple to-electric-blue rounded-full flex items-center justify-center">
+                <Rocket className="w-8 h-8 text-snow-white" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-snow-white">3. Launch & Support</h3>
+              <p className="text-warm-gray text-sm">
+                Once everything&apos;s tested and approved, we&apos;ll launch. I&apos;ll provide support to ensure everything runs smoothly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-20">
+          <JapaneseDivider character="問" />
+          <h2 className="text-3xl md:text-4xl font-semibold mb-12 mt-16 text-center">
+            Common Questions <span className="font-noto text-electric-blue">| よくある質問</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="p-6 bg-urban-gray/30 rounded-tokyo border border-warm-gray/20">
+              <h3 className="text-snow-white font-semibold mb-2 flex items-center gap-2">
+                <span className="text-tokyo-red">Q:</span> What&apos;s your typical project timeline?
+              </h3>
+              <p className="text-warm-gray text-sm ml-6">
+                Most projects take 2-6 weeks depending on complexity. Smaller tasks can be done in a few days, while larger systems may take a couple months.
+              </p>
+            </div>
+
+            <div className="p-6 bg-urban-gray/30 rounded-tokyo border border-warm-gray/20">
+              <h3 className="text-snow-white font-semibold mb-2 flex items-center gap-2">
+                <span className="text-tokyo-red">Q:</span> Do you work with international clients?
+              </h3>
+              <p className="text-warm-gray text-sm ml-6">
+                Absolutely. I&apos;m based in Tokyo but work remotely with clients globally. I&apos;m flexible with time zones and communication.
+              </p>
+            </div>
+
+            <div className="p-6 bg-urban-gray/30 rounded-tokyo border border-warm-gray/20">
+              <h3 className="text-snow-white font-semibold mb-2 flex items-center gap-2">
+                <span className="text-tokyo-red">Q:</span> What if I need changes after launch?
+              </h3>
+              <p className="text-warm-gray text-sm ml-6">
+                I provide post-launch support and can handle updates or modifications. We can discuss ongoing maintenance or one-off changes.
+              </p>
+            </div>
+
+            <div className="p-6 bg-urban-gray/30 rounded-tokyo border border-warm-gray/20">
+              <h3 className="text-snow-white font-semibold mb-2 flex items-center gap-2">
+                <span className="text-tokyo-red">Q:</span> Can you help with existing projects?
+              </h3>
+              <p className="text-warm-gray text-sm ml-6">
+                Yes! I can jump into existing codebases to fix bugs, add features, or optimize performance. Just share what you&apos;re working with.
+              </p>
+            </div>
           </div>
         </div>
       </div>
