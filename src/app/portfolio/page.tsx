@@ -143,6 +143,16 @@ const projects = [
     year: 2025,
     href: 'https://thejhyefactor.github.io/video-editor/',
   },
+  {
+    title: 'InvoicePro',
+    description: 'Invoice generator for freelancers and small businesses. Create invoices, manage clients, track payments - all in your browser. Export to PDF with your branding. Everything stays local, no server needed, totally private.',
+    image: '/images/projects/invoice.png',
+    tags: ['React', 'PDF Export', 'Invoice Management', 'Web App'],
+    category: 'Web Development',
+    type: 'Personal',
+    year: 2025,
+    href: 'https://thejhyefactor.github.io/invoice-generator/',
+  },
 ]
 
 const categories = ['All', 'Web Development', 'AI/ML', 'Automation', 'Dashboard', 'Media Production']
