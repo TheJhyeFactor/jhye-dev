@@ -146,7 +146,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/10 to-transparent rounded-tokyo blur-xl group-hover/stat:blur-2xl transition-all duration-500" />
                   <div className="relative text-center p-6 bg-urban-gray/50 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-red">
                     <TrendingUp className="w-8 h-8 text-tokyo-red mx-auto mb-2" />
-                    <div className="text-3xl font-bold gradient-text">16</div>
+                    <div className="text-3xl font-bold gradient-text">17</div>
                     <div className="text-xs text-warm-gray mt-1">Projects</div>
                   </div>
                 </div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
                     <div className="flex-1">
                       <div className="text-cyber-purple font-semibold mb-2">Age 18-22 • 2020-Present</div>
                       <h3 className="text-snow-white font-semibold text-lg mb-2">Professional Development</h3>
-                      <p className="text-warm-gray mb-4">4 years building production systems professionally. Delivered 16 projects in automation, web development, and system integration. Now working fully remote from Tokyo.</p>
+                      <p className="text-warm-gray mb-4">4 years building production systems professionally. Delivered 17 projects in automation, web development, and system integration. Now working fully remote from Tokyo.</p>
                       <div className="flex flex-wrap gap-2">
                         <span className="px-3 py-1 bg-tokyo-red/20 border border-tokyo-red/30 rounded-full text-xs text-tokyo-red">Automation</span>
                         <span className="px-3 py-1 bg-electric-blue/20 border border-electric-blue/30 rounded-full text-xs text-electric-blue">Web Development</span>
@@ -339,7 +339,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/10 to-transparent rounded-tokyo blur-xl group-hover:blur-2xl transition-all duration-500" />
               <div className="relative p-10 bg-gradient-to-br from-urban-gray to-urban-gray/50 rounded-tokyo border-2 border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-red text-center">
                 <TrendingUp className="w-12 h-12 text-tokyo-red mx-auto mb-4" />
-                <div className="text-6xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">16</div>
+                <div className="text-6xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">17</div>
                 <div className="text-snow-white font-semibold text-lg mb-2">Projects Delivered</div>
                 <p className="text-warm-gray text-xs">Automation, web apps, and integrations</p>
               </div>

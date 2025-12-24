@@ -147,7 +147,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/10 to-transparent rounded-tokyo blur-xl group-hover:blur-2xl transition-all duration-500" />
               <div className="relative text-center p-12 bg-urban-gray/30 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-red">
                 <TrendingUp className="w-12 h-12 text-tokyo-red mx-auto mb-4" />
-                <div className="text-6xl font-bold gradient-text mb-3">16</div>
+                <div className="text-6xl font-bold gradient-text mb-3">17</div>
                 <div className="text-warm-gray">Projects Delivered</div>
               </div>
             </div>

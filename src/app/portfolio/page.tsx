@@ -180,6 +180,17 @@ const projects = [
     href: 'https://thejhyefactor.github.io/pdf-tools/',
     interactive: true,
   },
+  {
+    title: 'Background Remover',
+    description: 'AI-powered background remover that runs entirely in your browser. Upload an image, wait 10-30 seconds, and get a transparent PNG. Uses machine learning to detect and remove backgrounds. Everything processes locally - no uploads, totally private.',
+    image: '/images/projects/bgremover.png',
+    tags: ['AI/ML', 'Image Processing', 'TensorFlow.js', 'Web App'],
+    category: 'AI/ML',
+    type: 'Personal',
+    year: 2025,
+    href: 'https://thejhyefactor.github.io/background-remover/',
+    interactive: true,
+  },
 ]
 
 export default function PortfolioPage() {
