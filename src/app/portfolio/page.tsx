@@ -126,7 +126,7 @@ const projects = [
   {
     title: 'Social Dashboard',
     description: 'Social media dashboard where you can post, like, comment, save stuff. Has dark/light themes and everything saves locally. Just a fun project to build out a full social feed.',
-    image: '/images/projects/social-dashboard.svg',
+    image: '/images/projects/social-dashboard.jpeg',
     tags: ['JavaScript', 'Social Media', 'Dashboard', 'localStorage'],
     category: 'Web Development',
     type: 'Personal',
