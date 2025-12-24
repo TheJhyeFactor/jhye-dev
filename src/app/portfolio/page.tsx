@@ -149,12 +149,34 @@ const personalProjects = [
 
 export default function PortfolioPage() {
   const [scrollY, setScrollY] = useState(0)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('All')
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Combine all projects
+  const allProjects = [
+    ...clientProjects.map(p => ({ ...p, category: 'Client Work' })),
+    ...personalProjects.map(p => ({ ...p, category: 'Projects' }))
+  ]
+
+  // Filter projects
+  const filteredProjects = allProjects.filter(project => {
+    const matchesSearch = searchQuery === '' ||
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+
+    const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory
+
+    return matchesSearch && matchesCategory
+  })
+
+  const categories = ['All', 'Client Work', 'Projects']
 
   return (
     <>
@@ -184,8 +206,61 @@ export default function PortfolioPage() {
                 speaks.
               </span>
             </h1>
-            <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
-              From client solutions to experimental builds, explore projects that push boundaries and solve real problems.
+            <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-12">
+              {allProjects.length} projects spanning client work, personal builds, and experimental tools.
+            </p>
+
+            {/* Search Bar - Apple Style */}
+            <div className="max-w-2xl mx-auto mb-8">
+              <div className="relative group">
+                <input
+                  type="text"
+                  placeholder="Search projects, technologies, or tags..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-8 py-5 bg-urban-gray/40 backdrop-blur-xl border border-warm-gray/20 rounded-2xl text-snow-white placeholder-warm-gray/50 focus:outline-none focus:border-tokyo-red/50 focus:bg-urban-gray/60 transition-all duration-300 text-lg"
+                />
+                <div className="absolute left-6 top-1/2 -translate-y-1/2 text-warm-gray/50">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="8" cy="8" r="6" />
+                    <path d="M12.5 12.5l4.5 4.5" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Category Filters - Apple Style Pills */}
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              {categories.map((category) => {
+                const isActive = selectedCategory === category
+                const count = category === 'All'
+                  ? allProjects.length
+                  : allProjects.filter(p => p.category === category).length
+
+                return (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                      isActive
+                        ? 'bg-snow-white text-primary-black shadow-lg scale-105'
+                        : 'bg-urban-gray/40 backdrop-blur-xl border border-warm-gray/20 text-warm-gray hover:bg-urban-gray/60 hover:border-warm-gray/40'
+                    }`}
+                  >
+                    {category}
+                    <span className={`ml-2 text-xs ${isActive ? 'opacity-60' : 'opacity-40'}`}>
+                      {count}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Results count */}
+            <p className="text-warm-gray/60 text-sm">
+              {searchQuery || selectedCategory !== 'All'
+                ? `Showing ${filteredProjects.length} of ${allProjects.length} projects`
+                : `${allProjects.length} projects`}
             </p>
           </div>
 
@@ -197,79 +272,73 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Client Work Section */}
-      <section className="py-32 relative overflow-hidden bg-urban-gray/5">
-        <div className="absolute inset-0 grid-background opacity-5" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Section Header */}
-          <div className="mb-20">
-            <div className="flex items-center gap-4 mb-6">
-              <Briefcase className="w-8 h-8 text-electric-blue" />
-              <h2 className="text-5xl md:text-6xl font-bold">
-                Client Work
-              </h2>
-            </div>
-            <p className="text-warm-gray text-xl max-w-3xl leading-relaxed">
-              Real solutions for real businesses. From e-commerce platforms to internal dashboards, these projects helped companies streamline operations and grow.
-            </p>
-          </div>
-
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {clientProjects.map((project, index) => (
-              <div
-                key={project.title}
-                className="group animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                  image={project.image}
-                  tags={project.tags}
-                  href={project.href}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Personal Projects Section */}
+      {/* Projects Showcase - Unified Filterable Grid */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 wave-pattern opacity-10" />
+        <div className="absolute inset-0 grid-background opacity-5" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Section Header */}
-          <div className="mb-20">
-            <div className="flex items-center gap-4 mb-6">
-              <Code className="w-8 h-8 text-cyber-purple" />
-              <h2 className="text-5xl md:text-6xl font-bold">
-                Projects
-              </h2>
-            </div>
-            <p className="text-warm-gray text-xl max-w-3xl leading-relaxed">
-              Side builds and experiments. Free tools, AI demos, and creative projects built to explore new tech and help people get things done.
-            </p>
-          </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {personalProjects.map((project, index) => (
-              <div
-                key={project.title}
-                className="group animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                  image={project.image}
-                  tags={project.tags}
-                  href={project.href}
-                />
+          {filteredProjects.length > 0 ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {filteredProjects.map((project, index) => (
+                <div
+                  key={project.title}
+                  className="group animate-fade-in"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {/* Category Badge */}
+                  <div className="flex items-center gap-2 mb-3">
+                    {project.category === 'Client Work' ? (
+                      <>
+                        <Briefcase className="w-4 h-4 text-electric-blue" />
+                        <span className="text-electric-blue text-xs font-medium">Client Work</span>
+                      </>
+                    ) : (
+                      <>
+                        <Code className="w-4 h-4 text-cyber-purple" />
+                        <span className="text-cyber-purple text-xs font-medium">Personal Project</span>
+                      </>
+                    )}
+                    <span className="text-warm-gray/40 text-xs">• {project.year}</span>
+                  </div>
+
+                  <ProjectCard
+                    title={project.title}
+                    description={project.description}
+                    image={project.image}
+                    tags={project.tags}
+                    href={project.href}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Empty State - Apple Style */
+            <div className="text-center py-32">
+              <div className="mb-8 flex justify-center">
+                <div className="w-24 h-24 rounded-full bg-urban-gray/40 backdrop-blur-xl border border-warm-gray/20 flex items-center justify-center">
+                  <svg width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-warm-gray/40">
+                    <circle cx="24" cy="24" r="10" />
+                    <path d="M24 20v8m0 4h.01" strokeLinecap="round" />
+                  </svg>
+                </div>
               </div>
-            ))}
-          </div>
+              <h3 className="text-2xl font-semibold text-snow-white mb-4">No projects found</h3>
+              <p className="text-warm-gray mb-8 max-w-md mx-auto">
+                Try adjusting your search or filters to find what you&apos;re looking for.
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery('')
+                  setSelectedCategory('All')
+                }}
+                className="px-6 py-3 bg-snow-white text-primary-black font-medium rounded-full hover:scale-105 transition-transform duration-300"
+              >
+                Clear filters
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
