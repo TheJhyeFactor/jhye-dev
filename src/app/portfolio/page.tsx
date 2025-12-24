@@ -183,7 +183,7 @@ const projects = [
   {
     title: 'Background Remover',
     description: 'AI-powered background remover that runs entirely in your browser. Upload an image, wait 10-30 seconds, and get a transparent PNG. Uses machine learning to detect and remove backgrounds. Everything processes locally - no uploads, totally private.',
-    image: '/images/projects/bgremover.png',
+    image: '/images/projects/BGremovver.png',
     tags: ['AI/ML', 'Image Processing', 'TensorFlow.js', 'Web App'],
     category: 'AI/ML',
     type: 'Personal',
