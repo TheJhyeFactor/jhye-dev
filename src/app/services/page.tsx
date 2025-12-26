@@ -180,7 +180,7 @@ export default function ServicesPage() {
           {/* Scroll Indicator */}
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
             <div className="w-6 h-10 border-2 border-warm-gray/30 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-2 bg-tokyo-red rounded-full animate-pulse" />
+              <div className="w-1 h-2 bg-electric-blue rounded-full animate-pulse" />
             </div>
           </div>
         </div>
