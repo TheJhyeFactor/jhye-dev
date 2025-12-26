@@ -176,12 +176,12 @@ export default function ServicesPage() {
             <Button href="/contact/">Start a Project</Button>
             <Button href="/portfolio/" variant="secondary">View Work</Button>
           </div>
+        </div>
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-warm-gray/30 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-2 bg-electric-blue rounded-full animate-pulse" />
-            </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-warm-gray/30 rounded-full flex justify-center pt-2">
+            <div className="w-1 h-2 bg-electric-blue rounded-full animate-pulse" />
           </div>
         </div>
       </section>
