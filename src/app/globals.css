@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-black: #0D0D0D;
+  --snow-white: #F5F5F5;
+  --urban-gray: #1F1F1F;
+  --tokyo-red: #FF2D55;
+  --warm-gray: #9A9A9A;
+  --light-gray: #CFCFCF;
+  --cyber-purple: #9D4EDD;
+  --electric-blue: #3A8BFF;
+  --neon-cyan: #00F5FF;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--primary-black);
+  color: var(--snow-white);
+}
+
+::selection {
+  background-color: var(--tokyo-red);
+  color: var(--snow-white);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--urban-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--warm-gray);
+}
+
+/* Tokyo minimal animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(45deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 20s ease-in-out infinite;
+}
+
+/* Stagger animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, var(--tokyo-red) 0%, var(--cyber-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle grid background */
+.grid-background {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Accent line */
+.accent-line {
+  position: relative;
+}
+
+.accent-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--tokyo-red), var(--cyber-purple));
+}
+
+/* Japanese wave pattern (Seigaiha) */
+.wave-pattern {
+  background-image: radial-gradient(circle at 100% 150%, transparent 24%, rgba(255, 45, 85, 0.05) 25%, rgba(255, 45, 85, 0.05) 28%, transparent 29%, transparent 36%, rgba(255, 45, 85, 0.05) 37%, rgba(255, 45, 85, 0.05) 40%, transparent 41%, transparent),
+    radial-gradient(circle at 0 150%, transparent 24%, rgba(255, 45, 85, 0.05) 25%, rgba(255, 45, 85, 0.05) 28%, transparent 29%, transparent 36%, rgba(255, 45, 85, 0.05) 37%, rgba(255, 45, 85, 0.05) 40%, transparent 41%, transparent),
+    radial-gradient(circle at 50% 100%, transparent 10%, rgba(255, 45, 85, 0.05) 11%, rgba(255, 45, 85, 0.05) 16%, transparent 17%, transparent 27%, rgba(255, 45, 85, 0.05) 28%, rgba(255, 45, 85, 0.05) 34%, transparent 35%, transparent),
+    radial-gradient(circle at 100% 50%, transparent 5%, rgba(255, 45, 85, 0.05) 6%, rgba(255, 45, 85, 0.05) 15%, transparent 16%, transparent 24%, rgba(255, 45, 85, 0.05) 25%, rgba(255, 45, 85, 0.05) 35%, transparent 36%, transparent);
+  background-size: 100px 50px;
+  background-color: var(--primary-black);
+}
+
+/* Sakura petal animation */
+@keyframes sakura-fall {
+  0% {
+    transform: translateY(-10px) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(100px) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+.animate-sakura {
+  animation: sakura-fall linear infinite;
+}
+
+/* Vertical Japanese text */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+/* Japanese divider */
+.japanese-divider {
+  position: relative;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.japanese-divider::before,
+.japanese-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--tokyo-red), transparent);
+}
+
+.japanese-divider::before {
+  left: 0;
+}
+
+.japanese-divider::after {
+  right: 0;
+}
+
+/* Hanko (Japanese stamp) effect */
+.hanko {
+  display: inline-block;
+  padding: 0.5rem;
+  border: 2px solid var(--tokyo-red);
+  border-radius: 50%;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  color: var(--tokyo-red);
+  transform: rotate(-5deg);
+  box-shadow: 0 0 10px rgba(255, 45, 85, 0.3);
+}
+
+/* Brush stroke effect */
+@keyframes brush-stroke {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.brush-stroke {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: brush-stroke 2s ease-out forwards;
+}

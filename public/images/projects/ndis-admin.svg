@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <linearGradient id="bgGradNDIS" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F172A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E293B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bgGradNDIS)"/>
+
+  <g opacity="0.1">
+    <circle cx="150" cy="150" r="100" fill="none" stroke="#10B981" stroke-width="1"/>
+    <circle cx="650" cy="450" r="120" fill="none" stroke="#3B82F6" stroke-width="1"/>
+    <circle cx="700" cy="150" r="80" fill="none" stroke="#8B5CF6" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(150, 100)">
+    <rect x="0" y="0" width="500" height="400" rx="16" fill="#1E293B" stroke="#10B981" stroke-width="3"/>
+
+    <rect x="0" y="0" width="500" height="70" rx="16" fill="url(#greenGrad)"/>
+    <text x="250" y="45" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      NDIS Administration
+    </text>
+
+    <g transform="translate(30, 100)">
+      <rect x="0" y="0" width="200" height="80" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="2"/>
+      <circle cx="40" cy="40" r="20" fill="#3B82F6" opacity="0.3"/>
+      <path d="M 40 30 L 40 50 M 30 40 L 50 40" stroke="#3B82F6" stroke-width="3"/>
+      <text x="80" y="35" font-family="Arial, sans-serif" font-size="14" fill="#E2E8F0">
+        Participants
+      </text>
+      <text x="80" y="55" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#3B82F6">
+        142
+      </text>
+    </g>
+
+    <g transform="translate(270, 100)">
+      <rect x="0" y="0" width="200" height="80" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="2"/>
+      <circle cx="40" cy="40" r="20" fill="#10B981" opacity="0.3"/>
+      <path d="M 35 40 L 38 45 L 45 33" stroke="#10B981" stroke-width="3" fill="none"/>
+      <text x="80" y="35" font-family="Arial, sans-serif" font-size="14" fill="#E2E8F0">
+        Compliance
+      </text>
+      <text x="80" y="55" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#10B981">
+        98%
+      </text>
+    </g>
+
+    <g transform="translate(30, 210)">
+      <rect x="0" y="0" width="440" height="160" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="2"/>
+      <text x="20" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#E2E8F0">
+        Automated Workflows
+      </text>
+
+      <g transform="translate(20, 50)">
+        <rect x="0" y="0" width="400" height="12" rx="6" fill="#334155"/>
+        <rect x="0" y="0" width="340" height="12" rx="6" fill="#10B981"/>
+        <text x="410" y="10" font-family="Arial, sans-serif" font-size="12" fill="#10B981">
+          85%
+        </text>
+      </g>
+
+      <g transform="translate(20, 80)">
+        <rect x="0" y="0" width="400" height="12" rx="6" fill="#334155"/>
+        <rect x="0" y="0" width="280" height="12" rx="6" fill="#3B82F6"/>
+        <text x="410" y="10" font-family="Arial, sans-serif" font-size="12" fill="#3B82F6">
+          70%
+        </text>
+      </g>
+
+      <g transform="translate(20, 110)">
+        <rect x="0" y="0" width="400" height="12" rx="6" fill="#334155"/>
+        <rect x="0" y="0" width="380" height="12" rx="6" fill="#8B5CF6"/>
+        <text x="410" y="10" font-family="Arial, sans-serif" font-size="12" fill="#8B5CF6">
+          95%
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(50, 80)">
+    <circle cx="0" cy="0" r="30" fill="#10B981" opacity="0.2">
+      <animate attributeName="r" values="30;40;30" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="15" fill="#10B981"/>
+    <path d="M -5 0 L 0 5 L 5 -5" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+  </g>
+
+  <g transform="translate(700, 200)">
+    <circle cx="0" cy="0" r="25" fill="#3B82F6" opacity="0.2">
+      <animate attributeName="r" values="25;35;25" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="12" fill="#3B82F6"/>
+  </g>
+
+  <g transform="translate(720, 480)">
+    <circle cx="0" cy="0" r="35" fill="#8B5CF6" opacity="0.2">
+      <animate attributeName="r" values="35;45;35" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="18" fill="#8B5CF6"/>
+  </g>
+
+  <text x="400" y="570" font-family="Arial, sans-serif" font-size="16" fill="#94A3B8" text-anchor="middle" opacity="0.7">
+    Automated Workflows & Compliance Tracking
+  </text>
+</svg>
