@@ -151,6 +151,9 @@ const hobbyProjects = [
 export default function PortfolioPage() {
   const [scrollY, setScrollY] = useState(0)
   const [activeSection, setActiveSection] = useState('hero')
+  const [isDragging, setIsDragging] = useState(false)
+  const [startY, setStartY] = useState(0)
+  const [scrollTop, setScrollTop] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -183,39 +186,134 @@ export default function PortfolioPage() {
     }
   }
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true)
+    setStartY(e.pageY - (e.currentTarget as HTMLElement).offsetTop)
+    setScrollTop((e.currentTarget as HTMLElement).scrollTop)
+  }
+
+  const handleMouseLeave = () => {
+    setIsDragging(false)
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return
+    e.preventDefault()
+    const y = e.pageY - (e.currentTarget as HTMLElement).offsetTop
+    const walk = (y - startY) * 2
+    ;(e.currentTarget as HTMLElement).scrollTop = scrollTop - walk
+  }
+
   return (
     <>
       <SakuraPetals />
 
-      {/* Floating Navigation */}
+      {/* Draggable Floating Navigation */}
       <div className="fixed top-32 right-8 z-50 hidden lg:block">
-        <div className="flex flex-col gap-3">
-          {[
-            { id: 'client', label: 'Client Work', icon: Briefcase },
-            { id: 'hobby', label: 'Hobby Projects', icon: Code },
-            { id: 'products', label: 'Products', icon: Package },
-          ].map((section) => {
-            const Icon = section.icon
-            const isActive = activeSection === section.id
-            return (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`group flex items-center gap-3 transition-all duration-300 ${
-                  isActive ? 'opacity-100' : 'opacity-40 hover:opacity-70'
-                }`}
-              >
-                <span className={`text-xs font-medium text-snow-white whitespace-nowrap transition-all duration-300 ${
-                  isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                }`}>
-                  {section.label}
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-b from-tokyo-red/20 to-electric-blue/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+
+          <div
+            className={`relative bg-urban-gray/90 backdrop-blur-xl border border-warm-gray/30 rounded-2xl p-6 shadow-2xl max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-tokyo-red/50 scrollbar-track-urban-gray/20 ${
+              isDragging ? 'cursor-grabbing' : 'cursor-grab'
+            }`}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+          >
+            {/* Drag Hint */}
+            <div className="flex items-center justify-center gap-2 mb-4 pb-4 border-b border-warm-gray/20">
+              <div className="w-8 h-1 bg-warm-gray/40 rounded-full" />
+              <span className="text-xs text-warm-gray/60">Drag to scroll</span>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              {[
+                {
+                  id: 'client',
+                  label: 'Client Projects',
+                  icon: Briefcase,
+                  count: clientProjects.length,
+                  color: 'electric-blue',
+                  description: 'Professional work for businesses'
+                },
+                {
+                  id: 'hobby',
+                  label: 'Hobby Projects',
+                  icon: Code,
+                  count: hobbyProjects.length,
+                  color: 'cyber-purple',
+                  description: 'Experimental builds & free tools'
+                },
+                {
+                  id: 'products',
+                  label: 'Products',
+                  icon: Package,
+                  count: 1,
+                  color: 'tokyo-red',
+                  description: 'Coming soon'
+                },
+              ].map((section) => {
+                const Icon = section.icon
+                const isActive = activeSection === section.id
+                return (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollToSection(section.id)}
+                    className={`group/item flex flex-col gap-2 p-4 rounded-xl transition-all duration-300 border ${
+                      isActive
+                        ? `bg-${section.color}/10 border-${section.color}/40 shadow-lg`
+                        : 'bg-urban-gray/40 border-warm-gray/10 hover:bg-urban-gray/60 hover:border-warm-gray/30'
+                    }`}
+                    onMouseDown={(e) => e.stopPropagation()}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2 rounded-lg ${
+                          isActive ? `bg-${section.color}/20` : 'bg-warm-gray/10'
+                        }`}>
+                          <Icon className={`w-5 h-5 ${
+                            isActive ? `text-${section.color}` : 'text-warm-gray/60'
+                          }`} />
+                        </div>
+                        <div className="text-left">
+                          <p className={`text-sm font-medium ${
+                            isActive ? 'text-snow-white' : 'text-warm-gray'
+                          }`}>
+                            {section.label}
+                          </p>
+                          <p className="text-xs text-warm-gray/60">
+                            {section.count} {section.count === 1 ? 'project' : 'projects'}
+                          </p>
+                        </div>
+                      </div>
+                      <ArrowRight className={`w-4 h-4 transition-all duration-300 ${
+                        isActive ? `text-${section.color} translate-x-1` : 'text-warm-gray/40 group-hover/item:translate-x-1'
+                      }`} />
+                    </div>
+                    <p className="text-xs text-warm-gray/50 text-left pl-11">
+                      {section.description}
+                    </p>
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Project Count Summary */}
+            <div className="mt-6 pt-4 border-t border-warm-gray/20">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-warm-gray/60">Total Projects</span>
+                <span className="text-snow-white font-bold text-lg">
+                  {clientProjects.length + hobbyProjects.length + 1}
                 </span>
-                <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  isActive ? 'bg-tokyo-red w-8' : 'bg-warm-gray/50'
-                }`} />
-              </button>
-            )
-          })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
