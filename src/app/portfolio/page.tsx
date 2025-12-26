@@ -154,10 +154,14 @@ export default function PortfolioPage() {
   const [isDragging, setIsDragging] = useState(false)
   const [startY, setStartY] = useState(0)
   const [scrollTop, setScrollTop] = useState(0)
+  const [showSidebar, setShowSidebar] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
+
+      // Show sidebar after scrolling past 80% of viewport height
+      setShowSidebar(window.scrollY > window.innerHeight * 0.8)
 
       // Update active section based on scroll position
       const sections = ['hero', 'client', 'hobby', 'products']
@@ -213,7 +217,9 @@ export default function PortfolioPage() {
       <SakuraPetals />
 
       {/* Draggable Floating Navigation */}
-      <div className="fixed top-32 right-8 z-50 hidden lg:block">
+      <div className={`fixed top-32 right-8 z-50 hidden lg:block transition-all duration-500 ${
+        showSidebar ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20 pointer-events-none'
+      }`}>
         <div className="relative group">
           <div className="absolute inset-0 bg-gradient-to-b from-tokyo-red/20 to-electric-blue/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
 
