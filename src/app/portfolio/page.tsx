@@ -148,6 +148,49 @@ const hobbyProjects = [
   },
 ]
 
+const productProjects = [
+  {
+    title: 'Buildly',
+    description: 'A creator-learning platform where students explore, build, test, and share technology through guided classroom missions.',
+    image: '/images/projects/screenshots/buildly.png',
+    tags: ['React', 'Education', 'Product Design', 'Vercel'],
+    year: 2026,
+    href: 'https://buildly-showcase.vercel.app/',
+  },
+  {
+    title: 'TradieFlow',
+    description: 'Live profit tracking for trade businesses, helping owners understand labour, materials, targets, and job performance while work is still underway.',
+    image: '/images/projects/screenshots/tradieflow.png',
+    tags: ['Next.js', 'SaaS', 'Fintech', 'Job Management'],
+    year: 2026,
+    href: 'https://tradieflow-pi.vercel.app/',
+  },
+  {
+    title: 'TripMate',
+    description: 'Operations software for transport teams, connecting bookings, riders, drivers, live route monitoring, and trip coordination in one workspace.',
+    image: '/images/projects/screenshots/tripmate.png',
+    tags: ['React', 'Firebase', 'Operations', 'Mobile Companion'],
+    year: 2026,
+    href: 'https://tripmate-platform.vercel.app/',
+  },
+  {
+    title: 'Castivo',
+    description: 'A platform for streamers to create and manage branded websites, with audience engagement tools such as leaderboards, raffles, and bonus-hunt tracking.',
+    image: '/images/projects/screenshots/castivo.png',
+    tags: ['Next.js', 'Firebase', 'Creator Tools', 'SaaS'],
+    year: 2026,
+    href: 'https://castivo-web-thejhyefactors-projects.vercel.app/',
+  },
+  {
+    title: 'QuickMeet',
+    description: 'A focused meeting platform for starting secure conversations quickly, with a polished landing surface and an iOS companion on the way.',
+    image: '/images/projects/screenshots/quickmeet.png',
+    tags: ['React', 'WebRTC', 'Firebase', 'Real-time'],
+    year: 2026,
+    href: 'https://www.quickmeet.cam/',
+  },
+]
+
 export default function PortfolioPage() {
   const [scrollY, setScrollY] = useState(0)
   const [activeSection, setActiveSection] = useState('hero')
@@ -260,9 +303,9 @@ export default function PortfolioPage() {
                   id: 'products',
                   label: 'Products',
                   icon: Package,
-                  count: 1,
+                  count: productProjects.length,
                   color: 'tokyo-red',
-                  description: 'Coming soon'
+                  description: 'Products and platforms I have built'
                 },
               ].map((section) => {
                 const Icon = section.icon
@@ -315,7 +358,7 @@ export default function PortfolioPage() {
               <div className="flex items-center justify-between text-xs">
                 <span className="text-warm-gray/60">Total Projects</span>
                 <span className="text-snow-white font-bold text-lg">
-                  {clientProjects.length + hobbyProjects.length + 1}
+                  {clientProjects.length + hobbyProjects.length + productProjects.length}
                 </span>
               </div>
             </div>
@@ -347,7 +390,7 @@ export default function PortfolioPage() {
               </span>
             </h1>
             <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-16 animate-fade-in stagger-2">
-              {clientProjects.length + hobbyProjects.length} projects spanning client work, hobby builds, and upcoming products.
+              {clientProjects.length + hobbyProjects.length + productProjects.length} projects spanning client work, experiments, and products I have built.
             </p>
 
             {/* Quick Navigation */}
@@ -355,7 +398,7 @@ export default function PortfolioPage() {
               {[
                 { id: 'client', label: 'Client Work', count: clientProjects.length, icon: Briefcase, color: 'electric-blue' },
                 { id: 'hobby', label: 'Hobby Projects', count: hobbyProjects.length, icon: Code, color: 'cyber-purple' },
-                { id: 'products', label: 'Products', count: 1, icon: Package, color: 'tokyo-red' },
+                { id: 'products', label: 'Products', count: productProjects.length, icon: Package, color: 'tokyo-red' },
               ].map((section) => {
                 const Icon = section.icon
                 return (
@@ -509,62 +552,36 @@ export default function PortfolioPage() {
           <div className="mb-20 text-center">
             <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 bg-tokyo-red/10 border border-tokyo-red/20 rounded-full">
               <Package className="w-5 h-5 text-tokyo-red" />
-              <span className="text-tokyo-red font-medium text-sm">Coming Soon</span>
+              <span className="text-tokyo-red font-medium text-sm">Products I Built</span>
             </div>
             <h2 className="text-5xl md:text-7xl font-bold mb-6">
-              Products
+              Products &amp; Platforms
             </h2>
             <p className="text-warm-gray text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
-              Building something new. Stay tuned for product launches that turn ideas into reality.
+              Product work built around real workflows, clear outcomes, and software people can actually use.
             </p>
           </div>
 
-          {/* Coming Soon Card - Apple Style */}
-          <div className="max-w-5xl mx-auto">
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/20 to-electric-blue/20 rounded-3xl blur-3xl group-hover:blur-[100px] transition-all duration-700" />
-
-              <div className="relative bg-gradient-to-br from-urban-gray via-urban-gray/90 to-urban-gray/80 rounded-3xl border border-tokyo-red/30 overflow-hidden">
-                {/* Animated gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/5 via-cyber-purple/5 to-electric-blue/5 animate-gradient" />
-
-                {/* Content */}
-                <div className="relative p-16 md:p-32 text-center">
-                  <div className="mb-12 flex justify-center">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-accent rounded-full blur-2xl animate-pulse" />
-                      <div className="relative w-32 h-32 rounded-full bg-gradient-accent flex items-center justify-center">
-                        <Rocket className="w-16 h-16 text-primary-black" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <h3 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-accent bg-clip-text text-transparent">
-                    Something big is coming
-                  </h3>
-
-                  <p className="text-warm-gray text-lg md:text-2xl leading-relaxed max-w-2xl mx-auto mb-12">
-                    Currently building a product that will change how you work. Can&apos;t say much yet, but it&apos;s going to be worth the wait.
-                  </p>
-
-                  <div className="inline-flex items-center gap-3 px-8 py-4 bg-primary-black/50 border border-tokyo-red/30 rounded-full backdrop-blur-xl">
-                    <Sparkles className="w-5 h-5 text-tokyo-red animate-pulse" />
-                    <span className="text-snow-white font-medium">In Development</span>
-                  </div>
-
-                  {/* Progress indicator */}
-                  <div className="mt-16 max-w-md mx-auto">
-                    <div className="flex justify-between text-xs text-warm-gray/60 mb-3">
-                      <span>Progress</span>
-                      <span>Coming 2025</span>
-                    </div>
-                    <div className="h-2 bg-urban-gray/50 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-accent rounded-full" style={{ width: '45%' }} />
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {productProjects.map((project, index) => (
+              <div
+                key={project.title}
+                className="group animate-fade-in"
+                style={{ animationDelay: `${index * 75}ms` }}
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  image={project.image}
+                  tags={project.tags}
+                  href={project.href}
+                />
+                <div className="mt-4 flex items-center justify-between text-xs text-warm-gray/60">
+                  <span>{project.year}</span>
+                  <span className="text-tokyo-red">View product →</span>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

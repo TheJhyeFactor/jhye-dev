@@ -79,7 +79,7 @@ export default function AboutPage() {
               ジェイ・オメリー
             </p>
             <p className="text-warm-gray text-xl md:text-2xl mb-6 animate-fade-in stagger-3">
-              22 • Developer • Tokyo, Japan 🇯🇵
+              23 • Developer • Tokyo, Japan 🇯🇵
             </p>
             <p className="text-warm-gray/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-12 animate-fade-in stagger-4">
               Australian kid who fell in love with code at 12. Now building things that make people&apos;s lives easier from my apartment in Tokyo.
@@ -149,7 +149,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/10 to-transparent rounded-tokyo blur-xl group-hover/stat:blur-2xl transition-all duration-500" />
                   <div className="relative text-center p-6 bg-urban-gray/50 rounded-tokyo border border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-red">
                     <TrendingUp className="w-8 h-8 text-tokyo-red mx-auto mb-2" />
-                    <div className="text-3xl font-bold gradient-text">17</div>
+                    <div className="text-3xl font-bold gradient-text">22</div>
                     <div className="text-xs text-warm-gray mt-1">Projects</div>
                   </div>
                 </div>
@@ -225,7 +225,7 @@ export default function AboutPage() {
                       The Now
                     </h3>
                     <p className="text-warm-gray leading-relaxed mb-4">
-                      Four years into my professional career, 17 projects delivered, and I&apos;m living in Tokyo doing what I love. I work with clients globally while experiencing one of the most incredible cities on Earth.
+                      Four years into my professional career, 22 projects delivered, and I&apos;m living in Tokyo doing what I love. I work with clients globally while experiencing one of the most incredible cities on Earth.
                     </p>
                     <p className="text-warm-gray leading-relaxed mb-4">
                       My days are a mix of solving complex automation puzzles, building web applications that don&apos;t suck, and constantly learning new tech. The job never gets boring because technology never stops evolving.
@@ -505,7 +505,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-tokyo-red/10 to-transparent rounded-tokyo blur-xl group-hover:blur-2xl transition-all duration-500" />
               <div className="relative p-10 bg-gradient-to-br from-urban-gray to-urban-gray/50 rounded-tokyo border-2 border-tokyo-red/20 hover:border-tokyo-red/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-red text-center">
                 <TrendingUp className="w-12 h-12 text-tokyo-red mx-auto mb-4" />
-                <div className="text-6xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">17</div>
+                <div className="text-6xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform duration-300">22</div>
                 <div className="text-snow-white font-semibold text-lg mb-2">Projects Delivered</div>
                 <p className="text-warm-gray text-xs">Automation, web apps, and integrations</p>
               </div>
@@ -563,7 +563,7 @@ export default function AboutPage() {
                   So that&apos;s me.
                 </p>
                 <p className="text-warm-gray text-lg md:text-xl leading-relaxed mb-6 max-w-2xl mx-auto">
-                  Just a 22-year-old developer in Tokyo who loves building things that work, helping people, and probably drinking too much coffee.
+                  Just a 23-year-old developer in Tokyo who loves building things that work, helping people, and probably drinking too much coffee.
                 </p>
                 <p className="text-warm-gray leading-relaxed mb-4 max-w-2xl mx-auto">
                   If you&apos;ve got a project that needs automating, a system that needs building, or just want to chat about code, I&apos;m always up for it.
