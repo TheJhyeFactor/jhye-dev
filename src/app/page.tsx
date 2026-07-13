@@ -3,11 +3,11 @@ import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react'
 import ProjectCard from '@/components/ProjectCard'
 
 const products = [
-  { title: 'Buildly', description: 'A creator-learning platform for guided classroom missions and build-first lessons.', image: '/images/projects/screenshots/buildly.png', tags: ['React', 'Education', 'Product Design'], href: 'https://buildly-showcase.vercel.app/', year: 2026 },
-  { title: 'TradieFlow', description: 'Live profit tracking for trade businesses, from job costs to targets and performance.', image: '/images/projects/screenshots/tradieflow.png', tags: ['Next.js', 'SaaS', 'Job Management'], href: 'https://tradieflow-pi.vercel.app/', year: 2026 },
-  { title: 'TripMate', description: 'Operations software connecting bookings, riders, drivers, routes, and trip coordination.', image: '/images/projects/screenshots/tripmate.png', tags: ['React', 'Firebase', 'Operations'], href: 'https://tripmate-platform.vercel.app/', year: 2026 },
-  { title: 'Castivo', description: 'Creator software for branded streamer sites and audience engagement tools.', image: '/images/projects/screenshots/castivo.png', tags: ['Next.js', 'Firebase', 'Creator Tools'], href: 'https://castivo-web-thejhyefactors-projects.vercel.app/', year: 2026 },
-  { title: 'QuickMeet', description: 'A focused meeting platform for starting secure conversations quickly.', image: '/images/projects/screenshots/quickmeet.png', tags: ['React', 'WebRTC', 'Real-time'], href: 'https://www.quickmeet.cam/', year: 2026 },
+  { title: 'Buildly', description: 'A creator-learning platform for guided classroom missions and build-first lessons.', image: '/images/projects/covers/buildly.png', tags: ['React', 'Education', 'Product Design'], href: 'https://buildly-showcase.vercel.app/', year: 2026, status: 'Shipped product' },
+  { title: 'TradieFlow', description: 'Live profit tracking for trade businesses, from job costs to targets and performance.', image: '/images/projects/covers/tradieflow.png', tags: ['Next.js', 'SaaS', 'Job Management'], href: 'https://tradieflow-pi.vercel.app/', year: 2026, status: 'Shipped product' },
+  { title: 'TripMate', description: 'Operations software connecting bookings, riders, drivers, routes, and trip coordination.', image: '/images/projects/covers/tripmate.png', tags: ['React', 'Firebase', 'Operations'], href: 'https://tripmate-platform.vercel.app/', year: 2026, status: 'Shipped product' },
+  { title: 'Castivo', description: 'Creator software for branded streamer sites and audience engagement tools.', image: '/images/projects/covers/castivo.png', tags: ['Next.js', 'Firebase', 'Creator Tools'], href: 'https://castivo-web-thejhyefactors-projects.vercel.app/', year: 2026, status: 'Shipped product' },
+  { title: 'QuickMeet', description: 'A focused meeting platform for starting secure conversations quickly.', image: '/images/projects/covers/quickmeet.png', tags: ['React', 'WebRTC', 'Real-time'], href: 'https://www.quickmeet.cam/', year: 2026, status: 'Shipped product' },
 ]
 
 export default function Home() {
