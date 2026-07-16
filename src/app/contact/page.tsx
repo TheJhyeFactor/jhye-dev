@@ -1,10 +1,39 @@
-'use client'
+import type { Metadata } from 'next'
+import { ArrowUpRight } from 'lucide-react'
+import { profile } from '@/data/portfolio'
 
-import { FormEvent, useState } from 'react'
-import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react'
+export const metadata: Metadata = {
+  title: 'Contact',
+  description: "Contact Jhye O'Meley about product development, full-stack work, or simplifying an operational system.",
+  alternates: { canonical: '/contact/' },
+  openGraph: { title: "Contact — Jhye O'Meley", description: 'Have a product to build or a system to untangle?', url: '/contact/', images: ['/og.webp'] },
+  twitter: { card: 'summary_large_image', title: "Contact — Jhye O'Meley", description: 'Have a product to build or a system to untangle?', images: ['/og.webp'] },
+}
 
 export default function ContactPage() {
-  const [sent, setSent] = useState(false)
-  const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true) }
-  return <div className="page-shell"><section className="py-20 md:py-28"><p className="eyebrow mb-5">Contact</p><h1 className="max-w-3xl font-['Space_Grotesk'] text-5xl font-bold leading-[1.02] tracking-[-0.04em] md:text-7xl">Let&apos;s talk about the work.</h1><p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)]">For hiring conversations, product work, or a system that needs simplifying, send me a note. I usually reply within two business days.</p></section><section className="section-rule grid gap-12 py-16 md:grid-cols-[0.7fr_1.3fr]"><div className="space-y-7"><div><p className="eyebrow mb-3">Direct</p><a className="focus-ring text-lg font-bold hover:text-[var(--accent)]" href="mailto:omelejhye@gmail.com">omelejhye@gmail.com <ArrowUpRight className="inline h-4 w-4" /></a></div><div className="flex gap-5 text-sm text-[var(--muted)]"><a className="focus-ring inline-flex items-center gap-2 hover:text-[var(--accent)]" href="https://github.com/TheJhyeFactor" target="_blank" rel="noreferrer"><Github className="h-4 w-4" />GitHub</a><a className="focus-ring inline-flex items-center gap-2 hover:text-[var(--accent)]" href="https://www.linkedin.com/in/jhye-o-meley-529960213/" target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4" />LinkedIn</a></div><p className="text-sm leading-6 text-[var(--muted)]">Based in Tokyo, working with people and teams globally.</p></div><div>{sent ? <div className="border border-[var(--border)] bg-[var(--surface)] p-8"><p className="eyebrow mb-3">Message ready</p><h2 className="font-['Space_Grotesk'] text-2xl font-bold">Thanks — I&apos;ll be in touch.</h2><p className="mt-3 text-[var(--muted)]">Your message has been prepared. Please send it through your email client.</p></div> : <form className="space-y-6" onSubmit={submit}><div className="grid gap-6 sm:grid-cols-2"><label className="text-sm font-bold">Name<input required name="name" className="focus-ring mt-2 block w-full border border-[var(--border)] bg-[var(--surface)] px-4 py-3 font-normal outline-none focus:border-[var(--accent)]" /></label><label className="text-sm font-bold">Email<input required type="email" name="email" className="focus-ring mt-2 block w-full border border-[var(--border)] bg-[var(--surface)] px-4 py-3 font-normal outline-none focus:border-[var(--accent)]" /></label></div><label className="block text-sm font-bold">Message<textarea required name="message" rows={6} className="focus-ring mt-2 block w-full resize-y border border-[var(--border)] bg-[var(--surface)] px-4 py-3 font-normal outline-none focus:border-[var(--accent)]" /></label><button type="submit" className="focus-ring inline-flex items-center gap-2 bg-[var(--ink)] px-5 py-3 text-sm font-bold text-white hover:bg-[var(--accent)]">Send message <Mail className="h-4 w-4" /></button></form>}</div></section></div>
+  return (
+    <div className="page-shell">
+      <section className="grid min-h-[calc(100vh-77px)] gap-12 py-20 md:grid-cols-[1.2fr_0.6fr] md:items-end md:py-28">
+        <div>
+          <p className="eyebrow mb-5">Contact · New work and conversations</p>
+          <h1 className="display-title">Let&apos;s make the complicated part clear.</h1>
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+            If you&apos;re hiring, shaping a product, or trying to simplify a difficult workflow, send me the context and what a useful outcome looks like.
+          </p>
+          <a href={`mailto:${profile.email}`} className="button-primary mt-9">
+            Email {profile.email} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+        </div>
+
+        <aside className="border-t border-[var(--ink)] pt-5">
+          <p className="eyebrow mb-5">Elsewhere</p>
+          <div className="divide-y divide-[var(--border)] border-b border-[var(--border)]">
+            <a className="focus-ring flex items-center justify-between py-4 hover:text-[var(--accent)]" href={profile.github} target="_blank" rel="noreferrer"><span>GitHub</span><ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+            <a className="focus-ring flex items-center justify-between py-4 hover:text-[var(--accent)]" href={profile.linkedin} target="_blank" rel="noreferrer"><span>LinkedIn</span><ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+          </div>
+          <p className="mt-8 text-sm leading-6 text-[var(--muted)]">Based in Tokyo, working with people and teams across time zones.</p>
+        </aside>
+      </section>
+    </div>
+  )
 }

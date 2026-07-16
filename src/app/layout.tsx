@@ -1,28 +1,76 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Script from 'next/script'
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://jhye.dev/#person',
+      name: "Jhye O'Meley",
+      url: 'https://jhye.dev',
+      image: 'https://jhye.dev/images/projects/Headshot.jpeg',
+      sameAs: ['https://github.com/TheJhyeFactor', 'https://www.linkedin.com/in/jhye-o-meley-529960213/'],
+      jobTitle: 'Product designer and full-stack developer',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://jhye.dev/#website',
+      url: 'https://jhye.dev',
+      name: 'jhye.dev',
+      publisher: { '@id': 'https://jhye.dev/#person' },
+    },
+  ],
+}
 
 export const metadata: Metadata = {
-  title: 'Jhye O\'Meley — Full-stack developer',
-  description: 'Jhye O\'Meley is a full-stack developer building useful software and operational systems.',
-  keywords: ['full-stack developer', 'web development', 'automation', 'software', 'portfolio'],
-  authors: [{ name: 'Jhye O\'Meley' }],
-  openGraph: { title: 'Jhye O\'Meley — Full-stack developer', description: 'Building useful software and operational systems.', url: 'https://jhye.dev', siteName: 'jhye.dev', type: 'website' },
+  metadataBase: new URL('https://jhye.dev'),
+  title: {
+    default: "Jhye O'Meley — Product designer and full-stack developer",
+    template: "%s — Jhye O'Meley",
+  },
+  description: "Jhye O'Meley designs and builds operational products, web applications, and automations from first idea to working release.",
+  keywords: ['product developer', 'full-stack developer', 'product design', 'web applications', 'automation'],
+  authors: [{ name: "Jhye O'Meley", url: 'https://jhye.dev' }],
+  creator: "Jhye O'Meley",
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: "Jhye O'Meley — Product designer and full-stack developer",
+    description: 'Complicated work, turned into software people can actually use.',
+    url: 'https://jhye.dev',
+    siteName: 'jhye.dev',
+    locale: 'en_AU',
+    type: 'website',
+    images: [{ url: '/og.webp', width: 1731, height: 909, alt: "Jhye O'Meley — Complicated work, made clear." }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Jhye O'Meley — Product designer and full-stack developer",
+    description: 'Complicated work, turned into software people can actually use.',
+    images: ['/og.webp'],
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#f1eee7',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-DM0L507283" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-DM0L507283');`}</Script>
-      </head>
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-[var(--ink)] focus:px-4 focus:py-3 focus:text-white">Skip to content</a>
         <Header />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
+        <Script id="structured-data" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-DM0L507283" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-DM0L507283',{anonymize_ip:true});`}</Script>
       </body>
     </html>
   )

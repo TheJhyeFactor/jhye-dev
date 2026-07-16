@@ -1,38 +1,121 @@
-import Link from 'next/link'
+import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import ProjectCard from '@/components/ProjectCard'
+import { clientProjects, experiments, featuredProjects, projectCount } from '@/data/portfolio'
 
-const products = [
-  { title: 'Buildly', description: 'A creator-learning platform where students explore, build, test, and share technology through guided classroom missions.', image: '/images/projects/covers/buildly.png', tags: ['React', 'Education', 'Product Design', 'Vercel'], year: 2026, href: 'https://buildly-showcase.vercel.app/', status: 'Shipped product' },
-  { title: 'TradieFlow', description: 'Live profit tracking for trade businesses, helping owners understand labour, materials, targets, and job performance while work is still underway.', image: '/images/projects/covers/tradieflow.png', tags: ['Next.js', 'SaaS', 'Fintech', 'Job Management'], year: 2026, href: 'https://tradieflow-pi.vercel.app/', status: 'Shipped product' },
-  { title: 'TripMate', description: 'Operations software for transport teams, connecting bookings, riders, drivers, live route monitoring, and trip coordination in one workspace.', image: '/images/projects/covers/tripmate.png', tags: ['React', 'Firebase', 'Operations', 'Mobile Companion'], year: 2026, href: 'https://tripmate-platform.vercel.app/', status: 'Shipped product' },
-  { title: 'Castivo', description: 'A platform for streamers to create and manage branded websites, with audience engagement tools such as leaderboards, raffles, and bonus-hunt tracking.', image: '/images/projects/covers/castivo.png', tags: ['Next.js', 'Firebase', 'Creator Tools', 'SaaS'], year: 2026, href: 'https://castivo-web-thejhyefactors-projects.vercel.app/', status: 'Shipped product' },
-  { title: 'QuickMeet', description: 'A focused meeting platform for starting secure conversations quickly, with a polished landing surface and an iOS companion on the way.', image: '/images/projects/covers/quickmeet.png', tags: ['React', 'WebRTC', 'Firebase', 'Real-time'], year: 2026, href: 'https://www.quickmeet.cam/', status: 'Shipped product' },
-]
-const clientWork = [
-  { title: 'TransportationME', description: 'Logistics platform for route planning, fleet tracking, and real-time operations.', image: '/images/projects/transportation-me.png', tags: ['WordPress', 'Dashboard', 'Automation'], year: 2025, href: 'https://transportationme.au/' },
-  { title: 'PC Choices', description: 'E-commerce experience with product pages, a PC configurator, cart, and checkout.', image: '/images/projects/pc-choice.png', tags: ['E-Commerce', 'React', 'Web Development'], year: 2023, href: 'https://pc-choice.com.au/' },
-  { title: 'AEO Services Portal', description: 'Internal project tracking, communication, and resource management for a services team.', image: '/images/projects/aeo-portal.svg', tags: ['Dashboard', 'Project Management'], year: 2024 },
-  { title: 'NDIS Admin System', description: 'Administration and compliance tooling for participant and service management.', image: '/images/projects/ndis-admin.svg', tags: ['Admin System', 'Automation'], year: 2024 },
-  { title: 'TJ Pizza Hut', description: 'Online ordering flow with menu browsing, customisation, payment, and delivery tracking.', image: '/images/projects/tj-pizza.svg', tags: ['Web App', 'Ordering System'], year: 2021 },
-  { title: 'ECBC Promotion Video', description: 'End-to-end promotional video production, from scripting and direction to editing.', image: '/images/projects/ecbc-video.svg', tags: ['Video', 'Editing', 'Directing'], year: 2025 },
-]
-const experiments = [
-  ['CareerLift', 'Resume builder with ATS-friendly templates and private client-side processing.', '/images/projects/CareeLift.jpeg', 'https://thejhyefactor.github.io/careerlift/'],
-  ['Real-Time Object Detection', 'Browser computer-vision experiment using TensorFlow.js.', '/images/projects/Realtimeobj.jpeg', 'https://thejhyefactor.github.io/object-detection/'],
-  ['Browser OS', 'A browser desktop with draggable windows, terminal, and local persistence.', '/images/projects/webos.jpeg', 'https://thejhyefactor.github.io/browser-os/'],
-  ['VideoFlow', 'Browser-based video editor with overlays, effects, and export controls.', '/images/projects/videoflow.jpeg', 'https://thejhyefactor.github.io/video-editor/'],
-  ['InvoicePro', 'Private invoice generation and PDF export for freelancers and small businesses.', '/images/projects/invoice.png', 'https://thejhyefactor.github.io/invoice-generator/'],
-  ['PDF Tools', 'Client-side tools for merging, splitting, compressing, and converting PDFs.', '/images/projects/pdf.png', 'https://thejhyefactor.github.io/pdf-tools/'],
-]
+export const metadata: Metadata = {
+  title: 'Work',
+  description: "Explore Jhye O'Meley's product platforms, client systems, and software experiments.",
+  alternates: { canonical: '/portfolio/' },
+  openGraph: { title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', url: '/portfolio/', images: ['/og.webp'] },
+  twitter: { card: 'summary_large_image', title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', images: ['/og.webp'] },
+}
 
 export default function PortfolioPage() {
-  return <div className="page-shell">
-    <section className="py-20 md:py-28"><p className="eyebrow mb-5">Work · 22 projects</p><h1 className="max-w-3xl font-['Space_Grotesk'] text-5xl font-bold leading-[1.02] tracking-[-0.04em] md:text-7xl">Five products, built from first idea to working software.</h1><p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)]">A focused look at the products I have designed, built, and shipped since 2021. Each one starts with a real workflow and ends with something people can use.</p></section>
-    <section className="section-rule py-16"><div className="mb-10 flex items-end justify-between gap-6"><div><p className="eyebrow mb-3">01 · Selected products</p><h2 className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight md:text-4xl">Built and shipped.</h2></div><span className="text-sm text-[var(--muted)]">5 products</span></div><div className="divide-y divide-[var(--border)] border-y border-[var(--border)]">{products.map((project) => <article key={project.title} className="grid gap-7 py-8 md:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)] md:items-center md:gap-12"><div className="relative aspect-[16/10] overflow-hidden bg-[#e8e3da]"><Image src={project.image} alt={`${project.title} showcase illustration`} fill className="object-cover transition-transform duration-500 hover:scale-[1.02]" /></div><div><p className="eyebrow mb-3">{project.status}</p><div className="flex items-start justify-between gap-5"><h3 className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight">{project.title}</h3><a href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`} className="focus-ring text-[var(--accent)] hover:underline"><ArrowUpRight className="h-5 w-5" /></a></div><p className="mt-4 text-base leading-7 text-[var(--muted)]">{project.description}</p><p className="mt-5 text-xs uppercase tracking-[0.12em] text-[var(--subtle)]">{project.tags.join(' · ')} <span className="ml-3">{project.year}</span></p></div></article>)}</div><p className="mt-5 max-w-2xl text-sm text-[var(--muted)]">Lifecycle labels describe the current build and deployment state. They do not imply user or revenue metrics.</p></section>
-    <section className="section-rule py-16"><div className="mb-10 flex items-end justify-between gap-6"><div><p className="eyebrow mb-3">02 · Client work</p><h2 className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight md:text-4xl">Systems that ship.</h2></div><span className="text-sm text-[var(--muted)]">6 projects</span></div><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{clientWork.map((project) => <ProjectCard key={project.title} {...project} />)}</div></section>
-    <section className="section-rule py-16"><div className="mb-10 flex items-end justify-between gap-6"><div><p className="eyebrow mb-3">03 · Experiments</p><h2 className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight md:text-4xl">Things I built to learn.</h2></div><span className="text-sm text-[var(--muted)]">6 of 11 experiments</span></div><div className="divide-y divide-[var(--border)] border-y border-[var(--border)]">{experiments.map(([title, description, , href]) => <a key={title} href={href} target="_blank" rel="noreferrer" className="focus-ring flex items-center justify-between gap-5 py-5 hover:text-[var(--accent)]"><span><strong className="block font-['Space_Grotesk'] text-lg text-[var(--ink)]">{title}</strong><span className="text-sm text-[var(--muted)]">{description}</span></span><ArrowUpRight className="h-5 w-5 shrink-0 text-[var(--accent)]" /></a>)}</div><p className="mt-5 text-sm text-[var(--muted)]">More tools, including Social Dashboard, Stock Price Visualizer, Pomodoro Timer, Particle Physics Playground, and Background Remover, remain available in the wider project archive.</p></section>
-    <section className="section-rule py-16"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="eyebrow mb-3">Let&apos;s talk</p><h2 className="max-w-xl font-['Space_Grotesk'] text-3xl font-bold tracking-tight md:text-4xl">Looking for someone who can take an idea through to a working product?</h2></div><Link href="/contact/" className="focus-ring inline-flex items-center gap-2 text-sm font-bold text-[var(--accent)] hover:underline">Contact me <ArrowUpRight className="h-4 w-4" /></Link></div></section>
-  </div>
+  return (
+    <div className="page-shell">
+      <section className="grid gap-10 py-20 md:grid-cols-[1.25fr_0.55fr] md:items-end md:py-28">
+        <div>
+          <p className="eyebrow mb-5">Work index · {projectCount} projects since 2021</p>
+          <h1 className="display-title">Built, tested, and put to work.</h1>
+        </div>
+        <p className="text-lg leading-8 text-[var(--muted)]">
+          Products, client systems, and experiments across logistics, education, creator tools, trade operations, and the open web.
+        </p>
+      </section>
+
+      <section className="section-block" aria-labelledby="product-work">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow mb-3">01 · Product platforms</p>
+            <h2 id="product-work" className="section-title">From first idea to live software.</h2>
+          </div>
+          <span className="mono-label">5 selected products</span>
+        </div>
+
+        <div className="work-list">
+          {featuredProjects.map((project, index) => (
+            <article key={project.slug} className="work-entry">
+              {project.href ? (
+                <a href={project.href} target="_blank" rel="noreferrer" className="work-image focus-ring group" aria-label={`Open ${project.title}`}>
+                  <Image src={project.image} alt={`${project.title} product interface`} fill sizes="(max-width: 767px) 100vw, 58vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.015]" />
+                </a>
+              ) : (
+                <div className="work-image"><Image src={project.image} alt={`${project.title} product interface`} fill sizes="(max-width: 767px) 100vw, 58vw" className="object-cover" /></div>
+              )}
+              <div className="work-copy">
+                <p className="mono-label">0{index + 1} / {project.year}</p>
+                <div>
+                  <p className="eyebrow mb-3">{project.status}</p>
+                  <h3 className="font-display text-3xl font-bold tracking-[-0.035em] md:text-4xl">{project.title}</h3>
+                  <p className="mt-4 leading-7 text-[var(--muted)]">{project.description}</p>
+                </div>
+                <div>
+                  <p className="project-scope">{project.scope}</p>
+                  <p className="project-disciplines">{project.disciplines.join(' · ')}</p>
+                </div>
+                {project.href ? (
+                  <a href={project.href} target="_blank" rel="noreferrer" className="text-link w-fit">
+                    Visit product <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                ) : <p className="mono-label">Public preview not available</p>}
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="mt-5 max-w-2xl text-sm leading-6 text-[var(--muted)]">
+          “Live product” describes the current build and deployment state. It does not imply user, revenue, or commercial performance metrics.
+        </p>
+      </section>
+
+      <section className="section-block" aria-labelledby="client-work">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow mb-3">02 · Client and commissioned work</p>
+            <h2 id="client-work" className="section-title">Systems made for a job.</h2>
+          </div>
+          <span className="mono-label">6 projects</span>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {clientProjects.map((project) => <ProjectCard key={project.slug} {...project} />)}
+        </div>
+      </section>
+
+      <section className="section-block" aria-labelledby="experiments-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow mb-3">03 · Experiments</p>
+            <h2 id="experiments-title" className="section-title">Small builds, real learning.</h2>
+          </div>
+          <span className="mono-label">{experiments.length} from the archive</span>
+        </div>
+        <div className="border-y border-[var(--ink)]">
+          {experiments.map((project, index) => (
+            <a
+              key={project.title}
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className="focus-ring grid gap-4 border-b border-[var(--border)] py-5 last:border-0 hover:text-[var(--accent)] sm:grid-cols-[54px_0.65fr_1.35fr_auto] sm:items-center"
+            >
+              <span className="mono-label">0{index + 1}</span>
+              <strong className="font-display text-lg text-[var(--ink)]">{project.title}</strong>
+              <span className="text-sm text-[var(--muted)]">{project.description}</span>
+              <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="statement-block">
+        <p className="eyebrow">Next project</p>
+        <div>
+          <h2 className="section-title max-w-3xl">Looking for someone who can take an idea through to a working release?</h2>
+          <Link href="/contact/" className="text-link mt-7">Start a conversation <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+        </div>
+      </section>
+    </div>
+  )
 }

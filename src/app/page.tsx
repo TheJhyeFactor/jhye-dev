@@ -1,22 +1,142 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react'
-import ProjectCard from '@/components/ProjectCard'
-
-const products = [
-  { title: 'Buildly', description: 'A creator-learning platform for guided classroom missions and build-first lessons.', image: '/images/projects/covers/buildly.png', tags: ['React', 'Education', 'Product Design'], href: 'https://buildly-showcase.vercel.app/', year: 2026, status: 'Shipped product' },
-  { title: 'TradieFlow', description: 'Live profit tracking for trade businesses, from job costs to targets and performance.', image: '/images/projects/covers/tradieflow.png', tags: ['Next.js', 'SaaS', 'Job Management'], href: 'https://tradieflow-pi.vercel.app/', year: 2026, status: 'Shipped product' },
-  { title: 'TripMate', description: 'Operations software connecting bookings, riders, drivers, routes, and trip coordination.', image: '/images/projects/covers/tripmate.png', tags: ['React', 'Firebase', 'Operations'], href: 'https://tripmate-platform.vercel.app/', year: 2026, status: 'Shipped product' },
-  { title: 'Castivo', description: 'Creator software for branded streamer sites and audience engagement tools.', image: '/images/projects/covers/castivo.png', tags: ['Next.js', 'Firebase', 'Creator Tools'], href: 'https://castivo-web-thejhyefactors-projects.vercel.app/', year: 2026, status: 'Shipped product' },
-  { title: 'QuickMeet', description: 'A focused meeting platform for starting secure conversations quickly.', image: '/images/projects/covers/quickmeet.png', tags: ['React', 'WebRTC', 'Real-time'], href: 'https://www.quickmeet.cam/', year: 2026, status: 'Shipped product' },
-]
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { capabilities, featuredProjects, profile, projectCount } from '@/data/portfolio'
 
 export default function Home() {
-  return <div className="page-shell">
-    <section className="grid min-h-[620px] items-center gap-12 py-24 md:grid-cols-[1.2fr_0.8fr] md:py-32">
-      <div><p className="eyebrow mb-6">Full-stack developer · Tokyo / Australia</p><h1 className="text-balance max-w-3xl font-['Space_Grotesk'] text-5xl font-bold leading-[0.98] tracking-[-0.04em] md:text-7xl">I build useful software for real work.</h1><p className="mt-8 max-w-xl text-lg leading-8 text-[var(--muted)]">I&apos;m Jhye O&apos;Meley, a 23-year-old developer building web applications, automation, and operational systems with clarity and care.</p><div className="mt-9 flex flex-wrap gap-5"><Link href="/portfolio/" className="focus-ring inline-flex items-center gap-2 bg-[var(--ink)] px-5 py-3 text-sm font-bold text-white hover:bg-[var(--accent)]">View selected work <ArrowUpRight className="h-4 w-4" /></Link><Link href="/contact/" className="focus-ring inline-flex items-center gap-2 border border-[var(--border)] px-5 py-3 text-sm font-bold hover:border-[var(--accent)] hover:text-[var(--accent)]">Get in touch</Link></div><div className="mt-10 flex gap-5 text-sm text-[var(--muted)]"><a className="focus-ring inline-flex items-center gap-2 hover:text-[var(--accent)]" href="https://github.com/TheJhyeFactor" target="_blank" rel="noreferrer"><Github className="h-4 w-4" />GitHub</a><a className="focus-ring inline-flex items-center gap-2 hover:text-[var(--accent)]" href="https://www.linkedin.com/in/jhye-o-meley-529960213/" target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4" />LinkedIn</a><a className="focus-ring inline-flex items-center gap-2 hover:text-[var(--accent)]" href="mailto:omelejhye@gmail.com"><Mail className="h-4 w-4" />Email</a></div></div>
-      <div className="border-l border-[var(--border)] pl-7 md:pl-10"><p className="eyebrow mb-5">At a glance</p><dl className="space-y-7"><div><dt className="text-4xl font-bold tracking-tight">22</dt><dd className="mt-1 text-sm text-[var(--muted)]">projects delivered</dd></div><div><dt className="text-4xl font-bold tracking-tight">5</dt><dd className="mt-1 text-sm text-[var(--muted)]">product platforms built</dd></div><div><dt className="text-4xl font-bold tracking-tight">5 yrs</dt><dd className="mt-1 text-sm text-[var(--muted)]">building since 2021</dd></div></dl></div>
-    </section>
-    <section className="section-rule py-16 md:py-20"><div className="mb-10 flex items-end justify-between gap-6"><div><p className="eyebrow mb-3">Selected work</p><h2 className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight md:text-4xl">Products I&apos;ve built</h2></div><Link href="/portfolio/" className="focus-ring hidden text-sm font-bold text-[var(--accent)] hover:underline sm:block">View all work <ArrowUpRight className="inline h-4 w-4" /></Link></div><div className="grid gap-6 md:grid-cols-2">{products.slice(0, 4).map((project) => <ProjectCard key={project.title} {...project} featured />)}</div><Link href="/portfolio/" className="focus-ring mt-8 block text-sm font-bold text-[var(--accent)] hover:underline sm:hidden">View all work <ArrowUpRight className="inline h-4 w-4" /></Link></section>
-    <section className="section-rule grid gap-8 py-16 md:grid-cols-[0.8fr_1.2fr] md:py-20"><div><p className="eyebrow mb-3">What I do</p><h2 className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight">Clear systems for complicated work.</h2></div><div className="grid gap-x-8 gap-y-6 text-[var(--muted)] sm:grid-cols-2"><p><strong className="block text-[var(--ink)]">Full-stack development</strong>Web applications designed to be useful, maintainable, and ready for production.</p><p><strong className="block text-[var(--ink)]">Automation & integrations</strong>Connected workflows that remove repetitive work and keep teams moving.</p><p><strong className="block text-[var(--ink)]">Operational tools</strong>Dashboards and systems that turn live information into confident decisions.</p><p><strong className="block text-[var(--ink)]">AI/ML prototypes</strong>Practical experiments that test what new technology can do.</p></div></section>
-  </div>
+  return (
+    <div className="page-shell">
+      <section className="hero-grid py-14 md:py-20" aria-labelledby="intro-title">
+        <div className="hero-copy">
+          <p className="eyebrow mb-6">Independent full-stack developer · Tokyo / Australia</p>
+          <h1 id="intro-title" className="display-title max-w-5xl">
+            I turn complicated work into software people can actually use.
+          </h1>
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)] md:text-xl">
+            I&apos;m {profile.name}. I design and build operational products, web applications, and automations from first idea to working release.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <Link href="#selected-work" className="button-primary">
+              Explore selected work <ArrowDown className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <Link href="/contact/" className="text-link">
+              Start a conversation <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+
+        <aside className="hero-aside" aria-label="Jhye at a glance">
+          <div className="portrait-frame">
+            <Image
+              src="/images/projects/Headshot.jpeg"
+              alt="Jhye O'Meley"
+              fill
+              priority
+              sizes="(max-width: 767px) 100vw, 34vw"
+              className="object-cover object-center"
+            />
+            <span className="portrait-index" aria-hidden="true">01</span>
+          </div>
+          <div className="aside-caption">
+            <p>Product thinking, interface design, and full-stack engineering in one practice.</p>
+            <p className="mono-label">Building since {profile.startYear}</p>
+          </div>
+        </aside>
+      </section>
+
+      <section className="proof-strip" aria-label="Experience summary">
+        <p><strong>{projectCount}</strong><span>projects in the index</span></p>
+        <p><strong>5</strong><span>product platforms</span></p>
+        <p><strong>4</strong><span>core disciplines</span></p>
+        <p><strong>01</strong><span>person, end to end</span></p>
+      </section>
+
+      <section id="selected-work" className="section-block scroll-mt-8" aria-labelledby="work-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow mb-3">01 · Selected work</p>
+            <h2 id="work-title" className="section-title">Products built around real workflows.</h2>
+          </div>
+          <Link href="/portfolio/" className="text-link shrink-0">
+            Full project index <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+
+        <div className="work-list">
+          {featuredProjects.slice(0, 3).map((project, index) => (
+            <article key={project.slug} className="work-entry">
+              <a href={project.href} target="_blank" rel="noreferrer" className="work-image focus-ring group" aria-label={`Open ${project.title}`}>
+                <Image
+                  src={project.image}
+                  alt={`${project.title} product interface`}
+                  fill
+                  sizes="(max-width: 767px) 100vw, 58vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.015]"
+                />
+              </a>
+              <div className="work-copy">
+                <p className="mono-label">0{index + 1} / {project.year}</p>
+                <div>
+                  <p className="eyebrow mb-3">{project.status}</p>
+                  <h3 className="font-display text-3xl font-bold tracking-[-0.035em] md:text-4xl">{project.title}</h3>
+                  <p className="mt-4 leading-7 text-[var(--muted)]">{project.description}</p>
+                </div>
+                <div>
+                  <p className="project-scope">{project.scope}</p>
+                  <p className="project-disciplines">{project.disciplines.join(' · ')}</p>
+                </div>
+                <a href={project.href} target="_blank" rel="noreferrer" className="text-link w-fit">
+                  View live product <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-block" aria-labelledby="approach-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow mb-3">02 · How I work</p>
+            <h2 id="approach-title" className="section-title">One line from problem to production.</h2>
+          </div>
+          <p className="max-w-md leading-7 text-[var(--muted)]">
+            The handoffs between strategy, design, and engineering are often where good products lose clarity. I keep those decisions connected.
+          </p>
+        </div>
+        <ol className="capability-list">
+          {capabilities.slice(0, 3).map((capability) => (
+            <li key={capability.number}>
+              <span className="mono-label">{capability.number}</span>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="statement-block" aria-labelledby="about-title">
+        <p className="eyebrow">03 · About</p>
+        <div>
+          <h2 id="about-title" className="section-title max-w-3xl">
+            A practical builder with a product designer&apos;s eye.
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+            I&apos;ve shipped software across transport, education, creator tools, trade operations, and internal business systems. The domain changes; the goal stays the same—make difficult work feel clear.
+          </p>
+          <Link href="/about/" className="text-link mt-7">
+            More about me <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="contact-cta" aria-labelledby="contact-title">
+        <p className="eyebrow">04 · Start something useful</p>
+        <h2 id="contact-title">Have a product to build or a system to untangle?</h2>
+        <a href={`mailto:${profile.email}`} className="button-light">
+          Email Jhye <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </section>
+    </div>
+  )
 }
