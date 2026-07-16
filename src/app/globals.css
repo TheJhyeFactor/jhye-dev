@@ -324,6 +324,8 @@ button, input, textarea { font: inherit; }
   --portfolio-ink: #171717;
   --portfolio-muted: #777;
   --portfolio-line: #dfdfdf;
+  --cursor-x: 50%;
+  --cursor-y: 44%;
   position: relative;
   display: flex;
   min-height: 100svh;
@@ -333,6 +335,20 @@ button, input, textarea { font: inherit; }
   background: #fff;
   color: var(--portfolio-ink);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.interactive-portfolio::before {
+  position: absolute;
+  z-index: 0;
+  inset: -12%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 25% 18% at var(--cursor-x) var(--cursor-y), rgb(190 223 255 / 52%), transparent 72%),
+    radial-gradient(ellipse 23% 20% at calc(var(--cursor-x) - 18%) calc(var(--cursor-y) + 8%), rgb(255 211 232 / 44%), transparent 72%),
+    radial-gradient(ellipse 20% 17% at calc(var(--cursor-x) + 16%) calc(var(--cursor-y) + 10%), rgb(255 225 188 / 34%), transparent 72%);
+  filter: blur(34px);
+  opacity: 0.72;
+  transition: background-position 180ms ease-out;
+  content: '';
 }
 .portfolio-stage {
   position: relative;
@@ -376,7 +392,7 @@ button, input, textarea { font: inherit; }
 .hero-portrait img { object-position: center 20%; }
 .hero-summary { max-width: 540px; margin-top: 1.4rem; color: #696969; font-size: 0.96rem; line-height: 1.6; }
 
-.portfolio-controls { position: relative; z-index: 4; width: min(730px, 100%); margin: 0 auto; }
+.portfolio-controls { position: relative; z-index: 4; width: min(730px, 100%); margin: 0 auto 26px; }
 .portfolio-question {
   display: grid;
   min-height: 62px;
@@ -428,13 +444,13 @@ button, input, textarea { font: inherit; }
 .portfolio-watermark {
   position: absolute;
   z-index: 0;
-  bottom: -0.15em;
+  bottom: 0.02em;
   left: 50%;
   color: #f7f7f7;
-  font-size: clamp(8rem, 18vw, 15rem);
+  font-size: clamp(7rem, 16vw, 13rem);
   font-weight: 850;
   letter-spacing: -0.09em;
-  line-height: 0.6;
+  line-height: 0.72;
   transform: translateX(-50%);
   user-select: none;
   white-space: nowrap;
@@ -445,7 +461,7 @@ button, input, textarea { font: inherit; }
 .panel-heading > p { max-width: 390px; color: var(--portfolio-muted); line-height: 1.55; text-align: right; }
 .panel-kicker { margin-bottom: 0.45rem; color: #757575; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .portfolio-panel h2 { font-size: clamp(2.35rem, 5vw, 4.25rem); font-weight: 750; letter-spacing: -0.065em; line-height: 0.98; }
-.project-carousel { display: flex; gap: 16px; overflow-x: auto; padding: 2px 2px 16px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.project-carousel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 2px 2px 16px; }
 .project-tile {
   position: relative;
   min-width: min(345px, 78vw);
@@ -560,6 +576,8 @@ button, input, textarea { font: inherit; }
   .panel-heading > p { max-width: 330px; font-size: 0.86rem; text-align: left; }
   .portfolio-panel h2 { font-size: 2.65rem; }
   .project-tile { min-width: 82vw; height: 310px; }
+  .project-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .project-tile { flex: 0 0 82vw; }
   .panel-note { align-items: flex-start; flex-direction: column; gap: 0.75rem; }
   .skill-layout { grid-template-columns: 1fr; }
   .curious-grid { grid-template-columns: 1fr; }
@@ -572,4 +590,8 @@ button, input, textarea { font: inherit; }
   .dialog-copy { padding: 2rem 1.5rem 2.5rem; }
   .view-projects .portfolio-stage, .view-skills .portfolio-stage, .view-fun .portfolio-stage, .view-contact .portfolio-stage { place-items: start center; }
   .view-projects .portfolio-controls, .view-skills .portfolio-controls, .view-fun .portfolio-controls, .view-contact .portfolio-controls { margin-top: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-portfolio::before { display: none; }
 }

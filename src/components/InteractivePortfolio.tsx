@@ -26,11 +26,11 @@ const navigation = [
 ]
 
 const questionRoutes: Array<{ terms: string[]; view: PortfolioView }> = [
-  { terms: ['project', 'work', 'built', 'portfolio', 'tripmate'], view: 'projects' },
-  { terms: ['skill', 'stack', 'tool', 'technology', 'code'], view: 'skills' },
-  { terms: ['contact', 'email', 'hire', 'available', 'talk'], view: 'contact' },
-  { terms: ['fun', 'curious', 'experiment', 'learn'], view: 'fun' },
-  { terms: ['who', 'about', 'jhye', 'you'], view: 'me' },
+  { terms: ['project', 'work', 'build', 'built', 'portfolio', 'tripmate', 'buildly', 'tradieflow', 'castivo', 'quickmeet'], view: 'projects' },
+  { terms: ['skill', 'stack', 'tool', 'technology', 'code', 'capability', 'service'], view: 'skills' },
+  { terms: ['contact', 'email', 'hire', 'available', 'talk', 'reach'], view: 'contact' },
+  { terms: ['fun', 'curious', 'experiment', 'learn', 'interest'], view: 'fun' },
+  { terms: ['who', 'about', 'jhye', 'you', 'location', 'tokyo', 'australia'], view: 'me' },
 ]
 
 export default function InteractivePortfolio() {
@@ -65,6 +65,12 @@ export default function InteractivePortfolio() {
     window.history.pushState(null, '', `#${view}`)
   }
 
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect()
+    event.currentTarget.style.setProperty('--cursor-x', `${((event.clientX - bounds.left) / bounds.width) * 100}%`)
+    event.currentTarget.style.setProperty('--cursor-y', `${((event.clientY - bounds.top) / bounds.height) * 100}%`)
+  }
+
   const handleQuestion = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const normalizedQuestion = question.trim().toLowerCase()
@@ -81,7 +87,7 @@ export default function InteractivePortfolio() {
   }
 
   return (
-    <div className={`interactive-portfolio view-${activeView}`}>
+    <div className={`interactive-portfolio view-${activeView}`} onPointerMove={handlePointerMove}>
       <section className="portfolio-stage" id="portfolio-content" aria-label="Portfolio content">
         <div className="portfolio-view" key={activeView} ref={viewRef} tabIndex={-1}>
           {activeView === 'me' && <AboutView />}
@@ -100,7 +106,7 @@ export default function InteractivePortfolio() {
             id="portfolio-question"
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
-            placeholder="Find projects, skills, or contact..."
+            placeholder="Ask me anything..."
             autoComplete="off"
           />
           <button type="submit" aria-label="Submit question" disabled={!question.trim()}>
@@ -127,7 +133,7 @@ export default function InteractivePortfolio() {
         </nav>
       </div>
 
-      <p className="portfolio-watermark" aria-hidden="true">JHYE</p>
+      <p className="portfolio-watermark" aria-hidden="true">Jhye O&apos;Meley</p>
       <ProjectDialog project={selectedProject} onClose={() => setSelectedProject(null)} />
     </div>
   )
