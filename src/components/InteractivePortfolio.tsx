@@ -18,7 +18,7 @@ import {
   Sparkles,
   UserRound,
 } from 'lucide-react'
-import { capabilities, featuredProjects, profile, projectCount, skills } from '@/data/portfolio'
+import { capabilities, experiments, featuredProjects, profile, projectCount, skills } from '@/data/portfolio'
 import type { Project } from '@/data/portfolio'
 
 type PortfolioView = 'me' | 'projects' | 'skills' | 'fun' | 'contact'
@@ -348,19 +348,34 @@ function SkillsView() {
 }
 
 function CuriousView() {
+  const [selectedExperiment, setSelectedExperiment] = useState(experiments[0])
+  const featuredExperiments = experiments.slice(0, 6)
+
   return (
     <section className="portfolio-panel" aria-labelledby="curious-title">
       <div className="panel-heading">
         <div><p className="panel-kicker">Beyond the main build</p><h2 id="curious-title">Things I&apos;m Curious About</h2></div>
-        <p>Small experiments keep the bigger work sharp.</p>
+        <p>Small experiments keep the bigger work sharp. Pick one to see what I&apos;m testing.</p>
       </div>
 
-      <div className="curious-grid">
-        <article><span>01</span><h3>Browser-native tools</h3><p>Testing how much useful software can run privately in the browser—from video editing to PDFs and computer vision.</p></article>
-        <article><span>02</span><h3>Operational clarity</h3><p>Finding better ways to turn bookings, routes, costs, live events, and team decisions into one understandable workflow.</p></article>
-        <article><span>03</span><h3>New product interfaces</h3><p>Exploring where AI and automation genuinely remove work without making the product harder to trust or use.</p></article>
+      <div className="curious-lab">
+        <article className="curious-feature" aria-live="polite">
+          <div className="curious-pulse" aria-hidden="true" />
+          <p className="panel-kicker">Selected experiment</p>
+          <span className="curious-number">{String(experiments.indexOf(selectedExperiment) + 1).padStart(2, '0')} / {experiments.length}</span>
+          <h3>{selectedExperiment.title}</h3>
+          <p>{selectedExperiment.description}</p>
+          {selectedExperiment.href && <a href={selectedExperiment.href} target="_blank" rel="noreferrer">Open the experiment <ArrowUpRight aria-hidden="true" /></a>}
+        </article>
+        <div className="curious-grid" role="list" aria-label="Featured experiments">
+          {featuredExperiments.map((experiment, index) => (
+            <button key={experiment.title} type="button" className={selectedExperiment.title === experiment.title ? 'is-selected' : undefined} onClick={() => setSelectedExperiment(experiment)} aria-pressed={selectedExperiment.title === experiment.title}>
+              <span>{String(index + 1).padStart(2, '0')}</span><strong>{experiment.title}</strong><ArrowUpRight aria-hidden="true" />
+            </button>
+          ))}
+        </div>
       </div>
-      <p className="curious-location">Currently building between <strong>Tokyo</strong> and <strong>Australia</strong>.</p>
+      <div className="curious-footer"><p>{experiments.length} experiments in the index · Currently building between <strong>Tokyo</strong> and <strong>Australia</strong>.</p><a href="/portfolio/">Browse the full index <ArrowUpRight aria-hidden="true" /></a></div>
     </section>
   )
 }

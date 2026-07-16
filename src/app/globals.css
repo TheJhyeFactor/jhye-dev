@@ -467,7 +467,7 @@ button, input, textarea { font: inherit; }
 .project-tile {
   position: relative;
   min-width: min(345px, 78vw);
-  height: 270px;
+  height: 220px;
   overflow: hidden;
   border: 1px solid #dedede;
   border-radius: 18px;
@@ -520,7 +520,23 @@ button, input, textarea { font: inherit; }
 .curious-grid article { min-height: 250px; border: 1px solid #dedede; border-radius: 22px; padding: 24px; }
 .curious-grid h3 { margin-top: 3rem; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.03em; }
 .curious-grid p { margin-top: 0.75rem; color: #707070; font-size: 0.88rem; line-height: 1.6; }
-.curious-location { margin-top: 1.5rem; color: #777; text-align: center; }
+.curious-lab { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 18px; }
+.curious-feature { position: relative; min-height: 365px; overflow: hidden; border: 1px solid #dedede; border-radius: 22px; padding: clamp(1.5rem, 4vw, 2.5rem); background: #fff; }
+.curious-feature::after { position: absolute; right: -20%; bottom: -30%; width: 70%; height: 70%; border: 1px solid #dbe6ff; border-radius: 50%; content: ''; }
+.curious-pulse { position: absolute; top: 24%; right: 16%; width: 100px; height: 100px; border-radius: 50%; background: #e6edff; box-shadow: 0 0 0 18px #f3f6ff, 0 0 0 38px #fafbff; animation: curious-breathe 4s ease-in-out infinite; }
+.curious-number { position: relative; z-index: 1; display: block; margin-top: 3rem; color: #999; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; }
+.curious-feature h3 { position: relative; z-index: 1; max-width: 12ch; margin-top: 0.45rem; font-size: clamp(1.8rem, 3vw, 2.7rem); font-weight: 750; letter-spacing: -0.06em; line-height: 0.98; }
+.curious-feature > p:not(.panel-kicker) { position: relative; z-index: 1; max-width: 36ch; margin-top: 1rem; color: #666; font-size: 0.9rem; line-height: 1.55; }
+.curious-feature a { position: absolute; z-index: 1; bottom: 2rem; left: 2.5rem; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; }
+.curious-feature a svg, .curious-footer svg { width: 16px; height: 16px; }
+.curious-grid button { position: relative; display: flex; min-height: 112px; flex-direction: column; align-items: flex-start; justify-content: center; border: 1px solid #dedede; border-radius: 18px; padding: 1.2rem 1.3rem; background: #fff; color: #171717; text-align: left; transition: border-color 160ms ease, transform 160ms ease, background 160ms ease; }
+.curious-grid button:hover, .curious-grid button.is-selected { border-color: #9dbdff; background: #f8faff; transform: translateY(-3px); }
+.curious-grid button > span { color: #999; font-size: 0.68rem; font-weight: 700; }
+.curious-grid button strong { max-width: 18ch; margin-top: 0.55rem; font-size: 1rem; letter-spacing: -0.02em; }
+.curious-grid button svg { position: absolute; top: 1.2rem; right: 1.2rem; width: 16px; height: 16px; color: #777; }
+.curious-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.2rem; color: #777; font-size: 0.82rem; }
+.curious-footer a { display: inline-flex; align-items: center; gap: 0.35rem; color: #171717; font-weight: 700; }
+@keyframes curious-breathe { 0%, 100% { transform: scale(0.94); opacity: 0.75; } 50% { transform: scale(1.08); opacity: 1; } }
 .contact-panel { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: clamp(3rem, 8vw, 8rem); align-items: end; }
 .contact-panel > div:first-child > p:last-child { max-width: 640px; margin-top: 1.5rem; color: #707070; font-size: 1.05rem; line-height: 1.7; }
 .contact-actions { display: flex; flex-direction: column; border-top: 1px solid #222; }
@@ -608,6 +624,9 @@ button, input, textarea { font: inherit; }
   .skill-layout { grid-template-columns: 1fr; }
   .curious-grid { grid-template-columns: 1fr; }
   .curious-grid article { min-height: 190px; }
+  .curious-lab { grid-template-columns: 1fr; }
+  .curious-feature { min-height: 320px; }
+  .curious-footer { align-items: flex-start; flex-direction: column; }
   .curious-grid h3 { margin-top: 2rem; }
   .contact-panel { grid-template-columns: 1fr; gap: 2.5rem; }
   .project-dialog { width: calc(100% - 20px); max-height: calc(100svh - 20px); border-radius: 22px; overflow-y: auto; }
@@ -621,6 +640,8 @@ button, input, textarea { font: inherit; }
 
 @media (min-width: 761px) {
   .interactive-portfolio.view-me { height: 100svh; min-height: 100svh; overflow: hidden; }
+  .interactive-portfolio.view-projects .portfolio-stage { min-height: 0; place-items: start center; }
+  .interactive-portfolio.view-projects .portfolio-controls { margin-top: -20px; margin-bottom: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

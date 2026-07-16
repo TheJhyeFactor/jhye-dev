@@ -97,6 +97,20 @@ export const featuredProjects: Project[] = [
     why: 'I built it to make getting into a real conversation feel immediate.',
     approach: 'I kept the experience focused on a fast join flow and the essential real-time meeting controls.',
   },
+  {
+    title: 'PC Choices',
+    slug: 'pc-choices',
+    description: 'E-commerce experience with product discovery, a PC configurator, cart, and checkout.',
+    image: '/images/projects/pc-choice.png',
+    disciplines: ['E-commerce', 'React', 'Web development'],
+    year: 2023,
+    href: 'https://pc-choice.com.au/',
+    status: 'Live product',
+    scope: 'Product experience and build',
+    problem: 'Choosing a PC can be overwhelming when product discovery, compatibility, and checkout are disconnected.',
+    why: 'I built it to make a technical purchase feel guided without taking control away from the customer.',
+    approach: 'I combined browseable product information with a configurator, cart, and focused checkout path.',
+  },
 ]
 
 export const clientProjects: Project[] = [
@@ -107,15 +121,6 @@ export const clientProjects: Project[] = [
     image: '/images/projects/transportation-me.png',
     disciplines: ['WordPress', 'Dashboard', 'Automation'],
     year: 2025,
-  },
-  {
-    title: 'PC Choices',
-    slug: 'pc-choices',
-    description: 'E-commerce experience with product discovery, a PC configurator, cart, and checkout.',
-    image: '/images/projects/pc-choice.png',
-    disciplines: ['E-commerce', 'React', 'Web development'],
-    year: 2023,
-    href: 'https://pc-choice.com.au/',
   },
   {
     title: 'AEO Services Portal',
