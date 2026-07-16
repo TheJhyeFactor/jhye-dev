@@ -465,35 +465,42 @@ button, input, textarea { font: inherit; }
 .project-tile {
   position: relative;
   min-width: min(345px, 78vw);
-  height: 330px;
+  height: 270px;
   overflow: hidden;
-  border-radius: 24px;
-  background: #171717;
-  color: #fff;
+  border: 1px solid #dedede;
+  border-radius: 18px;
+  background: #fff;
+  color: #171717;
   scroll-snap-align: start;
   isolation: isolate;
-  border: 0;
   padding: 0;
   text-align: left;
 }
-.project-tile::after { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / 86%) 0%, rgb(0 0 0 / 18%) 62%, rgb(0 0 0 / 62%) 100%); content: ''; }
-.project-tile img { z-index: -2; opacity: 0.78; transition: transform 420ms ease, opacity 420ms ease; }
-.project-tile:hover img { opacity: 0.94; transform: scale(1.025); }
-.project-card-copy { position: relative; z-index: 1; display: flex; height: 100%; flex-direction: column; padding: 28px; }
-.project-card-copy span { color: rgb(255 255 255 / 70%); font-size: 0.72rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
-.project-card-copy h3 { margin-top: 0.25rem; font-size: 2rem; font-weight: 720; letter-spacing: -0.045em; }
-.project-card-copy p { max-width: 27ch; margin-top: auto; font-size: 0.88rem; line-height: 1.5; }
-.project-card-copy small { margin-top: 0.75rem; color: rgb(255 255 255 / 62%); font-size: 0.65rem; text-transform: uppercase; }
-.project-card-arrow { position: absolute; z-index: 2; top: 26px; right: 26px; width: 20px; height: 20px; }
+.project-tile:hover { border-color: #9dbdff; transform: translateY(-3px); }
+.project-tile img { z-index: -1; top: 0; right: 0; bottom: 0; left: auto; width: 43%; opacity: 0.2; transition: transform 420ms ease, opacity 420ms ease; }
+.project-tile:hover img { opacity: 0.35; transform: scale(1.04); }
+.project-card-copy { position: relative; z-index: 1; display: flex; width: 72%; height: 100%; flex-direction: column; padding: 24px; }
+.project-card-copy span { color: #6f6f6f; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.project-card-copy h3 { margin-top: 0.35rem; font-size: 1.8rem; font-weight: 730; letter-spacing: -0.05em; }
+.project-card-copy p { max-width: 31ch; margin-top: auto; color: #626262; font-size: 0.82rem; line-height: 1.5; }
+.project-card-copy small { margin-top: 0.7rem; color: #888; font-size: 0.62rem; text-transform: uppercase; }
+.project-card-arrow { position: absolute; z-index: 2; top: 24px; right: 24px; width: 18px; height: 18px; }
 .panel-note { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 1rem; color: #686868; font-size: 0.92rem; }
 .panel-note a { display: inline-flex; align-items: center; gap: 0.4rem; color: #171717; font-weight: 650; }
 .panel-note svg { width: 16px; height: 16px; }
 
 .skill-layout { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 18px; }
 .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid #222; }
-.skill-grid div { display: flex; min-height: 64px; align-items: center; gap: 0.85rem; border-bottom: 1px solid #e1e1e1; padding: 0.75rem 0.5rem; }
+.skill-grid button { display: flex; min-height: 64px; align-items: center; gap: 0.85rem; border: 0; border-bottom: 1px solid #e1e1e1; padding: 0.75rem 0.5rem; background: transparent; text-align: left; transition: color 160ms ease, padding 160ms ease, background 160ms ease; }
+.skill-grid button:hover, .skill-grid button.is-selected { padding-left: 0.9rem; background: #f6f9ff; color: #315fbe; }
+.skill-grid button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: -3px; }
 .skill-grid span, .capability-stack > article > span, .curious-grid > article > span { color: #999; font-size: 0.68rem; font-weight: 650; letter-spacing: 0.08em; }
 .skill-grid strong { font-size: 0.95rem; }
+.skill-explorer { display: grid; grid-template-rows: auto 1fr; gap: 18px; }
+.skill-detail { min-height: 170px; border: 1px solid #dedede; border-radius: 18px; padding: 1.35rem; background: #fff; }
+.skill-detail h3 { font-size: 1.65rem; font-weight: 730; letter-spacing: -0.05em; }
+.skill-detail > p:not(.panel-kicker) { max-width: 40ch; margin-top: 0.65rem; color: #626262; line-height: 1.5; }
+.skill-detail small { display: block; margin-top: 1rem; color: #888; font-size: 0.75rem; line-height: 1.45; }
 .capability-stack { border-top: 1px solid #222; }
 .capability-stack article { display: grid; grid-template-columns: 44px 1fr; gap: 0.75rem; border-bottom: 1px solid #e1e1e1; padding: 0.9rem 0; }
 .capability-stack h3 { font-size: 1rem; font-weight: 680; }

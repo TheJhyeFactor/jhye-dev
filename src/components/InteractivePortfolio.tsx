@@ -254,6 +254,20 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
 }
 
 function SkillsView() {
+  const [selectedSkill, setSelectedSkill] = useState(skills[0])
+  const skillDetails: Record<string, { summary: string; use: string }> = {
+    React: { summary: 'Component architecture for interfaces that need to feel fast, clear, and easy to evolve.', use: 'Used across TripMate, Buildly, QuickMeet, and internal product surfaces.' },
+    'Next.js': { summary: 'Full-stack web foundations for content, routing, data, and production-ready product surfaces.', use: 'Used for TradieFlow, Castivo, and portfolio-scale applications.' },
+    TypeScript: { summary: 'A shared language for making product behavior explicit and safer to change.', use: 'Used to keep frontend state, APIs, and reusable components aligned.' },
+    'Node.js': { summary: 'Server-side workflows, integrations, automation, and services around the product.', use: 'Used when the product needs trusted business logic beyond the browser.' },
+    Firebase: { summary: 'Authentication, realtime data, hosting, and pragmatic infrastructure for connected products.', use: 'Used for TripMate, Castivo, and realtime collaboration flows.' },
+    PostgreSQL: { summary: 'Relational data modeling for systems where relationships, history, and reporting matter.', use: 'Used when operational data needs durable structure and clear querying.' },
+    Python: { summary: 'Automation, data work, and experiments where a small script can remove a lot of manual effort.', use: 'Used for prototypes, processing workflows, and focused tooling.' },
+    'Tailwind CSS': { summary: 'A fast way to compose consistent interface systems without losing control of the details.', use: 'Used for responsive layout, tokens, and product UI iteration.' },
+    Vercel: { summary: 'A simple path from a working product to a reliable public deployment.', use: 'Used to ship and iterate on several live product surfaces.' },
+    Git: { summary: 'A shared history for shipping carefully, reviewing changes, and keeping experiments reversible.', use: 'Used across every project from first commit to production release.' },
+  }
+
   return (
     <section className="portfolio-panel" aria-labelledby="skills-title">
       <div className="panel-heading">
@@ -262,8 +276,20 @@ function SkillsView() {
       </div>
 
       <div className="skill-layout">
-        <div className="skill-grid">
-          {skills.map((skill, index) => <div key={skill}><span>{String(index + 1).padStart(2, '0')}</span><strong>{skill}</strong></div>)}
+        <div className="skill-explorer">
+          <div className="skill-grid" role="list" aria-label="Technical skills">
+            {skills.map((skill, index) => (
+              <button key={skill} type="button" className={selectedSkill === skill ? 'is-selected' : undefined} onClick={() => setSelectedSkill(skill)} aria-pressed={selectedSkill === skill}>
+                <span>{String(index + 1).padStart(2, '0')}</span><strong>{skill}</strong>
+              </button>
+            ))}
+          </div>
+          <article className="skill-detail" aria-live="polite">
+            <p className="panel-kicker">Selected skill</p>
+            <h3>{selectedSkill}</h3>
+            <p>{skillDetails[selectedSkill].summary}</p>
+            <small>{skillDetails[selectedSkill].use}</small>
+          </article>
         </div>
         <div className="capability-stack">
           {capabilities.map((capability) => (
