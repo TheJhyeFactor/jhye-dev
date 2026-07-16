@@ -392,7 +392,7 @@ button, input, textarea { font: inherit; }
 .hero-portrait img { object-position: center 20%; }
 .hero-summary { max-width: 540px; margin-top: 1.4rem; color: #696969; font-size: 0.96rem; line-height: 1.6; }
 
-.portfolio-controls { position: relative; z-index: 4; width: min(730px, 100%); margin: 0 auto 26px; }
+.portfolio-controls { position: relative; z-index: 4; width: min(730px, 100%); margin: 0 auto 58px; }
 .portfolio-question {
   display: grid;
   min-height: 62px;
@@ -439,14 +439,15 @@ button, input, textarea { font: inherit; }
 .portfolio-nav button:hover { border-color: #b9b9b9; transform: translateY(-2px); }
 .portfolio-nav button.is-active { border-color: #b8cff8; background: #f6f9ff; }
 .portfolio-nav button:focus-visible, .portfolio-question button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: 3px; }
-.portfolio-nav svg { width: 18px; height: 18px; stroke-width: 1.8; }
+.portfolio-nav svg { position: absolute; width: 18px; height: 18px; stroke-width: 1.8; color: var(--nav-color); transform: translateY(-1px); }
+.portfolio-nav button::before { width: 30px; height: 30px; border-radius: 10px; background: color-mix(in srgb, var(--nav-color) 14%, white); content: ''; }
 .portfolio-nav button.is-active svg { color: var(--portfolio-blue); }
 .portfolio-watermark {
   position: absolute;
   z-index: 0;
   bottom: 0.02em;
   left: 50%;
-  color: #f7f7f7;
+  color: #f1f3f8;
   font-size: clamp(7rem, 16vw, 13rem);
   font-weight: 850;
   letter-spacing: -0.09em;
@@ -495,6 +496,11 @@ button, input, textarea { font: inherit; }
 .skill-grid button:hover, .skill-grid button.is-selected { padding-left: 0.9rem; background: #f6f9ff; color: #315fbe; }
 .skill-grid button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: -3px; }
 .skill-grid span, .capability-stack > article > span, .curious-grid > article > span { color: #999; font-size: 0.68rem; font-weight: 650; letter-spacing: 0.08em; }
+.skill-grid .skill-index { width: 22px; flex: 0 0 22px; }
+.skill-mark { position: relative; display: grid; width: 34px; height: 34px; flex: 0 0 34px; place-items: center; border-radius: 10px; background: color-mix(in srgb, var(--skill-color) 14%, white); color: var(--skill-color); }
+.skill-mark svg { width: 17px; height: 17px; stroke-width: 2.1; }
+.skill-mark b { position: absolute; font-size: 0.54rem; font-weight: 800; letter-spacing: -0.03em; }
+.skill-mark svg + b { display: none; }
 .skill-grid strong { font-size: 0.95rem; }
 .skill-explorer { display: grid; grid-template-rows: auto 1fr; gap: 18px; }
 .skill-detail { min-height: 170px; border: 1px solid #dedede; border-radius: 18px; padding: 1.35rem; background: #fff; }
@@ -604,6 +610,7 @@ button, input, textarea { font: inherit; }
   .dialog-image { min-height: 300px; }
   .dialog-copy { padding: 2rem 1.5rem 2.5rem; }
   .view-projects .portfolio-stage, .view-skills .portfolio-stage, .view-fun .portfolio-stage, .view-contact .portfolio-stage { place-items: start center; }
+  .portfolio-controls { margin-bottom: 30px; }
   .view-projects .portfolio-controls, .view-skills .portfolio-controls, .view-fun .portfolio-controls, .view-contact .portfolio-controls { margin-top: 1rem; }
 }
 

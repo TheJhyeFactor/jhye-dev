@@ -1,11 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import { FormEvent, useEffect, useRef, useState } from 'react'
+import { FormEvent, useEffect, useRef, useState, type ComponentType } from 'react'
 import {
   ArrowRight,
   ArrowUpRight,
+  Atom,
+  Braces,
   BriefcaseBusiness,
+  Cloud,
+  Code2,
+  Database,
+  GitBranch,
   Layers3,
   Mail,
   MessageCircleMore,
@@ -18,12 +24,29 @@ import type { Project } from '@/data/portfolio'
 type PortfolioView = 'me' | 'projects' | 'skills' | 'fun' | 'contact'
 
 const navigation = [
-  { id: 'me' as const, label: 'Me', icon: UserRound },
-  { id: 'projects' as const, label: 'Projects', icon: BriefcaseBusiness },
-  { id: 'skills' as const, label: 'Skills', icon: Layers3 },
-  { id: 'fun' as const, label: 'Curious', icon: Sparkles },
-  { id: 'contact' as const, label: 'Contact', icon: MessageCircleMore },
+  { id: 'me' as const, label: 'Me', icon: UserRound, color: '#2b91b8' },
+  { id: 'projects' as const, label: 'Projects', icon: BriefcaseBusiness, color: '#d47b45' },
+  { id: 'skills' as const, label: 'Skills', icon: Layers3, color: '#6e63c7' },
+  { id: 'fun' as const, label: 'Curious', icon: Sparkles, color: '#d4598a' },
+  { id: 'contact' as const, label: 'Contact', icon: MessageCircleMore, color: '#b18122' },
 ]
+
+const skillMarks: Record<string, { label: string; icon: ComponentType<{ 'aria-hidden'?: boolean | 'true' | 'false' }>; color: string }> = {
+  React: { label: '⚛', icon: Atom, color: '#2b91b8' },
+  'Next.js': { label: 'N', icon: Braces, color: '#171717' },
+  TypeScript: { label: 'TS', icon: Braces, color: '#3178c6' },
+  'Node.js': { label: 'JS', icon: Code2, color: '#7f9d32' },
+  Firebase: { label: 'FB', icon: Cloud, color: '#e0a62c' },
+  PostgreSQL: { label: 'SQL', icon: Database, color: '#3978a6' },
+  Python: { label: 'PY', icon: Code2, color: '#447da8' },
+  'Tailwind CSS': { label: 'TW', icon: Layers3, color: '#2d9fbd' },
+  Vercel: { label: '▲', icon: TriangleMark, color: '#171717' },
+  Git: { label: 'GIT', icon: GitBranch, color: '#de654d' },
+}
+
+function TriangleMark({ 'aria-hidden': ariaHidden }: { 'aria-hidden'?: boolean | 'true' | 'false' }) {
+  return <span aria-hidden={ariaHidden} />
+}
 
 const questionRoutes: Array<{ terms: string[]; view: PortfolioView }> = [
   { terms: ['project', 'work', 'build', 'built', 'portfolio', 'tripmate', 'buildly', 'tradieflow', 'castivo', 'quickmeet'], view: 'projects' },
@@ -131,7 +154,7 @@ export default function InteractivePortfolio() {
         {reply && <p className="portfolio-reply" role="status">{reply}</p>}
 
         <nav className="portfolio-nav" aria-label="Portfolio sections">
-          {navigation.map(({ id, label, icon: Icon }) => (
+          {navigation.map(({ id, label, icon: Icon, color }) => (
             <button
               key={id}
               type="button"
@@ -139,6 +162,7 @@ export default function InteractivePortfolio() {
               onClick={() => showView(id)}
               aria-pressed={activeView === id}
               aria-controls="portfolio-content"
+              style={{ '--nav-color': color } as React.CSSProperties}
             >
               <Icon aria-hidden="true" />
               <span>{label}</span>
@@ -278,11 +302,15 @@ function SkillsView() {
       <div className="skill-layout">
         <div className="skill-explorer">
           <div className="skill-grid" role="list" aria-label="Technical skills">
-            {skills.map((skill, index) => (
+            {skills.map((skill, index) => {
+              const mark = skillMarks[skill]
+              const MarkIcon = mark.icon
+              return (
               <button key={skill} type="button" className={selectedSkill === skill ? 'is-selected' : undefined} onClick={() => setSelectedSkill(skill)} aria-pressed={selectedSkill === skill}>
-                <span>{String(index + 1).padStart(2, '0')}</span><strong>{skill}</strong>
+                <span className="skill-index">{String(index + 1).padStart(2, '0')}</span><span className="skill-mark" style={{ '--skill-color': mark.color } as React.CSSProperties}><MarkIcon aria-hidden="true" /><b>{mark.label}</b></span><strong>{skill}</strong>
               </button>
-            ))}
+              )
+            })}
           </div>
           <article className="skill-detail" aria-live="polite">
             <p className="panel-kicker">Selected skill</p>
