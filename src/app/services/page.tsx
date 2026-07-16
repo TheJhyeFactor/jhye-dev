@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   title: 'Capabilities',
   description: "Product direction, interface design, full-stack development, and software improvement by Jhye O'Meley.",
   alternates: { canonical: '/services/' },
-  openGraph: { title: "Capabilities — Jhye O'Meley", description: 'Useful software, built as one connected practice.', url: '/services/', images: ['/og-interactive.webp'] },
-  twitter: { card: 'summary_large_image', title: "Capabilities — Jhye O'Meley", description: 'Useful software, built as one connected practice.', images: ['/og-interactive.webp'] },
+  openGraph: { title: "Capabilities — Jhye O'Meley", description: 'Useful software, built as one connected practice.', url: '/services/', images: ['/og.webp'] },
+  twitter: { card: 'summary_large_image', title: "Capabilities — Jhye O'Meley", description: 'Useful software, built as one connected practice.', images: ['/og.webp'] },
 }
 
 export default function ServicesPage() {

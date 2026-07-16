@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-07-17
+
+- Replaced the simulated homepage portfolio assistant with a direct editorial homepage for hiring-manager scanning.
+- Unified homepage navigation and visual language with the Work, About, Capabilities, and Contact routes.
+- Added user, role, shipped-scope, and next-step context to featured project case studies without adding unsupported metrics.
+- Corrected project counts, restored Capabilities navigation on mobile, added favicon metadata, and added lightweight analytics events for project and contact clicks.
+- Removed duplicate unused homepage/data/documentation artifacts.
+
 ## 2026-07-16
 
 - Reworked the homepage into a minimal, stateful portfolio inspired by aaabadcode.com's interaction pattern while preserving Jhye's own content and identity.

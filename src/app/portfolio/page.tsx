@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: 'Work',
   description: "Explore Jhye O'Meley's product platforms, client systems, and software experiments.",
   alternates: { canonical: '/portfolio/' },
-  openGraph: { title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', url: '/portfolio/', images: ['/og-interactive.webp'] },
-  twitter: { card: 'summary_large_image', title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', images: ['/og-interactive.webp'] },
+  openGraph: { title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', url: '/portfolio/', images: ['/og.webp'] },
+  twitter: { card: 'summary_large_image', title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', images: ['/og.webp'] },
 }
 
 export default function PortfolioPage() {
@@ -32,12 +32,12 @@ export default function PortfolioPage() {
             <p className="eyebrow mb-3">01 · Product platforms</p>
             <h2 id="product-work" className="section-title">From first idea to live software.</h2>
           </div>
-          <span className="mono-label">5 selected products</span>
+          <span className="mono-label">{featuredProjects.length} selected products</span>
         </div>
 
         <div className="work-list">
           {featuredProjects.map((project, index) => (
-            <article key={project.slug} className="work-entry">
+            <article key={project.slug} id={project.slug} className="work-entry">
               {project.href ? (
                 <a href={project.href} target="_blank" rel="noreferrer" className="work-image focus-ring group" aria-label={`Open ${project.title}`}>
                   <Image src={project.image} alt={`${project.title} product interface`} fill sizes="(max-width: 767px) 100vw, 58vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.015]" />
@@ -55,6 +55,12 @@ export default function PortfolioPage() {
                 <div>
                   <p className="project-scope">{project.scope}</p>
                   <p className="project-disciplines">{project.disciplines.join(' · ')}</p>
+                </div>
+                <div className="case-study-summary">
+                  <p><strong>Users</strong>{project.users ?? 'People using the product in their day-to-day work.'}</p>
+                  <p><strong>My role</strong>{project.role ?? project.scope}</p>
+                  <p><strong>What shipped</strong>{project.approach}</p>
+                  <p><strong>Next</strong>{project.nextStep ?? 'Continue learning from real use.'}</p>
                 </div>
                 {project.href ? (
                   <a href={project.href} target="_blank" rel="noreferrer" className="text-link w-fit">
@@ -76,7 +82,7 @@ export default function PortfolioPage() {
             <p className="eyebrow mb-3">02 · Client and commissioned work</p>
             <h2 id="client-work" className="section-title">Systems made for a job.</h2>
           </div>
-          <span className="mono-label">6 projects</span>
+          <span className="mono-label">{clientProjects.length} projects</span>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {clientProjects.map((project) => <ProjectCard key={project.slug} {...project} />)}

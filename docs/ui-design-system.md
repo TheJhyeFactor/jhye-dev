@@ -2,23 +2,22 @@
 
 ## Direction
 
-The homepage uses an ultra-minimal interactive portfolio language: a white canvas, compact top chrome, a centred human introduction, and large navigational controls. It should feel immediate, personal, and intentionally quiet rather than like a marketing template. Canonical content pages retain the denser editorial system for long-form reading.
+The site uses one editorial portfolio language: a warm neutral canvas, clear rules, compact technical labels, and large display typography. The homepage should communicate Jhye's product-engineering positioning immediately, then lead into selected work and a direct contact path. Personality comes from the writing, portrait, and project choices rather than a simulated assistant interface.
 
 ## Tokens
 
 - Homepage background: `#ffffff`
-- Homepage ink: `#171717`
-- Homepage muted text: `#777777`
-- Homepage rules: `#dfdfdf`
-- Homepage accent: `#4e84e6`
+- Homepage ink: `#151515`
+- Homepage muted text: `#66635d`
+- Homepage rules: `#cec8bc`
+- Homepage accent: `#bd342b`
 - Editorial-page background: `#f1eee7`
 - Dark callout: `#191817`
 
-Use neutral colours for most of the interface and reserve blue for active navigation, focus, and primary contact. The rounded finder and navigation controls are specific to the interactive homepage; do not spread that shape language across the editorial pages. Do not introduce gradients, green accents, glass effects, or decorative colour noise.
+Use neutral colours for most of the interface and reserve red for emphasis, focus, and primary actions. Keep controls square-cornered and editorial rather than introducing rounded finder controls, gradients, green accents, glass effects, or decorative colour noise.
 
 ## Typography
 
-- Interactive homepage: system sans-serif stack
 - Editorial display: Space Grotesk
 - Editorial body: DM Sans
 - Technical labels: IBM Plex Mono
@@ -27,14 +26,12 @@ Display headlines use tight tracking and balanced line wrapping. Monospace text 
 
 ## Layout and components
 
-- Use whitespace and scale to create hierarchy on the homepage; use horizontal rules on content pages.
-- Homepage views must sync to URL hashes and remain usable with browser back/forward navigation.
-- The section finder only routes to known local content and must never imply a general AI assistant.
-- Project previews open in a native, keyboard-accessible dialog.
-- Featured projects are image-and-copy records, not dashboard cards.
+- Use whitespace and scale to create hierarchy on the homepage; use horizontal rules throughout the site.
+- Homepage actions should be explicit links to Work, Capabilities, and Contact.
+- Featured projects are image-and-copy records with case-study proof, not dashboard cards.
 - Secondary work may use square-corner project cards with a single border.
 - Buttons have square corners, a minimum 48px touch target, and visible keyboard focus.
-- Responsive layouts collapse to one column without hiding essential content.
+- Responsive layouts collapse to one column without hiding essential navigation or capabilities.
 
 ## Accessibility
 

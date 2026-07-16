@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: 'About',
   description: "About Jhye O'Meley, a full-stack developer from Australia working across product, interface, and engineering.",
   alternates: { canonical: '/about/' },
-  openGraph: { title: "About — Jhye O'Meley", description: 'A practical builder with a product designer’s eye.', url: '/about/', images: ['/og-interactive.webp'] },
-  twitter: { card: 'summary_large_image', title: "About — Jhye O'Meley", description: 'A practical builder with a product designer’s eye.', images: ['/og-interactive.webp'] },
+  openGraph: { title: "About — Jhye O'Meley", description: 'A practical builder with a product designer’s eye.', url: '/about/', images: ['/og.webp'] },
+  twitter: { card: 'summary_large_image', title: "About — Jhye O'Meley", description: 'A practical builder with a product designer’s eye.', images: ['/og.webp'] },
 }
 
 export default function AboutPage() {

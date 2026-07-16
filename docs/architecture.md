@@ -7,7 +7,7 @@ The site is a statically exported Next.js portfolio. It is intentionally content
 ## Main surfaces
 
 - `src/app/page.tsx` — minimal server-rendered entrypoint for the interactive home.
-- `src/components/InteractivePortfolio.tsx` — client-side portfolio views, hash navigation, local section finder, and project details.
+- `src/app/page.tsx` — the editorial homepage with direct work, capabilities, and contact paths.
 - `src/app/portfolio/page.tsx` — public product, client, and experiment index.
 - `src/app/about/page.tsx` — biography, principles, and technical toolkit.
 - `src/app/services/page.tsx` — capabilities and suitable engagement types.

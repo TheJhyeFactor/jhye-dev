@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { profile } from '@/data/portfolio'
+import TrackedEmailLink from '@/components/TrackedEmailLink'
 
 export default function Footer() {
   const pathname = usePathname()
@@ -18,7 +19,7 @@ export default function Footer() {
         <div className="flex flex-wrap gap-x-6 gap-y-3 text-[var(--muted)]">
           <a className="focus-ring hover:text-[var(--accent)]" href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
           <a className="focus-ring hover:text-[var(--accent)]" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-          <a className="focus-ring hover:text-[var(--accent)]" href={`mailto:${profile.email}`}>Email</a>
+          <TrackedEmailLink className="focus-ring hover:text-[var(--accent)]" href={`mailto:${profile.email}`} location="footer">Email</TrackedEmailLink>
           <span>© {new Date().getFullYear()}</span>
         </div>
       </div>

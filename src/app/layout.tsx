@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     siteName: 'jhye.dev',
     locale: 'en_AU',
     type: 'website',
-    images: [{ url: '/og-interactive.webp', width: 1729, height: 910, alt: "Jhye O'Meley — Product Engineer" }],
+    images: [{ url: '/og.webp', width: 1729, height: 910, alt: "Jhye O'Meley — Product Engineer" }],
   },
   twitter: {
     card: 'summary_large_image',
     title: "Jhye O'Meley — Product Engineer",
     description: 'Complicated work, turned into software people can actually use.',
-    images: ['/og-interactive.webp'],
+    images: ['/og.webp'],
   },
 }
 

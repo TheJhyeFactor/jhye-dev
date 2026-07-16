@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowUpRight, Info } from 'lucide-react'
 
 const navItems = [
   { href: '/portfolio/', label: 'Work' },
@@ -13,23 +12,7 @@ const navItems = [
 
 export default function Header() {
   const pathname = usePathname()
-  const isHome = pathname === '/'
   const isActive = (href: string) => pathname.startsWith(href.replace(/\/$/, ''))
-
-  if (isHome) {
-    return (
-      <header className="portfolio-topbar">
-        <a href="#contact" className="availability-link">
-          <span className="availability-dot" aria-hidden="true" />
-          <span className="availability-full">Start a conversation</span>
-          <span className="availability-short">Contact</span>
-          <ArrowUpRight aria-hidden="true" />
-        </a>
-        <Link href="/" className="topbar-mark" aria-label="Jhye dot dev, home">J</Link>
-        <a href="#me" className="topbar-info" aria-label="About Jhye"><Info aria-hidden="true" /></a>
-      </header>
-    )
-  }
 
   return (
     <header className="site-header">
@@ -40,7 +23,7 @@ export default function Header() {
         </Link>
         <ul className="flex items-center gap-4 sm:gap-7">
           {navItems.map((item) => (
-            <li key={item.href} className={item.href === '/services/' ? 'hidden sm:list-item' : undefined}>
+            <li key={item.href}>
               <Link href={item.href} aria-current={isActive(item.href) ? 'page' : undefined} className={`focus-ring text-sm transition-colors hover:text-[var(--accent)] ${isActive(item.href) ? 'font-bold text-[var(--ink)]' : 'text-[var(--muted)]'}`}>{item.label}</Link>
             </li>
           ))}

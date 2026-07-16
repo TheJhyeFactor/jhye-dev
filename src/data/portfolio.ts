@@ -9,8 +9,11 @@ export type Project = {
   status?: string
   scope?: string
   problem?: string
+  users?: string
+  role?: string
   why?: string
   approach?: string
+  nextStep?: string
 }
 
 export const profile = {
@@ -35,8 +38,11 @@ export const featuredProjects: Project[] = [
     status: 'Live product',
     scope: 'Product strategy to production',
     problem: 'Transport teams need one dependable view of bookings, drivers, routes, and live trip changes instead of disconnected tools and messages.',
+    users: 'Reception teams, drivers, and transport coordinators.',
+    role: 'Product strategy, interface design, full-stack engineering, and mobile handoff.',
     why: 'I built it to make a high-pressure operational workflow calmer and easier to coordinate.',
     approach: 'I shaped the workflow around shared trip state, role-specific views, route planning, and a driver mobile handoff.',
+    nextStep: 'Continue validating the operational workflow with the teams who use it day to day.',
   },
   {
     title: 'Buildly',
@@ -50,8 +56,11 @@ export const featuredProjects: Project[] = [
     status: 'Live product',
     scope: 'Concept, interface, and build',
     problem: 'New creators often learn by jumping between scattered tutorials without a clear path from idea to tested project.',
+    users: 'Students and early-stage creators learning to build with technology.',
+    role: 'Product concept, interface design, and frontend engineering.',
     why: 'I built it to make practical technology learning feel structured, active, and rewarding.',
     approach: 'I combined guided missions, small builds, testing steps, and reflection into one focused learning loop.',
+    nextStep: 'Expand the mission library while keeping the learning loop focused and practical.',
   },
   {
     title: 'TradieFlow',
@@ -65,8 +74,11 @@ export const featuredProjects: Project[] = [
     status: 'Live product',
     scope: 'Product design and development',
     problem: 'Trade businesses can lose sight of job profit when labour, materials, targets, and progress live in separate places.',
+    users: 'Trade business owners and people responsible for job performance.',
+    role: 'Product design and full-stack development.',
     why: 'I built it to turn job performance into a view that an owner can understand quickly.',
     approach: 'I focused the product on live job inputs, clear targets, and a compact operational dashboard.',
+    nextStep: 'Test the reporting workflow against real job-management habits and terminology.',
   },
   {
     title: 'Castivo',
@@ -79,8 +91,11 @@ export const featuredProjects: Project[] = [
     status: 'Private preview',
     scope: 'Full-stack product build',
     problem: 'Streamers need branded audience experiences without stitching together separate tools for sites, rewards, and community activity.',
+    users: 'Streamers and the communities that follow them.',
+    role: 'Full-stack product build across page creation and audience utilities.',
     why: 'I built it to give creators a more coherent home for their audience and recurring interactions.',
     approach: 'I connected branded page building with audience utilities such as leaderboards, raffles, and bonus hunts.',
+    nextStep: 'Refine the private preview around the workflows creators repeat most often.',
   },
   {
     title: 'QuickMeet',
@@ -94,8 +109,11 @@ export const featuredProjects: Project[] = [
     status: 'Live product',
     scope: 'Product design and development',
     problem: 'Starting a meeting can be slower than the meeting itself when people face unnecessary setup and invite friction.',
+    users: 'People who need to start a focused browser meeting quickly.',
+    role: 'Product design, frontend engineering, and real-time implementation.',
     why: 'I built it to make getting into a real conversation feel immediate.',
     approach: 'I kept the experience focused on a fast join flow and the essential real-time meeting controls.',
+    nextStep: 'Keep reducing join friction while validating the essential controls with real calls.',
   },
   {
     title: 'PC Choices',
@@ -108,8 +126,11 @@ export const featuredProjects: Project[] = [
     status: 'Live product',
     scope: 'Product experience and build',
     problem: 'Choosing a PC can be overwhelming when product discovery, compatibility, and checkout are disconnected.',
+    users: 'Customers comparing and configuring a PC before purchase.',
+    role: 'Product experience design and web development.',
     why: 'I built it to make a technical purchase feel guided without taking control away from the customer.',
     approach: 'I combined browseable product information with a configurator, cart, and focused checkout path.',
+    nextStep: 'Continue improving the relationship between configuration guidance and checkout confidence.',
   },
 ]
 

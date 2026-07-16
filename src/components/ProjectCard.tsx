@@ -1,6 +1,9 @@
+ 'use client'
+
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/data/portfolio'
+import { trackEvent } from '@/lib/analytics'
 
 type ProjectCardProps = Project
 
@@ -31,7 +34,7 @@ export default function ProjectCard({ title, description, image, disciplines, hr
   )
 
   return href ? (
-    <a href={href} target="_blank" rel="noreferrer" className="group block border border-[var(--border)] bg-[var(--surface)] transition-colors hover:border-[var(--ink)] focus-ring">
+    <a href={href} target="_blank" rel="noreferrer" className="group block border border-[var(--border)] bg-[var(--surface)] transition-colors hover:border-[var(--ink)] focus-ring" onClick={() => trackEvent('project_click', { project: title, source: 'project_index' })}>
       {content}
     </a>
   ) : (
