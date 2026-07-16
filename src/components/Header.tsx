@@ -19,14 +19,14 @@ export default function Header() {
   if (isHome) {
     return (
       <header className="portfolio-topbar">
-        <Link href="/#contact" className="availability-link">
+        <a href="#contact" className="availability-link">
           <span className="availability-dot" aria-hidden="true" />
           <span className="availability-full">Start a conversation</span>
           <span className="availability-short">Contact</span>
           <ArrowUpRight aria-hidden="true" />
-        </Link>
+        </a>
         <Link href="/" className="topbar-mark" aria-label="Jhye dot dev, home">J</Link>
-        <Link href="/#me" className="topbar-info" aria-label="About Jhye"><Info aria-hidden="true" /></Link>
+        <a href="#me" className="topbar-info" aria-label="About Jhye"><Info aria-hidden="true" /></a>
       </header>
     )
   }

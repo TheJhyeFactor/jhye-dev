@@ -136,7 +136,6 @@ export default function InteractivePortfolio() {
 function AboutView() {
   return (
     <section className="portfolio-hero" aria-labelledby="portfolio-title">
-      <div className="hero-mark" aria-hidden="true">J</div>
       <p className="hero-intro">Hey, I&apos;m Jhye <span aria-hidden="true">👋</span></p>
       <h1 id="portfolio-title">Product Engineer</h1>
       <div className="hero-portrait">
