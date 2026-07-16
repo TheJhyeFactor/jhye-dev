@@ -8,6 +8,9 @@ export type Project = {
   href?: string
   status?: string
   scope?: string
+  problem?: string
+  why?: string
+  approach?: string
 }
 
 export const profile = {
@@ -31,6 +34,9 @@ export const featuredProjects: Project[] = [
     href: 'https://tripmate-platform.vercel.app/',
     status: 'Live product',
     scope: 'Product strategy to production',
+    problem: 'Transport teams need one dependable view of bookings, drivers, routes, and live trip changes instead of disconnected tools and messages.',
+    why: 'I built it to make a high-pressure operational workflow calmer and easier to coordinate.',
+    approach: 'I shaped the workflow around shared trip state, role-specific views, route planning, and a driver mobile handoff.',
   },
   {
     title: 'Buildly',
@@ -43,6 +49,9 @@ export const featuredProjects: Project[] = [
     href: 'https://buildly-showcase.vercel.app/',
     status: 'Live product',
     scope: 'Concept, interface, and build',
+    problem: 'New creators often learn by jumping between scattered tutorials without a clear path from idea to tested project.',
+    why: 'I built it to make practical technology learning feel structured, active, and rewarding.',
+    approach: 'I combined guided missions, small builds, testing steps, and reflection into one focused learning loop.',
   },
   {
     title: 'TradieFlow',
@@ -55,6 +64,9 @@ export const featuredProjects: Project[] = [
     href: 'https://tradieflow-pi.vercel.app/',
     status: 'Live product',
     scope: 'Product design and development',
+    problem: 'Trade businesses can lose sight of job profit when labour, materials, targets, and progress live in separate places.',
+    why: 'I built it to turn job performance into a view that an owner can understand quickly.',
+    approach: 'I focused the product on live job inputs, clear targets, and a compact operational dashboard.',
   },
   {
     title: 'Castivo',
@@ -66,6 +78,9 @@ export const featuredProjects: Project[] = [
     year: 2026,
     status: 'Private preview',
     scope: 'Full-stack product build',
+    problem: 'Streamers need branded audience experiences without stitching together separate tools for sites, rewards, and community activity.',
+    why: 'I built it to give creators a more coherent home for their audience and recurring interactions.',
+    approach: 'I connected branded page building with audience utilities such as leaderboards, raffles, and bonus hunts.',
   },
   {
     title: 'QuickMeet',
@@ -78,6 +93,9 @@ export const featuredProjects: Project[] = [
     href: 'https://www.quickmeet.cam/',
     status: 'Live product',
     scope: 'Product design and development',
+    problem: 'Starting a meeting can be slower than the meeting itself when people face unnecessary setup and invite friction.',
+    why: 'I built it to make getting into a real conversation feel immediate.',
+    approach: 'I kept the experience focused on a fast join flow and the essential real-time meeting controls.',
   },
 ]
 

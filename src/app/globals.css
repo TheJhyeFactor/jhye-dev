@@ -511,10 +511,15 @@ button, input, textarea { font: inherit; }
 .contact-actions .contact-primary { color: var(--portfolio-blue); }
 
 .project-dialog {
-  width: min(920px, calc(100% - 32px));
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(880px, calc(100% - 32px));
   max-width: none;
-  max-height: min(820px, calc(100svh - 32px));
+  max-height: min(760px, calc(100svh - 32px));
   overflow: hidden;
+  margin: 0;
+  transform: translate(-50%, -50%);
   border: 0;
   border-radius: 28px;
   padding: 0;
@@ -523,7 +528,7 @@ button, input, textarea { font: inherit; }
   box-shadow: 0 28px 90px rgb(0 0 0 / 24%);
 }
 .project-dialog::backdrop { background: rgb(0 0 0 / 48%); }
-.project-dialog-card { position: relative; display: grid; min-height: 560px; grid-template-columns: 1.08fr 0.92fr; }
+.project-dialog-card { position: relative; display: grid; min-height: 590px; grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr); }
 .dialog-close {
   position: absolute;
   z-index: 3;
@@ -539,10 +544,13 @@ button, input, textarea { font: inherit; }
   font-weight: 650;
 }
 .dialog-close:focus-visible { outline: 3px solid #9dbdff; outline-offset: 3px; }
-.dialog-image { position: relative; min-height: 560px; background: #ececec; }
-.dialog-copy { align-self: end; padding: clamp(2rem, 5vw, 4rem); }
+.dialog-image { position: relative; min-height: 590px; background: #ececec; }
+.dialog-copy { align-self: stretch; overflow-y: auto; padding: clamp(2rem, 4vw, 3.5rem); }
 .dialog-copy h2 { font-size: clamp(2.25rem, 4vw, 3.6rem); font-weight: 750; letter-spacing: -0.06em; line-height: 0.98; }
-.dialog-copy > p:not(.panel-kicker) { margin-top: 1.25rem; color: #666; line-height: 1.65; }
+.dialog-sections { display: grid; gap: 1rem; margin-top: 1.6rem; }
+.dialog-sections section { border-top: 1px solid #dedede; padding-top: 0.85rem; }
+.dialog-sections h3 { font-size: 0.7rem; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
+.dialog-sections p { margin-top: 0.45rem; color: #666; font-size: 0.86rem; line-height: 1.55; }
 .dialog-copy dl { margin: 2rem 0; border-top: 1px solid #ddd; }
 .dialog-copy dl div { display: grid; grid-template-columns: 76px 1fr; gap: 1rem; border-bottom: 1px solid #ddd; padding: 0.85rem 0; }
 .dialog-copy dt { color: #888; font-size: 0.72rem; text-transform: uppercase; }

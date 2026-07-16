@@ -221,8 +221,13 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
           <div className="dialog-copy">
             <p className="panel-kicker">{project.status} · {project.year}</p>
             <h2 id="project-dialog-title">{project.title}</h2>
-            <p>{project.description}</p>
-            <dl>
+            <div className="dialog-sections">
+              <section><h3>What it is</h3><p>{project.description}</p></section>
+              {project.problem && <section><h3>The problem</h3><p>{project.problem}</p></section>}
+              {project.why && <section><h3>Why I built it</h3><p>{project.why}</p></section>}
+              {project.approach && <section><h3>How I approached it</h3><p>{project.approach}</p></section>}
+            </div>
+            <dl className="dialog-meta">
               <div><dt>Scope</dt><dd>{project.scope ?? 'Product design and development'}</dd></div>
               <div><dt>Built with</dt><dd>{project.disciplines.join(' · ')}</dd></div>
             </dl>
