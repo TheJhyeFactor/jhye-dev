@@ -14,7 +14,6 @@
   --accent: #bd342b;
   --dark: #191817;
 }
-
 * { box-sizing: border-box; padding: 0; margin: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -647,4 +646,3 @@ button, input, textarea { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .interactive-portfolio::before { display: none; }
 }
-
