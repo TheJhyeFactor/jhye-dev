@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { ArrowUpRight, Info } from 'lucide-react'
 
 const navItems = [
   { href: '/portfolio/', label: 'Work' },
@@ -13,8 +13,23 @@ const navItems = [
 
 export default function Header() {
   const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const isHome = pathname === '/'
   const isActive = (href: string) => pathname.startsWith(href.replace(/\/$/, ''))
+
+  if (isHome) {
+    return (
+      <header className="portfolio-topbar">
+        <Link href="/#contact" className="availability-link">
+          <span className="availability-dot" aria-hidden="true" />
+          <span className="availability-full">Start a conversation</span>
+          <span className="availability-short">Contact</span>
+          <ArrowUpRight aria-hidden="true" />
+        </Link>
+        <Link href="/" className="topbar-mark" aria-label="Jhye dot dev, home">J</Link>
+        <Link href="/#me" className="topbar-info" aria-label="About Jhye"><Info aria-hidden="true" /></Link>
+      </header>
+    )
+  }
 
   return (
     <header className="site-header">
@@ -23,45 +38,14 @@ export default function Header() {
           <span className="font-display text-xl font-bold tracking-[-0.04em]">jhye<span className="text-[var(--accent)]">.</span>dev</span>
           <span className="hidden font-mono text-[0.65rem] uppercase tracking-[0.1em] text-[var(--muted)] sm:inline">Product / Engineering</span>
         </Link>
-
-        <button
-          type="button"
-          className="focus-ring flex min-h-11 min-w-11 items-center justify-center font-mono text-xs uppercase tracking-[0.1em] md:hidden"
-          onClick={() => setOpen((value) => !value)}
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-        >
-          {open ? 'Close' : 'Menu'}
-        </button>
-
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="flex items-center gap-4 sm:gap-7">
           {navItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                aria-current={isActive(item.href) ? 'page' : undefined}
-                className={`focus-ring text-sm transition-colors hover:text-[var(--accent)] ${isActive(item.href) ? 'font-bold text-[var(--ink)]' : 'text-[var(--muted)]'}`}
-              >
-                {item.label}
-              </Link>
+            <li key={item.href} className={item.href === '/services/' ? 'hidden sm:list-item' : undefined}>
+              <Link href={item.href} aria-current={isActive(item.href) ? 'page' : undefined} className={`focus-ring text-sm transition-colors hover:text-[var(--accent)] ${isActive(item.href) ? 'font-bold text-[var(--ink)]' : 'text-[var(--muted)]'}`}>{item.label}</Link>
             </li>
           ))}
         </ul>
       </nav>
-
-      {open && (
-        <div id="mobile-navigation" className="border-t border-[var(--border)] bg-[var(--background)] md:hidden">
-          <ul className="page-shell flex flex-col py-3">
-            {navItems.map((item, index) => (
-              <li key={item.href} className="border-b border-[var(--border)] last:border-0">
-                <Link href={item.href} onClick={() => setOpen(false)} aria-current={isActive(item.href) ? 'page' : undefined} className="focus-ring flex items-center justify-between py-4 text-lg">
-                  <span>{item.label}</span><span className="mono-label">0{index + 1}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </header>
   )
 }

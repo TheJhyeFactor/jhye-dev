@@ -14,7 +14,7 @@ const structuredData = {
       url: 'https://jhye.dev',
       image: 'https://jhye.dev/images/projects/Headshot.jpeg',
       sameAs: ['https://github.com/TheJhyeFactor', 'https://www.linkedin.com/in/jhye-o-meley-529960213/'],
-      jobTitle: 'Product designer and full-stack developer',
+      jobTitle: 'Product Engineer',
     },
     {
       '@type': 'WebSite',
@@ -29,7 +29,7 @@ const structuredData = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://jhye.dev'),
   title: {
-    default: "Jhye O'Meley — Product designer and full-stack developer",
+    default: "Jhye O'Meley — Product Engineer",
     template: "%s — Jhye O'Meley",
   },
   description: "Jhye O'Meley designs and builds operational products, web applications, and automations from first idea to working release.",
@@ -38,26 +38,26 @@ export const metadata: Metadata = {
   creator: "Jhye O'Meley",
   alternates: { canonical: '/' },
   openGraph: {
-    title: "Jhye O'Meley — Product designer and full-stack developer",
+    title: "Jhye O'Meley — Product Engineer",
     description: 'Complicated work, turned into software people can actually use.',
     url: 'https://jhye.dev',
     siteName: 'jhye.dev',
     locale: 'en_AU',
     type: 'website',
-    images: [{ url: '/og.webp', width: 1731, height: 909, alt: "Jhye O'Meley — Complicated work, made clear." }],
+    images: [{ url: '/og-interactive.webp', width: 1729, height: 910, alt: "Jhye O'Meley — Product Engineer" }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Jhye O'Meley — Product designer and full-stack developer",
+    title: "Jhye O'Meley — Product Engineer",
     description: 'Complicated work, turned into software people can actually use.',
-    images: ['/og.webp'],
+    images: ['/og-interactive.webp'],
   },
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#f1eee7',
+  themeColor: '#ffffff',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

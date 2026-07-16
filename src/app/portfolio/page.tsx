@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: 'Work',
   description: "Explore Jhye O'Meley's product platforms, client systems, and software experiments.",
   alternates: { canonical: '/portfolio/' },
-  openGraph: { title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', url: '/portfolio/', images: ['/og.webp'] },
-  twitter: { card: 'summary_large_image', title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', images: ['/og.webp'] },
+  openGraph: { title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', url: '/portfolio/', images: ['/og-interactive.webp'] },
+  twitter: { card: 'summary_large_image', title: "Work — Jhye O'Meley", description: 'Products, operational systems, and experiments built from idea to release.', images: ['/og-interactive.webp'] },
 }
 
 export default function PortfolioPage() {

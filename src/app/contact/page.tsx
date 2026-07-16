@@ -6,8 +6,8 @@ export const metadata: Metadata = {
   title: 'Contact',
   description: "Contact Jhye O'Meley about product development, full-stack work, or simplifying an operational system.",
   alternates: { canonical: '/contact/' },
-  openGraph: { title: "Contact — Jhye O'Meley", description: 'Have a product to build or a system to untangle?', url: '/contact/', images: ['/og.webp'] },
-  twitter: { card: 'summary_large_image', title: "Contact — Jhye O'Meley", description: 'Have a product to build or a system to untangle?', images: ['/og.webp'] },
+  openGraph: { title: "Contact — Jhye O'Meley", description: 'Have a product to build or a system to untangle?', url: '/contact/', images: ['/og-interactive.webp'] },
+  twitter: { card: 'summary_large_image', title: "Contact — Jhye O'Meley", description: 'Have a product to build or a system to untangle?', images: ['/og-interactive.webp'] },
 }
 
 export default function ContactPage() {

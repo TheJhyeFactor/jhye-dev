@@ -2,6 +2,9 @@
 
 ## 2026-07-16
 
+- Reworked the homepage into a minimal, stateful portfolio inspired by aaabadcode.com's interaction pattern while preserving Jhye's own content and identity.
+- Added hash-addressable Me, Projects, Skills, Curious, and Contact views plus an accessible project-detail dialog.
+- Added a new matching social preview card and retained canonical routes for SEO and full project reading.
 - Reframed the portfolio around a clear product-and-engineering point of view.
 - Rebuilt the home, work, about, capabilities, and contact pages with an editorial responsive system.
 - Centralised project and capability content in `src/data/portfolio.ts`.
