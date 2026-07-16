@@ -76,12 +76,26 @@ export default function InteractivePortfolio() {
     const normalizedQuestion = question.trim().toLowerCase()
     if (!normalizedQuestion) return
 
-    const matchedRoute = questionRoutes.find(({ terms }) => terms.some((term) => normalizedQuestion.includes(term)))
-    if (matchedRoute) {
+    const mentionedProject = featuredProjects.find((project) => normalizedQuestion.includes(project.slug) || normalizedQuestion.includes(project.title.toLowerCase()))
+    const matchedRoute = mentionedProject
+      ? { view: 'projects' as const }
+      : questionRoutes.find(({ terms }) => terms.some((term) => normalizedQuestion.includes(term)))
+
+    if (mentionedProject) {
+      showView('projects')
+      setReply(`${mentionedProject.title}: ${mentionedProject.description} ${mentionedProject.why ?? ''} ${mentionedProject.problem ? `It solves this: ${mentionedProject.problem}` : ''}`.trim())
+    } else if (matchedRoute) {
       showView(matchedRoute.view)
-      setReply(`Showing ${navigation.find((item) => item.id === matchedRoute.view)?.label.toLowerCase()}.`)
+      const answers: Record<PortfolioView, string> = {
+        me: `I’m Jhye, a product engineer working between ${profile.location}. I turn complicated operations into clear, useful software.`,
+        projects: `I build products end to end—from product direction and interface design through frontend, backend, integrations, and release.`,
+        skills: `My core stack includes ${skills.slice(0, 6).join(', ')}, plus Python, Tailwind CSS, Vercel, and Git.`,
+        fun: `I’m curious about browser-native tools, operational clarity, and new product interfaces where automation earns trust.`,
+        contact: `The quickest way to reach me is ${profile.email}. I’m happy to talk through a product or system that needs untangling.`,
+      }
+      setReply(answers[matchedRoute.view])
     } else {
-      setReply('Try asking about my projects, skills, experiments, availability, or how to contact me.')
+      setReply('I can help with questions about my projects, skills, experiments, availability, or contact details. Try “what have you built?”')
     }
     setQuestion('')
   }

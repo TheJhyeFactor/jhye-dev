@@ -420,7 +420,7 @@ button, input, textarea { font: inherit; }
 .portfolio-question button:hover:not(:disabled) { transform: scale(1.04); }
 .portfolio-question button:disabled { opacity: 0.45; }
 .portfolio-question button svg { width: 20px; height: 20px; }
-.portfolio-reply { margin: 0.6rem 1.5rem 0; color: #666; font-size: 0.78rem; text-align: center; }
+.portfolio-reply { max-width: 650px; margin: 0.7rem auto 0; border: 1px solid #e3e3e3; border-radius: 14px; padding: 0.7rem 1rem; background: rgb(255 255 255 / 92%); color: #555; font-size: 0.8rem; line-height: 1.45; text-align: center; box-shadow: 0 8px 24px rgb(0 0 0 / 4%); }
 .portfolio-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 14px; }
 .portfolio-nav button {
   display: flex;
