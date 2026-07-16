@@ -392,7 +392,7 @@ button, input, textarea { font: inherit; }
 .hero-portrait img { object-position: center 20%; }
 .hero-summary { max-width: 540px; margin-top: 1.4rem; color: #696969; font-size: 0.96rem; line-height: 1.6; }
 
-.portfolio-controls { position: relative; z-index: 4; width: min(730px, 100%); margin: 0 auto 58px; }
+.portfolio-controls { position: relative; z-index: 4; width: min(730px, 100%); margin: 0 auto 118px; }
 .portfolio-question {
   display: grid;
   min-height: 62px;
@@ -431,21 +431,22 @@ button, input, textarea { font: inherit; }
   gap: 0.45rem;
   border: 1px solid var(--portfolio-line);
   border-radius: 16px;
-  background: rgb(255 255 255 / 80%);
+  background: #fff;
   font-size: 0.84rem;
   font-weight: 500;
   transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
 }
 .portfolio-nav button:hover { border-color: #b9b9b9; transform: translateY(-2px); }
-.portfolio-nav button.is-active { border-color: #b8cff8; background: #f6f9ff; }
+.portfolio-nav button.is-active { border-color: #b8cff8; background: #fff; }
 .portfolio-nav button:focus-visible, .portfolio-question button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: 3px; }
-.portfolio-nav svg { position: absolute; width: 18px; height: 18px; stroke-width: 1.8; color: var(--nav-color); transform: translateY(-1px); }
-.portfolio-nav button::before { width: 30px; height: 30px; border-radius: 10px; background: color-mix(in srgb, var(--nav-color) 14%, white); content: ''; }
+.portfolio-nav svg { width: 18px; height: 18px; margin-bottom: 0.1rem; stroke-width: 1.8; color: #676767; }
+.portfolio-nav button::before { display: none; }
+.portfolio-nav button span { color: var(--nav-color); }
 .portfolio-nav button.is-active svg { color: var(--portfolio-blue); }
 .portfolio-watermark {
   position: absolute;
   z-index: 0;
-  bottom: 0.02em;
+  bottom: 0.12em;
   left: 50%;
   color: #f1f3f8;
   font-size: clamp(7rem, 16vw, 13rem);
@@ -502,7 +503,11 @@ button, input, textarea { font: inherit; }
 .skill-mark b { position: absolute; font-size: 0.54rem; font-weight: 800; letter-spacing: -0.03em; }
 .skill-mark svg + b { display: none; }
 .skill-grid strong { font-size: 0.95rem; }
-.skill-explorer { display: grid; grid-template-rows: auto 1fr; gap: 18px; }
+.skill-explorer { display: grid; grid-template-rows: auto auto 1fr; gap: 18px; }
+.skill-groups { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-groups button { border: 1px solid #dedede; border-radius: 999px; padding: 0.62rem 0.9rem; background: #fff; color: #777; font-size: 0.76rem; font-weight: 650; transition: border-color 160ms ease, color 160ms ease, background 160ms ease; }
+.skill-groups button:hover, .skill-groups button.is-selected { border-color: #9dbdff; background: #f6f9ff; color: #315fbe; }
+.skill-groups button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: 2px; }
 .skill-detail { min-height: 170px; border: 1px solid #dedede; border-radius: 18px; padding: 1.35rem; background: #fff; }
 .skill-detail h3 { font-size: 1.65rem; font-weight: 730; letter-spacing: -0.05em; }
 .skill-detail > p:not(.panel-kicker) { max-width: 40ch; margin-top: 0.65rem; color: #626262; line-height: 1.5; }
@@ -612,6 +617,10 @@ button, input, textarea { font: inherit; }
   .view-projects .portfolio-stage, .view-skills .portfolio-stage, .view-fun .portfolio-stage, .view-contact .portfolio-stage { place-items: start center; }
   .portfolio-controls { margin-bottom: 30px; }
   .view-projects .portfolio-controls, .view-skills .portfolio-controls, .view-fun .portfolio-controls, .view-contact .portfolio-controls { margin-top: 1rem; }
+}
+
+@media (min-width: 761px) {
+  .interactive-portfolio.view-me { height: 100svh; min-height: 100svh; overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {

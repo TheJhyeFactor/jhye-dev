@@ -44,6 +44,13 @@ const skillMarks: Record<string, { label: string; icon: ComponentType<{ 'aria-hi
   Git: { label: 'GIT', icon: GitBranch, color: '#de654d' },
 }
 
+const skillGroups = [
+  { id: 'languages', label: 'Languages', skills: ['TypeScript', 'Python'] },
+  { id: 'frontend', label: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS'] },
+  { id: 'backend', label: 'Backend & data', skills: ['Node.js', 'Firebase', 'PostgreSQL'] },
+  { id: 'delivery', label: 'Delivery', skills: ['Vercel', 'Git'] },
+] as const
+
 function TriangleMark({ 'aria-hidden': ariaHidden }: { 'aria-hidden'?: boolean | 'true' | 'false' }) {
   return <span aria-hidden={ariaHidden} />
 }
@@ -278,7 +285,8 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
 }
 
 function SkillsView() {
-  const [selectedSkill, setSelectedSkill] = useState(skills[0])
+  const [selectedSkill, setSelectedSkill] = useState<string>(skillGroups[0].skills[0])
+  const [selectedGroup, setSelectedGroup] = useState<(typeof skillGroups)[number]['id']>('languages')
   const skillDetails: Record<string, { summary: string; use: string }> = {
     React: { summary: 'Component architecture for interfaces that need to feel fast, clear, and easy to evolve.', use: 'Used across TripMate, Buildly, QuickMeet, and internal product surfaces.' },
     'Next.js': { summary: 'Full-stack web foundations for content, routing, data, and production-ready product surfaces.', use: 'Used for TradieFlow, Castivo, and portfolio-scale applications.' },
@@ -301,8 +309,15 @@ function SkillsView() {
 
       <div className="skill-layout">
         <div className="skill-explorer">
+          <div className="skill-groups" role="tablist" aria-label="Skill categories">
+            {skillGroups.map((group) => (
+              <button key={group.id} type="button" role="tab" aria-selected={selectedGroup === group.id} className={selectedGroup === group.id ? 'is-selected' : undefined} onClick={() => { setSelectedGroup(group.id); setSelectedSkill(group.skills[0]) }}>
+                {group.label}
+              </button>
+            ))}
+          </div>
           <div className="skill-grid" role="list" aria-label="Technical skills">
-            {skills.map((skill, index) => {
+            {(skillGroups.find((group) => group.id === selectedGroup)?.skills ?? []).map((skill, index) => {
               const mark = skillMarks[skill]
               const MarkIcon = mark.icon
               return (
