@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { ArrowUpRight, Info } from 'lucide-react'
 
 const navItems = [
   { href: '/portfolio/', label: 'Work' },
@@ -12,7 +13,23 @@ const navItems = [
 
 export default function Header() {
   const pathname = usePathname()
+  const isHome = pathname === '/'
   const isActive = (href: string) => pathname.startsWith(href.replace(/\/$/, ''))
+
+  if (isHome) {
+    return (
+      <header className="portfolio-topbar">
+        <Link href="/contact/" className="availability-link">
+          <span className="availability-dot" aria-hidden="true" />
+          <span className="availability-full">Start a conversation</span>
+          <span className="availability-short">Contact</span>
+          <ArrowUpRight aria-hidden="true" />
+        </Link>
+        <Link href="/" className="topbar-mark" aria-label="Jhye dot dev, home">J</Link>
+        <Link href="/about/" className="topbar-info" aria-label="About Jhye"><Info aria-hidden="true" /></Link>
+      </header>
+    )
+  }
 
   return (
     <header className="site-header">

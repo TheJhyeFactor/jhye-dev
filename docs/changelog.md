@@ -2,8 +2,8 @@
 
 ## 2026-07-17
 
-- Replaced the simulated homepage portfolio assistant with a direct editorial homepage for hiring-manager scanning.
-- Unified homepage navigation and visual language with the Work, About, Capabilities, and Contact routes.
+- Restored the Apple-style interactive homepage with centered portrait, name watermark, and bottom section menu.
+- Kept the hiring-manager improvements in the interactive experience: clear project evidence, corrected counts, direct route links, and honest guided navigation copy.
 - Added user, role, shipped-scope, and next-step context to featured project case studies without adding unsupported metrics.
 - Corrected project counts, restored Capabilities navigation on mobile, added favicon metadata, and added lightweight analytics events for project and contact clicks.
 - Removed duplicate unused homepage/data/documentation artifacts.

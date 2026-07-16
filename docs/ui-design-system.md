@@ -2,7 +2,7 @@
 
 ## Direction
 
-The site uses one editorial portfolio language: a warm neutral canvas, clear rules, compact technical labels, and large display typography. The homepage should communicate Jhye's product-engineering positioning immediately, then lead into selected work and a direct contact path. Personality comes from the writing, portrait, and project choices rather than a simulated assistant interface.
+The site uses an Apple-style interactive homepage: a quiet white canvas, centered portrait, oversized name watermark behind the bottom controls, and a persistent five-section menu. The internal Work, About, Capabilities, and Contact routes retain the editorial reading system. The homepage should communicate Jhye's product-engineering positioning immediately while making exploration feel tactile and personal.
 
 ## Tokens
 
@@ -14,7 +14,7 @@ The site uses one editorial portfolio language: a warm neutral canvas, clear rul
 - Editorial-page background: `#f1eee7`
 - Dark callout: `#191817`
 
-Use neutral colours for most of the interface and reserve red for emphasis, focus, and primary actions. Keep controls square-cornered and editorial rather than introducing rounded finder controls, gradients, green accents, glass effects, or decorative colour noise.
+Use neutral colours for most of the interface and reserve blue for active navigation and focus. The homepage may use soft cursor-responsive colour fields and rounded controls as part of its Apple-style interaction language. Keep the effect subtle and avoid neon gradients, green success-heavy themes, glass effects, or decorative colour noise.
 
 ## Typography
 
@@ -26,8 +26,9 @@ Display headlines use tight tracking and balanced line wrapping. Monospace text 
 
 ## Layout and components
 
-- Use whitespace and scale to create hierarchy on the homepage; use horizontal rules throughout the site.
-- Homepage actions should be explicit links to Work, Capabilities, and Contact.
+- Use whitespace and scale to create hierarchy on the homepage; use horizontal rules throughout the internal pages.
+- The homepage bottom menu is the primary navigation for Me, Projects, Skills, Curious, and Contact.
+- The section finder routes only to known portfolio content and must not imply a general AI assistant.
 - Featured projects are image-and-copy records with case-study proof, not dashboard cards.
 - Secondary work may use square-corner project cards with a single border.
 - Buttons have square corners, a minimum 48px touch target, and visible keyboard focus.
