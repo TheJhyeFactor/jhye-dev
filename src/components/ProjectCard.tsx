@@ -1,18 +1,40 @@
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
+import type { Project } from '@/data/portfolio'
 
-interface ProjectCardProps { title: string; description: string; image: string; tags: string[]; href?: string; year?: number; featured?: boolean; status?: string }
+type ProjectCardProps = Project
 
-export default function ProjectCard({ title, description, image, tags, href, year, featured, status }: ProjectCardProps) {
-  const content = <>
-    <div className="relative aspect-[16/10] overflow-hidden bg-[#e8e3da]">
-      <Image src={image} alt={`${title} project screenshot`} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
-    </div>
-    <div className="border-t border-[var(--border)] p-5 md:p-6">
-      <div className="flex items-start justify-between gap-5"><div><p className="eyebrow mb-2">{status ?? (featured ? 'Selected work' : 'Project')}</p><h3 className="font-['Space_Grotesk'] text-xl font-bold tracking-tight">{title}</h3></div>{href && <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-[var(--accent)]" aria-hidden="true" />}</div>
-      <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{description}</p>
-      <div className="mt-5 flex flex-wrap gap-x-3 gap-y-1 text-xs text-[var(--subtle)]">{tags.map((tag) => <span key={tag}>{tag}</span>)}{year && <span className="ml-auto">{year}</span>}</div>
-    </div>
-  </>
-  return href ? <a href={href} target="_blank" rel="noreferrer" className="group block border border-[var(--border)] bg-[var(--surface)] transition-colors hover:border-[var(--accent)] focus-ring">{content}</a> : <div className="group border border-[var(--border)] bg-[var(--surface)]">{content}</div>
+export default function ProjectCard({ title, description, image, disciplines, href, year }: ProjectCardProps) {
+  const content = (
+    <>
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#ddd6ca]">
+        <Image
+          src={image}
+          alt={`${title} project interface`}
+          fill
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.015]"
+        />
+      </div>
+      <div className="border-t border-[var(--border)] p-5 md:p-6">
+        <div className="flex items-start justify-between gap-5">
+          <div>
+            <p className="mono-label mb-2">Project / {year}</p>
+            <h3 className="font-display text-xl font-bold tracking-[-0.03em]">{title}</h3>
+          </div>
+          {href && <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-[var(--accent)]" aria-hidden="true" />}
+        </div>
+        <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{description}</p>
+        <p className="project-disciplines mt-5">{disciplines.join(' · ')}</p>
+      </div>
+    </>
+  )
+
+  return href ? (
+    <a href={href} target="_blank" rel="noreferrer" className="group block border border-[var(--border)] bg-[var(--surface)] transition-colors hover:border-[var(--ink)] focus-ring">
+      {content}
+    </a>
+  ) : (
+    <article className="group border border-[var(--border)] bg-[var(--surface)]">{content}</article>
+  )
 }

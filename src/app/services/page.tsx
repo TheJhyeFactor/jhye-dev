@@ -1,13 +1,62 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import { capabilities } from '@/data/portfolio'
 
-const capabilities = [
-  ['01', 'Full-stack web development', 'Responsive, production-ready web applications with clear component structure and sensible data flow.'],
-  ['02', 'Automation & integrations', 'Connected workflows that remove repetitive work across business tools, APIs, and internal systems.'],
-  ['03', 'Dashboards & operational tools', 'Focused interfaces that turn live information into useful decisions for teams and operators.'],
-  ['04', 'AI/ML prototypes', 'Practical experiments that test new technology against a real user problem before investment.'],
-]
+export const metadata: Metadata = {
+  title: 'Capabilities',
+  description: "Product direction, interface design, full-stack development, and software improvement by Jhye O'Meley.",
+  alternates: { canonical: '/services/' },
+  openGraph: { title: "Capabilities — Jhye O'Meley", description: 'Useful software, built as one connected practice.', url: '/services/', images: ['/og.webp'] },
+  twitter: { card: 'summary_large_image', title: "Capabilities — Jhye O'Meley", description: 'Useful software, built as one connected practice.', images: ['/og.webp'] },
+}
 
 export default function ServicesPage() {
-  return <div className="page-shell"><section className="py-20 md:py-28"><p className="eyebrow mb-5">Capabilities</p><h1 className="max-w-3xl font-['Space_Grotesk'] text-5xl font-bold leading-[1.02] tracking-[-0.04em] md:text-7xl">The kind of work I&apos;m good at.</h1><p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)]">I work across product, interface, and implementation to make useful software for teams and the people they serve.</p></section><section className="section-rule divide-y divide-[var(--border)] border-b border-[var(--border)]">{capabilities.map(([number, title, description]) => <article key={number} className="grid gap-5 py-8 md:grid-cols-[80px_0.8fr_1.2fr] md:items-start"><span className="text-sm font-bold text-[var(--accent)]">{number}</span><h2 className="font-['Space_Grotesk'] text-2xl font-bold tracking-tight">{title}</h2><p className="max-w-xl leading-7 text-[var(--muted)]">{description}</p></article>)}</section><section className="section-rule flex flex-col justify-between gap-6 py-16 md:flex-row md:items-end"><div><p className="eyebrow mb-3">Work together</p><h2 className="max-w-xl font-['Space_Grotesk'] text-3xl font-bold tracking-tight md:text-4xl">Have a system that needs building or simplifying?</h2></div><Link href="/contact/" className="focus-ring inline-flex items-center gap-2 text-sm font-bold text-[var(--accent)] hover:underline">Start a conversation <ArrowUpRight className="h-4 w-4" /></Link></section></div>
+  return (
+    <div className="page-shell">
+      <section className="grid gap-10 py-20 md:grid-cols-[1.2fr_0.6fr] md:items-end md:py-28">
+        <div>
+          <p className="eyebrow mb-5">Capabilities · Product to production</p>
+          <h1 className="display-title">Useful software, built as one connected practice.</h1>
+        </div>
+        <p className="text-lg leading-8 text-[var(--muted)]">
+          I work across product, interface, and engineering when an idea needs clarity, an existing system needs untangling, or a team needs a working release.
+        </p>
+      </section>
+
+      <section className="section-block" aria-labelledby="capabilities-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow mb-3">01 · What I do</p>
+            <h2 id="capabilities-title" className="section-title">Four ways I can help.</h2>
+          </div>
+        </div>
+        <ol className="capability-list">
+          {capabilities.map((capability) => (
+            <li key={capability.number}>
+              <span className="mono-label">{capability.number}</span>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="statement-block">
+        <div><p className="eyebrow mb-3">Typical fit</p><p className="mono-label">Where this works best</p></div>
+        <div className="grid gap-8 sm:grid-cols-2">
+          <div className="border-t border-[var(--ink)] pt-4"><h2 className="font-display text-2xl font-bold tracking-tight">New products</h2><p className="mt-3 leading-7 text-[var(--muted)]">You have a real problem, early evidence, or a rough prototype and need a clear, credible product.</p></div>
+          <div className="border-t border-[var(--ink)] pt-4"><h2 className="font-display text-2xl font-bold tracking-tight">Operational systems</h2><p className="mt-3 leading-7 text-[var(--muted)]">Important work is spread across spreadsheets, messages, and manual steps that should become one system.</p></div>
+          <div className="border-t border-[var(--ink)] pt-4"><h2 className="font-display text-2xl font-bold tracking-tight">Product recovery</h2><p className="mt-3 leading-7 text-[var(--muted)]">The software exists, but its interface, architecture, or delivery path is making progress harder than it should be.</p></div>
+          <div className="border-t border-[var(--ink)] pt-4"><h2 className="font-display text-2xl font-bold tracking-tight">Focused prototypes</h2><p className="mt-3 leading-7 text-[var(--muted)]">A new technology or workflow needs to be tested against real use before a larger investment.</p></div>
+        </div>
+      </section>
+
+      <section className="contact-cta">
+        <p className="eyebrow">Start a conversation</p>
+        <h2>Have a system that needs building or simplifying?</h2>
+        <Link href="/contact/" className="button-light">Contact Jhye <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+      </section>
+    </div>
+  )
 }
