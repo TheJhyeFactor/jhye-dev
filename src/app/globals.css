@@ -549,6 +549,7 @@ button, input, textarea { font: inherit; }
   left: 50%;
   width: min(880px, calc(100% - 32px));
   max-width: none;
+  height: min(760px, calc(100svh - 32px));
   max-height: min(760px, calc(100svh - 32px));
   overflow: hidden;
   margin: 0;
@@ -561,7 +562,7 @@ button, input, textarea { font: inherit; }
   box-shadow: 0 28px 90px rgb(0 0 0 / 24%);
 }
 .project-dialog::backdrop { background: rgb(0 0 0 / 48%); }
-.project-dialog-card { position: relative; display: grid; min-height: 590px; grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr); }
+.project-dialog-card { position: relative; display: grid; height: 100%; min-height: 0; grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr); }
 .dialog-close {
   position: absolute;
   z-index: 3;
@@ -577,11 +578,22 @@ button, input, textarea { font: inherit; }
   font-weight: 650;
 }
 .dialog-close:focus-visible { outline: 3px solid #9dbdff; outline-offset: 3px; }
-.dialog-image { position: relative; min-height: 590px; background: #ececec; }
-.dialog-copy { align-self: stretch; overflow-y: auto; padding: clamp(2rem, 4vw, 3.5rem); }
+.dialog-image { position: relative; min-height: 0; overflow: hidden; background: #ece9df; }
+.dialog-image::before { position: absolute; z-index: 1; top: 1.25rem; left: 1.25rem; width: 46px; height: 46px; border: 1px solid rgb(23 23 23 / 22%); border-radius: 50%; content: ''; }
+.dialog-image::after { position: absolute; right: 1.25rem; bottom: 1.25rem; width: 42%; height: 1px; background: rgb(23 23 23 / 35%); content: ''; }
+.dialog-project-image { inset: 8% 8% 8% 8% !important; width: 84% !important; height: 84% !important; border-radius: 18px; box-shadow: 0 18px 42px rgb(23 23 23 / 14%); filter: saturate(0.88) contrast(1.02); transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 300ms ease; }
+.project-dialog:hover .dialog-project-image { transform: scale(1.025) rotate(-0.5deg); filter: saturate(1) contrast(1.04); }
+.dialog-image-label { position: absolute; z-index: 2; right: 1.25rem; top: 1.35rem; color: rgb(23 23 23 / 65%); font-size: 0.62rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; writing-mode: vertical-rl; }
+.dialog-copy { align-self: stretch; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: clamp(2rem, 4vw, 3.5rem); scrollbar-color: #b9b9b9 transparent; scrollbar-width: thin; }
 .dialog-copy h2 { font-size: clamp(2.25rem, 4vw, 3.6rem); font-weight: 750; letter-spacing: -0.06em; line-height: 0.98; }
-.dialog-sections { display: grid; gap: 1rem; margin-top: 1.6rem; }
-.dialog-sections section { border-top: 1px solid #dedede; padding-top: 0.85rem; }
+.dialog-sections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; margin-top: 1.6rem; }
+.dialog-sections section { min-width: 0; border-top: 1px solid #dedede; padding-top: 0.85rem; animation: dialog-section-enter 420ms both; }
+.dialog-sections section:nth-child(2) { animation-delay: 40ms; }
+.dialog-sections section:nth-child(3) { animation-delay: 80ms; }
+.dialog-sections section:nth-child(4) { animation-delay: 120ms; }
+.dialog-sections section:nth-child(5) { animation-delay: 160ms; }
+.dialog-sections section:nth-child(6) { animation-delay: 200ms; }
+.dialog-sections section:nth-child(7) { animation-delay: 240ms; }
 .dialog-sections h3 { font-size: 0.7rem; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
 .dialog-sections p { margin-top: 0.45rem; color: #666; font-size: 0.86rem; line-height: 1.55; }
 .dialog-copy dl { margin: 2rem 0; border-top: 1px solid #ddd; }
@@ -594,6 +606,7 @@ button, input, textarea { font: inherit; }
 
 @keyframes portfolio-enter { from { opacity: 0; transform: translateY(14px) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes portrait-float { 0%, 100% { transform: translateY(0) rotate(-0.5deg); } 50% { transform: translateY(-8px) rotate(0.5deg); } }
+@keyframes dialog-section-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 760px) {
   .portfolio-topbar { padding: 22px 18px; }
@@ -628,10 +641,12 @@ button, input, textarea { font: inherit; }
   .curious-footer { align-items: flex-start; flex-direction: column; }
   .curious-grid h3 { margin-top: 2rem; }
   .contact-panel { grid-template-columns: 1fr; gap: 2.5rem; }
-  .project-dialog { width: calc(100% - 20px); max-height: calc(100svh - 20px); border-radius: 22px; overflow-y: auto; }
+  .project-dialog { width: calc(100% - 20px); height: calc(100svh - 20px); max-height: calc(100svh - 20px); border-radius: 22px; }
   .project-dialog-card { min-height: 0; grid-template-columns: 1fr; }
   .dialog-image { min-height: 300px; }
+  .dialog-project-image { inset: 1.25rem !important; width: calc(100% - 2.5rem) !important; height: calc(100% - 2.5rem) !important; }
   .dialog-copy { padding: 2rem 1.5rem 2.5rem; }
+  .dialog-sections { grid-template-columns: 1fr; }
   .view-projects .portfolio-stage, .view-skills .portfolio-stage, .view-fun .portfolio-stage, .view-contact .portfolio-stage { place-items: start center; }
   .portfolio-controls { margin-bottom: 30px; }
   .view-projects .portfolio-controls, .view-skills .portfolio-controls, .view-fun .portfolio-controls, .view-contact .portfolio-controls { margin-top: 1rem; }
@@ -645,4 +660,6 @@ button, input, textarea { font: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   .interactive-portfolio::before { display: none; }
+  .dialog-sections section { animation: none; }
+  .dialog-project-image { transition: none; }
 }

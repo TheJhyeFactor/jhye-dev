@@ -262,7 +262,10 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
       {project && (
         <div className="project-dialog-card">
           <button type="button" className="dialog-close" onClick={onClose} aria-label="Close project details">Close</button>
-          <div className="dialog-image"><Image src={project.image} alt={`${project.title} interface`} fill sizes="(max-width: 760px) 100vw, 52vw" className="object-cover" /></div>
+          <div className="dialog-image">
+            <Image src={project.image} alt={`${project.title} interface`} fill sizes="(max-width: 760px) 100vw, 52vw" className="dialog-project-image object-cover" />
+            <span className="dialog-image-label" aria-hidden="true">Project view</span>
+          </div>
           <div className="dialog-copy">
             <p className="panel-kicker">{project.status} · {project.year}</p>
             <h2 id="project-dialog-title">{project.title}</h2>
@@ -400,4 +403,3 @@ function ContactView() {
     </section>
   )
 }
-

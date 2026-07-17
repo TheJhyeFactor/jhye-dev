@@ -26,7 +26,7 @@ export default function Header() {
           <ArrowUpRight aria-hidden="true" />
         </Link>
         <Link href="/" className="topbar-mark" aria-label="Jhye dot dev, home">J</Link>
-        <Link href="/about/" className="topbar-info" aria-label="About Jhye"><Info aria-hidden="true" /></Link>
+        <Link href="/#contact" className="topbar-info" aria-label="Contact information"><Info aria-hidden="true" /></Link>
       </header>
     )
   }
