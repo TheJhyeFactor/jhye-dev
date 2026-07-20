@@ -29,6 +29,7 @@ npm run typecheck
 ## Editing content
 
 - Update projects, capabilities, skills, and shared profile details in `src/data/portfolio.ts`.
+- Update public tools, findings, and journal posts in `src/data/portfolio.ts`; journal detail pages are generated from the post slugs.
 - Keep page-specific narrative in the relevant route under `src/app/`.
 - Put project imagery in `public/images/projects/` and provide useful alternative text where it is rendered.
 - Update route metadata whenever a page's purpose or primary message changes.

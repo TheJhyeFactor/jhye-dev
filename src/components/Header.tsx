@@ -6,6 +6,8 @@ import { ArrowUpRight, Info } from 'lucide-react'
 
 const navItems = [
   { href: '/portfolio/', label: 'Work' },
+  { href: '/open-source/', label: 'Open source' },
+  { href: '/journal/', label: 'Journal' },
   { href: '/about/', label: 'About' },
   { href: '/services/', label: 'Capabilities' },
   { href: '/contact/', label: 'Contact' },

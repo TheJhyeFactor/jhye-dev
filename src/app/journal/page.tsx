@@ -1,0 +1,8 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
+import { journalPosts } from '@/data/portfolio'
+
+export const metadata: Metadata = { title: 'Journal', description: 'Writing and findings from Jhye O’Meley on product engineering, open source, and operational software.', alternates: { canonical: '/journal/' } }
+
+export default function JournalPage() { return <div className="page-shell"><section className="grid gap-10 py-20 md:grid-cols-[1fr_0.65fr] md:items-end md:py-28"><div><p className="eyebrow mb-5">Journal · Notes and findings</p><h1 className="display-title">What I’m learning while I build.</h1></div><p className="text-lg leading-8 text-[var(--muted)]">Short essays about product decisions, browser-native tools, and the details that make operational software easier to trust.</p></section><section className="section-block" aria-labelledby="journal-posts"><div className="section-heading"><div><p className="eyebrow mb-3">Writing</p><h2 id="journal-posts" className="section-title">A working notebook.</h2></div><span className="mono-label">{journalPosts.length} notes</span></div><div className="journal-list">{journalPosts.map((post, index) => <Link key={post.slug} href={`/journal/${post.slug}/`} className="journal-entry focus-ring"><span className="mono-label">0{index + 1} · {post.date}</span><div><p className="eyebrow mb-2">{post.category}</p><h3 className="font-display text-2xl font-bold tracking-[-0.03em]">{post.title}</h3><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{post.excerpt}</p></div><ArrowUpRight className="h-5 w-5" /></Link>)}</div></section></div> }
