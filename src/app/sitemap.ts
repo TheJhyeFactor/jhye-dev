@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/portfolio/', '/open-source/', '/journal/', '/about/', '/services/', '/contact/']
+  const routes = ['']
   return routes.map((route) => ({
     url: `https://jhye.dev${route}`,
     changeFrequency: route === '' ? 'monthly' : 'yearly',

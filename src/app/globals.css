@@ -222,6 +222,17 @@ button, input, textarea { font: inherit; }
 .journal-dek { max-width: 680px; margin-top: 2rem; color: var(--muted); font-size: 1.25rem; line-height: 1.7; }
 .journal-body { max-width: 680px; margin: 5rem 0 0 20%; }
 .journal-body p { margin-top: 1.5rem; font-size: 1.08rem; line-height: 1.9; }
+.open-source-list, .journal-view-list { border-top: 1px solid var(--portfolio-line); }
+.open-source-list article, .journal-view-list article { display: grid; grid-template-columns: 52px 1fr; gap: 1.5rem; padding: 1.6rem 0; border-bottom: 1px solid var(--portfolio-line); }
+.open-source-list article > span, .journal-view-list article > span { color: var(--portfolio-muted); font-family: 'IBM Plex Mono', monospace; font-size: .68rem; }
+.open-source-list h3, .journal-view-list h3 { margin-top: .25rem; font-size: 1.45rem; letter-spacing: -.035em; }
+.open-source-list article p:not(.panel-kicker), .journal-view-list article > div > p:not(.panel-kicker) { margin-top: .45rem; color: var(--portfolio-muted); line-height: 1.55; }
+.open-source-list small { display: block; margin-top: .6rem; color: var(--portfolio-muted); }
+.open-source-list article > div > div { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: .8rem; }
+.open-source-list a { display: inline-flex; align-items: center; gap: .3rem; color: var(--portfolio-blue); font-size: .8rem; font-weight: 650; }
+.journal-view-list details { margin-top: .8rem; color: var(--portfolio-muted); font-size: .88rem; line-height: 1.65; }
+.journal-view-list summary { cursor: pointer; color: var(--portfolio-blue); font-weight: 650; }
+.journal-view-list details p { margin-top: .65rem; }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; min-height: auto; }

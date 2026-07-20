@@ -18,14 +18,16 @@ import {
   Sparkles,
   UserRound,
 } from 'lucide-react'
-import { capabilities, experiments, featuredProjects, profile, projectCount, skills } from '@/data/portfolio'
+import { capabilities, experiments, featuredProjects, journalPosts, openSourceProjects, profile, projectCount, skills } from '@/data/portfolio'
 import type { Project } from '@/data/portfolio'
 
-type PortfolioView = 'me' | 'projects' | 'skills' | 'fun' | 'contact'
+type PortfolioView = 'me' | 'projects' | 'opensource' | 'journal' | 'skills' | 'fun' | 'contact'
 
 const navigation = [
   { id: 'me' as const, label: 'Me', icon: UserRound, color: '#2b91b8' },
   { id: 'projects' as const, label: 'Projects', icon: BriefcaseBusiness, color: '#d47b45' },
+  { id: 'opensource' as const, label: 'Open source', icon: GitBranch, color: '#6e63c7' },
+  { id: 'journal' as const, label: 'Journal', icon: Braces, color: '#b18122' },
   { id: 'skills' as const, label: 'Skills', icon: Layers3, color: '#6e63c7' },
   { id: 'fun' as const, label: 'Curious', icon: Sparkles, color: '#d4598a' },
   { id: 'contact' as const, label: 'Contact', icon: MessageCircleMore, color: '#b18122' },
@@ -57,6 +59,8 @@ function TriangleMark({ 'aria-hidden': ariaHidden }: { 'aria-hidden'?: boolean |
 
 const questionRoutes: Array<{ terms: string[]; view: PortfolioView }> = [
   { terms: ['project', 'work', 'build', 'built', 'portfolio', 'tripmate', 'buildly', 'tradieflow', 'castivo', 'quickmeet'], view: 'projects' },
+  { terms: ['open source', 'opensource', 'github', 'repository', 'finding', 'public project'], view: 'opensource' },
+  { terms: ['journal', 'blog', 'writing', 'article', 'note'], view: 'journal' },
   { terms: ['skill', 'stack', 'tool', 'technology', 'code', 'capability', 'service'], view: 'skills' },
   { terms: ['contact', 'email', 'hire', 'available', 'talk', 'reach'], view: 'contact' },
   { terms: ['fun', 'curious', 'experiment', 'learn', 'interest'], view: 'fun' },
@@ -119,6 +123,8 @@ export default function InteractivePortfolio() {
       const answers: Record<PortfolioView, string> = {
         me: `I’m Jhye, a product engineer working between ${profile.location}. I turn complicated operations into clear, useful software.`,
         projects: `I build products end to end—from product direction and interface design through frontend, backend, integrations, and release.`,
+        opensource: `I share browser-native tools and open experiments, with notes about the product and engineering findings behind them.`,
+        journal: `The journal is where I write about product decisions, open source, and the details that make operational software easier to trust.`,
         skills: `My core stack includes ${skills.slice(0, 6).join(', ')}, plus Python, Tailwind CSS, Vercel, and Git.`,
         fun: `I’m curious about browser-native tools, operational clarity, and new product interfaces where automation earns trust.`,
         contact: `The quickest way to reach me is ${profile.email}. I’m happy to talk through a product or system that needs untangling.`,
@@ -136,6 +142,8 @@ export default function InteractivePortfolio() {
         <div className="portfolio-view" key={activeView} ref={viewRef} tabIndex={-1}>
           {activeView === 'me' && <AboutView />}
           {activeView === 'projects' && <ProjectsView onSelect={setSelectedProject} />}
+          {activeView === 'opensource' && <OpenSourceView />}
+          {activeView === 'journal' && <JournalView />}
           {activeView === 'skills' && <SkillsView />}
           {activeView === 'fun' && <CuriousView />}
           {activeView === 'contact' && <ContactView />}
@@ -288,6 +296,14 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
       )}
     </dialog>
   )
+}
+
+function OpenSourceView() {
+  return <section className="portfolio-panel" aria-labelledby="opensource-title"><div className="panel-heading"><div><p className="panel-kicker">Public work and findings</p><h2 id="opensource-title">Open source</h2></div><p>{openSourceProjects.length} public projects</p></div><div className="open-source-list">{openSourceProjects.map((project, index) => <article key={project.title}><span>{String(index + 1).padStart(2, '0')}</span><div><p className="panel-kicker">{project.type}</p><h3>{project.title}</h3><p>{project.description}</p><small>{project.note}</small><div><a href={project.href} target="_blank" rel="noreferrer">Open project <ArrowUpRight aria-hidden="true" /></a><a href={project.repo} target="_blank" rel="noreferrer">Repository <ArrowUpRight aria-hidden="true" /></a></div></div></article>)}</div></section>
+}
+
+function JournalView() {
+  return <section className="portfolio-panel" aria-labelledby="journal-title"><div className="panel-heading"><div><p className="panel-kicker">Notes from the work</p><h2 id="journal-title">Journal</h2></div><p>{journalPosts.length} notes</p></div><div className="journal-view-list">{journalPosts.map((post, index) => <article key={post.slug}><span>{String(index + 1).padStart(2, '0')} · {post.date}</span><div><p className="panel-kicker">{post.category}</p><h3>{post.title}</h3><p>{post.excerpt}</p><details><summary>Read finding</summary>{post.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</details></div></article>)}</div></section>
 }
 
 function SkillsView() {
