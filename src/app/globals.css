@@ -228,6 +228,10 @@ button, input, textarea { font: inherit; }
 .open-source-list h3, .journal-view-list h3 { margin-top: .25rem; font-size: 1.45rem; letter-spacing: -.035em; }
 .open-source-list article p:not(.panel-kicker), .journal-view-list article > div > p:not(.panel-kicker) { margin-top: .45rem; color: var(--portfolio-muted); line-height: 1.55; }
 .open-source-list small { display: block; margin-top: .6rem; color: var(--portfolio-muted); }
+.open-source-list dl { display: grid; gap: .7rem; margin-top: 1rem; }
+.open-source-list dl div { display: grid; grid-template-columns: 112px 1fr; gap: .8rem; }
+.open-source-list dt { color: var(--portfolio-ink); font-size: .74rem; font-weight: 700; }
+.open-source-list dd { color: var(--portfolio-muted); font-size: .82rem; line-height: 1.55; }
 .open-source-list article > div > div { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: .8rem; }
 .open-source-list a { display: inline-flex; align-items: center; gap: .3rem; color: var(--portfolio-blue); font-size: .8rem; font-weight: 650; }
 .journal-view-list details { margin-top: .8rem; color: var(--portfolio-muted); font-size: .88rem; line-height: 1.65; }
