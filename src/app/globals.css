@@ -452,7 +452,7 @@ button, input, textarea { font: inherit; }
 .portfolio-question button:disabled { opacity: 0.45; }
 .portfolio-question button svg { width: 20px; height: 20px; }
 .portfolio-reply { max-width: 650px; margin: 0.7rem auto 0; border: 1px solid #e3e3e3; border-radius: 14px; padding: 0.7rem 1rem; background: rgb(255 255 255 / 92%); color: #555; font-size: 0.8rem; line-height: 1.45; text-align: center; box-shadow: 0 8px 24px rgb(0 0 0 / 4%); }
-.portfolio-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 14px; }
+.portfolio-nav { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 14px; }
 .portfolio-nav button {
   display: flex;
   min-height: 78px;
@@ -474,6 +474,15 @@ button, input, textarea { font: inherit; }
 .portfolio-nav button::before { display: none; }
 .portfolio-nav button span { color: var(--nav-color); }
 .portfolio-nav button.is-active svg { color: var(--portfolio-blue); }
+.portfolio-work { width: 100%; }
+.work-switcher { display: inline-flex; gap: 4px; margin-bottom: 1.25rem; border: 1px solid var(--portfolio-line); border-radius: 14px; padding: 4px; background: rgb(255 255 255 / 82%); }
+.work-switcher button { display: inline-flex; min-height: 42px; align-items: center; gap: .45rem; border: 0; border-radius: 10px; padding: .65rem .85rem; background: transparent; color: #777; font-size: .8rem; font-weight: 650; transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease; }
+.work-switcher button:hover { color: #171717; }
+.work-switcher button.is-active { background: #fff; color: #171717; box-shadow: 0 3px 12px rgb(0 0 0 / 7%); }
+.work-switcher button svg { width: 16px; height: 16px; }
+.work-switcher button span { color: #999; font-family: 'IBM Plex Mono', monospace; font-size: .64rem; }
+.work-switcher button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: 2px; }
+.work-section-view { animation: portfolio-enter 320ms cubic-bezier(.22,.8,.22,1) both; }
 .portfolio-watermark {
   position: absolute;
   z-index: 0;
@@ -654,7 +663,7 @@ button, input, textarea { font: inherit; }
   .hero-portrait { width: 200px; margin-top: 1.7rem; border-width: 7px; }
   .hero-summary { max-width: 330px; margin-top: 1.1rem; font-size: 0.85rem; }
   .portfolio-question { min-height: 62px; }
-  .portfolio-nav { grid-template-columns: 1fr; gap: 10px; }
+  .portfolio-nav { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .portfolio-nav button { min-height: 66px; border-radius: 16px; }
   .portfolio-watermark { position: fixed; font-size: 7.5rem; }
   .portfolio-panel { padding-top: 34px; }
@@ -679,15 +688,15 @@ button, input, textarea { font: inherit; }
   .dialog-project-image { inset: 1.25rem !important; width: calc(100% - 2.5rem) !important; height: calc(100% - 2.5rem) !important; }
   .dialog-copy { padding: 2rem 1.5rem 2.5rem; }
   .dialog-sections { grid-template-columns: 1fr; }
-  .view-projects .portfolio-stage, .view-skills .portfolio-stage, .view-fun .portfolio-stage, .view-contact .portfolio-stage { place-items: start center; }
+  .view-work .portfolio-stage, .view-journal .portfolio-stage, .view-skills .portfolio-stage, .view-fun .portfolio-stage, .view-contact .portfolio-stage { place-items: start center; }
   .portfolio-controls { margin-bottom: 30px; }
-  .view-projects .portfolio-controls, .view-skills .portfolio-controls, .view-fun .portfolio-controls, .view-contact .portfolio-controls { margin-top: 1rem; }
+  .view-work .portfolio-controls, .view-journal .portfolio-controls, .view-skills .portfolio-controls, .view-fun .portfolio-controls, .view-contact .portfolio-controls { margin-top: 1rem; }
 }
 
 @media (min-width: 761px) {
   .interactive-portfolio.view-me { height: 100svh; min-height: 100svh; overflow: hidden; }
-  .interactive-portfolio.view-projects .portfolio-stage { min-height: 0; place-items: start center; }
-  .interactive-portfolio.view-projects .portfolio-controls { margin-top: -20px; margin-bottom: 24px; }
+  .interactive-portfolio.view-work .portfolio-stage { min-height: 0; place-items: start center; }
+  .interactive-portfolio.view-work .portfolio-controls { margin-top: -20px; margin-bottom: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

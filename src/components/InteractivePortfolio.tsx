@@ -6,6 +6,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Atom,
+  BookOpen,
   Braces,
   BriefcaseBusiness,
   Cloud,
@@ -21,13 +22,13 @@ import {
 import { capabilities, experiments, featuredProjects, journalPosts, openSourceProjects, profile, projectCount, skills } from '@/data/portfolio'
 import type { Project } from '@/data/portfolio'
 
-type PortfolioView = 'me' | 'projects' | 'opensource' | 'journal' | 'skills' | 'fun' | 'contact'
+type PortfolioView = 'me' | 'work' | 'journal' | 'skills' | 'fun' | 'contact'
+type WorkSection = 'projects' | 'opensource'
 
 const navigation = [
   { id: 'me' as const, label: 'Me', icon: UserRound, color: '#2b91b8' },
-  { id: 'projects' as const, label: 'Projects', icon: BriefcaseBusiness, color: '#d47b45' },
-  { id: 'opensource' as const, label: 'Open source', icon: GitBranch, color: '#6e63c7' },
-  { id: 'journal' as const, label: 'Journal', icon: Braces, color: '#b18122' },
+  { id: 'work' as const, label: 'Work', icon: BriefcaseBusiness, color: '#d47b45' },
+  { id: 'journal' as const, label: 'Journal', icon: BookOpen, color: '#b18122' },
   { id: 'skills' as const, label: 'Skills', icon: Layers3, color: '#6e63c7' },
   { id: 'fun' as const, label: 'Curious', icon: Sparkles, color: '#d4598a' },
   { id: 'contact' as const, label: 'Contact', icon: MessageCircleMore, color: '#b18122' },
@@ -58,8 +59,8 @@ function TriangleMark({ 'aria-hidden': ariaHidden }: { 'aria-hidden'?: boolean |
 }
 
 const questionRoutes: Array<{ terms: string[]; view: PortfolioView }> = [
-  { terms: ['project', 'work', 'build', 'built', 'portfolio', 'tripmate', 'buildly', 'tradieflow', 'castivo', 'quickmeet'], view: 'projects' },
-  { terms: ['open source', 'opensource', 'github', 'repository', 'finding', 'public project'], view: 'opensource' },
+  { terms: ['project', 'work', 'build', 'built', 'portfolio', 'tripmate', 'buildly', 'tradieflow', 'castivo', 'quickmeet'], view: 'work' },
+  { terms: ['open source', 'opensource', 'github', 'repository', 'finding', 'public project'], view: 'work' },
   { terms: ['journal', 'blog', 'writing', 'article', 'note'], view: 'journal' },
   { terms: ['skill', 'stack', 'tool', 'technology', 'code', 'capability', 'service'], view: 'skills' },
   { terms: ['contact', 'email', 'hire', 'available', 'talk', 'reach'], view: 'contact' },
@@ -69,6 +70,7 @@ const questionRoutes: Array<{ terms: string[]; view: PortfolioView }> = [
 
 export default function InteractivePortfolio() {
   const [activeView, setActiveView] = useState<PortfolioView>('me')
+  const [workSection, setWorkSection] = useState<WorkSection>('projects')
   const [question, setQuestion] = useState('')
   const [reply, setReply] = useState('')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -76,8 +78,11 @@ export default function InteractivePortfolio() {
 
   useEffect(() => {
     const syncViewFromHash = () => {
-      const hash = window.location.hash.slice(1) as PortfolioView
-      if (navigation.some(({ id }) => id === hash)) setActiveView(hash)
+      const hash = window.location.hash.slice(1)
+      if (hash === 'projects' || hash === 'opensource') {
+        setWorkSection(hash)
+        setActiveView('work')
+      } else if (navigation.some(({ id }) => id === hash)) setActiveView(hash as PortfolioView)
     }
 
     syncViewFromHash()
@@ -111,19 +116,22 @@ export default function InteractivePortfolio() {
     if (!normalizedQuestion) return
 
     const mentionedProject = featuredProjects.find((project) => normalizedQuestion.includes(project.slug) || normalizedQuestion.includes(project.title.toLowerCase()))
-    const matchedRoute = mentionedProject
-      ? { view: 'projects' as const }
-      : questionRoutes.find(({ terms }) => terms.some((term) => normalizedQuestion.includes(term)))
+    const wantsOpenSource = normalizedQuestion.includes('open source') || normalizedQuestion.includes('opensource') || normalizedQuestion.includes('github') || normalizedQuestion.includes('repository')
+    const matchedRoute = questionRoutes.find(({ terms }) => terms.some((term) => normalizedQuestion.includes(term)))
 
     if (mentionedProject) {
-      showView('projects')
+      setWorkSection('projects')
+      showView('work')
       setReply(`${mentionedProject.title}: ${mentionedProject.description} ${mentionedProject.why ?? ''} ${mentionedProject.problem ? `It solves this: ${mentionedProject.problem}` : ''}`.trim())
+    } else if (wantsOpenSource) {
+      setWorkSection('opensource')
+      showView('work')
+      setReply('Open source work: fixes, why they mattered, and what improved afterward.')
     } else if (matchedRoute) {
       showView(matchedRoute.view)
       const answers: Record<PortfolioView, string> = {
         me: `I’m Jhye, a product engineer working between ${profile.location}. I turn complicated operations into clear, useful software.`,
-        projects: `I build products end to end—from product direction and interface design through frontend, backend, integrations, and release.`,
-        opensource: `I share browser-native tools and open experiments, with notes about the product and engineering findings behind them.`,
+        work: `I build products end to end, and I document open-source fixes with the problem, reasoning, and result.`,
         journal: `The journal is where I write about product decisions, open source, and the details that make operational software easier to trust.`,
         skills: `My core stack includes ${skills.slice(0, 6).join(', ')}, plus Python, Tailwind CSS, Vercel, and Git.`,
         fun: `I’m curious about browser-native tools, operational clarity, and new product interfaces where automation earns trust.`,
@@ -141,8 +149,7 @@ export default function InteractivePortfolio() {
       <section className="portfolio-stage" id="portfolio-content" aria-label="Portfolio content">
         <div className="portfolio-view" key={activeView} ref={viewRef} tabIndex={-1}>
           {activeView === 'me' && <AboutView />}
-          {activeView === 'projects' && <ProjectsView onSelect={setSelectedProject} />}
-          {activeView === 'opensource' && <OpenSourceView />}
+          {activeView === 'work' && <WorkView section={workSection} onSectionChange={setWorkSection} onSelect={setSelectedProject} />}
           {activeView === 'journal' && <JournalView />}
           {activeView === 'skills' && <SkillsView />}
           {activeView === 'fun' && <CuriousView />}
@@ -210,6 +217,10 @@ function AboutView() {
       <p className="hero-summary">I turn complicated operations into clear, useful software—from first idea to working release.</p>
     </section>
   )
+}
+
+function WorkView({ section, onSectionChange, onSelect }: { section: WorkSection; onSectionChange: (section: WorkSection) => void; onSelect: (project: Project) => void }) {
+  return <section className="portfolio-work" aria-label="Work sections"><div className="work-switcher" role="tablist" aria-label="Work sections"><button type="button" role="tab" aria-selected={section === 'projects'} className={section === 'projects' ? 'is-active' : undefined} onClick={() => onSectionChange('projects')}><BriefcaseBusiness aria-hidden="true" /> Projects <span>{featuredProjects.length}</span></button><button type="button" role="tab" aria-selected={section === 'opensource'} className={section === 'opensource' ? 'is-active' : undefined} onClick={() => onSectionChange('opensource')}><GitBranch aria-hidden="true" /> Open source <span>{openSourceProjects.length}</span></button></div><div className="work-section-view" key={section}>{section === 'projects' ? <ProjectsView onSelect={onSelect} /> : <OpenSourceView />}</div></section>
 }
 
 function ProjectsView({ onSelect }: { onSelect: (project: Project) => void }) {
