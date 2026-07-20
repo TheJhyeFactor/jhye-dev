@@ -224,6 +224,10 @@ function WorkView({ section, onSectionChange, onSelect }: { section: WorkSection
 }
 
 function ProjectsView({ onSelect }: { onSelect: (project: Project) => void }) {
+  const filters = ['All', 'Product', 'Operations', 'Creator']
+  const [filter, setFilter] = useState('All')
+  const visibleProjects = featuredProjects.filter((project) => filter === 'All' || project.disciplines.some((discipline) => discipline.toLowerCase().includes(filter.toLowerCase())))
+
   return (
     <section className="portfolio-panel" aria-labelledby="projects-title">
       <div className="panel-heading">
@@ -234,8 +238,12 @@ function ProjectsView({ onSelect }: { onSelect: (project: Project) => void }) {
         <p>{featuredProjects.length} product platforms · {projectCount} builds in the full index</p>
       </div>
 
-      <div className="project-carousel">
-        {featuredProjects.map((project) => (
+      <div className="work-filterbar" role="tablist" aria-label="Filter projects">
+        {filters.map((item) => <button key={item} type="button" role="tab" aria-selected={filter === item} className={filter === item ? 'is-active' : undefined} onClick={() => setFilter(item)}>{item}<span>{item === 'All' ? featuredProjects.length : featuredProjects.filter((project) => project.disciplines.some((discipline) => discipline.toLowerCase().includes(item.toLowerCase()))).length}</span></button>)}
+      </div>
+
+      <div className="project-carousel" key={filter}>
+        {visibleProjects.map((project) => (
           <button key={project.slug} type="button" className="project-tile" onClick={() => onSelect(project)} aria-label={`View details for ${project.title}`}>
             <>
               <div className="project-card-copy">
@@ -252,8 +260,8 @@ function ProjectsView({ onSelect }: { onSelect: (project: Project) => void }) {
       </div>
 
       <div className="panel-note">
-        <p>I build across product strategy, interface design, frontend, backend, integrations, and delivery.</p>
-        <a href="/portfolio/">Open the complete project index <ArrowUpRight aria-hidden="true" /></a>
+        <p>{visibleProjects.length} {filter === 'All' ? 'selected products' : `${filter.toLowerCase()} projects`} shown · Select a card to open the case study.</p>
+        <span>Product strategy · interface · engineering · delivery</span>
       </div>
     </section>
   )
@@ -310,7 +318,12 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
 }
 
 function OpenSourceView() {
-  return <section className="portfolio-panel" aria-labelledby="opensource-title"><div className="panel-heading"><div><p className="panel-kicker">Real pull requests and contribution notes</p><h2 id="opensource-title">Open source contributions</h2></div><p>{openSourceProjects.length} documented fixes across active projects</p></div><div className="open-source-list">{openSourceProjects.map((project, index) => <article key={project.title}><span>{String(index + 1).padStart(2, '0')}</span><div><p className="panel-kicker">{project.type}</p><h3>{project.title}</h3><p>{project.description}</p><dl><div><dt>What I fixed</dt><dd>{project.fixed}</dd></div><div><dt>Why</dt><dd>{project.why}</dd></div><div><dt>What improved</dt><dd>{project.improved}</dd></div></dl><div><a href={project.href} target="_blank" rel="noreferrer">Read pull request <ArrowUpRight aria-hidden="true" /></a><a href={project.repo} target="_blank" rel="noreferrer">View project <ArrowUpRight aria-hidden="true" /></a></div></div></article>)}</div></section>
+  const [selectedTitle, setSelectedTitle] = useState(openSourceProjects[0].title)
+  const [moment, setMoment] = useState<'fixed' | 'why' | 'improved'>('fixed')
+  const selected = openSourceProjects.find((project) => project.title === selectedTitle) ?? openSourceProjects[0]
+  const moments = { fixed: { label: 'What I fixed', value: selected.fixed }, why: { label: 'Why it mattered', value: selected.why }, improved: { label: 'What improved', value: selected.improved } }
+
+  return <section className="portfolio-panel" aria-labelledby="opensource-title"><div className="panel-heading"><div><p className="panel-kicker">Pick a contribution to inspect</p><h2 id="opensource-title">Open source contributions</h2></div><p>{openSourceProjects.length} documented fixes across active projects</p></div><div className="open-source-explorer"><div className="open-source-index" role="list" aria-label="Open source contributions">{openSourceProjects.map((project, index) => <button key={project.title} type="button" className={selected.title === project.title ? 'is-active' : undefined} onClick={() => { setSelectedTitle(project.title); setMoment('fixed') }} aria-pressed={selected.title === project.title}><span>{String(index + 1).padStart(2, '0')}</span><div><strong>{project.title}</strong><small>{project.type}</small></div><ArrowUpRight aria-hidden="true" /></button>)}</div><article className="contribution-detail" aria-live="polite"><p className="panel-kicker">{selected.type}</p><h3>{selected.title}</h3><p className="contribution-summary">{selected.description}</p><div className="contribution-tabs" role="tablist" aria-label="Contribution detail"><button type="button" role="tab" aria-selected={moment === 'fixed'} className={moment === 'fixed' ? 'is-active' : undefined} onClick={() => setMoment('fixed')}>01 <span>Fix</span></button><button type="button" role="tab" aria-selected={moment === 'why'} className={moment === 'why' ? 'is-active' : undefined} onClick={() => setMoment('why')}>02 <span>Why</span></button><button type="button" role="tab" aria-selected={moment === 'improved'} className={moment === 'improved' ? 'is-active' : undefined} onClick={() => setMoment('improved')}>03 <span>Result</span></button></div><div className="contribution-story"><p className="panel-kicker">{moments[moment].label}</p><p>{moments[moment].value}</p></div><div className="contribution-links"><a href={selected.href} target="_blank" rel="noreferrer">Read pull request <ArrowUpRight aria-hidden="true" /></a><a href={selected.repo} target="_blank" rel="noreferrer">View project <ArrowUpRight aria-hidden="true" /></a></div></article></div></section>
 }
 
 function JournalView() {

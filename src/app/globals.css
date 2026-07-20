@@ -483,6 +483,34 @@ button, input, textarea { font: inherit; }
 .work-switcher button span { color: #999; font-family: 'IBM Plex Mono', monospace; font-size: .64rem; }
 .work-switcher button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: 2px; }
 .work-section-view { animation: portfolio-enter 320ms cubic-bezier(.22,.8,.22,1) both; }
+.work-filterbar { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 1rem; }
+.work-filterbar button { display: inline-flex; min-height: 34px; align-items: center; gap: .45rem; border: 1px solid transparent; border-radius: 8px; padding: .45rem .7rem; background: transparent; color: #777; font-size: .75rem; font-weight: 650; transition: background 160ms ease, border-color 160ms ease, color 160ms ease; }
+.work-filterbar button:hover, .work-filterbar button.is-active { border-color: #d8e3fa; background: #f6f9ff; color: #315fbe; }
+.work-filterbar button span { color: #999; font-family: 'IBM Plex Mono', monospace; font-size: .62rem; }
+.work-filterbar button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: 2px; }
+.open-source-explorer { display: grid; grid-template-columns: minmax(250px, .72fr) minmax(0, 1.28fr); gap: 18px; }
+.open-source-index { border-top: 1px solid #222; }
+.open-source-index button { display: grid; width: 100%; grid-template-columns: 30px minmax(0, 1fr) auto; gap: .75rem; align-items: center; border: 0; border-bottom: 1px solid #e1e1e1; padding: .9rem .7rem; background: transparent; color: #171717; text-align: left; transition: background 160ms ease, padding 160ms ease; }
+.open-source-index button:hover, .open-source-index button.is-active { padding-left: 1rem; background: #f6f9ff; }
+.open-source-index button > span { color: #999; font-family: 'IBM Plex Mono', monospace; font-size: .66rem; }
+.open-source-index button strong { display: block; font-size: .82rem; letter-spacing: -.015em; }
+.open-source-index button small { display: block; overflow: hidden; margin-top: .25rem; color: #888; font-size: .65rem; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
+.open-source-index button > svg { width: 15px; height: 15px; color: #888; }
+.open-source-index button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: -3px; }
+.contribution-detail { min-height: 390px; border: 1px solid #dedede; border-radius: 20px; padding: clamp(1.35rem, 3vw, 2.15rem); background: #fff; animation: contribution-enter 300ms ease both; }
+.contribution-detail h3 { max-width: 15ch; margin-top: .2rem; font-size: clamp(1.8rem, 3vw, 2.7rem); font-weight: 750; letter-spacing: -.06em; line-height: 1; }
+.contribution-summary { max-width: 48ch; margin-top: .9rem; color: #666; font-size: .9rem; line-height: 1.55; }
+.contribution-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 2rem; border-top: 1px solid #222; border-bottom: 1px solid #dedede; }
+.contribution-tabs button { display: flex; min-height: 52px; flex-direction: column; align-items: flex-start; justify-content: center; gap: .15rem; border: 0; border-bottom: 2px solid transparent; background: transparent; color: #999; font-family: 'IBM Plex Mono', monospace; font-size: .65rem; text-align: left; transition: border-color 160ms ease, color 160ms ease; }
+.contribution-tabs button span { color: #555; font-family: ui-sans-serif, system-ui, sans-serif; font-size: .75rem; font-weight: 700; }
+.contribution-tabs button:hover, .contribution-tabs button.is-active { border-color: #4e84e6; color: #315fbe; }
+.contribution-tabs button:focus-visible { outline: 3px solid #a7c5ff; outline-offset: -3px; }
+.contribution-story { min-height: 122px; padding-top: 1.25rem; }
+.contribution-story > p:last-child { max-width: 50ch; margin-top: .45rem; color: #555; font-size: .92rem; line-height: 1.65; }
+.contribution-links { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-top: 1.2rem; }
+.contribution-links a { display: inline-flex; align-items: center; gap: .3rem; color: #315fbe; font-size: .78rem; font-weight: 700; }
+.contribution-links svg { width: 15px; height: 15px; }
+@keyframes contribution-enter { from { opacity: .4; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 .portfolio-watermark {
   position: absolute;
   z-index: 0;
@@ -675,6 +703,9 @@ button, input, textarea { font: inherit; }
   .project-tile { flex: 0 0 82vw; }
   .panel-note { align-items: flex-start; flex-direction: column; gap: 0.75rem; }
   .skill-layout { grid-template-columns: 1fr; }
+  .open-source-explorer { grid-template-columns: 1fr; }
+  .open-source-index { max-height: 250px; overflow-y: auto; }
+  .contribution-detail { min-height: 0; }
   .curious-grid { grid-template-columns: 1fr; }
   .curious-grid article { min-height: 190px; }
   .curious-lab { grid-template-columns: 1fr; }
