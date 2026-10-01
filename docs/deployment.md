@@ -10,7 +10,7 @@ Because `main` is the production trigger, review and validate redesign work on a
 
 1. Run `npm ci` and `npm run build` with Node.js 20.
 2. Review every public project link. A gated or unavailable build must not be labelled “Live product”.
-3. Check Home, Work, About, Capabilities, and Contact at mobile and desktop widths.
+3. Check the homepage Me, Work, Journal, Skills, Curious, and Contact views at mobile and desktop widths. Use the homepage hashes for navigation; the old standalone routes are no longer generated.
 4. Use keyboard-only navigation to verify the skip link, menu, calls to action, and project links.
 5. Confirm the canonical URL, page title, description, Open Graph image, robots file, and sitemap in `out/`.
 6. Review `git diff` for accidental assets, secrets, generated build output, or unrelated changes.

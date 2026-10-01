@@ -29,9 +29,9 @@ npm run typecheck
 ## Editing content
 
 - Update projects, capabilities, skills, and shared profile details in `src/data/portfolio.ts`.
-- Update public tools, findings, and journal posts in `src/data/portfolio.ts`; journal detail pages are generated from the post slugs.
-- Keep page-specific narrative in the relevant route under `src/app/`.
-- Put project imagery in `public/images/projects/` and provide useful alternative text where it is rendered.
+- Update experiments, open-source contributions, and journal entries in `src/data/portfolio.ts`; they render in the homepage views.
+- Update homepage narrative and view interactions in `src/components/InteractivePortfolio.tsx`.
+- Put project imagery in `public/images/projects/` and the profile portrait in `public/images/headshot.webp`. Provide useful alternative text where images render.
 - Update route metadata whenever a page's purpose or primary message changes.
 
 Do not add usage, customer, revenue, security, or performance claims without evidence. A “Live product” label means only that the linked build is publicly reachable.
