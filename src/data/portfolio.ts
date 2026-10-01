@@ -19,13 +19,44 @@ export type Project = {
 export const profile = {
   name: "Jhye O'Meley",
   email: 'omelejhye@gmail.com',
-  location: 'Tokyo / Australia',
+  location: 'Australia',
   startYear: 2021,
   github: 'https://github.com/TheJhyeFactor',
   linkedin: 'https://www.linkedin.com/in/jhye-o-meley-529960213/',
 } as const
 
 export const featuredProjects: Project[] = [
+  {
+    title: 'The Finest Group',
+    slug: 'finest-group',
+    description: 'Hospitality websites and operational tools delivered through SOVA, connecting a group presence with distinct venue experiences.',
+    image: '/images/projects/finest-group.webp',
+    disciplines: ['Client delivery', 'Hospitality', 'Operations'],
+    year: 2026,
+    href: 'https://www.sovagroup.cloud/work/finest-group',
+    status: 'SOVA client work',
+    scope: 'Group website, venue experience, and operational controls',
+    problem: 'A hospitality group needs a coherent presence while each venue keeps its own identity and practical customer pathways.',
+    users: 'Venue customers, owners, managers, and authorised staff.',
+    role: 'Website and platform development through SOVA, alongside the wider group delivery.',
+    approach: 'Connected Fishbox & Co, Lakeside Forbes, and Bridges Hill Bistro through the group website. The engagement includes Bridges Hill Bistro’s dedicated website, menu and special content, protected staff tools, and controls for booking and ordering availability. Photography and video were produced by SOVA.',
+  },
+  {
+    title: 'Hunter Valley Prestige Wine Tours',
+    slug: 'hunter-valley-prestige-wine-tours',
+    description: 'A website redesign and guided booking journey delivered through SOVA, helping visitors compare tours and choose their next step.',
+    image: '/images/projects/hunter-valley.webp',
+    disciplines: ['Client delivery', 'Web development', 'Booking systems'],
+    year: 2026,
+    href: 'https://www.sovagroup.cloud/work/hunter-valley-prestige-wine-tours',
+    status: 'SOVA client work',
+    scope: 'Responsive website and booking journey',
+    problem: 'Competing pages and booking buttons made it difficult for customers to understand which tour suited their group.',
+    users: 'Shared-tour guests, private groups, and the team handling enquiries.',
+    role: 'Website and booking-journey development through SOVA.',
+    approach: 'Organised the experience around tour comparison, date, guest numbers, pickup, and contact details. Shared tours follow a guided request path; private and larger groups are directed towards a tailored enquiry. Requests remain distinct from confirmed availability and payment.',
+  },
+
   {
     title: 'TripMate',
     slug: 'tripmate',
@@ -236,13 +267,13 @@ export const experiments = [
 ]
 
 export const openSourceProjects = [
-  { title: 'Crush · LSP discovery', type: 'Charmbracelet Crush · Open PR #3370', description: 'Filtered LSP servers before searching PATH so unrelated servers do not trigger filesystem work.', fixed: 'Crush searched PATH for roughly 300 bundled servers before checking whether each one was relevant to the file being edited.', why: 'The profile showed the discovery scan was spending CPU and allocations probing servers that could never handle the current file.', improved: 'The controlled Apple M4 benchmark went from 50.82 ms to 308.61 µs, with 238× less allocated memory and 96× fewer allocations.', href: 'https://github.com/charmbracelet/crush/pull/3370', repo: 'https://github.com/charmbracelet/crush' },
+  { title: 'Crush · LSP discovery', type: 'Charmbracelet Crush · Merged PR #3370', description: 'Filtered LSP servers before searching PATH so unrelated servers do not trigger filesystem work.', fixed: 'Crush searched PATH for roughly 300 bundled servers before checking whether each one was relevant to the file being edited.', why: 'The profile showed the discovery scan was spending CPU and allocations probing servers that could never handle the current file.', improved: 'The controlled Apple M4 benchmark went from 50.82 ms to 308.61 µs, with 238× less allocated memory and 96× fewer allocations.', href: 'https://github.com/charmbracelet/crush/pull/3370', repo: 'https://github.com/charmbracelet/crush' },
   { title: 'Crush · Tool-call recovery', type: 'Charmbracelet Crush · Open PR #3372', description: 'Rejected empty tool names before malformed calls could poison the saved session history.', fixed: 'An empty streamed tool name could be persisted with its matching result, then replayed on the next provider request.', why: 'Providers that validate tool history could reject every later turn, leaving the session unusable.', improved: 'Malformed calls are removed before persistence, the bad turn stops after one request instead of two, and the next prompt remains usable.', href: 'https://github.com/charmbracelet/crush/pull/3372', repo: 'https://github.com/charmbracelet/crush' },
   { title: 'Crush · Onboarding status', type: 'Charmbracelet Crush · Open PR #3378', description: 'Kept clipboard confirmations and update notices visible above the onboarding dialog.', fixed: 'The bottom-aligned onboarding dialog could overwrite the status row even though the notification still existed in state.', why: 'A notification that is technically present but visually covered is still a broken interaction.', improved: 'A render regression test now protects the layer order, while normal landing, chat, and initialize rendering stays unchanged.', href: 'https://github.com/charmbracelet/crush/pull/3378', repo: 'https://github.com/charmbracelet/crush' },
   { title: 'Ollama · Chat stream batching', type: 'Ollama · Open PR #17258', description: 'Coalesced high-rate chat stream updates into a fixed 16 ms UI batch window.', fixed: 'A 4 ms flush timer restarted for every chunk, causing one React Query cache commit per streamed update.', why: 'Streaming output should feel immediate without forcing the UI cache to commit on every token-sized event.', improved: 'The deterministic benchmark reduced cache commits from 200 to 51 — a 74.5% reduction — while preserving the first and final updates.', href: 'https://github.com/ollama/ollama/pull/17258', repo: 'https://github.com/ollama/ollama' },
-  { title: 'Ollama · Download stall detection', type: 'Ollama · Open PR #17259', description: 'Started the inactivity timeout when a range attempt begins, before its first body byte arrives.', fixed: 'A connected request that never delivered its first byte left `lastUpdated` unset, so the monitor could skip the stalled attempt.', why: 'A pull can look connected while making no progress; the timeout needs to cover that gap too.', improved: 'Stalls are detected from attempt start, completed transfers signal immediately, and the existing 30-second retry behavior remains intact.', href: 'https://github.com/ollama/ollama/pull/17259', repo: 'https://github.com/ollama/ollama' },
+  { title: 'Ollama · Download stall detection', type: 'Ollama · Merged PR #17259', description: 'Started the inactivity timeout when a range attempt begins, before its first body byte arrives.', fixed: 'A connected request that never delivered its first byte left `lastUpdated` unset, so the monitor could skip the stalled attempt.', why: 'A pull can look connected while making no progress; the timeout needs to cover that gap too.', improved: 'Stalls are detected from attempt start, completed transfers signal immediately, and the existing 30-second retry behavior remains intact.', href: 'https://github.com/ollama/ollama/pull/17259', repo: 'https://github.com/ollama/ollama' },
   { title: 'Ollama · Manifest retries', type: 'Ollama · Open PR #17260', description: 'Retried interrupted model manifest requests when the connection failed before headers or during the body.', fixed: 'The pull path returned `EOF` immediately instead of retrying a transport or partial-body failure.', why: 'A temporary network interruption should not leave a model pull failed when a fresh request can recover.', improved: 'Both failure modes recover on the second request with the existing jittered backoff, while healthy pulls keep the same 94 allocations per operation.', href: 'https://github.com/ollama/ollama/pull/17260', repo: 'https://github.com/ollama/ollama' },
-  { title: 'OpenTelemetry Go · Cross-build CI', type: 'OpenTelemetry Go · Open PR #8634', description: 'Added a cross-build workflow and compile-only Make target for 14 target platforms across Go 1.25 and 1.26.', fixed: 'The existing build target ran generated test binaries, which works natively but fails when the target is cross-compiled.', why: 'Cross-platform support needs a CI check that compiles foreign targets without trying to execute them on the host.', improved: 'The project gains a stable 28-job cross-build matrix covering targets including AIX, Darwin, JS/WASM, Linux ARMv7, and Windows amd64.', href: 'https://github.com/open-telemetry/opentelemetry-go/pull/8634', repo: 'https://github.com/open-telemetry/opentelemetry-go' },
+  { title: 'OpenTelemetry Go · Cross-build CI', type: 'OpenTelemetry Go · Merged PR #8634', description: 'Added a cross-build workflow and compile-only Make target for 14 target platforms across Go 1.25 and 1.26.', fixed: 'The existing build target ran generated test binaries, which works natively but fails when the target is cross-compiled.', why: 'Cross-platform support needs a CI check that compiles foreign targets without trying to execute them on the host.', improved: 'The project gains a stable 28-job cross-build matrix covering targets including AIX, Darwin, JS/WASM, Linux ARMv7, and Windows amd64.', href: 'https://github.com/open-telemetry/opentelemetry-go/pull/8634', repo: 'https://github.com/open-telemetry/opentelemetry-go' },
   { title: 'PyInstaller · Finder working directory', type: 'PyInstaller · Closed PR #9485', description: 'Clarified that macOS apps launched through Finder do not run with the app bundle directory as the current working directory.', fixed: 'The documentation did not clearly explain the difference between Finder and Terminal launch contexts.', why: 'Without that detail, macOS users can look for bundled resources relative to the wrong directory.', improved: 'The docs now explain Finder’s `/` working directory, preserve the reduced-environment warning, and point to the existing `__file__` guidance.', href: 'https://github.com/pyinstaller/pyinstaller/pull/9485', repo: 'https://github.com/pyinstaller/pyinstaller' },
   { title: 'Appsmith · OAuth2 test coverage', type: 'Appsmith · Open PR #1', description: 'Added focused Jest coverage for the OAuth2 `expiresIn` field placement fix.', fixed: 'The field-order change needed regression coverage across Authorization Code and Client Credentials grants.', why: 'The visible field should sit directly after `scopeString` for the relevant grant and remain hidden where it does not apply.', improved: 'The change is protected by focused tests, with the full client suite passing 528 suites, 4,143 tests, and 19 snapshots.', href: 'https://github.com/SaifuddinM23/appsmith/pull/1', repo: 'https://github.com/appsmithorg/appsmith' },
 ]

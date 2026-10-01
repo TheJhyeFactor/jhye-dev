@@ -19,7 +19,7 @@ import {
   Sparkles,
   UserRound,
 } from 'lucide-react'
-import { capabilities, experiments, featuredProjects, journalPosts, openSourceProjects, profile, projectCount, skills } from '@/data/portfolio'
+import { capabilities, experiments, featuredProjects, journalPosts, openSourceProjects, profile, skills } from '@/data/portfolio'
 import type { Project } from '@/data/portfolio'
 
 type PortfolioView = 'me' | 'work' | 'journal' | 'skills' | 'fun' | 'contact'
@@ -130,7 +130,7 @@ export default function InteractivePortfolio() {
     } else if (matchedRoute) {
       showView(matchedRoute.view)
       const answers: Record<PortfolioView, string> = {
-        me: `I’m Jhye, a product engineer working between ${profile.location}. I turn complicated operations into clear, useful software.`,
+        me: `I’m Jhye, a developer based in ${profile.location}. My work spans websites, operational software, integrations, and practical automation.`,
         work: `I build products end to end, and I document open-source fixes with the problem, reasoning, and result.`,
         journal: `The journal is where I write about product decisions, open source, and the details that make operational software easier to trust.`,
         skills: `My core stack includes ${skills.slice(0, 6).join(', ')}, plus Python, Tailwind CSS, Vercel, and Git.`,
@@ -203,10 +203,10 @@ function AboutView() {
   return (
     <section className="portfolio-hero" aria-labelledby="portfolio-title">
       <p className="hero-intro">Hey, I&apos;m Jhye <span aria-hidden="true">👋</span></p>
-      <h1 id="portfolio-title">Product Engineer</h1>
+      <h1 id="portfolio-title">Software &amp; Systems Developer</h1>
       <div className="hero-portrait">
         <Image
-          src="/images/projects/Headshot.jpeg"
+          src="/images/headshot.webp"
           alt="Jhye O'Meley"
           fill
           priority
@@ -214,7 +214,8 @@ function AboutView() {
           className="object-cover"
         />
       </div>
-      <p className="hero-summary">I turn complicated operations into clear, useful software—from first idea to working release.</p>
+      <p className="hero-summary">I build websites, business software, and connected systems. Recent work through SOVA spans hospitality platforms, staff tools, and a guided wine-tour booking journey.</p>
+      <div className="hero-work-links"><a href="#projects">Explore recent work <ArrowUpRight aria-hidden="true" /></a><a href="https://www.sovagroup.cloud/" target="_blank" rel="noreferrer">Visit SOVA <ArrowUpRight aria-hidden="true" /></a></div>
     </section>
   )
 }
@@ -224,7 +225,7 @@ function WorkView({ section, onSectionChange, onSelect }: { section: WorkSection
 }
 
 function ProjectsView({ onSelect }: { onSelect: (project: Project) => void }) {
-  const filters = ['All', 'Product', 'Operations', 'Creator']
+  const filters = ['All', 'Client delivery', 'Product', 'Operations', 'Creator']
   const [filter, setFilter] = useState('All')
   const visibleProjects = featuredProjects.filter((project) => filter === 'All' || project.disciplines.some((discipline) => discipline.toLowerCase().includes(filter.toLowerCase())))
 
@@ -233,9 +234,9 @@ function ProjectsView({ onSelect }: { onSelect: (project: Project) => void }) {
       <div className="panel-heading">
         <div>
           <p className="panel-kicker">Selected work</p>
-          <h2 id="projects-title">My Projects</h2>
+          <h2 id="projects-title">Selected projects</h2>
         </div>
-        <p>{featuredProjects.length} product platforms · {projectCount} builds in the full index</p>
+        <p>Client delivery, independent products, and ongoing builds</p>
       </div>
 
       <div className="work-filterbar" role="tablist" aria-label="Filter projects">
@@ -260,7 +261,7 @@ function ProjectsView({ onSelect }: { onSelect: (project: Project) => void }) {
       </div>
 
       <div className="panel-note">
-        <p>{visibleProjects.length} {filter === 'All' ? 'selected products' : `${filter.toLowerCase()} projects`} shown · Select a card to open the case study.</p>
+        <p>{visibleProjects.length} {filter === 'All' ? 'selected projects' : `${filter.toLowerCase()} projects`} shown · Select a card to open the case study.</p>
         <span>Product strategy · interface · engineering · delivery</span>
       </div>
     </section>
@@ -309,7 +310,7 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
               <div><dt>Scope</dt><dd>{project.scope ?? 'Product design and development'}</dd></div>
               <div><dt>Built with</dt><dd>{project.disciplines.join(' · ')}</dd></div>
             </dl>
-            {project.href ? <a href={project.href} target="_blank" rel="noreferrer">Open live product <ArrowUpRight aria-hidden="true" /></a> : <span className="dialog-private">Public preview not available</span>}
+            {project.href ? <a href={project.href} target="_blank" rel="noreferrer">View project <ArrowUpRight aria-hidden="true" /></a> : <span className="dialog-private">Public preview not available</span>}
           </div>
         </div>
       )}
@@ -421,7 +422,7 @@ function CuriousView() {
           ))}
         </div>
       </div>
-      <div className="curious-footer"><p>{experiments.length} experiments in the index · Currently building between <strong>Tokyo</strong> and <strong>Australia</strong>.</p><a href="/portfolio/">Browse the full index <ArrowUpRight aria-hidden="true" /></a></div>
+      <div className="curious-footer"><p>{experiments.length} experiments in the index · Browser tools, creative interfaces, and practical automation.</p><a href={profile.github} target="_blank" rel="noreferrer">Browse repositories <ArrowUpRight aria-hidden="true" /></a></div>
     </section>
   )
 }

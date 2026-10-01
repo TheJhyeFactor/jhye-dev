@@ -5,12 +5,12 @@ import { usePathname } from 'next/navigation'
 import { ArrowUpRight, Info } from 'lucide-react'
 
 const navItems = [
-  { href: '/portfolio/', label: 'Work' },
-  { href: '/open-source/', label: 'Open source' },
-  { href: '/journal/', label: 'Journal' },
-  { href: '/about/', label: 'About' },
-  { href: '/services/', label: 'Capabilities' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/#projects', label: 'Work' },
+  { href: '/#opensource', label: 'Open source' },
+  { href: '/#journal', label: 'Journal' },
+  { href: '/#me', label: 'About' },
+  { href: '/#skills', label: 'Capabilities' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export default function Header() {
@@ -21,7 +21,7 @@ export default function Header() {
   if (isHome) {
     return (
       <header className="portfolio-topbar">
-        <Link href="/contact/" className="availability-link">
+        <Link href="/#contact" className="availability-link">
           <span className="availability-dot" aria-hidden="true" />
           <span className="availability-full">Start a conversation</span>
           <span className="availability-short">Contact</span>

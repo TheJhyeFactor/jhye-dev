@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-01
+
+- Replaced the homepage portrait with the supplied current headshot, optimised as WebP.
+- Updated the introduction to describe website, business-software, and systems work.
+- Added The Finest Group and Hunter Valley Prestige Wine Tours from SOVA’s current main branch, using actual project screenshots.
+- Kept Bridges Hill Bistro inside the Finest Group engagement and credited photography/video to SOVA.
+- Repaired links to removed routes using the existing hash-based views.
+- Updated verified merged PR statuses for Crush #3370, Ollama #17259, and OpenTelemetry Go #8634.
+- Added a client-delivery project filter and updated page metadata.
+
+
 ## 2026-07-17
 
 - Restored the Apple-style interactive homepage with centered portrait, name watermark, and bottom section menu.
