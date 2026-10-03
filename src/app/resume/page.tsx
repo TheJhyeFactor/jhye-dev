@@ -64,7 +64,7 @@ export default function Resume() {
           evidence workflows.
         </p>
         <p>
-          <Link href="/open-source">Merged open-source contributions</Link> ·
+          <Link href="/open-source">Open-source contributions</Link> ·
           Ollama, Charmbracelet Crush, W&B RAI Toolkit and OpenTelemetry Go.
         </p>
       </section>

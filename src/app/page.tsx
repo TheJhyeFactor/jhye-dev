@@ -138,8 +138,8 @@ export default function Home() {
             </div>
             <div>
               <p>
-                Accepted upstream work in AI tooling, reliability, performance
-                and cross-platform engineering.
+                Submitted and merged work in application security, AI tooling,
+                reliability, performance and cross-platform engineering.
               </p>
               <Link className="text-link" href="/open-source">
                 The problems, fixes & results{" "}
