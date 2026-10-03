@@ -1,4 +1,4 @@
-import { ArrowUpRight, GitMerge } from "lucide-react";
+import { ArrowUpRight, GitMerge, GitPullRequest } from "lucide-react";
 import { contributions } from "@/data/portfolio";
 export default function ContributionList({ full = false }: { full?: boolean }) {
   return (
@@ -7,7 +7,11 @@ export default function ContributionList({ full = false }: { full?: boolean }) {
         <article className="contribution" key={item.slug}>
           <div className="contribution-top">
             <span className="merge-badge">
-              <GitMerge size={13} aria-hidden="true" /> Merged
+              {item.status === "Merged" ? (
+                <GitMerge size={13} aria-hidden="true" />
+              ) : (
+                <GitPullRequest size={13} aria-hidden="true" />
+              )} {item.status}
             </span>
             <span className="mono">
               {item.language} / {item.number}
@@ -33,7 +37,18 @@ export default function ContributionList({ full = false }: { full?: boolean }) {
             </>
           )}
           <p className="contribution-result">{item.result}</p>
+          {full && item.validation && (
+            <div className="contribution-section">
+              <h4>Verification & review</h4>
+              <p>{item.validation}</p>
+            </div>
+          )}
           {full && <p className="fine-print">{item.note}</p>}
+          {full && item.issueHref && (
+            <a className="text-link" href={item.issueHref} target="_blank" rel="noreferrer">
+              Original issue <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          )}
           <a
             className="text-link"
             href={item.href}

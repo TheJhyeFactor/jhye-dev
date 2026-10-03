@@ -6,14 +6,14 @@ import ContactBand from "@/components/ContactBand";
 export const metadata: Metadata = {
   title: "Open-source contributions",
   description:
-    "Merged contributions to Ollama, Charmbracelet Crush, W&B RAI Toolkit and OpenTelemetry Go.",
+    "Application security work submitted to ZAP and merged contributions to Ollama, Charmbracelet Crush, W&B RAI Toolkit and OpenTelemetry Go.",
   alternates: { canonical: "/open-source/" },
 };
 export default function OpenSource() {
   return (
     <>
       <header className="shell page-intro">
-        <p className="eyebrow">Open source / Accepted upstream work</p>
+        <p className="eyebrow">Open source / Submitted & merged work</p>
         <h1>
           Read the code.
           <br />
@@ -32,10 +32,11 @@ export default function OpenSource() {
           Explore my GitHub <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </header>
-      <section className="shell source-index" aria-label="Merged contributions">
+      <section className="shell source-index" aria-label="Open-source contributions">
         <ContributionList full />
         <p className="source-status">
-          Merge status checked on 3 October 2026. Benchmarks describe the stated
+          Contribution status checked on 3 October 2026. Submitted work is
+          labelled separately from merged contributions. Benchmarks describe the stated
           workload, rather than whole-product performance.
         </p>
       </section>

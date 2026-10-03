@@ -43,6 +43,9 @@ export type CareerRole = {
   source: string;
 };
 export type Contribution = {
+  status: "Merged" | "Submitted for review";
+  validation?: string;
+  issueHref?: string;
   slug: string;
   project: string;
   title: string;
@@ -576,6 +579,28 @@ export const career: CareerRole[] = [
 
 export const contributions: Contribution[] = [
   {
+    slug: "zap-forbidden-bypass",
+    project: "ZAP",
+    title: "Distinguishing public fallback pages from real 403 bypasses",
+    language: "Java",
+    category: "Application security",
+    status: "Submitted for review",
+    href: "https://github.com/zaproxy/zap-extensions/pull/7785",
+    issueHref: "https://github.com/zaproxy/zaproxy/issues/8596",
+    number: "#7785",
+    problem:
+      "The 403 bypass scanner could mistake a single-page application's public fallback response for protected content. Stopping at that first apparent success could also hide a later real bypass.",
+    change:
+      "Compare successful payload responses with successful responses from the site root and a random sibling path. Ignore identical public fallback bodies and continue testing remaining path and header payloads. Update the scanner help and changelog.",
+    result:
+      "Submitted upstream with 33 focused tests, 346 add-on tests and six installed ZAP comparison runs passing locally. Awaiting maintainer review; not merged or released.",
+    validation:
+      "Five regression cases failed against the unchanged scanner. The patched rule passed all 33 focused cases and all 346 beta add-on tests, plus style checks and packaging. Six asserted runs compared released and patched add-ons against synthetic loopback fixtures: the patched scanner ignored the plain SPA fallback and identified the real path and header bypasses. CLA and Checkmarx checks pass; upstream Java CI and CodeQL await maintainer approval.",
+    note:
+      "Exact body matching leaves dynamically changing fallback pages as a limitation. The rule adds two control requests per scanned 403 endpoint. Status checked on 3 October 2026. AI assistance was used for investigation, implementation and validation.",
+  },
+  {
+    status: "Merged",
     slug: "ollama-downloads",
     project: "Ollama",
     title: "Detecting a download stall before the first byte",
@@ -592,6 +617,7 @@ export const contributions: Contribution[] = [
     note: "A reliability fix in the download path, not a claim of faster internet bandwidth.",
   },
   {
+    status: "Merged",
     slug: "crush-lsp",
     project: "Charmbracelet Crush",
     title: "Filter language servers before searching PATH",
@@ -608,6 +634,7 @@ export const contributions: Contribution[] = [
     note: "This measures the LSP discovery workload, not overall application performance.",
   },
   {
+    status: "Merged",
     slug: "rai-adapter",
     project: "W&B RAI Toolkit",
     title: "Testing an OpenAI-compatible adapter contract",
@@ -624,6 +651,7 @@ export const contributions: Contribution[] = [
     note: "The pull request includes an AI-assistance disclosure.",
   },
   {
+    status: "Merged",
     slug: "otel-builds",
     project: "OpenTelemetry Go",
     title: "Cross-platform compile checks in CI",
