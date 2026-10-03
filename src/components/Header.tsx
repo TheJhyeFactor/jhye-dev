@@ -1,53 +1,62 @@
-'use client'
-
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { ArrowUpRight, Info } from 'lucide-react'
-
-const navItems = [
-  { href: '/#projects', label: 'Work' },
-  { href: '/#opensource', label: 'Open source' },
-  { href: '/#journal', label: 'Journal' },
-  { href: '/#me', label: 'About' },
-  { href: '/#skills', label: 'Capabilities' },
-  { href: '/#contact', label: 'Contact' },
-]
-
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useState } from "react";
+const links = [
+  { href: "/work", label: "Work" },
+  { href: "/career", label: "Career" },
+  { href: "/open-source", label: "Open source" },
+  { href: "/about", label: "About" },
+  { href: "/resume", label: "Résumé" },
+];
 export default function Header() {
-  const pathname = usePathname()
-  const isHome = pathname === '/'
-  const isActive = (href: string) => pathname.startsWith(href.replace(/\/$/, ''))
-
-  if (isHome) {
-    return (
-      <header className="portfolio-topbar">
-        <Link href="/#contact" className="availability-link">
-          <span className="availability-dot" aria-hidden="true" />
-          <span className="availability-full">Start a conversation</span>
-          <span className="availability-short">Contact</span>
-          <ArrowUpRight aria-hidden="true" />
-        </Link>
-        <Link href="/" className="topbar-mark" aria-label="Jhye dot dev, home">J</Link>
-        <Link href="/#contact" className="topbar-info" aria-label="Contact information"><Info aria-hidden="true" /></Link>
-      </header>
-    )
-  }
-
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
   return (
     <header className="site-header">
-      <nav className="page-shell flex min-h-[76px] items-center justify-between gap-8" aria-label="Primary navigation">
-        <Link href="/" className="focus-ring flex items-baseline gap-3" aria-label="Jhye dot dev, home">
-          <span className="font-display text-xl font-bold tracking-[-0.04em]">jhye<span className="text-[var(--accent)]">.</span>dev</span>
-          <span className="hidden font-mono text-[0.65rem] uppercase tracking-[0.1em] text-[var(--muted)] sm:inline">Product / Engineering</span>
+      <div className="shell header-inner">
+        <Link
+          className="wordmark"
+          href="/"
+          aria-label="Jhye dot dev, home"
+          onClick={() => setOpen(false)}
+        >
+          jhye<span>.</span>dev
         </Link>
-        <ul className="flex items-center gap-4 sm:gap-7">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link href={item.href} aria-current={isActive(item.href) ? 'page' : undefined} className={`focus-ring text-sm transition-colors hover:text-[var(--accent)] ${isActive(item.href) ? 'font-bold text-[var(--ink)]' : 'text-[var(--muted)]'}`}>{item.label}</Link>
-            </li>
+        <nav
+          className={open ? "header-nav is-open" : "header-nav"}
+          id="primary-navigation"
+          aria-label="Primary navigation"
+        >
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={pathname.startsWith(link.href) ? "page" : undefined}
+              onClick={() => setOpen(false)}
+            >
+              {link.label}
+            </Link>
           ))}
-        </ul>
-      </nav>
+          <Link
+            className="nav-contact"
+            href="/contact"
+            onClick={() => setOpen(false)}
+          >
+            Let’s talk <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
+        </nav>
+        <button
+          className="menu-toggle"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="primary-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
+      </div>
     </header>
-  )
+  );
 }

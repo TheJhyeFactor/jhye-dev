@@ -1,12 +1,20 @@
-import type { MetadataRoute } from 'next'
-
-export const dynamic = 'force-static'
-
+import type { MetadataRoute } from "next";
+import { projects, career } from "@/data/portfolio";
+export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['']
-  return routes.map((route) => ({
-    url: `https://jhye.dev${route}`,
-    changeFrequency: route === '' ? 'monthly' : 'yearly',
-    priority: route === '' ? 1 : 0.8,
-  }))
+  return [
+    "",
+    "/work",
+    "/career",
+    "/open-source",
+    "/about",
+    "/contact",
+    "/resume",
+    ...projects.map((p) => `/work/${p.slug}`),
+    ...career.map((r) => `/career/${r.slug}`),
+  ].map((route) => ({
+    url: `https://jhye.dev${route}/`,
+    changeFrequency: "monthly",
+    priority: route === "" ? 1 : 0.8,
+  }));
 }
