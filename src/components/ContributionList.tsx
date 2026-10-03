@@ -55,7 +55,7 @@ export default function ContributionList({ full = false }: { full?: boolean }) {
             target="_blank"
             rel="noreferrer"
           >
-            Inspect pull request <ArrowUpRight size={15} aria-hidden="true" />
+            {item.status === "Investigation documented" ? "Read investigation" : "Inspect pull request"} <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         </article>
       ))}

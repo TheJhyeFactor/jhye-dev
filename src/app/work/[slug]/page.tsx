@@ -78,9 +78,9 @@ export default async function CaseStudy({
             sizes="100vw"
           />
           <figcaption>
-            {p.category === "Client delivery"
+            {p.caption ?? (p.category === "Client delivery"
               ? "Work delivered through SOVA."
-              : "Actual application interface."}{" "}
+              : "Actual application interface.")}{" "}
             {p.slug === "finest-group"
               ? "Photography and video produced by SOVA."
               : ""}

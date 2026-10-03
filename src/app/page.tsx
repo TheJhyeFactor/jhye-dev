@@ -110,7 +110,7 @@ export default function Home() {
           </div>
         </div>
         <div className="work-grid">
-          {projects.slice(0, 2).map((project, index) => (
+          {projects.slice(0, 3).map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>

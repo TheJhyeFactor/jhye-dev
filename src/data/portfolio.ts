@@ -8,6 +8,7 @@ export type Project = {
   year: string;
   image: string;
   alt: string;
+  caption?: string;
   summary: string;
   takeaway: string;
   role: string;
@@ -43,7 +44,7 @@ export type CareerRole = {
   source: string;
 };
 export type Contribution = {
-  status: "Merged" | "Submitted for review";
+  status: "Merged" | "Submitted for review" | "Investigation documented";
   validation?: string;
   issueHref?: string;
   slug: string;
@@ -68,6 +69,37 @@ export const profile = {
 } as const;
 
 export const projects: Project[] = [
+  {
+    slug: "garak-scan-planner",
+    title: "garak scan planner",
+    eyebrow: "AI security engineering",
+    category: "AI",
+    status: "Local prototype · Proposal published",
+    year: "2026",
+    image: "/images/work/garak-planning.svg",
+    alt: "Scan planning workflow: audited static probes and local transformations produce workload counts without executing the configured target",
+    caption: "Workflow illustration of the local prototype; not a garak application screenshot.",
+    summary: "A Python prototype for NVIDIA garak that explains a supported scan workload before querying an AI target.",
+    takeaway: "Making preparation boundaries explicit instead of assuming a replacement target makes every step local.",
+    role: "Project direction and AI-assisted prototype development",
+    stack: ["Python", "garak", "pytest", "JSON", "Local tokenizers"],
+    problem: "LLM security scans prepare many inputs and request multiple generations. Operators need to understand that workload before execution. Counting raw prompts misses conversation turns and transformations; preparation code can also call external services independently of the target.",
+    contribution: "I directed and developed, with AI assistance, a bounded CLI scan-planning prototype, tracking generator and separate JSON artifact. It supports 30 audited static probes and three local prompt transformations, reporting prepared inputs, unique conversations, requested generations and input size. Optional token counting uses a supplied local tokenizer file.",
+    flow: ["Selected static probes", "Supported local transformations", "Prepared conversations", "Workload accounting", "Separate planning artifact"],
+    decisions: [
+      { title: "Bound the supported preparation", body: "An audited allowlist and rejection paths distinguish supported static preparation from adaptive or external workloads. Replacing the target alone does not establish an offline boundary." },
+      { title: "Keep planning separate from findings", body: "The prototype avoids configured-target and detector execution. Planning artifacts contain workload statistics, without vulnerability findings, raw prompt text or exported prompt digests." },
+      { title: "Make counts explainable", body: "Count complete prepared conversations and generation multipliers, respect caps and supported transformations, and use an explicit local tokenizer for optional token counts. These counts are not billed usage or measured cost savings." },
+    ],
+    gallery: [],
+    verification: "The recorded relevant suite passed 1,730 cases, including 61 feature tests; three existing generator contract cases passed separately. Four real CLI scenarios exercised static counts, caps and transformations, local token counting and partial coverage. The configured synthetic loopback target received zero requests, and planning created no security report. Formatting, diff and dependency consistency checks passed.",
+    limits: "This remains a local prototype with a public scope proposal, not a submitted or accepted upstream feature. Full repository tests remain unverified because of collection-time data downloads and missing optional audio dependencies. Adaptive and external preparation are explicitly unsupported. The four CLI scenarios establish the tested paths, not universal absence of side effects. No merge, release, adoption or cost saving is claimed. AI assistance was used during implementation and validation.",
+    next: "Await maintainer direction on the proposed scope and command design, complete further review and required validation, and prepare a focused upstream contribution if aligned. Status checked on 3 October 2026.",
+    links: [
+      { label: "Feature proposal", href: "https://github.com/NVIDIA/garak/issues/1079#issuecomment-5968048348" },
+      { label: "NVIDIA garak", href: "https://github.com/NVIDIA/garak" },
+    ],
+  },
   {
     slug: "wixal",
     title: "Wixal",
@@ -598,6 +630,20 @@ export const contributions: Contribution[] = [
       "Five regression cases failed against the unchanged scanner. The patched rule passed all 33 focused cases and all 346 beta add-on tests, plus style checks and packaging. Six asserted runs compared released and patched add-ons against synthetic loopback fixtures: the patched scanner ignored the plain SPA fallback and identified the real path and header bypasses. CLA and Checkmarx checks pass; upstream Java CI and CodeQL await maintainer approval.",
     note:
       "Exact body matching leaves dynamically changing fallback pages as a limitation. The rule adds two control requests per scanned 403 endpoint. Status checked on 3 October 2026. AI assistance was used for investigation, implementation and validation.",
+  },
+  {
+    slug: "zap-csp-investigation",
+    project: "ZAP",
+    title: "Explaining a version and configuration interaction in CSP filters",
+    language: "Java / HTTP",
+    category: "Security investigation",
+    status: "Investigation documented",
+    href: "https://github.com/zaproxy/zaproxy/issues/9476#issuecomment-5967696713",
+    number: "Issue #9476",
+    problem: "A reported CSP alert-filter interaction needed a reproducible explanation before proposing another patch.",
+    change: "Investigate the behaviour through ten controlled runs across two add-on versions and document the interaction with an existing broad filter.",
+    result: "The reproduced cause was already covered by an existing upstream fix. Findings were documented in the issue discussion; no duplicate patch was submitted.",
+    note: "The local evidence does not confirm the original reporter's exact configuration. This is an investigation contribution, not a new merged code change.",
   },
   {
     status: "Merged",
