@@ -13,7 +13,7 @@ export default function OpenSource() {
   return (
     <>
       <header className="shell page-intro">
-        <p className="eyebrow">Open source / Submitted & merged work</p>
+        <p className="eyebrow">Open source / Code & investigation</p>
         <h1>
           Read the code.
           <br />
@@ -21,7 +21,7 @@ export default function OpenSource() {
         </h1>
         <p className="lead">
           Focused changes to projects other people use. The problem, the fix and
-          the result, with the original pull request one click away.
+          the result, with the original pull request or investigation one click away.
         </p>
         <a
           className="text-link"

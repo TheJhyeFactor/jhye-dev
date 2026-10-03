@@ -55,6 +55,12 @@ export default function Resume() {
       <section>
         <h2>Selected engineering work</h2>
         <p>
+          <Link href="/work/garak-scan-planner">garak scan planner</Link> · Local Python AI security prototype covering 30 audited static probes and three local transformations. Recorded validation: 61 feature tests within 1,730 relevant passing tests and four CLI scenarios without configured-target requests. Public proposal; no upstream PR or release.
+        </p>
+        <p>
+          <Link href="/open-source">ZAP application security</Link> · Submitted Java 403-bypass scanner fix, with 33 focused tests, 346 add-on tests and six installed comparisons passing locally. Separately documented a CSP-filter investigation across ten controlled runs. Awaiting upstream review.
+        </p>
+        <p>
           <Link href="/work/wixal">Wixal</Link> · Local AI desktop workspace
           with reviewed tool actions and persistent project context.
         </p>
