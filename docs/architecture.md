@@ -1,26 +1,20 @@
 # Portfolio architecture
 
-## Overview
+Next.js App Router with static export and GitHub Pages deployment. No backend is needed for the portfolio.
 
-The site is a statically exported Next.js portfolio. It is intentionally content-led: project data is defined once, page components render that data, and the final `out/` directory can be hosted without an application server.
+- `/`: scrolling overview of focus, selected projects, merged contributions, career and working style.
+- `/work` and `/work/[slug]`: curated projects and static case studies.
+- `/career` and `/career/[slug]`: six roles, linked timeline and detailed chapters.
+- `/open-source`: accepted upstream work with problem, change, result and evidence links.
+- `/about`: narrative, capabilities and education.
+- `/resume`: readable and printable HTML résumé.
+- `/contact`: email, GitHub and LinkedIn.
+- `src/data/portfolio.ts`: typed content and provenance-aware lifecycle information.
+- `src/components/Header.tsx`: responsive client navigation; content pages render on the server.
+- `src/app/sitemap.ts`: all public content routes.
 
-## Main surfaces
+The primary narrative remains readable without client-side content switching. Old `#projects`, `#opensource`, `#career`, `#skills` and `#me` links target corresponding homepage sections. A public application tracker is not included in this worktree/release.
 
-- `src/app/page.tsx` — minimal server-rendered entrypoint for the interactive home.
-- `src/app/page.tsx` — the editorial homepage with direct work, capabilities, and contact paths.
-- `src/app/portfolio/page.tsx` — public product, client, and experiment index.
-- `src/app/about/page.tsx` — biography, principles, and technical toolkit.
-- `src/app/services/page.tsx` — capabilities and suitable engagement types.
-- `src/app/contact/page.tsx` — direct, truthful contact routes.
-- `src/data/portfolio.ts` — source of truth for projects, capabilities, and skills.
-- `src/app/globals.css` — visual tokens and shared responsive patterns.
+Employer dates and responsibilities follow the current résumé. Departure wording is a visible draft and must be confirmed before release. Personal project work is distinct from employer projects. Avoid unsupported adoption, compliance, security or business-impact claims.
 
-The home screen uses progressive disclosure: its five views swap in place and sync to URL hashes such as `#projects`. The finder is deterministic local navigation, not an AI chat service. Canonical routes remain available for search indexing, direct links, and a complete non-interactive reading experience.
-
-## Content rules
-
-Project lifecycle labels describe build and deployment state only. Do not add customer, revenue, usage, or performance claims without evidence. Keep project descriptions concise and update `src/data/portfolio.ts` rather than duplicating content between pages.
-
-## Delivery
-
-`npm run build` produces a static export in `out/`. Pushes to `main` run the GitHub Pages workflow in `.github/workflows/deploy.yml`.
+Quality checks: `npm run typecheck`, `npm run lint`, `npm run build`, `git diff --check`, and desktop/mobile browser checks. Changes land through a reviewed GitHub PR; merging `main` deploys GitHub Pages.

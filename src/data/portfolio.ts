@@ -1,323 +1,640 @@
+export type GalleryImage = { src: string; alt: string; caption: string };
 export type Project = {
-  title: string
-  slug: string
-  description: string
-  image: string
-  disciplines: string[]
-  year: number
-  href?: string
-  status?: string
-  scope?: string
-  problem?: string
-  users?: string
-  role?: string
-  why?: string
-  approach?: string
-  nextStep?: string
-}
+  slug: string;
+  title: string;
+  eyebrow: string;
+  category: string;
+  status: string;
+  year: string;
+  image: string;
+  alt: string;
+  summary: string;
+  takeaway: string;
+  role: string;
+  stack: string[];
+  problem: string;
+  contribution: string;
+  flow: string[];
+  decisions: { title: string; body: string }[];
+  gallery: GalleryImage[];
+  verification: string;
+  limits: string;
+  next: string;
+  links: { label: string; href: string }[];
+};
+export type CareerRole = {
+  slug: string;
+  company: string;
+  title: string;
+  type: string;
+  start: string;
+  end: string;
+  location: string;
+  theme: string;
+  summary: string;
+  intro: string;
+  responsibilities: string[];
+  areas: { title: string; body: string }[];
+  skills: string[];
+  reflection: string;
+  transition: string;
+  photos: GalleryImage[];
+  related: string[];
+  source: string;
+};
+export type Contribution = {
+  slug: string;
+  project: string;
+  title: string;
+  language: string;
+  category: string;
+  href: string;
+  number: string;
+  problem: string;
+  change: string;
+  result: string;
+  note: string;
+};
 
 export const profile = {
   name: "Jhye O'Meley",
-  email: 'omelejhye@gmail.com',
-  location: 'Australia',
-  startYear: 2021,
-  github: 'https://github.com/TheJhyeFactor',
-  linkedin: 'https://www.linkedin.com/in/jhye-o-meley-529960213/',
-} as const
+  email: "omeleyjhye@gmail.com",
+  location: "Newcastle, Australia",
+  github: "https://github.com/TheJhyeFactor",
+  linkedin: "https://www.linkedin.com/in/jhye-o-meley-529960213/",
+} as const;
 
-export const featuredProjects: Project[] = [
+export const projects: Project[] = [
   {
-    title: 'The Finest Group',
-    slug: 'finest-group',
-    description: 'Hospitality websites and operational tools delivered through SOVA, connecting a group presence with distinct venue experiences.',
-    image: '/images/projects/finest-group.webp',
-    disciplines: ['Client delivery', 'Hospitality', 'Operations'],
-    year: 2026,
-    href: 'https://www.sovagroup.cloud/work/finest-group',
-    status: 'SOVA client work',
-    scope: 'Group website, venue experience, and operational controls',
-    problem: 'A hospitality group needs a coherent presence while each venue keeps its own identity and practical customer pathways.',
-    users: 'Venue customers, owners, managers, and authorised staff.',
-    role: 'Website and platform development through SOVA, alongside the wider group delivery.',
-    approach: 'Connected Fishbox & Co, Lakeside Forbes, and Bridges Hill Bistro through the group website. The engagement includes Bridges Hill Bistro’s dedicated website, menu and special content, protected staff tools, and controls for booking and ordering availability. Photography and video were produced by SOVA.',
+    slug: "wixal",
+    title: "Wixal",
+    eyebrow: "AI engineering",
+    category: "AI",
+    status: "Local macOS build",
+    year: "2026",
+    image: "/images/work/wixal-desktop.webp",
+    alt: "Wixal macOS interface with local model selection and project workspace",
+    summary:
+      "A local AI workspace with reviewed tools, persistent conversations and a real terminal.",
+    takeaway:
+      "Making model suggestions useful without handing over unchecked execution.",
+    role: "Product design and application development",
+    stack: ["Electron", "JavaScript", "Ollama", "node-pty", "xterm.js"],
+    problem:
+      "An AI coding workspace needs more than a chat box. It needs project context, usable tools, durable state and a clear point at which the user decides what can run.",
+    contribution:
+      "I built the desktop interface, local Ollama integration, project and conversation persistence, tool review workflow, and terminal integration.",
+    flow: [
+      "Project context",
+      "Local Ollama model",
+      "Structured tool request",
+      "Human review",
+      "File or command result",
+    ],
+    decisions: [
+      {
+        title: "Keep inference local",
+        body: "The app talks to Ollama on loopback. Model selection and streaming sit alongside project context, with no cloud provider configured.",
+      },
+      {
+        title: "Review before action",
+        body: "File changes show existing and proposed contents. Model-requested commands require review. The terminal and approved commands still run with the user’s host permissions.",
+      },
+      {
+        title: "Build a desktop application",
+        body: "A narrow preload bridge connects the renderer to the main process. Persistent state is written atomically, and native terminal modules are packaged with the application.",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/work/wixal-agent.webp",
+        alt: "Wixal tool-call result during a controlled file-writing and memory test",
+        caption:
+          "Controlled test: a model-requested file write and project-memory recall.",
+      },
+      {
+        src: "/images/work/wixal-terminal.webp",
+        alt: "Wixal integrated terminal in the desktop application",
+        caption:
+          "A real PTY terminal in the application, separate from model-requested commands.",
+      },
+    ],
+    verification:
+      "The project includes unit checks and an app smoke workflow covering a PTY, reviewed fixture-file creation, explicit memory, recall and reload. The screenshots shown here come from that controlled workflow; they do not establish reliability for every model.",
+    limits:
+      "The build is for Apple Silicon and is not signed or notarized for public distribution. Local JSON storage is not encrypted. Reviewed commands are host shells, not a filesystem sandbox.",
+    next: "Improve evaluation across models and failure cases, refine file diffs, and prepare signing and distribution before offering a public download.",
+    links: [],
   },
   {
-    title: 'Hunter Valley Prestige Wine Tours',
-    slug: 'hunter-valley-prestige-wine-tours',
-    description: 'A website redesign and guided booking journey delivered through SOVA, helping visitors compare tours and choose their next step.',
-    image: '/images/projects/hunter-valley.webp',
-    disciplines: ['Client delivery', 'Web development', 'Booking systems'],
-    year: 2026,
-    href: 'https://www.sovagroup.cloud/work/hunter-valley-prestige-wine-tours',
-    status: 'SOVA client work',
-    scope: 'Responsive website and booking journey',
-    problem: 'Competing pages and booking buttons made it difficult for customers to understand which tour suited their group.',
-    users: 'Shared-tour guests, private groups, and the team handling enquiries.',
-    role: 'Website and booking-journey development through SOVA.',
-    approach: 'Organised the experience around tour comparison, date, guest numbers, pickup, and contact details. Shared tours follow a guided request path; private and larger groups are directed towards a tailored enquiry. Requests remain distinct from confirmed availability and payment.',
+    slug: "sentinel-local",
+    title: "Sentinel Local",
+    eyebrow: "Cybersecurity tooling",
+    category: "Cybersecurity",
+    status: "Independent local tool",
+    year: "2026",
+    image: "/images/work/sentinel-console.jpg",
+    alt: "Sentinel Local console with authorised loopback scope and operator agents",
+    summary:
+      "An AI-assisted operations console for scoped investigations, evidence and human approvals.",
+    takeaway:
+      "Connecting AI assistance with explicit scope, operator review and an audit trail.",
+    role: "Application and policy-workflow development",
+    stack: ["TypeScript", "React", "Express", "SQLite", "Ollama"],
+    problem:
+      "Security investigation produces commands, observations and hypotheses. When AI is involved, those need an explicit target boundary and a clear record of what an operator actually approved.",
+    contribution:
+      "I built the local console, persistent project and agent workflows, target intake, approval queue, evidence-review surfaces and centralised policy boundaries.",
+    flow: [
+      "Authorised scope",
+      "Evidence intake",
+      "Local agent review",
+      "Operator approval",
+      "Recorded result",
+    ],
+    decisions: [
+      {
+        title: "Make scope explicit",
+        body: "Projects define allowed hosts and network boundaries. The service and model connection remain on loopback; target tools check the project scope.",
+      },
+      {
+        title: "Separate suggestion from execution",
+        body: "Structured agent tools request actions through policy checks. Network and higher-risk actions pause for review. A model response does not grant permission to act.",
+      },
+      {
+        title: "Keep evidence traceable",
+        body: "SQLite stores project activity, handoffs, tool requests, approvals and audit events. The review workflow distinguishes observations, hypotheses and gaps.",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/work/sentinel-approvals.jpg",
+        alt: "Sentinel Local Tools and approvals page in a clean demonstration project",
+        caption:
+          "The approval workbench in a clean local demonstration. No scan or finding is being claimed.",
+      },
+    ],
+    verification:
+      "The repository contains type checks, policy and persistence tests, and a production build workflow. These screenshots were captured from a fresh local demonstration project. Opening the console is not an independent security assessment.",
+    limits:
+      "An operator aid for authorised work. Scope checks and approvals do not replace written permission or careful review. The direct interactive terminal retains host access; AI summaries still require validation.",
+    next: "Broaden regression coverage around scope and approval boundaries and make evidence provenance easier to inspect.",
+    links: [],
   },
+  {
+    slug: "finest-group",
+    title: "The Finest Group",
+    eyebrow: "Client delivery through SOVA",
+    category: "Client delivery",
+    status: "Client work",
+    year: "2026",
+    image: "/images/projects/finest-group.webp",
+    alt: "The Finest Group hospitality website",
+    summary:
+      "Hospitality websites and operational controls, delivered through SOVA.",
+    takeaway:
+      "Connecting a group presence with the practical needs of distinct venues.",
+    role: "Website and platform development through SOVA",
+    stack: [
+      "Responsive web development",
+      "Content workflows",
+      "Operational controls",
+    ],
+    problem:
+      "A hospitality group needs a coherent public presence while venues keep their own identity and useful customer pathways.",
+    contribution:
+      "My work through SOVA spans the group website and venue experiences, including Bridges Hill Bistro’s dedicated website, menu and special content, staff tools, and booking and ordering availability controls.",
+    flow: [
+      "Group website",
+      "Venue experience",
+      "Customer pathway",
+      "Staff content",
+      "Availability controls",
+    ],
+    decisions: [
+      {
+        title: "Keep the venue context",
+        body: "Fishbox & Co, Lakeside Forbes and Bridges Hill Bistro connect through the group presence while maintaining distinct venue experiences.",
+      },
+      {
+        title: "Treat operations as part of the product",
+        body: "Menu and special content, staff surfaces, and booking or ordering availability are part of the delivery, alongside the public website.",
+      },
+      {
+        title: "Keep ownership clear",
+        body: "This is work delivered through SOVA. Photography and video were produced by SOVA. Bridges Hill Bistro belongs within the Finest Group engagement.",
+      },
+    ],
+    gallery: [],
+    verification:
+      "Public website and SOVA case-study links provide an inspectable view of the engagement. No revenue, conversion or booking-volume improvement is claimed.",
+    limits:
+      "The public case study describes the group engagement. It does not imply that every part of the wider delivery was completed by me alone.",
+    next: "Continue refining content and operational journeys around venue requirements.",
+    links: [
+      {
+        label: "SOVA case study",
+        href: "https://www.sovagroup.cloud/work/finest-group",
+      },
+    ],
+  },
+  {
+    slug: "hunter-valley",
+    title: "Hunter Valley Prestige Wine Tours",
+    eyebrow: "Client delivery through SOVA",
+    category: "Client delivery",
+    status: "Client work",
+    year: "2026",
+    image: "/images/projects/hunter-valley.webp",
+    alt: "Hunter Valley Prestige Wine Tours website and booking experience",
+    summary:
+      "A responsive tour website with a more deliberate booking and enquiry journey.",
+    takeaway:
+      "Helping visitors choose a tour while keeping requests distinct from confirmed bookings.",
+    role: "Website and booking-journey development through SOVA",
+    stack: [
+      "Responsive web development",
+      "Booking workflows",
+      "Enquiry journeys",
+    ],
+    problem:
+      "Competing pages and booking buttons made it difficult for visitors to understand which tour suited their group and which step to take next.",
+    contribution:
+      "I worked on the website and booking journey through SOVA, organising tour comparison and the steps for dates, guests, pickup and contact details.",
+    flow: [
+      "Compare tours",
+      "Choose a date",
+      "Group and pickup details",
+      "Request or enquiry",
+      "Team confirmation",
+    ],
+    decisions: [
+      {
+        title: "Start with the visitor’s choice",
+        body: "Tour comparison precedes the request flow so visitors can understand the shared and private options.",
+      },
+      {
+        title: "Give different groups different paths",
+        body: "Shared tours follow a guided request journey. Private and larger groups move towards a tailored enquiry.",
+      },
+      {
+        title: "Be precise about booking state",
+        body: "A submitted request is distinct from confirmed availability and payment. The interface should reflect that operational reality.",
+      },
+    ],
+    gallery: [],
+    verification:
+      "The published SOVA case study is available to inspect. No conversion-rate or sales uplift is claimed.",
+    limits:
+      "The journey supports booking requests and enquiries. It does not mean every request is a paid or confirmed booking.",
+    next: "Refine the journey against real enquiry patterns and feedback from the team handling requests.",
+    links: [
+      {
+        label: "SOVA case study",
+        href: "https://www.sovagroup.cloud/work/hunter-valley-prestige-wine-tours",
+      },
+    ],
+  },
+];
 
+export const career: CareerRole[] = [
   {
-    title: 'TripMate',
-    slug: 'tripmate',
-    description:
-      'Operations software connecting bookings, riders, drivers, route planning, and live trip coordination in one working system.',
-    image: '/images/projects/covers/tripmate.webp',
-    disciplines: ['Product design', 'React', 'Firebase', 'Mobile'],
-    year: 2026,
-    href: 'https://tripmate-platform.vercel.app/',
-    status: 'Live product',
-    scope: 'Product strategy to production',
-    problem: 'Transport teams need one dependable view of bookings, drivers, routes, and live trip changes instead of disconnected tools and messages.',
-    users: 'Reception teams, drivers, and transport coordinators.',
-    role: 'Product strategy, interface design, full-stack engineering, and mobile handoff.',
-    why: 'I built it to make a high-pressure operational workflow calmer and easier to coordinate.',
-    approach: 'I shaped the workflow around shared trip state, role-specific views, route planning, and a driver mobile handoff.',
-    nextStep: 'Continue validating the operational workflow with the teams who use it day to day.',
+    slug: "powerdata",
+    company: "PowerData Group Consulting",
+    title: "AI Engineer & Cybersecurity Analyst",
+    type: "Internship",
+    start: "Sep 2026",
+    end: "Present",
+    location: "Melbourne, VIC · Remote",
+    theme: "AI & cybersecurity",
+    summary:
+      "Bringing software development, automation and security investigation into the same working context.",
+    intro:
+      "My current internship connects AI engineering and cybersecurity with the practical work of consulting: understanding systems, documenting findings and turning requirements into useful tools.",
+    responsibilities: [
+      "Work supporting Defence Industry Security Program compliance and CRM process automation.",
+      "Custom in-house automation and development using C++, Python, Rust and Linux.",
+      "Authorised security testing, technical reporting and remediation recommendations.",
+      "Coordination of a three-person team on compliance and automation work.",
+    ],
+    areas: [
+      {
+        title: "Compliance and evidence",
+        body: "Support DISP-related work by organising evidence, controls and technical documentation. Participation does not itself establish an organisation’s compliance status.",
+      },
+      {
+        title: "CRM process automation",
+        body: "Understand the enquiry and delivery workflow, then develop in-house automation around confirmed requirements.",
+      },
+      {
+        title: "Authorised security investigation",
+        body: "Investigate systems within approved scope and translate observations into technical reports and remediation recommendations.",
+      },
+    ],
+    skills: [
+      "Python",
+      "Rust",
+      "C++",
+      "Linux",
+      "Automation",
+      "Security reporting",
+    ],
+    reflection:
+      "The useful connection is between building systems and understanding how they can fail. Clear scope, traceable evidence and readable handover matter in both.",
+    transition: "",
+    photos: [],
+    related: [],
+    source: "Current résumé, 3 October 2026",
   },
   {
-    title: 'Buildly',
-    slug: 'buildly',
-    description:
-      'A creator-learning platform where students explore technology through guided missions, practical builds, testing, and reflection.',
-    image: '/images/projects/covers/buildly.webp',
-    disciplines: ['React', 'Education', 'Product design'],
-    year: 2026,
-    href: 'https://buildly-showcase.vercel.app/',
-    status: 'Live product',
-    scope: 'Concept, interface, and build',
-    problem: 'New creators often learn by jumping between scattered tutorials without a clear path from idea to tested project.',
-    users: 'Students and early-stage creators learning to build with technology.',
-    role: 'Product concept, interface design, and frontend engineering.',
-    why: 'I built it to make practical technology learning feel structured, active, and rewarding.',
-    approach: 'I combined guided missions, small builds, testing steps, and reflection into one focused learning loop.',
-    nextStep: 'Expand the mission library while keeping the learning loop focused and practical.',
+    slug: "independent-support",
+    company: "Independent technical support",
+    title: "Technical support & integration",
+    type: "Part-time",
+    start: "Jul 2026",
+    end: "Present",
+    location: "Remote",
+    theme: "Systems support",
+    summary:
+      "Application configuration, integration support and fault resolution for small businesses.",
+    intro:
+      "Alongside my development work, I provide practical technical support for small-business clients.",
+    responsibilities: [
+      "Application configuration.",
+      "Integration support.",
+      "Investigation and resolution of technical faults.",
+    ],
+    areas: [
+      {
+        title: "Configuration and support",
+        body: "Help clients configure applications and investigate behaviour that prevents them from completing their work.",
+      },
+      {
+        title: "Integration troubleshooting",
+        body: "Follow data and system interactions to understand where a fault occurs and what needs to change.",
+      },
+    ],
+    skills: ["Configuration", "Troubleshooting", "Integrations"],
+    reflection:
+      "Supporting a system after setup makes the value of clear defaults, understandable errors and useful documentation very concrete.",
+    transition: "",
+    photos: [],
+    related: [],
+    source: "Current résumé, 3 October 2026",
   },
   {
-    title: 'TradieFlow',
-    slug: 'tradieflow',
-    description:
-      'Live profit tracking for trade businesses, turning labour, materials, targets, and job progress into a clear operational view.',
-    image: '/images/projects/covers/tradieflow.webp',
-    disciplines: ['Next.js', 'SaaS', 'Job management'],
-    year: 2026,
-    href: 'https://tradieflow-pi.vercel.app/',
-    status: 'Live product',
-    scope: 'Product design and development',
-    problem: 'Trade businesses can lose sight of job profit when labour, materials, targets, and progress live in separate places.',
-    users: 'Trade business owners and people responsible for job performance.',
-    role: 'Product design and full-stack development.',
-    why: 'I built it to turn job performance into a view that an owner can understand quickly.',
-    approach: 'I focused the product on live job inputs, clear targets, and a compact operational dashboard.',
-    nextStep: 'Test the reporting workflow against real job-management habits and terminology.',
+    slug: "freelance",
+    company: "Freelance software consulting",
+    title: "Software Consultant",
+    type: "Freelance",
+    start: "Mar 2026",
+    end: "Jun 2026",
+    location: "Tokyo, Japan · Remote",
+    theme: "Independent delivery",
+    summary:
+      "Web applications, websites and workflow tools through deployment and support.",
+    intro:
+      "During my time living in Tokyo, I undertook freelance software consulting and delivered web applications, websites and workflow tools.",
+    responsibilities: [
+      "Develop web applications and websites.",
+      "Build workflow tools around client requirements.",
+      "Carry work through deployment and support.",
+    ],
+    areas: [
+      {
+        title: "End-to-end delivery",
+        body: "Work across requirements, implementation, deployment and support for web-based projects.",
+      },
+      {
+        title: "Remote collaboration",
+        body: "Deliver technical work remotely while living in Japan, balancing implementation with client communication.",
+      },
+    ],
+    skills: [
+      "Web development",
+      "Workflow tools",
+      "Deployment",
+      "Remote delivery",
+    ],
+    reflection:
+      "Independent delivery connects technical decisions with the person who has to use and maintain the result.",
+    transition:
+      "I wanted to bring the independence I developed through consulting into a team environment, with more opportunity to work on AI, security and connected systems.",
+    photos: [
+      {
+        src: "/images/career/tokyo.webp",
+        alt: "Godzilla landmark in Shinjuku, Tokyo",
+        caption:
+          "A personal photograph from my time in Tokyo. Context for this chapter, rather than a client project.",
+      },
+    ],
+    related: [],
+    source: "Current résumé, 3 October 2026",
   },
   {
-    title: 'Castivo',
-    slug: 'castivo',
-    description:
-      'Creator software for building branded streamer sites and running audience tools including leaderboards, raffles, and bonus hunts.',
-    image: '/images/projects/covers/castivo.webp',
-    disciplines: ['Next.js', 'Firebase', 'Creator tools'],
-    year: 2026,
-    status: 'Private preview',
-    scope: 'Full-stack product build',
-    problem: 'Streamers need branded audience experiences without stitching together separate tools for sites, rewards, and community activity.',
-    users: 'Streamers and the communities that follow them.',
-    role: 'Full-stack product build across page creation and audience utilities.',
-    why: 'I built it to give creators a more coherent home for their audience and recurring interactions.',
-    approach: 'I connected branded page building with audience utilities such as leaderboards, raffles, and bonus hunts.',
-    nextStep: 'Refine the private preview around the workflows creators repeat most often.',
+    slug: "intellidesign",
+    company: "IntelliDesign",
+    title: "Junior Software Engineer",
+    type: "Employment",
+    start: "Dec 2025",
+    end: "Feb 2026",
+    location: "Brisbane, QLD",
+    theme: "Software engineering",
+    summary:
+      "Application, internal-tool and embedded-connected software with a multidisciplinary engineering team.",
+    intro:
+      "This role brought my integration experience into a software engineering environment, working with software, electronics and product engineers.",
+    responsibilities: [
+      "Develop application, internal-tool and embedded-system software in Python, Go, JavaScript and C/C++.",
+      "Build API and embedded-system integrations.",
+      "Investigate data-flow, device-communication and system-integration faults.",
+      "Implement and debug features through Git branches, pull requests, code review, automated validation and Linux workflows.",
+      "Collaborate on hardware/software integration and defect resolution.",
+    ],
+    areas: [
+      {
+        title: "Application and internal tooling",
+        body: "Develop and debug software that supports product and internal workflows.",
+      },
+      {
+        title: "Embedded-connected integrations",
+        body: "Investigate the boundaries between applications, APIs and devices, including data flow and communication faults.",
+      },
+      {
+        title: "Engineering delivery",
+        body: "Work through implementation, review and automated validation with a multidisciplinary engineering team.",
+      },
+    ],
+    skills: ["Python", "Go", "JavaScript", "C/C++", "Linux", "Git", "Testing"],
+    reflection:
+      "Working across software and electronics reinforced the need to understand the complete data path before changing one component.",
+    transition:
+      "I wanted to explore independent software delivery and spend time living overseas, while continuing to build on my engineering experience.",
+    photos: [],
+    related: [],
+    source: "Current résumé, 3 October 2026",
   },
   {
-    title: 'QuickMeet',
-    slug: 'quickmeet',
-    description:
-      'A focused real-time meeting product designed to get people into a conversation with as little friction as possible.',
-    image: '/images/projects/covers/quickmeet.webp',
-    disciplines: ['React', 'WebRTC', 'Real-time'],
-    year: 2026,
-    href: 'https://www.quickmeet.cam/',
-    status: 'Live product',
-    scope: 'Product design and development',
-    problem: 'Starting a meeting can be slower than the meeting itself when people face unnecessary setup and invite friction.',
-    users: 'People who need to start a focused browser meeting quickly.',
-    role: 'Product design, frontend engineering, and real-time implementation.',
-    why: 'I built it to make getting into a real conversation feel immediate.',
-    approach: 'I kept the experience focused on a fast join flow and the essential real-time meeting controls.',
-    nextStep: 'Keep reducing join friction while validating the essential controls with real calls.',
+    slug: "light-design",
+    company: "Light & Design Group",
+    title: "Technical Sales Consultant",
+    type: "Employment",
+    start: "Sep 2024",
+    end: "Nov 2025",
+    location: "East Brisbane, QLD",
+    theme: "Technical project delivery",
+    summary:
+      "Requirements, technical opportunities and project coordination across Australia.",
+    intro:
+      "I worked across technical sales and project delivery, translating requirements between customers, suppliers and internal teams.",
+    responsibilities: [
+      "Manage opportunities from enquiry through quotation and delivery.",
+      "Gather stakeholder requirements and maintain the CRM pipeline.",
+      "Coordinate customers, suppliers and internal teams.",
+      "Travel across Australia and represent the business in Dubai and Italy for customer, supplier and project meetings.",
+    ],
+    areas: [
+      {
+        title: "Requirements and project coordination",
+        body: "Connect stakeholder needs with quotations, supplier information and delivery planning.",
+      },
+      {
+        title: "CRM and opportunity management",
+        body: "Maintain the pipeline and the practical details that support project follow-through.",
+      },
+      {
+        title: "Customer and supplier meetings",
+        body: "Participate in project conversations across Australia and internationally.",
+      },
+    ],
+    skills: [
+      "Requirements",
+      "CRM",
+      "Technical communication",
+      "Project coordination",
+    ],
+    reflection:
+      "The technical solution is only part of delivery. People also need a shared understanding of requirements, responsibilities and the next step.",
+    transition:
+      "I wanted to move closer to hands-on software development and take the requirements and delivery experience into a dedicated engineering role.",
+    photos: [],
+    related: [],
+    source: "Current résumé, 3 October 2026",
   },
   {
-    title: 'PC Choices',
-    slug: 'pc-choices',
-    description: 'E-commerce experience with product discovery, a PC configurator, cart, and checkout.',
-    image: '/images/projects/pc-choice.png',
-    disciplines: ['E-commerce', 'React', 'Web development'],
-    year: 2023,
-    href: 'https://pc-choice.com.au/',
-    status: 'Live product',
-    scope: 'Product experience and build',
-    problem: 'Choosing a PC can be overwhelming when product discovery, compatibility, and checkout are disconnected.',
-    users: 'Customers comparing and configuring a PC before purchase.',
-    role: 'Product experience design and web development.',
-    why: 'I built it to make a technical purchase feel guided without taking control away from the customer.',
-    approach: 'I combined browseable product information with a configurator, cart, and focused checkout path.',
-    nextStep: 'Continue improving the relationship between configuration guidance and checkout confidence.',
+    slug: "traka",
+    company: "Traka · ASSA ABLOY",
+    title: "Sales Engineer",
+    type: "Employment",
+    start: "Nov 2021",
+    end: "Aug 2024",
+    location: "Brisbane, QLD · APAC support",
+    theme: "Integrations & systems",
+    summary:
+      "Electronic key-management systems, APIs, networking, commissioning and technical support.",
+    intro:
+      "I worked across the full technical project lifecycle: requirements, solution design, implementation, commissioning and ongoing support.",
+    responsibilities: [
+      "Deliver electronic key-management solutions and LAN-controlled systems.",
+      "Develop REST/SOAP integrations using Python and .NET/MVC.",
+      "Build automation for administration, user synchronisation, database maintenance, monitoring, logging and reporting.",
+      "Perform onsite and remote commissioning, configuration and troubleshooting.",
+      "Provide Level 1/2 technical support across APAC.",
+    ],
+    areas: [
+      {
+        title: "API and customer-system integrations",
+        body: "Connect key-management systems with customer applications using REST/SOAP APIs, Python and .NET/MVC.",
+      },
+      {
+        title: "Commissioning and networking",
+        body: "Configure hardware controllers, LAN-connected systems and customer environments through onsite and remote delivery.",
+      },
+      {
+        title: "Operational tools and support",
+        body: "Develop practical administration and reporting tools, then investigate faults and support systems across APAC.",
+      },
+    ],
+    skills: [
+      "Python",
+      ".NET/MVC",
+      "REST",
+      "SOAP",
+      "LAN networking",
+      "Commissioning",
+      "Technical support",
+    ],
+    reflection:
+      "Commissioning and supporting real systems taught me to pay attention to configuration, recovery and the information the next person needs to diagnose a fault.",
+    transition:
+      "I wanted to broaden my technical project experience across different industries and develop the customer and supplier coordination side of delivery.",
+    photos: [],
+    related: [],
+    source: "Current résumé, 3 October 2026",
   },
-]
+];
 
-export const clientProjects: Project[] = [
+export const contributions: Contribution[] = [
   {
-    title: 'TransportationME',
-    slug: 'transportation-me',
-    description: 'Logistics platform for route planning, fleet tracking, and day-to-day operations.',
-    image: '/images/projects/transportation-me.png',
-    disciplines: ['WordPress', 'Dashboard', 'Automation'],
-    year: 2025,
+    slug: "ollama-downloads",
+    project: "Ollama",
+    title: "Detecting a download stall before the first byte",
+    language: "Go",
+    category: "AI infrastructure",
+    href: "https://github.com/ollama/ollama/pull/17259",
+    number: "#17259",
+    problem:
+      "A connected range request could produce no body bytes while its inactivity timestamp remained unset.",
+    change:
+      "Start the inactivity clock when the range attempt begins and signal transfer completion immediately.",
+    result:
+      "Stall monitoring covers the initial no-progress window, with existing retry behaviour retained.",
+    note: "A reliability fix in the download path, not a claim of faster internet bandwidth.",
   },
   {
-    title: 'AEO Services Portal',
-    slug: 'aeo-services',
-    description: 'Internal project tracking, communication, and resource management for a services team.',
-    image: '/images/projects/aeo-portal.svg',
-    disciplines: ['Dashboard', 'Project management'],
-    year: 2024,
+    slug: "crush-lsp",
+    project: "Charmbracelet Crush",
+    title: "Filter language servers before searching PATH",
+    language: "Go",
+    category: "Performance",
+    href: "https://github.com/charmbracelet/crush/pull/3370",
+    number: "#3370",
+    problem:
+      "Discovery searched PATH for bundled servers before checking whether they could handle the current file.",
+    change:
+      "Filter relevant language servers first, then perform executable discovery.",
+    result:
+      "The documented controlled Apple M4 benchmark went from 50.82 ms to 308.61 µs.",
+    note: "This measures the LSP discovery workload, not overall application performance.",
   },
   {
-    title: 'NDIS Admin System',
-    slug: 'ndis-admin',
-    description: 'Administration and compliance tooling for participant and service management.',
-    image: '/images/projects/ndis-admin.svg',
-    disciplines: ['Admin system', 'Automation'],
-    year: 2024,
+    slug: "rai-adapter",
+    project: "W&B RAI Toolkit",
+    title: "Testing an OpenAI-compatible adapter contract",
+    language: "Python",
+    category: "AI testing",
+    href: "https://github.com/wandb/rai-toolkit/pull/48",
+    number: "#48",
+    problem:
+      "The adapter contract needed focused test coverage without depending on live model calls.",
+    change:
+      "Add offline contract tests for the OpenAI-compatible model adapter.",
+    result:
+      "Merged regression coverage for adapter behaviour; production adapter code did not change.",
+    note: "The pull request includes an AI-assistance disclosure.",
   },
   {
-    title: 'TJ Pizza Hut',
-    slug: 'tj-pizza-hut',
-    description: 'Online ordering flow with menu browsing, customisation, payment, and delivery tracking.',
-    image: '/images/projects/tj-pizza.svg',
-    disciplines: ['Web app', 'Ordering system'],
-    year: 2021,
+    slug: "otel-builds",
+    project: "OpenTelemetry Go",
+    title: "Cross-platform compile checks in CI",
+    language: "Go",
+    category: "Engineering tooling",
+    href: "https://github.com/open-telemetry/opentelemetry-go/pull/8634",
+    number: "#8634",
+    problem:
+      "A build target executed generated test binaries, which does not work for foreign compilation targets.",
+    change: "Add a compile-only Make target and a cross-build workflow.",
+    result: "A 28-job matrix across 14 target platforms and two Go versions.",
+    note: "Compile coverage is distinct from running tests on every target platform.",
   },
-  {
-    title: 'ECBC Promotion Video',
-    slug: 'ecbc-video',
-    description: 'End-to-end promotional video production, from scripting and direction to editing.',
-    image: '/images/projects/ecbc-video.svg',
-    disciplines: ['Video', 'Editing', 'Direction'],
-    year: 2025,
-  },
-]
-
-export const experiments = [
-  {
-    title: 'CareerLift',
-    description: 'ATS-aware resume builder with private, client-side processing.',
-    href: 'https://thejhyefactor.github.io/careerlift/',
-  },
-  {
-    title: 'Real-Time Object Detection',
-    description: 'A browser computer-vision experiment using TensorFlow.js.',
-    href: 'https://thejhyefactor.github.io/object-detection/',
-  },
-  {
-    title: 'Browser OS',
-    description: 'A browser desktop with draggable windows, a terminal, and local persistence.',
-    href: 'https://thejhyefactor.github.io/browser-os/',
-  },
-  {
-    title: 'VideoFlow',
-    description: 'A browser-based video editor with overlays, effects, and export controls.',
-    href: 'https://thejhyefactor.github.io/video-editor/',
-  },
-  {
-    title: 'InvoicePro',
-    description: 'Private invoice generation and PDF export for small businesses.',
-    href: 'https://thejhyefactor.github.io/invoice-generator/',
-  },
-  {
-    title: 'PDF Tools',
-    description: 'Client-side tools for merging, splitting, compressing, and converting PDFs.',
-    href: 'https://thejhyefactor.github.io/pdf-tools/',
-  },
-  {
-    title: 'Social Dashboard',
-    description: 'A focused social analytics dashboard experiment.',
-    href: 'https://github.com/TheJhyeFactor/social-dashboard',
-  },
-  {
-    title: 'Stock Price Visualizer',
-    description: 'Historical stock-price exploration built with React and Recharts.',
-    href: 'https://github.com/TheJhyeFactor/stock-price-visualizer',
-  },
-  {
-    title: 'Pomodoro Timer',
-    description: 'A compact browser tool for structured focus sessions.',
-    href: 'https://github.com/TheJhyeFactor/pomodoro-timer',
-  },
-  {
-    title: 'Particle Physics Playground',
-    description: 'An interactive browser experiment for particle movement and forces.',
-    href: 'https://github.com/TheJhyeFactor/particle-physics-playground',
-  },
-  {
-    title: 'Background Remover',
-    description: 'A private, client-side image background-removal experiment.',
-    href: 'https://github.com/TheJhyeFactor/background-remover',
-  },
-]
-
-export const openSourceProjects = [
-  { title: 'Crush · LSP discovery', type: 'Charmbracelet Crush · Merged PR #3370', description: 'Filtered LSP servers before searching PATH so unrelated servers do not trigger filesystem work.', fixed: 'Crush searched PATH for roughly 300 bundled servers before checking whether each one was relevant to the file being edited.', why: 'The profile showed the discovery scan was spending CPU and allocations probing servers that could never handle the current file.', improved: 'The controlled Apple M4 benchmark went from 50.82 ms to 308.61 µs, with 238× less allocated memory and 96× fewer allocations.', href: 'https://github.com/charmbracelet/crush/pull/3370', repo: 'https://github.com/charmbracelet/crush' },
-  { title: 'Crush · Tool-call recovery', type: 'Charmbracelet Crush · Open PR #3372', description: 'Rejected empty tool names before malformed calls could poison the saved session history.', fixed: 'An empty streamed tool name could be persisted with its matching result, then replayed on the next provider request.', why: 'Providers that validate tool history could reject every later turn, leaving the session unusable.', improved: 'Malformed calls are removed before persistence, the bad turn stops after one request instead of two, and the next prompt remains usable.', href: 'https://github.com/charmbracelet/crush/pull/3372', repo: 'https://github.com/charmbracelet/crush' },
-  { title: 'Crush · Onboarding status', type: 'Charmbracelet Crush · Open PR #3378', description: 'Kept clipboard confirmations and update notices visible above the onboarding dialog.', fixed: 'The bottom-aligned onboarding dialog could overwrite the status row even though the notification still existed in state.', why: 'A notification that is technically present but visually covered is still a broken interaction.', improved: 'A render regression test now protects the layer order, while normal landing, chat, and initialize rendering stays unchanged.', href: 'https://github.com/charmbracelet/crush/pull/3378', repo: 'https://github.com/charmbracelet/crush' },
-  { title: 'Ollama · Chat stream batching', type: 'Ollama · Open PR #17258', description: 'Coalesced high-rate chat stream updates into a fixed 16 ms UI batch window.', fixed: 'A 4 ms flush timer restarted for every chunk, causing one React Query cache commit per streamed update.', why: 'Streaming output should feel immediate without forcing the UI cache to commit on every token-sized event.', improved: 'The deterministic benchmark reduced cache commits from 200 to 51 — a 74.5% reduction — while preserving the first and final updates.', href: 'https://github.com/ollama/ollama/pull/17258', repo: 'https://github.com/ollama/ollama' },
-  { title: 'Ollama · Download stall detection', type: 'Ollama · Merged PR #17259', description: 'Started the inactivity timeout when a range attempt begins, before its first body byte arrives.', fixed: 'A connected request that never delivered its first byte left `lastUpdated` unset, so the monitor could skip the stalled attempt.', why: 'A pull can look connected while making no progress; the timeout needs to cover that gap too.', improved: 'Stalls are detected from attempt start, completed transfers signal immediately, and the existing 30-second retry behavior remains intact.', href: 'https://github.com/ollama/ollama/pull/17259', repo: 'https://github.com/ollama/ollama' },
-  { title: 'Ollama · Manifest retries', type: 'Ollama · Open PR #17260', description: 'Retried interrupted model manifest requests when the connection failed before headers or during the body.', fixed: 'The pull path returned `EOF` immediately instead of retrying a transport or partial-body failure.', why: 'A temporary network interruption should not leave a model pull failed when a fresh request can recover.', improved: 'Both failure modes recover on the second request with the existing jittered backoff, while healthy pulls keep the same 94 allocations per operation.', href: 'https://github.com/ollama/ollama/pull/17260', repo: 'https://github.com/ollama/ollama' },
-  { title: 'OpenTelemetry Go · Cross-build CI', type: 'OpenTelemetry Go · Merged PR #8634', description: 'Added a cross-build workflow and compile-only Make target for 14 target platforms across Go 1.25 and 1.26.', fixed: 'The existing build target ran generated test binaries, which works natively but fails when the target is cross-compiled.', why: 'Cross-platform support needs a CI check that compiles foreign targets without trying to execute them on the host.', improved: 'The project gains a stable 28-job cross-build matrix covering targets including AIX, Darwin, JS/WASM, Linux ARMv7, and Windows amd64.', href: 'https://github.com/open-telemetry/opentelemetry-go/pull/8634', repo: 'https://github.com/open-telemetry/opentelemetry-go' },
-  { title: 'PyInstaller · Finder working directory', type: 'PyInstaller · Closed PR #9485', description: 'Clarified that macOS apps launched through Finder do not run with the app bundle directory as the current working directory.', fixed: 'The documentation did not clearly explain the difference between Finder and Terminal launch contexts.', why: 'Without that detail, macOS users can look for bundled resources relative to the wrong directory.', improved: 'The docs now explain Finder’s `/` working directory, preserve the reduced-environment warning, and point to the existing `__file__` guidance.', href: 'https://github.com/pyinstaller/pyinstaller/pull/9485', repo: 'https://github.com/pyinstaller/pyinstaller' },
-  { title: 'Appsmith · OAuth2 test coverage', type: 'Appsmith · Open PR #1', description: 'Added focused Jest coverage for the OAuth2 `expiresIn` field placement fix.', fixed: 'The field-order change needed regression coverage across Authorization Code and Client Credentials grants.', why: 'The visible field should sit directly after `scopeString` for the relevant grant and remain hidden where it does not apply.', improved: 'The change is protected by focused tests, with the full client suite passing 528 suites, 4,143 tests, and 19 snapshots.', href: 'https://github.com/SaifuddinM23/appsmith/pull/1', repo: 'https://github.com/appsmithorg/appsmith' },
-]
-
-export const journalPosts = [
-  { slug: 'build-the-smallest-useful-system', date: '2026-07-14', category: 'Product thinking', title: 'Build the smallest useful system, not the smallest demo', excerpt: 'A useful first release has a complete job to do. The trick is deciding which job matters before adding surface area.', body: ['When I start a product, I try to find the smallest complete loop: the thing someone needs to begin, the decision they need to make, and the outcome they need to leave with.', 'That usually means less surface area than the original brief suggests, but more attention to the connective tissue. A booking tool needs the change flow, not just the booking form. A resume builder needs export confidence, not just editable fields.', 'The first release should feel narrow, but it should still take a real task from start to finish. That is where the useful learning starts.'] },
-  { slug: 'why-browser-native-tools-are-worth-building', date: '2026-06-28', category: 'Open source', title: 'Why browser-native tools are worth building', excerpt: 'Small tools can be more trustworthy when the important work stays close to the person using them.', body: ['I keep returning to browser-native tools because they make a valuable promise easy to understand: open the page, do the work, and keep the data close.', 'That does not make every problem a client-side problem. It does make privacy, offline behavior, and deployment simplicity worth considering earlier than they usually are.', 'CareerLift and PDF Tools are both experiments in that direction. They are deliberately modest projects, but they help me test where a smaller technical footprint can make a product feel more dependable.'] },
-  { slug: 'findings-from-operational-software', date: '2026-05-19', category: 'Findings', title: 'The most important screen is often the change screen', excerpt: 'Operational software earns trust by making exceptions, updates, and handoffs as clear as the happy path.', body: ['In operational work, the plan is rarely the whole story. A rider cancels, a driver is delayed, or a route changes. The software has to help people understand what changed and what needs attention next.', 'That is why I treat change states as a core product surface rather than an edge case. Clear status, visible history, and role-specific next actions reduce the need to reconstruct context from messages and memory.', 'Design the exception flow while the main flow is still being designed.'] },
-]
-
-export const projectCount = featuredProjects.length + clientProjects.length + experiments.length
-
-export const capabilities = [
-  {
-    number: '01',
-    title: 'Shape the product',
-    description: 'Turn an uncertain idea or tangled workflow into a clear product direction and useful first release.',
-  },
-  {
-    number: '02',
-    title: 'Design the system',
-    description: 'Make complex information understandable through purposeful interface and interaction design.',
-  },
-  {
-    number: '03',
-    title: 'Build it end to end',
-    description: 'Develop the product across frontend, backend, data, integrations, and production delivery.',
-  },
-  {
-    number: '04',
-    title: 'Improve what exists',
-    description: 'Audit, simplify, and extend software that is difficult to use or maintain.',
-  },
-]
-
-export const skills = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'Node.js',
-  'Firebase',
-  'PostgreSQL',
-  'Python',
-  'Tailwind CSS',
-  'Vercel',
-  'Git',
-]
+];
