@@ -44,7 +44,8 @@ export type CareerRole = {
   source: string;
 };
 export type Contribution = {
-  status: "Merged" | "Submitted for review" | "Investigation documented";
+  status: "Merged" | "Released" | "Submitted for review" | "Investigation documented";
+  release?: { label: string; href: string };
   validation?: string;
   issueHref?: string;
   slug: string;
@@ -94,7 +95,7 @@ export const projects: Project[] = [
     gallery: [],
     verification: "The recorded relevant suite passed 1,730 cases, including 61 feature tests; three existing generator contract cases passed separately. Four real CLI scenarios exercised static counts, caps and transformations, local token counting and partial coverage. The configured synthetic loopback target received zero requests, and planning created no security report. Formatting, diff and dependency consistency checks passed.",
     limits: "This remains a local prototype with a public scope proposal, not a submitted or accepted upstream feature. Full repository tests remain unverified because of collection-time data downloads and missing optional audio dependencies. Adaptive and external preparation are explicitly unsupported. The four CLI scenarios establish the tested paths, not universal absence of side effects. No merge, release, adoption or cost saving is claimed. AI assistance was used during implementation and validation.",
-    next: "Await maintainer direction on the proposed scope and command design, complete further review and required validation, and prepare a focused upstream contribution if aligned. Status checked on 3 October 2026.",
+    next: "Await maintainer direction on the proposed scope and command design, complete further review and required validation, and prepare a focused upstream contribution if aligned. Status checked on 4 October 2026.",
     links: [
       { label: "Feature proposal", href: "https://github.com/NVIDIA/garak/issues/1079#issuecomment-5968048348" },
       { label: "NVIDIA garak", href: "https://github.com/NVIDIA/garak" },
@@ -629,7 +630,7 @@ export const contributions: Contribution[] = [
     validation:
       "Five regression cases failed against the unchanged scanner. The patched rule passed all 33 focused cases and all 346 beta add-on tests, plus style checks and packaging. Six asserted runs compared released and patched add-ons against synthetic loopback fixtures: the patched scanner ignored the plain SPA fallback and identified the real path and header bypasses. CLA and Checkmarx checks pass; upstream Java CI and CodeQL await maintainer approval.",
     note:
-      "Exact body matching leaves dynamically changing fallback pages as a limitation. The rule adds two control requests per scanned 403 endpoint. Status checked on 3 October 2026. AI assistance was used for investigation, implementation and validation.",
+      "Exact body matching leaves dynamically changing fallback pages as a limitation. The rule adds two control requests per scanned 403 endpoint. Status checked on 4 October 2026. AI assistance was used for investigation, implementation and validation.",
   },
   {
     slug: "zap-csp-investigation",
@@ -642,11 +643,12 @@ export const contributions: Contribution[] = [
     number: "Issue #9476",
     problem: "A reported CSP alert-filter interaction needed a reproducible explanation before proposing another patch.",
     change: "Investigate the behaviour through ten controlled runs across two add-on versions and document the interaction with an existing broad filter.",
-    result: "The reproduced cause was already covered by an existing upstream fix. Findings were documented in the issue discussion; no duplicate patch was submitted.",
+    result: "The reproduced cause was already covered by an existing upstream fix. A maintainer thanked me, and issue #9476 was closed as completed on 3 October 2026. No duplicate patch was submitted.",
     note: "The local evidence does not confirm the original reporter's exact configuration. This is an investigation contribution, not a new merged code change.",
   },
   {
-    status: "Merged",
+    status: "Released",
+    release: { label: "Included in v0.35.1", href: "https://github.com/ollama/ollama/releases/tag/v0.35.1" },
     slug: "ollama-downloads",
     project: "Ollama",
     title: "Detecting a download stall before the first byte",
@@ -663,7 +665,8 @@ export const contributions: Contribution[] = [
     note: "A reliability fix in the download path, not a claim of faster internet bandwidth.",
   },
   {
-    status: "Merged",
+    status: "Released",
+    release: { label: "Included in v0.97.1", href: "https://github.com/charmbracelet/crush/releases/tag/v0.97.1" },
     slug: "crush-lsp",
     project: "Charmbracelet Crush",
     title: "Filter language servers before searching PATH",
@@ -680,7 +683,8 @@ export const contributions: Contribution[] = [
     note: "This measures the LSP discovery workload, not overall application performance.",
   },
   {
-    status: "Merged",
+    status: "Released",
+    release: { label: "Included in v0.3.0", href: "https://github.com/wandb/rai-toolkit/releases/tag/v0.3.0" },
     slug: "rai-adapter",
     project: "W&B RAI Toolkit",
     title: "Testing an OpenAI-compatible adapter contract",
@@ -697,7 +701,8 @@ export const contributions: Contribution[] = [
     note: "The pull request includes an AI-assistance disclosure.",
   },
   {
-    status: "Merged",
+    status: "Released",
+    release: { label: "Included in v1.47.0", href: "https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.47.0" },
     slug: "otel-builds",
     project: "OpenTelemetry Go",
     title: "Cross-platform compile checks in CI",
