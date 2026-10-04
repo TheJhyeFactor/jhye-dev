@@ -35,8 +35,10 @@ export default function OpenSource() {
       <section className="shell source-index" aria-label="Open-source contributions">
         <ContributionList full />
         <p className="source-status">
-          Contribution status checked on 3 October 2026. Submitted work is
-          labelled separately from merged contributions. Benchmarks describe the stated
+          Contribution status checked on 4 October 2026. Released labels mean
+          the merged commit is included in the linked stable release tag; they
+          do not identify the first release containing the change. Submitted
+          work and documented investigations are labelled separately. Benchmarks describe the stated
           workload, rather than whole-product performance.
         </p>
       </section>

@@ -7,7 +7,7 @@ export default function ContributionList({ full = false }: { full?: boolean }) {
         <article className="contribution" key={item.slug}>
           <div className="contribution-top">
             <span className="merge-badge">
-              {item.status === "Merged" ? (
+              {item.status === "Merged" || item.status === "Released" ? (
                 <GitMerge size={13} aria-hidden="true" />
               ) : (
                 <GitPullRequest size={13} aria-hidden="true" />
@@ -37,6 +37,11 @@ export default function ContributionList({ full = false }: { full?: boolean }) {
             </>
           )}
           <p className="contribution-result">{item.result}</p>
+          {item.release && (
+            <a className="text-link" href={item.release.href} target="_blank" rel="noreferrer">
+              {item.release.label} <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          )}
           {full && item.validation && (
             <div className="contribution-section">
               <h4>Verification & review</h4>
