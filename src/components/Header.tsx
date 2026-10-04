@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useState } from "react";
 const links = [
-  { href: "/job-tracker", label: "Job tracker" },
   { href: "/work", label: "Work" },
   { href: "/career", label: "Career" },
   { href: "/open-source", label: "Open source" },
