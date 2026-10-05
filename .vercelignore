@@ -1,0 +1,15 @@
+.git
+node_modules
+out
+.next
+output
+tmp
+.env*
+.vercel
+notebook/node_modules
+notebook/.next
+notebook/out
+notebook/artifacts
+notebook/test-results
+notebook/playwright-report
+**/*.tsbuildinfo
