@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/portfolio";
-import ContributionList from "@/components/ContributionList";
+import ContributionBrowser from "@/components/ContributionBrowser";
 import ContactBand from "@/components/ContactBand";
 export const metadata: Metadata = {
   title: "Open-source contributions",
@@ -20,8 +20,9 @@ export default function OpenSource() {
           <em>Follow the reasoning.</em>
         </h1>
         <p className="lead">
-          Focused changes to projects other people use. The problem, the fix and
-          the result, with the original pull request or investigation one click away.
+          Focused changes to projects other people use. Browse by area, status
+          or language, then follow the problem, change and result back to the
+          original pull request or investigation.
         </p>
         <a
           className="text-link"
@@ -32,16 +33,7 @@ export default function OpenSource() {
           Explore my GitHub <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </header>
-      <section className="shell source-index" aria-label="Open-source contributions">
-        <ContributionList full />
-        <p className="source-status">
-          Contribution status checked on 4 October 2026. Released labels mean
-          the merged commit is included in the linked stable release tag; they
-          do not identify the first release containing the change. Submitted
-          work and documented investigations are labelled separately. Benchmarks describe the stated
-          workload, rather than whole-product performance.
-        </p>
-      </section>
+      <ContributionBrowser />
       <ContactBand />
     </>
   );

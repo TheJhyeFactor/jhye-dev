@@ -9,4 +9,6 @@ A personal engineering portfolio with editorial typography, readable evidence an
 - Semantic landmarks, one page h1, visible focus, minimum navigation targets, reduced-motion support.
 - Essential work and career chapters use normal document scrolling, not carousels or modal-only content.
 - Dates, categories and lifecycle labels support the story rather than replacing it.
+- Work and Open Source indexes use area buttons with counts, a labelled search field, native select filters and a visible result count. All entries remain visible on initial arrival; filters combine and can be cleared together.
+- Contribution groups distinguish released, submitted and investigative work. Problem, change and result remain visible; native disclosure controls hold longer verification notes. On mobile, the three columns become a reading sequence.
 - Departure drafts are visibly marked and excluded from the printable résumé.

@@ -19,14 +19,16 @@ npm start
 
 Edit `src/data/portfolio.ts` for projects, career chapters, transition drafts, contribution evidence and contact details. Real screenshots and photographs live in `public/images/work` and `public/images/career`.
 
-- `/work`: four selected case studies.
+- `/work`: five selected case studies, with area, project-stage and keyword filters.
 - `/career`: linked experience timeline and six role pages.
-- `/open-source`: four merged upstream contributions.
+- `/open-source`: six contributions grouped by status, with area, status, language and keyword filters.
 - `/about`: personal narrative, capabilities and education.
 - `/resume`: readable printable résumé.
 - `/contact`: direct contact routes.
 
 Keep dates and responsibilities grounded in the résumé. Transition reasons are currently editorial drafts requested by Jhye; confirm them before release. Do not invent client projects, photographs, commercial outcomes, compliance status or independent security verification.
+
+Filters are stored in the URL for sharing and browser navigation. The complete indexes are included in the static HTML; filtering runs locally after hydration. Update the explicit focus, stage and language fields in `src/data/portfolio.ts` and the filter labels in `src/data/browse.ts` when adding work. Contribution statuses retain their recorded verification date.
 
 Pushes to `main` run type checks, lint, build and GitHub Pages deployment. Prepare redesign changes through a PR before release.
 

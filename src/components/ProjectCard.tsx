@@ -5,9 +5,11 @@ import type { Project } from "@/data/portfolio";
 export default function ProjectCard({
   project,
   index = 0,
+  showMetadata = false,
 }: {
   project: Project;
   index?: number;
+  showMetadata?: boolean;
 }) {
   return (
     <Link
@@ -33,6 +35,14 @@ export default function ProjectCard({
         </div>
         <p>{project.summary}</p>
         <div className="card-takeaway">{project.takeaway}</div>
+        {showMetadata && (
+          <div className="work-card-meta">
+            <p><span>My role</span>{project.role}</p>
+            <ul aria-label="Tools and delivery areas">
+              {project.stack.map((technology) => <li key={technology}>{technology}</li>)}
+            </ul>
+          </div>
+        )}
         <span className="text-link">
           Read the case study <ArrowUpRight size={15} aria-hidden="true" />
         </span>

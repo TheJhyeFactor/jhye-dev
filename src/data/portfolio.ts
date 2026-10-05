@@ -1,9 +1,14 @@
 export type GalleryImage = { src: string; alt: string; caption: string };
+export type WorkFocus = "ai" | "security" | "client";
+export type WorkStage = "prototype" | "local-tool" | "client-work";
+export type ContributionFocus = "ai" | "security" | "tooling";
 export type Project = {
   slug: string;
   title: string;
   eyebrow: string;
   category: string;
+  focus: WorkFocus[];
+  stage: WorkStage;
   status: string;
   year: string;
   image: string;
@@ -53,6 +58,8 @@ export type Contribution = {
   title: string;
   language: string;
   category: string;
+  focus: ContributionFocus[];
+  languages: ("Go" | "Java" | "Python")[];
   href: string;
   number: string;
   problem: string;
@@ -72,6 +79,8 @@ export const profile = {
 export const projects: Project[] = [
   {
     slug: "garak-scan-planner",
+    focus: ["ai", "security"],
+    stage: "prototype",
     title: "garak scan planner",
     eyebrow: "AI security engineering",
     category: "AI",
@@ -103,6 +112,8 @@ export const projects: Project[] = [
   },
   {
     slug: "wixal",
+    focus: ["ai"],
+    stage: "local-tool",
     title: "Wixal",
     eyebrow: "AI engineering",
     category: "AI",
@@ -164,6 +175,8 @@ export const projects: Project[] = [
   },
   {
     slug: "sentinel-local",
+    focus: ["security", "ai"],
+    stage: "local-tool",
     title: "Sentinel Local",
     eyebrow: "Cybersecurity tooling",
     category: "Cybersecurity",
@@ -219,6 +232,8 @@ export const projects: Project[] = [
   },
   {
     slug: "finest-group",
+    focus: ["client"],
+    stage: "client-work",
     title: "The Finest Group",
     eyebrow: "Client delivery through SOVA",
     category: "Client delivery",
@@ -276,6 +291,8 @@ export const projects: Project[] = [
   },
   {
     slug: "hunter-valley",
+    focus: ["client"],
+    stage: "client-work",
     title: "Hunter Valley Prestige Wine Tours",
     eyebrow: "Client delivery through SOVA",
     category: "Client delivery",
@@ -613,6 +630,8 @@ export const career: CareerRole[] = [
 export const contributions: Contribution[] = [
   {
     slug: "zap-forbidden-bypass",
+    focus: ["security"],
+    languages: ["Java"],
     project: "ZAP",
     title: "Distinguishing public fallback pages from real 403 bypasses",
     language: "Java",
@@ -634,6 +653,8 @@ export const contributions: Contribution[] = [
   },
   {
     slug: "zap-csp-investigation",
+    focus: ["security"],
+    languages: ["Java"],
     project: "ZAP",
     title: "Explaining a version and configuration interaction in CSP filters",
     language: "Java / HTTP",
@@ -650,6 +671,8 @@ export const contributions: Contribution[] = [
     status: "Released",
     release: { label: "Included in v0.35.1", href: "https://github.com/ollama/ollama/releases/tag/v0.35.1" },
     slug: "ollama-downloads",
+    focus: ["ai"],
+    languages: ["Go"],
     project: "Ollama",
     title: "Detecting a download stall before the first byte",
     language: "Go",
@@ -668,6 +691,8 @@ export const contributions: Contribution[] = [
     status: "Released",
     release: { label: "Included in v0.97.1", href: "https://github.com/charmbracelet/crush/releases/tag/v0.97.1" },
     slug: "crush-lsp",
+    focus: ["ai", "tooling"],
+    languages: ["Go"],
     project: "Charmbracelet Crush",
     title: "Filter language servers before searching PATH",
     language: "Go",
@@ -686,6 +711,8 @@ export const contributions: Contribution[] = [
     status: "Released",
     release: { label: "Included in v0.3.0", href: "https://github.com/wandb/rai-toolkit/releases/tag/v0.3.0" },
     slug: "rai-adapter",
+    focus: ["ai"],
+    languages: ["Python"],
     project: "W&B RAI Toolkit",
     title: "Testing an OpenAI-compatible adapter contract",
     language: "Python",
@@ -704,6 +731,8 @@ export const contributions: Contribution[] = [
     status: "Released",
     release: { label: "Included in v1.47.0", href: "https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.47.0" },
     slug: "otel-builds",
+    focus: ["tooling"],
+    languages: ["Go"],
     project: "OpenTelemetry Go",
     title: "Cross-platform compile checks in CI",
     language: "Go",
