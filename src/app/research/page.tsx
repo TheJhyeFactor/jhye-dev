@@ -1,49 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { researchStories } from "@/data/research";
 import ContactBand from "@/components/ContactBand";
 
 export const metadata: Metadata = {
-  title: "Research & notes",
+  title: "Research",
   description:
-    "Evidence-backed technical notes from Jhye O’Meley’s software, systems and security work.",
+    "Enter Privileged, Jhye O’Meley’s notebook for security research, technical experiments and notes.",
   alternates: { canonical: "/research/" },
 };
 
-export default function ResearchIndex() {
+export default function ResearchEntry() {
   return (
     <>
       <header className="shell page-intro">
-        <p className="eyebrow">Research / Systems & security</p>
+        <p className="eyebrow">Research / Privileged</p>
         <h1>
-          Follow the failure.
+          A notebook for
           <br />
-          <em>Keep the evidence.</em>
+          <em>things worth breaking.</em>
         </h1>
         <p className="lead">
-          A small notebook for debugging sessions, security-adjacent findings
-          and the decisions that make technical work easier to review.
+          Privileged is my focused space for security research, technical
+          experiments, software notes and the details behind a failure. It
+          sits inside jhye.dev, with its own quieter layout and archive.
         </p>
+        <Link className="button" href="/privileged/">
+          Enter Privileged <ArrowUpRight size={17} aria-hidden="true" />
+        </Link>
       </header>
-      <main className="shell research-index">
-        {researchStories.map((story, index) => (
-          <article className="research-card" key={story.slug}>
-            <div className="research-card-meta">
-              <span className="eyebrow">0{index + 1} / {story.category}</span>
-              <span className="mono">{story.date}</span>
-            </div>
-            <h2>{story.title}</h2>
-            <p>{story.description}</p>
-            <div className="research-card-bottom">
-              <span>{story.tags.join(" · ")}</span>
-              <Link className="text-link" href={`/research/${story.slug}/`}>
-                Read the story <ArrowUpRight size={16} aria-hidden="true" />
-              </Link>
-            </div>
-          </article>
-        ))}
-      </main>
+      <section className="shell section research-entry-note" aria-label="About Privileged">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">What you will find there</p>
+            <h2>
+              Research, notes
+              <br />
+              <em>and working evidence.</em>
+            </h2>
+          </div>
+          <p>
+            The notebook keeps the status of each piece clear: demo writing is
+            labelled, public upstream work links to its source, and a merged
+            change is not presented as a release or vulnerability without
+            evidence.
+          </p>
+        </div>
+      </section>
       <ContactBand />
     </>
   );

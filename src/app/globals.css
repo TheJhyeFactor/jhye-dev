@@ -761,6 +761,12 @@ section[id] {
 .page-intro > .text-link {
   margin-top: 20px;
 }
+.page-intro > .button {
+  margin-top: 24px;
+}
+.research-entry-note {
+  padding-bottom: 90px;
+}
 .research-index {
   padding-bottom: 90px;
 }

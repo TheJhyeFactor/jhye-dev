@@ -8,12 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/career",
     "/open-source",
     "/research",
+    "/privileged",
     "/about",
     "/contact",
     "/resume",
     ...projects.map((p) => `/work/${p.slug}`),
     ...career.map((r) => `/career/${r.slug}`),
-    "/research/ollama-download-stall",
   ].map((route) => ({
     url: `https://jhye.dev${route}/`,
     changeFrequency: "monthly",
