@@ -2,6 +2,8 @@
 
 ## 2026-10-05
 
+- Replaced Wixal with Apertide across the project index, homepage data, About and web résumé. Added a Code-OSS case study, a usage walkthrough and four real packaged-app screenshots with synthetic-fixture captions.
+- Reviewed Apertide Workbench 0.2.0 at local commit `e8dc42c7925`, reran its 13 targeted tests, and verified the installed bundle's integration and non-inference UI workflows. Labelled the custom source as local and the product as an unsigned Apple Silicon alpha.
 - Rebuilt Work browsing around explicit AI, cybersecurity and client-delivery areas, with project-stage and keyword filters.
 - Added personal role and tool/delivery tags to the project index cards.
 - Rebuilt Open Source browsing with area, recorded status, language and keyword filters. Contributions are grouped with released work first, followed by submitted changes and investigations.

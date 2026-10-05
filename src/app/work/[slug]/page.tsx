@@ -93,6 +93,7 @@ export default async function CaseStudy({
               <a href="#problem">The problem</a>
               <a href="#contribution">My contribution</a>
               <a href="#decisions">Key decisions</a>
+              {p.usage && <a href="#usage">How to use it</a>}
               {p.gallery.length > 0 && <a href="#walkthrough">In practice</a>}
               <a href="#verification">Evidence & limits</a>
             </nav>
@@ -150,6 +151,20 @@ export default async function CaseStudy({
                 ))}
               </div>
             </section>
+            {p.usage && (
+              <section id="usage">
+                <p className="eyebrow">Workflow / Getting started</p>
+                <h2>How to use it</h2>
+                <ol className="case-usage">
+                  {p.usage.map((step) => (
+                    <li key={step.title}>
+                      <h3>{step.title}</h3>
+                      <p>{step.body}</p>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
             {p.gallery.length > 0 && (
               <section id="walkthrough">
                 <p className="eyebrow">04 / In practice</p>

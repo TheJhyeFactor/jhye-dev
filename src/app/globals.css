@@ -401,8 +401,8 @@ section[id] {
 .work-card:hover .work-image img {
   transform: scale(1.025);
 }
-.work-card-wixal .work-image {
-  background: #15131b;
+.work-card-apertide .work-image {
+  background: #202326;
 }
 .work-card-sentinel-local .work-image {
   background: #11181c;
@@ -1086,6 +1086,22 @@ section[id] {
 .case-content h3 {
   font-size: 1.14rem;
   line-height: 1.35;
+}
+.case-usage {
+  list-style: decimal;
+  padding-left: 1.4rem;
+}
+.case-usage li {
+  padding-left: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+.case-usage li::marker {
+  color: var(--accent);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+.case-usage p {
+  color: var(--muted);
+  line-height: 1.75;
 }
 .system-flow {
   margin-top: 30px;

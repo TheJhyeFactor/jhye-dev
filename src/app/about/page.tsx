@@ -84,10 +84,10 @@ export default function About() {
             {
               title: "AI tooling",
               tools:
-                "Ollama · Electron · Tool calls · Streaming · Local persistence",
-              body: "Local AI interfaces, explicit action review and the workflows surrounding model inference.",
-              href: "/work/wixal",
-              link: "Wixal case study",
+                "TypeScript · Code-OSS · Ollama · SARIF · Native diff review",
+              body: "Editor workflows connecting source review, optional local inference, reviewed changes and recorded checks.",
+              href: "/work/apertide",
+              link: "Apertide case study",
             },
             {
               title: "Cybersecurity workflows",

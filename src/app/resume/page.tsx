@@ -61,8 +61,9 @@ export default function Resume() {
           <Link href="/open-source">ZAP application security</Link> · Submitted Java 403-bypass scanner fix, with 33 focused tests, 346 add-on tests and six installed comparisons passing locally. Separately documented a CSP-filter investigation across ten controlled runs. Awaiting upstream review.
         </p>
         <p>
-          <Link href="/work/wixal">Wixal</Link> · Local AI desktop workspace
-          with reviewed tool actions and persistent project context.
+          <Link href="/work/apertide">Apertide</Link> · Local Code-OSS fork
+          with SARIF triage, source review, optional local AI, reviewed single-file
+          changes and recorded checks. Apple Silicon alpha; custom source remains local.
         </p>
         <p>
           <Link href="/work/sentinel-local">Sentinel Local</Link> · Local
