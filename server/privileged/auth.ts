@@ -3,7 +3,7 @@ import { promisify } from 'node:util';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { readJson, writeJson, ApiError } from './storage';
 const scrypt = promisify(scryptCallback);
-export type Owner = { email: string; salt: string; passwordHash: string; epoch: string };
+export type Owner = { email: string; salt: string; passwordHash: string; epoch: string; mustChangePassword?: boolean };
 const secret = () => { const value = process.env.PRIVILEGED_SESSION_SECRET; if (!value || value.length < 40) throw new ApiError(503, 'Publishing is not configured yet.'); return value; };
 const cookie = 'privileged_session';
 export function originCheck(req: VercelRequest) {
@@ -24,7 +24,9 @@ export async function signedIn(req: VercelRequest) {
 }
 export async function admin(req: VercelRequest) {
   const account = await signedIn(req); if (!account) throw new ApiError(401, 'Sign in to manage Privileged.');
-  if (!['GET', 'HEAD'].includes(req.method || 'GET')) originCheck(req); return account;
+  if (!['GET', 'HEAD'].includes(req.method || 'GET')) originCheck(req);
+  if (account.mustChangePassword) throw new ApiError(403, 'Change your temporary password before publishing.');
+  return account;
 }
 export function session(res: VercelResponse, account: Owner) {
   const payload = Buffer.from(JSON.stringify({ epoch: account.epoch, expires: Date.now() + 12 * 3600000 })).toString('base64url');
@@ -42,8 +44,24 @@ export async function setup(req: VercelRequest, res: VercelResponse) {
   const password = req.body?.password;
   if (typeof password !== 'string' || password.length < 12 || password.length > 256) throw new ApiError(400, 'Use a password between 12 and 256 characters.');
   const salt = randomBytes(24).toString('hex'); const hash = await scrypt(password, salt, 64) as Buffer;
-  const account = { email, salt, passwordHash: hash.toString('hex'), epoch: crypto.randomUUID() };
-  await writeJson('private/owner.json', account); session(res, account); return { email };
+  const account = { email, salt, passwordHash: hash.toString('hex'), epoch: crypto.randomUUID(), mustChangePassword: req.body?.temporary === true };
+  await writeJson('private/owner.json', account); session(res, account); return { email, mustChangePassword: account.mustChangePassword };
+}
+export async function changePassword(req: VercelRequest, res: VercelResponse) {
+  originCheck(req);
+  const account = await signedIn(req);
+  if (!account) throw new ApiError(401, 'Sign in to change your temporary password.');
+  if (!account.mustChangePassword) throw new ApiError(409, 'Your publishing password has already been changed.');
+  const password = req.body?.password;
+  if (typeof password !== 'string' || password.length < 12 || password.length > 256) throw new ApiError(400, 'Use a password between 12 and 256 characters.');
+  const previousHash = await scrypt(password, account.salt, 64) as Buffer;
+  if (same(previousHash.toString('hex'), account.passwordHash)) throw new ApiError(400, 'Choose a new password, different from the temporary one.');
+  const current = await readJson<Owner>('private/owner.json');
+  if (!current || current.value.epoch !== account.epoch) throw new ApiError(409, 'Your account changed. Sign in again.');
+  const salt = randomBytes(24).toString('hex'); const hash = await scrypt(password, salt, 64) as Buffer;
+  const updated = { ...account, salt, passwordHash: hash.toString('hex'), epoch: crypto.randomUUID(), mustChangePassword: false };
+  await writeJson('private/owner.json', updated, current.etag);
+  session(res, updated); return { email: updated.email, mustChangePassword: false };
 }
 export async function login(req: VercelRequest, res: VercelResponse) {
   originCheck(req); secret();
@@ -58,5 +76,5 @@ export async function login(req: VercelRequest, res: VercelResponse) {
   const valid = account && same(hash.toString('hex'), account.passwordHash) && String(req.body?.email || '').toLowerCase() === account.email.toLowerCase();
   await writeJson(rateKey, valid ? { count: 0, until: 0 } : { ...active, count: active.count + 1 }, attempts?.etag);
   if (!valid) throw new ApiError(401, 'The email or password is incorrect.');
-  session(res, account); return { email: account.email };
+  session(res, account); return { email: account.email, mustChangePassword: !!account.mustChangePassword };
 }

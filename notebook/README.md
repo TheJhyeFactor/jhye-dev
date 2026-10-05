@@ -18,6 +18,10 @@ npm start
 
 ## Publish an entry
 
+Use the publishing desk at https://jhye.dev/privileged/admin/ to write posts, save drafts and upload photos or videos. Sign in at https://jhye.dev/privileged/login/. A temporary owner password must be replaced on the first sign-in before any publishing API can be used. The backend and private storage are configured in the parent portfolio project; see `../docs/privileged-publishing.md`.
+
+The original source stories can also be maintained through Markdown/MDX:
+
 Add a `.md` or `.mdx` file to `content/research/`, `content/notes/`, or `content/projects/`. The filename becomes the URL slug. Use lowercase letters, numbers, and hyphens.
 
 ```yaml
@@ -36,7 +40,7 @@ Write any structure you like after the frontmatter. No fixed research template i
 
 The sample stories have been removed. The original evidence-backed Ollama story remains as source content. New posts are written through the password-protected editor at /privileged/admin/ and are loaded from its public API. Drafts and unused media stay private. The source deployed with jhye.dev is in its notebook directory; changes to this standalone workspace must be copied there before portfolio deployment.
 
-Commit the file and rebuild/redeploy. No database, account, or CMS service is needed.
+Commit source-story changes and rebuild/redeploy. Posts created in the publishing desk are stored separately in private Vercel storage and appear without a rebuild.
 
 ## Writing features
 

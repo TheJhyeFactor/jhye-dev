@@ -1,15 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Editor } from "./publisher-editor";
+import { PasswordChange } from "./publisher-password";
 export function PublisherDesk() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [mustChangePassword, setMustChangePassword] = useState(false);
   useEffect(() => {
     let active = true;
     fetch("/privileged/api/session", { credentials: "same-origin" }).then(async (r) => {
       if (r.status === 401) { window.location.replace("/privileged/login/"); return; }
       const data = await r.json(); if (!r.ok) throw new Error(data.error || "Unable to open the editor.");
-      if (active) setEmail(data.email);
+      if (active) { setMustChangePassword(!!data.mustChangePassword); setEmail(data.email); }
     }).catch((e) => { if (active) setError(e.message); });
     return () => { active = false; };
   }, []);
@@ -19,6 +21,6 @@ export function PublisherDesk() {
   }
   return <div className="publishing-desk container page-content">
     {error && <p className="error" role="alert">{error}</p>}
-    {!email ? <p role="status">Opening your publishing desk…</p> : <><div className="editor-toolbar"><a href="/privileged/">View notebook ↗</a><button onClick={logout}>Sign out</button></div><Editor email={email} /></>}
+    {!email ? <p role="status">Opening your publishing desk…</p> : <><div className="editor-toolbar"><a href="/privileged/">View notebook ↗</a><button onClick={logout}>Sign out</button></div>{mustChangePassword ? <PasswordChange onChanged={() => setMustChangePassword(false)} /> : <Editor email={email} />}</>}
   </div>;
 }

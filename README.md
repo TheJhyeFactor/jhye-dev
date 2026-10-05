@@ -1,11 +1,12 @@
 # jhye.dev
 
-Jhye O’Meley’s engineering portfolio, focused on software development, AI and cybersecurity. Built with Next.js and exported to GitHub Pages.
+Jhye O’Meley’s engineering portfolio, focused on software development, AI and cybersecurity. Built with Next.js and served by Vercel, with Privileged’s publishing backend on the same domain.
 
 ## Development
 
 ```sh
 npm ci
+npm ci --prefix notebook
 npm run dev
 npm run typecheck
 npm run lint
@@ -30,7 +31,7 @@ Keep dates and responsibilities grounded in the résumé. Transition reasons are
 
 Filters are stored in the URL for sharing and browser navigation. The complete indexes are included in the static HTML; filtering runs locally after hydration. Update the explicit focus, stage and language fields in `src/data/portfolio.ts` and the filter labels in `src/data/browse.ts` when adding work. Contribution statuses retain their recorded verification date.
 
-Pushes to `main` run type checks, lint, build and GitHub Pages deployment. Prepare redesign changes through a PR before release.
+Pushes to `main` deploy through Vercel after type checks, lint and the build. The GitHub Pages workflow is manual and retained for rollback exports. Prepare redesign changes through a PR before release.
 
 See [architecture](docs/architecture.md), [design system](docs/ui-design-system.md), [research](docs/redesign-research.md) and [overhaul plan](docs/portfolio-overhaul-plan.md).
 

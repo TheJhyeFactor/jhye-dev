@@ -3,7 +3,7 @@ import { get, head } from '@vercel/blob';
 import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
 import { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
-import { admin, signedIn, originCheck, setup, login, signOut } from '../server/privileged/auth';
+import { admin, signedIn, originCheck, setup, login, signOut, changePassword } from '../server/privileged/auth';
 import { ApiError } from '../server/privileged/storage';
 import { catalog, saveCatalog, validatePost, mediaInfo, mediaTypes, validMedia } from '../server/privileged/content';
 const escape = (s: string) => s.replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&apos;' }[c]!));
@@ -14,9 +14,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const method = req.method || 'GET';
     const json = (value: unknown, status = 200) => res.status(status).json(value);
     if (!['GET', 'HEAD'].includes(method) && Buffer.byteLength(JSON.stringify(req.body || '')) > 500000) throw new ApiError(413, 'The request is too large.');
-    if (path === 'session' && method === 'GET') { const account = await signedIn(req); if (!account) throw new ApiError(401, 'Sign in to manage Privileged.'); return json({ email: account.email }); }
+    if (path === 'session' && method === 'GET') { const account = await signedIn(req); if (!account) throw new ApiError(401, 'Sign in to manage Privileged.'); return json({ email: account.email, mustChangePassword: !!account.mustChangePassword }); }
     if (path === 'setup' && method === 'POST') return json(await setup(req, res), 201);
     if (path === 'login' && method === 'POST') return json(await login(req, res));
+    if (path === 'password' && method === 'POST') return json(await changePassword(req, res));
     if (path === 'logout' && method === 'POST') { originCheck(req); signOut(res); return json({ ok: true }); }
     if (path === 'upload' && method === 'POST') {
       const body = req.body as HandleUploadBody;

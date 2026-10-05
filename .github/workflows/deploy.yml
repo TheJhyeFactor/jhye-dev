@@ -1,9 +1,6 @@
-name: Deploy to GitHub Pages
+name: GitHub Pages rollback export
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
