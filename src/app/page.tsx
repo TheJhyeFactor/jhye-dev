@@ -105,7 +105,7 @@ export default function Home() {
               the decisions that shape the result.
             </p>
             <Link className="text-link" href="/work">
-              All selected work <ArrowUpRight size={16} aria-hidden="true" />
+              Browse & filter work <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function Home() {
                 reliability, performance and cross-platform engineering.
               </p>
               <Link className="text-link" href="/open-source">
-                The problems, fixes & results{" "}
+                Browse & filter contributions{" "}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </Link>
             </div>

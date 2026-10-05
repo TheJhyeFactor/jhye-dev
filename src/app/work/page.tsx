@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { projects } from "@/data/portfolio";
-import ProjectCard from "@/components/ProjectCard";
+import WorkBrowser from "@/components/WorkBrowser";
 import ContactBand from "@/components/ContactBand";
 export const metadata: Metadata = {
   title: "Selected work",
@@ -19,18 +18,12 @@ export default function Work() {
           <em>Why it matters.</em>
         </h1>
         <p className="lead">
-          A deliberately small selection. Each story explains the problem, my
-          contribution, the decisions and the limits of the result.
+          Explore AI tools, cybersecurity projects and client delivery. Browse
+          by area, narrow by project stage, or find the technology you’re interested
+          in. Each case study explains the problem, my role and the result.
         </p>
       </div>
-      <section
-        className="shell work-grid work-index"
-        aria-label="Project case studies"
-      >
-        {projects.map((project, index) => (
-          <ProjectCard key={project.slug} project={project} index={index} />
-        ))}
-      </section>
+      <WorkBrowser />
       <ContactBand />
     </>
   );

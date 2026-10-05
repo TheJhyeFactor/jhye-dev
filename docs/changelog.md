@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-05
+
+- Rebuilt Work browsing around explicit AI, cybersecurity and client-delivery areas, with project-stage and keyword filters.
+- Added personal role and tool/delivery tags to the project index cards.
+- Rebuilt Open Source browsing with area, recorded status, language and keyword filters. Contributions are grouped with released work first, followed by submitted changes and investigations.
+- Introduced visible problem/change/result columns and expandable verification context, preserving source links and existing evidence wording.
+- Added shareable query filters, restoration after reload/Back, result counts, empty results and reset controls.
+- Verified the static build and desktop/mobile filtering journeys. This change does not refresh the contribution-status audit date.
+
 ## 2026-10-01
 
 - Replaced the homepage portrait with the supplied current headshot, optimised as WebP.
