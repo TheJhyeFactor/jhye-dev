@@ -74,7 +74,7 @@ export const profile = {
   email: "omeleyjhye@gmail.com",
   location: "Newcastle, Australia",
   github: "https://github.com/TheJhyeFactor",
-  linkedin: "https://www.linkedin.com/in/jhye-o-meley-529960213/",
+  linkedin: "https://www.linkedin.com/in/jhye-o-meley-583223420/",
 } as const;
 
 export const projects: Project[] = [

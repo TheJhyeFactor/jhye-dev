@@ -18,6 +18,7 @@ export default function Footer() {
         <div className="footer-links">
           <Link href="/career">Career</Link>
           <Link href="/open-source">Open source</Link>
+          <Link href="/research">Research</Link>
           <a href={profile.github} target="_blank" rel="noreferrer">
             GitHub <ArrowUpRight size={14} aria-hidden="true" />
           </a>

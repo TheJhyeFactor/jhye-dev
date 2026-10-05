@@ -761,6 +761,65 @@ section[id] {
 .page-intro > .text-link {
   margin-top: 20px;
 }
+.research-index {
+  padding-bottom: 90px;
+}
+.research-card {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 34px;
+}
+.research-card:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.research-card-meta,
+.research-card-bottom,
+.research-facts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.research-card-meta .mono,
+.research-card-bottom {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+.research-card h2 {
+  max-width: 850px;
+  margin: 25px 0 12px;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  letter-spacing: -0.045em;
+}
+.research-card > p {
+  max-width: 700px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.research-card-bottom {
+  margin-top: 25px;
+}
+.research-card-bottom .text-link,
+.research-facts .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.research-facts {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 26px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.research-body {
+  padding-top: 30px;
+}
+.research-body .case-content code {
+  padding: 0.15rem 0.3rem;
+  border: 1px solid var(--line);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.85em;
+}
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -2363,5 +2422,13 @@ section[id] {
   }
   .browse-footnote {
     font-size: 0.72rem;
+  }
+  .research-card-meta,
+  .research-card-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .research-card h2 {
+    font-size: 2rem;
   }
 }
