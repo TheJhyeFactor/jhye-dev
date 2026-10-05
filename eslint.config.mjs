@@ -10,6 +10,7 @@ export default defineConfig([
     'out/**',
     'build/**',
     'public/privileged/**',
+    'notebook/**',
     'next-env.d.ts',
     'node_modules.corrupt-*/**',
   ]),

@@ -20,7 +20,12 @@ jobs:
         with:
           node-version: '20'
           cache: npm
-      - run: npm ci
+          cache-dependency-path: |
+            package-lock.json
+            notebook/package-lock.json
+      - run: |
+          npm ci
+          npm ci --prefix notebook
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run build

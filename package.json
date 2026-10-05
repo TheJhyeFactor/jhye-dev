@@ -4,10 +4,11 @@
   "description": "Jhye O'Meley - Personal Developer Website",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build:privileged && next build",
     "start": "python3 -m http.server 3000 -d out",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:privileged": "node scripts/build-privileged.mjs"
   },
   "keywords": [],
   "author": "Jhye O'Meley",

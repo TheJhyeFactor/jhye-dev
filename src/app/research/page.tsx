@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import ContactBand from "@/components/ContactBand";
 
@@ -25,9 +24,9 @@ export default function ResearchEntry() {
           experiments, software notes and the details behind a failure. It
           sits inside jhye.dev, with its own quieter layout and archive.
         </p>
-        <Link className="button" href="/privileged/">
+        <a className="button" href="/privileged/">
           Enter Privileged <ArrowUpRight size={17} aria-hidden="true" />
-        </Link>
+        </a>
       </header>
       <section className="shell section research-entry-note" aria-label="About Privileged">
         <div className="section-heading">
@@ -40,10 +39,10 @@ export default function ResearchEntry() {
             </h2>
           </div>
           <p>
-            The notebook keeps the status of each piece clear: demo writing is
-            labelled, public upstream work links to its source, and a merged
-            change is not presented as a release or vulnerability without
-            evidence.
+            The notebook collects investigations, technical notes and project
+            write-ups, with links to working evidence and upstream sources.
+            It is a place to explain what happened, what I learned and what
+            changed.
           </p>
         </div>
       </section>

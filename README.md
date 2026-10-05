@@ -33,3 +33,11 @@ Filters are stored in the URL for sharing and browser navigation. The complete i
 Pushes to `main` run type checks, lint, build and GitHub Pages deployment. Prepare redesign changes through a PR before release.
 
 See [architecture](docs/architecture.md), [design system](docs/ui-design-system.md), [research](docs/redesign-research.md) and [overhaul plan](docs/portfolio-overhaul-plan.md).
+
+## Privileged notebook and publisher
+
+`/research/` explains the notebook and links to `/privileged/` with a full-document navigation, preserving Privileged's own design. The independent Next.js source is under `notebook/`. Install its dependencies with `npm ci --prefix notebook`. The root build checks and exports it to `public/privileged/` before building the portfolio; generated exports are ignored by Git. Both GitHub Actions workflows install the notebook dependencies.
+
+The footer Login link opens the authenticated [Privileged Publisher](https://privileged-publisher.ellyjane-luki.chatgpt.site). The publisher runs separately with D1 post storage, R2 media storage and Sign in with ChatGPT. It serves published posts anonymously to https://jhye.dev. Publish and unpublish take effect on the next page load without rebuilding this static site. Text, uploaded images/video and YouTube/Vimeo embeds are rendered as controlled content blocks. The sample stories have been removed; the evidence-backed Ollama story remains in source.
+
+Edit public notebook presentation in `notebook/src`. Its browser tests are run against a standalone export without PRIVILEGED_BASE_PATH. `node scripts/verify-privileged.mjs` checks the completed root `out/` export for the portfolio entry link, independent notebook layout, embedded navigation and mobile rendering.

@@ -1,0 +1,37 @@
+---
+title: "When a Download Can Connect but Never Start"
+description: "Tracing an upstream Ollama download stall to the first-byte boundary, then fixing the timeout path with focused regression coverage."
+date: "2026-10-05"
+category: "Systems"
+tags: ["Go", "Ollama", "Reliability"]
+demo: false
+art: "network"
+---
+
+## The symptom
+
+An Ollama model download could connect successfully and still appear to hang. The request had reached the server, but the first response body byte never arrived, so the client waited instead of retrying.
+
+This was a reliability bug, not a security vulnerability. It was still a useful failure mode to investigate because the behaviour sat at the boundary between an HTTP connection, a ranged transfer, and the timeout monitor that was meant to recover it.
+
+## Following the first byte
+
+The download path updated its activity timestamp from `blobDownloadPart.Write`. That meant the inactivity monitor only had a meaningful timestamp after data had already been written. When a range request connected, returned headers, and then delivered no body bytes, `lastUpdated` stayed at its zero value and the monitor skipped the attempt.
+
+The completion path also polled once per second. Together, those details made a connection that had never started look different from a transfer that had simply gone quiet.
+
+I changed the monitor to record the start of each attempt, signal transfer completion explicitly, and keep the existing 30-second threshold and retry behaviour. The regression coverage exercises both the headers-without-a-body case and the normal completion path.
+
+## Evidence and scope
+
+The change was submitted in [Ollama pull request #17259](https://github.com/ollama/ollama/pull/17259), which merged upstream on 21 July 2026. The pull request records the focused checks I ran:
+
+- `go test ./server -count=1`
+- `go test ./server -run '^TestDownloadChunk' -count=50`
+- `go test -race ./server -run '^TestDownloadChunk' -count=20`
+- `go mod tidy -diff`
+- `git diff --check`
+
+On an Apple M4 test machine, the recorded completion-path benchmark moved from 1.001113 seconds per operation to 689.5 microseconds per operation, with no meaningful allocation change.
+
+The upstream pull request is the source for the implementation details and measurements. The status here is deliberately precise: the fix is merged upstream. This note does not claim a release binary or a security advisory.
