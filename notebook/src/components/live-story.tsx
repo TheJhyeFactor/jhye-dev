@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { publisherOrigin, safeEmbed, type LiveStory } from "@/lib/publisher";
 import { formatDate } from "@/lib/content-utils";
+import { absoluteUrl } from "@/lib/site";
 
 export function LiveStoryPage() {
   const params = useSearchParams();
@@ -19,7 +20,9 @@ function Story({ slug }: { slug: string }) {
     const controller = new AbortController();
     fetch(`${publisherOrigin}/api/posts?slug=${encodeURIComponent(slug || "missing")}`, { signal: controller.signal, credentials: "omit" })
       .then(async (r) => { if (!r.ok) throw new Error(r.status === 404 ? "missing" : "error"); return await r.json() as { post: LiveStory }; })
-      .then(({ post }) => { setPost(post); setState("ready"); document.title = `${post.title} | Privileged`; })
+      .then(({ post }) => { setPost(post); setState("ready"); document.title = `${post.title} | Privileged`;
+        document.querySelector('link[rel="canonical"]')?.setAttribute("href", absoluteUrl(`/story/?slug=${encodeURIComponent(post.slug)}`));
+        document.querySelector('meta[name="description"]')?.setAttribute("content", post.description); })
       .catch((e) => { if (e.name !== "AbortError") setState(e.message); });
     return () => controller.abort();
   }, [slug]);

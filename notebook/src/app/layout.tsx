@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site, absoluteUrl } from "@/lib/site";
+import { publisherOrigin } from "@/lib/publisher";
 import "./globals.css";
 const sans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   },
   description: site.description,
   authors: [{ name: site.author }],
-  alternates: { canonical: "/", types: { "application/rss+xml": "/rss.xml" } },
+  alternates: { canonical: "/", types: { "application/rss+xml": `${publisherOrigin}/api/rss` } },
   openGraph: {
     title: "Privileged",
     description: site.description,
