@@ -19,20 +19,19 @@ const server = createServer(async (request, response) => {
 })
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve))
 const origin = `http://127.0.0.1:${server.address().port}`
-const backend = 'https://privileged-publisher.ellyjane-luki.chatgpt.site'
 const browser = await chromium.launch({ headless: true })
 try {
   for (const width of [1440, 390]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } })
     const errors = []; page.on('pageerror', (e) => errors.push(e.message))
-    await page.route(`${backend}/api/posts**`, (route) => route.fulfill({ contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ posts: [] }) }))
+    await page.route('**/privileged/api/posts**', (route) => route.fulfill({ contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ posts: [] }) }))
     assert.equal((await page.goto(`${origin}/research/`)).status(), 200)
     await page.getByRole('link', { name: 'Enter Privileged' }).click()
     await page.getByRole('heading', { name: 'When a Download Can Connect but Never Start' }).waitFor()
     assert.equal(new URL(page.url()).pathname, '/privileged/')
     assert.equal(await page.locator('.site-header').count(), 1)
     assert.equal(await page.locator('.demo-tag, .article-demo').count(), 0)
-    assert.equal(await page.getByRole('link', { name: 'Login', exact: true }).getAttribute('href'), backend)
+    assert.equal(await page.getByRole('link', { name: 'Login', exact: true }).getAttribute('href'), '/privileged/login/')
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
     await page.screenshot({ path: `/tmp/privileged-integrated-${width}.png`, fullPage: true })
     if (width === 390) await page.getByRole('button', { name: 'Open menu' }).click()

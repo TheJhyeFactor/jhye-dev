@@ -34,7 +34,7 @@ demo: false
 
 Write any structure you like after the frontmatter. No fixed research template is required. Categories and tags are derived from content; no extra registration is needed. `draft: true` omits an entry everywhere, including direct routes. Reading time is calculated automatically. The homepage shows the three newest research posts and two newest notes.
 
-The sample stories have been removed. The original evidence-backed Ollama story remains as source content. New posts are written through the authenticated publisher linked in the footer and are loaded from its public API. Drafts and unused media stay private. The source deployed with jhye.dev is in its notebook directory; changes to this standalone workspace must be copied there before portfolio deployment.
+The sample stories have been removed. The original evidence-backed Ollama story remains as source content. New posts are written through the password-protected editor at /privileged/admin/ and are loaded from its public API. Drafts and unused media stay private. The source deployed with jhye.dev is in its notebook directory; changes to this standalone workspace must be copied there before portfolio deployment.
 
 Commit the file and rebuild/redeploy. No database, account, or CMS service is needed.
 

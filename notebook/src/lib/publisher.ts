@@ -1,4 +1,4 @@
-export const publisherOrigin = "https://privileged-publisher.ellyjane-luki.chatgpt.site";
+export const publisherOrigin = "/privileged";
 export type StoryBlock = {
   id: string;
   type: "paragraph" | "heading" | "quote" | "list" | "code" | "image" | "video" | "embed";

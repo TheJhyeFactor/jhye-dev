@@ -1,8 +1,7 @@
 import { test, expect } from "@playwright/test";
-const backend = "https://privileged-publisher.ellyjane-luki.chatgpt.site";
 const fixture = { id: "test-post", title: "A published notebook entry", slug: "published-notebook-entry", description: "A verification fixture served only in the test browser.", kind: "research", category: "Security", tags: ["HTTP"], date: "2026-10-05", readingTime: 1, status: "published", blocks: [{ id: "paragraph", type: "paragraph", text: "Text <script>alert(1)</script> remains plain text." }, { id: "heading", type: "heading", text: "Working evidence" }, { id: "embed", type: "embed", url: "javascript:alert(1)" }] };
 test.beforeEach(async ({ page }) => {
-  await page.route(`${backend}/api/posts**`, async (route) => {
+  await page.route("**/privileged/api/posts**", async (route) => {
     const slug = new URL(route.request().url()).searchParams.get("slug");
     await route.fulfill({ status: slug && slug !== fixture.slug ? 404 : 200, contentType: "application/json", body: JSON.stringify(slug ? { post: fixture } : { posts: [fixture] }) });
   });
@@ -16,7 +15,7 @@ test("public notebook pages keep their layout and omit sample stories", async ({
     await expect(page.locator(".demo-tag, .article-demo")).toHaveCount(0);
   }
   await page.goto("/"); await expect(page.getByRole("heading", { name: fixture.title })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Login", exact: true })).toHaveAttribute("href", backend);
+  await expect(page.getByRole("link", { name: "Login", exact: true })).toHaveAttribute("href", "/privileged/login/");
   await page.screenshot({ path: `artifacts/home-${info.project.name}.png`, fullPage: true });
   expect(errors).toEqual([]);
 });

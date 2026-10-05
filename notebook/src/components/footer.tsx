@@ -21,7 +21,7 @@ export function Footer() {
           </a>
         ))}
         <a href={`${publisherOrigin}/api/rss`}>RSS</a>
-        <a href={publisherOrigin}>Login</a>
+        <a href="/privileged/login/">Login</a>
       </div>
     </footer>
   );
