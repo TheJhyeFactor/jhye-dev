@@ -22,6 +22,7 @@ export type Project = {
   contribution: string;
   flow: string[];
   decisions: { title: string; body: string }[];
+  usage?: { title: string; body: string }[];
   gallery: GalleryImage[];
   verification: string;
   limits: string;
@@ -111,67 +112,83 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "wixal",
-    focus: ["ai"],
+    slug: "apertide",
+    focus: ["ai", "security"],
     stage: "local-tool",
-    title: "Wixal",
-    eyebrow: "AI engineering",
-    category: "AI",
-    status: "Local macOS build",
+    title: "Apertide",
+    eyebrow: "Software engineering / AI & security",
+    category: "AI & cybersecurity",
+    status: "Local alpha · Code-OSS fork",
     year: "2026",
-    image: "/images/work/wixal-desktop.webp",
-    alt: "Wixal macOS interface with local model selection and project workspace",
+    image: "/images/work/apertide-findings.webp",
+    alt: "Apertide review console showing an imported synthetic SARIF finding and numbered source preview",
+    caption: "Packaged Apertide Workbench 0.2.0 with a synthetic report and source fixture. The separate test driver accounts for the development-host title.",
     summary:
-      "A local AI workspace with reviewed tools, persistent conversations and a real terminal.",
+      "An independent Code-OSS fork connecting security findings, source review, optional local AI and recorded checks in one editor.",
     takeaway:
-      "Making model suggestions useful without handing over unchecked execution.",
-    role: "Product design and application development",
-    stack: ["Electron", "JavaScript", "Ollama", "node-pty", "xterm.js"],
+      "Follow a finding into its source, review a change and retain what was actually checked.",
+    role: "Fork development, workflow design and native packaging",
+    stack: ["TypeScript", "Code-OSS", "Electron", "SARIF", "Ollama", "Node.js"],
     problem:
-      "An AI coding workspace needs more than a chat box. It needs project context, usable tools, durable state and a clear point at which the user decides what can run.",
+      "Scanner reports, source files, suggested fixes and test output often sit in separate tools. A useful review workspace needs to connect them while preserving report provenance and distinguishing an inspected finding, a proposed edit and a real check result.",
     contribution:
-      "I built the desktop interface, local Ollama integration, project and conversation persistence, tool review workflow, and terminal integration.",
+      "I developed the Apertide Workbench extension and product identity on top of Microsoft's Code-OSS editor. The latest 0.2.0 revision replaces a landing-style Desk with compact workflow navigation, a file-first findings queue, a separate source inspector and root project inspection. My work includes SARIF import and triage, explicit-context Ollama streaming, single-file proposals with native diff review, fixed local checks, persistent evidence journals, a read-only GitHub adapter, Graphite and Paper themes, and an Apple Silicon application build. Editing, debugging, Git and terminal foundations come from Code-OSS.",
     flow: [
-      "Project context",
-      "Local Ollama model",
-      "Structured tool request",
-      "Human review",
-      "File or command result",
+      "Import findings",
+      "Inspect source",
+      "Review a change",
+      "Run a local check",
+      "Export evidence",
     ],
     decisions: [
       {
-        title: "Keep inference local",
-        body: "The app talks to Ollama on loopback. Model selection and streaming sit alongside project context, with no cloud provider configured.",
+        title: "Make review useful without a model",
+        body: "Project inspection lists actual root files and declared npm scripts without executing them. Findings preserve tool, rule and location provenance; nearby source preview, triage, checks and evidence export work independently of inference.",
       },
       {
-        title: "Review before action",
-        body: "File changes show existing and proposed contents. Model-requested commands require review. The terminal and approved commands still run with the user’s host permissions.",
+        title: "Keep context and application explicit",
+        body: "Only captured source and the current mode conversation are sent to local Ollama. The model cannot execute tools. Full-file proposals require native diff review and explicit application; source hashes are checked before and after confirmation. Applied edits remain unsaved and undoable.",
       },
       {
-        title: "Build a desktop application",
-        body: "A narrow preload bridge connects the renderer to the main process. Persistent state is written atomically, and native terminal modules are packaged with the application.",
+        title: "Record checks as evidence",
+        body: "Fixed JavaScript syntax and workspace npm-test profiles retain real output, exit status and timing, with cancellation and a 60-second limit. Development and Assessment keep separate conversations and journals. A reviewed finding or passing test does not establish vulnerability remediation.",
       },
+      {
+        title: "Build on an existing editor responsibly",
+        body: "The fork retains Code-OSS licensing and third-party notices while using independent branding and a bundled extension. GitHub reads use existing CLI authentication. Assessment mode organises a workflow; it does not change host permissions or authorise remote testing.",
+      },
+    ],
+    usage: [
+      { title: "Open a local workspace", body: "Launch Apertide, open a trusted project folder and choose Apertide: Open Desk from the command palette. Use Project → Inspect root files to see recognised manifests and declared npm scripts." },
+      { title: "Review existing findings", body: "Switch to Assessment and import a SARIF 2.1.0 report generated by an external tool. Select a finding, preview or open its source, and record Open, Reviewed or Dismissed status. Imported locations must resolve to existing files inside the workspace." },
+      { title: "Use local assistance when helpful", body: "Check the Ollama service, choose an installed model and explicitly capture source or a finding. Inspect the context preview before asking. A proposal needs complete-file context; open its diff, apply deliberately and save the edit." },
+      { title: "Check and hand over", body: "Use Checks & evidence to check captured JavaScript or run the workspace's npm test, inspect the recorded result and export JSON evidence. Repository can refresh origin, branch, changes and up to ten open PRs through Git and an authenticated GitHub CLI." },
     ],
     gallery: [
       {
-        src: "/images/work/wixal-agent.webp",
-        alt: "Wixal tool-call result during a controlled file-writing and memory test",
+        src: "/images/work/apertide-project.webp",
+        alt: "Apertide Project view listing real fixture files and the declared npm test script with its manifest source",
         caption:
-          "Controlled test: a model-requested file write and project-memory recall.",
+          "Project inspection reads recognised root files and displays declared scripts as data. No model is needed.",
       },
       {
-        src: "/images/work/wixal-terminal.webp",
-        alt: "Wixal integrated terminal in the desktop application",
+        src: "/images/work/apertide-diff.webp",
+        alt: "Apertide native diff showing a model-proposed comment addition to a synthetic JavaScript function",
         caption:
-          "A real PTY terminal in the application, separate from model-requested commands.",
+          "Recorded 4 October smoke test: native review of a local model's comment-only proposal. This exercises the review path, not a real vulnerability fix.",
+      },
+      {
+        src: "/images/work/apertide-evidence.webp",
+        alt: "Apertide evidence journal showing the reviewed proposal, applied edit and successful fixture npm test",
+        caption: "Recorded 4 October smoke test: actual check output and workflow events retained in the local evidence journal.",
       },
     ],
     verification:
-      "The project includes unit checks and an app smoke workflow covering a PTY, reviewed fixture-file creation, explicit memory, recall and reload. The screenshots shown here come from that controlled workflow; they do not establish reliability for every model.",
+      "Reviewed against local commit e8dc42c7925 on 5 October 2026. All 13 targeted unit tests passed, and the installed application's bundled extension passed fresh-process switch, restore and isolated-workspace integration phases. A fresh non-inference packaged UI run passed report review, project inspection, repository reads, themes and native terminal output without renderer exceptions. The recorded 4 October workflow additionally exercised Gemma 3 12B explanation and proposal generation, native diff/application/save and a real fixture npm test. Screenshots use synthetic fixtures; they establish those exercised paths.",
     limits:
-      "The build is for Apple Silicon and is not signed or notarized for public distribution. Local JSON storage is not encrypted. Reviewed commands are host shells, not a filesystem sandbox.",
-    next: "Improve evaluation across models and failure cases, refine file diffs, and prepare signing and distribution before offering a public download.",
-    links: [],
+      "A local Apple Silicon alpha without Developer ID signing or notarisation. The custom implementation remains on a local branch; the public repository currently exposes the upstream fork. Managed scanners, remote target enforcement, scanner baselines and verified-resolution tracking remain planned. Fixed checks and the native terminal execute with host permissions. The journal is not tamper-proof, model output is unverified, and the full upstream suite and a security audit have not been completed. Local inference does not establish that every upstream or third-party network path is local-only.",
+    next: "Complete one real report-to-fix review with revision-linked evidence and scanner baseline comparison, then add one managed scanner adapter. Prepare the custom source, extension distribution review and signed packages for a public release.",
+    links: [{ label: "GitHub fork · custom work local", href: "https://github.com/TheJhyeFactor/apertide" }],
   },
   {
     slug: "sentinel-local",
